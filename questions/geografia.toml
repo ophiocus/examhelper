@@ -1,0 +1,418 @@
+# =============================================================================
+# Geografía de Colombia - Banco de Preguntas
+# =============================================================================
+
+# --- Ubicación y Territorio ---
+
+[[questions]]
+text = "¿En qué parte del continente americano se encuentra Colombia?"
+options = [
+    "En el centro de América del Norte",
+    "En el noroeste de América del Sur",
+    "En el sur de América del Sur",
+    "En América Central",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la característica geográfica única de Colombia en América del Sur respecto a sus costas?"
+options = [
+    "Es el único país sin salida al mar",
+    "Es el único país con costas en el océano Pacífico y en el mar Caribe (océano Atlántico)",
+    "Es el país con la costa más larga del Pacífico",
+    "Es el único país bañado por tres océanos",
+]
+answer = 1
+
+[[questions]]
+text = "¿Con cuántos países tiene fronteras terrestres Colombia?"
+options = ["3", "4", "5", "6"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál de los siguientes NO es un país limítrofe de Colombia?"
+options = ["Venezuela", "Brasil", "Bolivia", "Ecuador"]
+answer = 2
+
+[[questions]]
+text = "¿Cuántos departamentos tiene Colombia?"
+options = ["25", "28", "32", "36"]
+answer = 2
+
+# --- Regiones Naturales ---
+
+[[questions]]
+text = "¿Cuántas regiones naturales tiene Colombia?"
+options = ["4", "5", "6", "7"]
+answer = 2
+
+[[questions]]
+text = "¿Cuáles son las seis regiones naturales de Colombia?"
+options = [
+    "Andina, Caribe, Pacífica, Orinoquía, Amazonía e Insular",
+    "Norte, Sur, Este, Oeste, Central y Costera",
+    "Amazónica, Atlántica, Pacífica, Central, Oriental y Occidental",
+    "Cordillera, Llanos, Selva, Costa, Altiplano y Valle",
+]
+answer = 0
+
+[[questions]]
+text = "¿Cuál es la región natural más poblada de Colombia?"
+options = ["La región Caribe", "La región Pacífica", "La región Andina", "La Orinoquía"]
+answer = 2
+
+[[questions]]
+text = "¿Con qué otro nombre se conoce a la región de la Orinoquía?"
+options = [
+    "La Selva",
+    "Los Llanos Orientales",
+    "El Altiplano",
+    "La Costa Atlántica",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué son los pisos térmicos?"
+options = [
+    "Los diferentes tipos de suelo en Colombia",
+    "Las franjas de temperatura que varían según la altitud",
+    "Las estaciones del año en el trópico",
+    "Los niveles de humedad en las selvas",
+]
+answer = 1
+
+# --- Accidentes Geográficos ---
+
+[[questions]]
+text = "¿Cuál es el pico más alto de Colombia?"
+options = [
+    "El Nevado del Ruiz",
+    "El Pico Cristóbal Colón",
+    "El Nevado del Huila",
+    "El Cerro de Monserrate",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué sistema montañoso se encuentra el Pico Cristóbal Colón?"
+options = [
+    "En la Cordillera Central",
+    "En la Cordillera Oriental",
+    "En la Sierra Nevada de Santa Marta",
+    "En la Cordillera Occidental",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el río más importante de Colombia por su navegabilidad e importancia histórica?"
+options = [
+    "El río Amazonas",
+    "El río Magdalena",
+    "El río Orinoco",
+    "El río Cauca",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es el principal río afluente del Magdalena?"
+options = ["El río Amazonas", "El río Orinoco", "El río Cauca", "El río Atrato"]
+answer = 2
+
+[[questions]]
+text = "¿Qué río de Colombia es uno de los más caudalosos del mundo y forma parte de la frontera sur del país?"
+options = ["El río Magdalena", "El río Cauca", "El río Amazonas", "El río Putumayo"]
+answer = 2
+
+# --- Biodiversidad y Puertos ---
+
+[[questions]]
+text = "¿Cuál es el principal puerto sobre el océano Pacífico en Colombia?"
+options = ["Cartagena", "Barranquilla", "Buenaventura", "Santa Marta"]
+answer = 2
+
+[[questions]]
+text = "¿Cómo se clasifica a Colombia en términos de biodiversidad?"
+options = [
+    "País con poca diversidad biológica",
+    "País megadiverso, uno de los más biodiversos del mundo",
+    "País con diversidad moderada",
+    "País con biodiversidad exclusivamente marina",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuáles son los cinco países que limitan con Colombia?"
+options = [
+    "Venezuela, Brasil, Perú, Ecuador y Panamá",
+    "Venezuela, Brasil, Bolivia, Ecuador y Perú",
+    "Venezuela, Guyana, Brasil, Perú y Ecuador",
+    "Panamá, Costa Rica, Venezuela, Brasil y Perú",
+]
+answer = 0
+
+[[questions]]
+text = "¿A qué región natural pertenece el departamento de Chocó?"
+options = ["Caribe", "Andina", "Pacífica", "Orinoquía"]
+answer = 2
+
+[[questions]]
+text = "¿Qué archipiélago colombiano se encuentra en el mar Caribe y pertenece a la región Insular?"
+options = [
+    "Las Islas Galápagos",
+    "El Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "Las Islas Malvinas",
+    "La Isla de Malpelo",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la isla colombiana ubicada en el océano Pacífico, declarada Patrimonio de la Humanidad?"
+options = ["San Andrés", "Providencia", "Gorgona", "Malpelo"]
+answer = 3
+
+# --- Template: Capitales de los 32 departamentos ---
+
+[[templates]]
+text = "¿Cuál es la capital del departamento de {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "Bucaramanga",
+    "Pereira",
+    "Manizales",
+    "Ibagué",
+    "Neiva",
+    "Pasto",
+    "Cúcuta",
+    "Villavicencio",
+    "Montería",
+    "Valledupar",
+    "Sincelejo",
+    "Riohacha",
+    "Tunja",
+    "Popayán",
+    "Armenia",
+    "Santa Marta",
+    "Florencia",
+    "Yopal",
+    "Mocoa",
+    "Leticia",
+    "Quibdó",
+    "San José del Guaviare",
+    "Mitú",
+    "Puerto Inírida",
+    "Arauca",
+    "Puerto Carreño",
+    "San Andrés",
+    "Medellín",
+    "Cali",
+    "Barranquilla",
+    "Cartagena",
+]
+[[templates.pairs]]
+key = "Amazonas"
+value = "Leticia"
+[[templates.pairs]]
+key = "Antioquia"
+value = "Medellín"
+[[templates.pairs]]
+key = "Arauca"
+value = "Arauca"
+[[templates.pairs]]
+key = "Atlántico"
+value = "Barranquilla"
+[[templates.pairs]]
+key = "Bolívar"
+value = "Cartagena de Indias"
+[[templates.pairs]]
+key = "Boyacá"
+value = "Tunja"
+[[templates.pairs]]
+key = "Caldas"
+value = "Manizales"
+[[templates.pairs]]
+key = "Caquetá"
+value = "Florencia"
+[[templates.pairs]]
+key = "Casanare"
+value = "Yopal"
+[[templates.pairs]]
+key = "Cauca"
+value = "Popayán"
+[[templates.pairs]]
+key = "Cesar"
+value = "Valledupar"
+[[templates.pairs]]
+key = "Chocó"
+value = "Quibdó"
+[[templates.pairs]]
+key = "Córdoba"
+value = "Montería"
+[[templates.pairs]]
+key = "Cundinamarca"
+value = "Bogotá D.C."
+[[templates.pairs]]
+key = "Guainía"
+value = "Puerto Inírida"
+[[templates.pairs]]
+key = "Guaviare"
+value = "San José del Guaviare"
+[[templates.pairs]]
+key = "Huila"
+value = "Neiva"
+[[templates.pairs]]
+key = "La Guajira"
+value = "Riohacha"
+[[templates.pairs]]
+key = "Magdalena"
+value = "Santa Marta"
+[[templates.pairs]]
+key = "Meta"
+value = "Villavicencio"
+[[templates.pairs]]
+key = "Nariño"
+value = "Pasto"
+[[templates.pairs]]
+key = "Norte de Santander"
+value = "Cúcuta"
+[[templates.pairs]]
+key = "Putumayo"
+value = "Mocoa"
+[[templates.pairs]]
+key = "Quindío"
+value = "Armenia"
+[[templates.pairs]]
+key = "Risaralda"
+value = "Pereira"
+[[templates.pairs]]
+key = "San Andrés y Providencia"
+value = "San Andrés"
+[[templates.pairs]]
+key = "Santander"
+value = "Bucaramanga"
+[[templates.pairs]]
+key = "Sucre"
+value = "Sincelejo"
+[[templates.pairs]]
+key = "Tolima"
+value = "Ibagué"
+[[templates.pairs]]
+key = "Valle del Cauca"
+value = "Cali"
+[[templates.pairs]]
+key = "Vaupés"
+value = "Mitú"
+[[templates.pairs]]
+key = "Vichada"
+value = "Puerto Carreño"
+
+# --- Template: Regiones Naturales por departamento ---
+
+[[templates]]
+text = "¿A qué región natural de Colombia pertenece el departamento de {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "Región Andina",
+    "Región Caribe",
+    "Región Pacífica",
+    "Región Orinoquía",
+    "Región Amazonía",
+    "Región Insular",
+]
+[[templates.pairs]]
+key = "Antioquia"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Boyacá"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Caldas"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Cundinamarca"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Huila"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Norte de Santander"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Quindío"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Risaralda"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Santander"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Tolima"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Nariño"
+value = "Región Andina"
+[[templates.pairs]]
+key = "Atlántico"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "Bolívar"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "Cesar"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "Córdoba"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "La Guajira"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "Magdalena"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "Sucre"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "Chocó"
+value = "Región Pacífica"
+[[templates.pairs]]
+key = "Cauca"
+value = "Región Pacífica"
+[[templates.pairs]]
+key = "Valle del Cauca"
+value = "Región Pacífica"
+[[templates.pairs]]
+key = "Arauca"
+value = "Región Orinoquía"
+[[templates.pairs]]
+key = "Casanare"
+value = "Región Orinoquía"
+[[templates.pairs]]
+key = "Meta"
+value = "Región Orinoquía"
+[[templates.pairs]]
+key = "Vichada"
+value = "Región Orinoquía"
+[[templates.pairs]]
+key = "Amazonas"
+value = "Región Amazonía"
+[[templates.pairs]]
+key = "Caquetá"
+value = "Región Amazonía"
+[[templates.pairs]]
+key = "Guainía"
+value = "Región Amazonía"
+[[templates.pairs]]
+key = "Guaviare"
+value = "Región Amazonía"
+[[templates.pairs]]
+key = "Putumayo"
+value = "Región Amazonía"
+[[templates.pairs]]
+key = "Vaupés"
+value = "Región Amazonía"
+[[templates.pairs]]
+key = "San Andrés y Providencia"
+value = "Región Insular"

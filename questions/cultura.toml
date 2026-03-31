@@ -1,0 +1,401 @@
+# =============================================================================
+# Cultura y Símbolos de Colombia - Banco de Preguntas
+# =============================================================================
+
+# --- Bandera ---
+
+[[questions]]
+text = "¿Cuáles son los colores de la bandera de Colombia de arriba hacia abajo?"
+options = [
+    "Rojo, azul y amarillo",
+    "Amarillo, azul y rojo",
+    "Azul, blanco y rojo",
+    "Verde, amarillo y azul",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué representa el color amarillo en la bandera de Colombia?"
+options = [
+    "La sangre de los héroes",
+    "Los dos mares que bañan al país",
+    "La riqueza del suelo colombiano y sus recursos naturales",
+    "La esperanza del pueblo",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué representa el color azul en la bandera de Colombia?"
+options = [
+    "La justicia y la libertad",
+    "Los dos mares que bañan las costas colombianas",
+    "La riqueza mineral del país",
+    "El cielo que cubre la nación",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué representa el color rojo en la bandera de Colombia?"
+options = [
+    "La riqueza del suelo",
+    "Los mares colombianos",
+    "La sangre derramada por los héroes que lucharon por la independencia",
+    "El fuego de los volcanes andinos",
+]
+answer = 2
+
+[[questions]]
+text = "¿A quién se le atribuye el diseño de los colores de la bandera de Colombia?"
+options = [
+    "Simón Bolívar",
+    "Francisco de Miranda",
+    "Antonio Nariño",
+    "Francisco de Paula Santander",
+]
+answer = 1
+
+# --- Escudo ---
+
+[[questions]]
+text = "¿Qué ave aparece en la parte superior del escudo de Colombia?"
+options = ["Un águila", "Un cóndor andino", "Un tucán", "Un colibrí"]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es el lema que aparece en el escudo de armas de Colombia?"
+options = [
+    "Patria y Honor",
+    "Libertad y Orden",
+    "Unidad y Justicia",
+    "Paz y Progreso",
+]
+answer = 1
+
+# --- Símbolos Nacionales ---
+
+[[questions]]
+text = "¿Cuál es la flor nacional de Colombia?"
+options = [
+    "La rosa roja",
+    "La orquídea Cattleya trianae",
+    "La flor de mayo",
+    "El girasol",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es el árbol nacional de Colombia?"
+options = [
+    "El roble",
+    "La ceiba",
+    "La palma de cera del Quindío",
+    "El guayacán",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el ave nacional de Colombia?"
+options = ["El tucán", "El colibrí", "La guacamaya", "El cóndor andino"]
+answer = 3
+
+# --- Himno Nacional ---
+
+[[questions]]
+text = "¿Quién escribió la letra del himno nacional de Colombia?"
+options = [
+    "Gabriel García Márquez",
+    "Rafael Núñez",
+    "José Asunción Silva",
+    "Jorge Isaacs",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién compuso la música del himno nacional de Colombia?"
+options = [
+    "Oreste Síndici",
+    "Antonio María Valencia",
+    "Jaime R. Echavarría",
+    "Luis Antonio Calvo",
+]
+answer = 0
+
+[[questions]]
+text = "¿Mediante qué ley se oficializó el himno nacional de Colombia?"
+options = [
+    "Ley 12 de 1910",
+    "Ley 33 de 1920",
+    "Ley 50 de 1936",
+    "Ley 100 de 1991",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la primera línea del coro del himno nacional de Colombia?"
+options = [
+    "Colombia, tierra querida",
+    "Cesó la horrible noche",
+    "Oh gloria inmarcesible",
+    "Patria, honor y libertad",
+]
+answer = 2
+
+# --- Fechas Patrias ---
+
+[[questions]]
+text = "¿Qué se conmemora el 20 de julio en Colombia?"
+options = [
+    "La Batalla de Boyacá",
+    "El Día de la Independencia (Grito de Independencia)",
+    "La fundación de Bogotá",
+    "La firma de la Constitución de 1991",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué se conmemora el 7 de agosto en Colombia?"
+options = [
+    "El Grito de Independencia",
+    "La Batalla de Boyacá",
+    "La creación de la Gran Colombia",
+    "El Día de la Bandera",
+]
+answer = 1
+
+# --- Festividades y Patrimonio Cultural ---
+
+[[questions]]
+text = "¿Qué festividad colombiana fue declarada Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO?"
+options = [
+    "La Feria de las Flores de Medellín",
+    "El Carnaval de Barranquilla",
+    "El Festival de la Leyenda Vallenata",
+    "La Semana Santa de Popayán",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué ciudad se celebra el Carnaval de Negros y Blancos?"
+options = ["Barranquilla", "Cartagena", "Pasto", "Cali"]
+answer = 2
+
+[[questions]]
+text = "¿En qué ciudad se celebra el Festival de la Leyenda Vallenata?"
+options = ["Barranquilla", "Santa Marta", "Valledupar", "Montería"]
+answer = 2
+
+# --- Literatura ---
+
+[[questions]]
+text = "¿Cuál es la obra más famosa de Gabriel García Márquez?"
+options = [
+    "La vorágine",
+    "María",
+    "Cien años de soledad",
+    "El coronel no tiene quien le escriba",
+]
+answer = 2
+
+[[questions]]
+text = "¿En qué año recibió Gabriel García Márquez el Premio Nobel de Literatura?"
+options = ["1975", "1982", "1990", "2000"]
+answer = 1
+
+# --- Gastronomía ---
+
+[[questions]]
+text = "¿Cuál de los siguientes es un plato típico de la región paisa?"
+options = [
+    "El ajiaco",
+    "La bandeja paisa",
+    "El sancocho de pescado",
+    "La lechona tolimense",
+]
+answer = 1
+
+[[questions]]
+text = "¿De qué región colombiana es originario el ajiaco?"
+options = [
+    "La costa Caribe",
+    "El Eje Cafetero",
+    "El altiplano cundiboyacense (Bogotá)",
+    "Los Llanos Orientales",
+]
+answer = 2
+
+# --- Música ---
+
+[[questions]]
+text = "¿Cuál de los siguientes es un género musical tradicional colombiano?"
+options = ["El tango", "La salsa cubana", "La cumbia", "El merengue dominicano"]
+answer = 2
+
+[[questions]]
+text = "¿De qué región de Colombia es originario el vallenato?"
+options = [
+    "La región Andina",
+    "La región Caribe",
+    "La región Pacífica",
+    "La región de la Orinoquía",
+]
+answer = 1
+
+# --- Patrimonio UNESCO ---
+
+[[questions]]
+text = "¿Cuál de las siguientes ciudades colombianas tiene su centro histórico declarado Patrimonio de la Humanidad?"
+options = [
+    "Medellín",
+    "Cartagena de Indias",
+    "Bucaramanga",
+    "Barranquilla",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué paisaje cultural colombiano fue declarado Patrimonio de la Humanidad por la UNESCO?"
+options = [
+    "El paisaje del Amazonas",
+    "El Paisaje Cultural Cafetero",
+    "El paisaje de los Llanos Orientales",
+    "El paisaje de la Sierra Nevada",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuáles de los siguientes sitios arqueológicos colombianos son Patrimonio de la Humanidad?"
+options = [
+    "Ciudad Perdida y El Dorado",
+    "San Agustín y Tierradentro",
+    "Guatavita y Sogamoso",
+    "Teyuna y Pueblito",
+]
+answer = 1
+
+# --- Deportes ---
+
+[[questions]]
+text = "¿Cuál es el deporte más popular en Colombia?"
+options = ["El béisbol", "El ciclismo", "El fútbol", "El tenis"]
+answer = 2
+
+[[questions]]
+text = "¿En qué disciplina deportiva se ha destacado Colombia a nivel internacional en las últimas décadas?"
+options = [
+    "La natación",
+    "El ciclismo profesional de ruta",
+    "El rugby",
+    "El hockey sobre hielo",
+]
+answer = 1
+
+# --- Música adicional ---
+
+[[questions]]
+text = "¿Qué género musical colombiano se toca principalmente con acordeón, caja y guacharaca?"
+options = ["La cumbia", "El vallenato", "El bambuco", "La salsa"]
+answer = 1
+
+# --- Templates ---
+
+[[templates]]
+text = "¿De qué región colombiana es típico el plato llamado {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "Región Caribe",
+    "Región Andina (Bogotá)",
+    "Región Paisa (Antioquia)",
+    "Región Pacífica",
+    "Llanos Orientales",
+    "Eje Cafetero",
+    "Región del Tolima",
+    "Santander",
+]
+[[templates.pairs]]
+key = "bandeja paisa"
+value = "Región Paisa (Antioquia)"
+[[templates.pairs]]
+key = "ajiaco santafereño"
+value = "Región Andina (Bogotá)"
+[[templates.pairs]]
+key = "sancocho de pescado"
+value = "Región Caribe"
+[[templates.pairs]]
+key = "lechona"
+value = "Región del Tolima"
+[[templates.pairs]]
+key = "mamona o ternera a la llanera"
+value = "Llanos Orientales"
+[[templates.pairs]]
+key = "mute santandereano"
+value = "Santander"
+[[templates.pairs]]
+key = "arroz atollado"
+value = "Región Pacífica"
+
+[[templates]]
+text = "¿Qué representa el color {key} en la bandera de Colombia?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "La esperanza y la fe del pueblo colombiano",
+    "La justicia y la igualdad social",
+    "El cielo que cubre la nación",
+    "Los volcanes de la cordillera de los Andes",
+    "La diversidad étnica del país",
+    "Los ríos y selvas de Colombia",
+]
+[[templates.pairs]]
+key = "amarillo"
+value = "La riqueza del suelo colombiano y sus recursos naturales"
+[[templates.pairs]]
+key = "azul"
+value = "Los dos mares que bañan las costas colombianas"
+[[templates.pairs]]
+key = "rojo"
+value = "La sangre derramada por los héroes de la independencia"
+
+[[templates]]
+text = "¿En qué ciudad colombiana se celebra {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "Bogotá",
+    "Medellín",
+    "Cali",
+    "Cartagena",
+    "Santa Marta",
+    "Bucaramanga",
+    "Manizales",
+    "Pereira",
+    "Popayán",
+    "Ibagué",
+]
+[[templates.pairs]]
+key = "el Carnaval de Barranquilla"
+value = "Barranquilla"
+[[templates.pairs]]
+key = "el Carnaval de Negros y Blancos"
+value = "Pasto"
+[[templates.pairs]]
+key = "el Festival de la Leyenda Vallenata"
+value = "Valledupar"
+[[templates.pairs]]
+key = "la Feria de las Flores"
+value = "Medellín"
+[[templates.pairs]]
+key = "la Feria de Cali"
+value = "Cali"
+[[templates.pairs]]
+key = "el Festival Internacional de Cine"
+value = "Cartagena"
+[[templates.pairs]]
+key = "la Semana Santa declarada Patrimonio Inmaterial"
+value = "Popayán"
+[[templates.pairs]]
+key = "la Feria de Manizales"
+value = "Manizales"
+[[templates.pairs]]
+key = "el Festival Iberoamericano de Teatro"
+value = "Bogotá"

@@ -1,0 +1,407 @@
+# =============================================================================
+# Constitución Política de Colombia - Banco de Preguntas
+# =============================================================================
+
+# --- Naturaleza del Estado ---
+
+[[questions]]
+text = "¿Cómo se define Colombia según el Artículo 1 de la Constitución?"
+options = [
+    "Un Estado Social de Derecho, organizado en forma de república unitaria, descentralizada",
+    "Una república federal con autonomía de sus estados",
+    "Una monarquía constitucional parlamentaria",
+    "Un Estado centralizado sin autonomía territorial",
+]
+answer = 0
+
+[[questions]]
+text = "¿En qué año se promulgó la Constitución Política vigente de Colombia?"
+options = ["1886", "1991", "1810", "2001"]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la capital de la República de Colombia?"
+options = ["Medellín", "Cali", "Bogotá D.C.", "Barranquilla"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el idioma oficial de Colombia según la Constitución?"
+options = ["El español y el inglés", "El castellano", "El español y las lenguas indígenas", "No tiene idioma oficial"]
+answer = 1
+
+[[questions]]
+text = "¿En quién reside la soberanía según la Constitución de Colombia?"
+options = [
+    "En el Presidente de la República",
+    "En el Congreso",
+    "En el pueblo, del cual emana el poder público",
+    "En las Fuerzas Armadas",
+]
+answer = 2
+
+# --- Ramas del Poder Público ---
+
+[[questions]]
+text = "¿Cuántas ramas del poder público establece la Constitución de Colombia?"
+options = ["Dos: ejecutiva y legislativa", "Tres: legislativa, ejecutiva y judicial", "Cuatro: legislativa, ejecutiva, judicial y electoral", "Una sola rama unificada"]
+answer = 1
+
+[[questions]]
+text = "¿Qué órganos conforman la rama legislativa del poder público en Colombia?"
+options = [
+    "La Presidencia y los Ministerios",
+    "El Senado de la República y la Cámara de Representantes",
+    "La Corte Suprema de Justicia y el Consejo de Estado",
+    "La Procuraduría y la Contraloría",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuántos senadores conforman el Senado de la República de Colombia?"
+options = ["100", "108", "120", "90"]
+answer = 1
+
+[[questions]]
+text = "¿Aproximadamente cuántos miembros tiene la Cámara de Representantes de Colombia?"
+options = ["100", "150", "188", "200"]
+answer = 2
+
+[[questions]]
+text = "¿Quién es el jefe de Estado, jefe de Gobierno y suprema autoridad administrativa en Colombia?"
+options = [
+    "El Presidente del Congreso",
+    "El Presidente de la República",
+    "El Presidente de la Corte Suprema",
+    "El Procurador General",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuántos años dura el período presidencial en Colombia?"
+options = ["5 años", "6 años", "4 años", "3 años"]
+answer = 2
+
+[[questions]]
+text = "¿Se permite la reelección presidencial inmediata en Colombia actualmente?"
+options = [
+    "Sí, por un período adicional",
+    "Sí, de forma indefinida",
+    "No, no se permite la reelección inmediata",
+    "Solo si lo aprueba el Congreso",
+]
+answer = 2
+
+# --- Órganos de Control y Organización Electoral ---
+
+[[questions]]
+text = "¿Cuáles son los organismos de control en Colombia?"
+options = [
+    "La Fiscalía y la Defensoría",
+    "El Ministerio Público (Procuraduría) y la Contraloría General de la República",
+    "El Senado y la Cámara",
+    "La Corte Constitucional y el Consejo de Estado",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la función principal de la Procuraduría General de la Nación?"
+options = [
+    "Administrar los recursos del Estado",
+    "Vigilar la conducta de los servidores públicos y defender los derechos humanos",
+    "Juzgar a los criminales",
+    "Aprobar las leyes del Congreso",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la función principal de la Contraloría General de la República?"
+options = [
+    "Defender los derechos de los ciudadanos",
+    "Vigilar la gestión fiscal del Estado y de los particulares que manejan fondos públicos",
+    "Investigar los delitos penales",
+    "Nombrar a los gobernadores",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué función cumple la Defensoría del Pueblo en Colombia?"
+options = [
+    "Recaudar los impuestos nacionales",
+    "Promover, ejercer y divulgar los derechos humanos",
+    "Dirigir las Fuerzas Armadas",
+    "Nombrar a los magistrados de las cortes",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué organismo está encargado de la investigación penal en Colombia?"
+options = [
+    "La Procuraduría General de la Nación",
+    "La Contraloría General de la República",
+    "La Fiscalía General de la Nación",
+    "La Defensoría del Pueblo",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué organismos conforman la organización electoral en Colombia?"
+options = [
+    "La Fiscalía y la Procuraduría",
+    "El Consejo Nacional Electoral y la Registraduría Nacional del Estado Civil",
+    "El Senado y la Cámara de Representantes",
+    "La Corte Suprema y la Corte Constitucional",
+]
+answer = 1
+
+# --- Rama Judicial ---
+
+[[questions]]
+text = "¿Cuál es la máxima autoridad de la jurisdicción constitucional en Colombia?"
+options = [
+    "La Corte Suprema de Justicia",
+    "El Consejo de Estado",
+    "La Corte Constitucional",
+    "El Consejo Superior de la Judicatura",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el tribunal supremo de la jurisdicción ordinaria en Colombia?"
+options = [
+    "La Corte Constitucional",
+    "La Corte Suprema de Justicia",
+    "El Consejo de Estado",
+    "La Fiscalía General",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es el tribunal supremo de la jurisdicción contencioso-administrativa?"
+options = [
+    "La Corte Constitucional",
+    "La Corte Suprema de Justicia",
+    "El Consejo de Estado",
+    "El Tribunal Superior de Bogotá",
+]
+answer = 2
+
+# --- Derechos Fundamentales ---
+
+[[questions]]
+text = "¿Existe la pena de muerte en Colombia?"
+options = [
+    "Sí, para delitos de traición a la patria",
+    "Sí, para delitos graves como el terrorismo",
+    "No, la Constitución prohíbe la pena de muerte",
+    "Solo en tiempos de guerra",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué mecanismo constitucional protege los derechos fundamentales de manera inmediata en Colombia?"
+options = [
+    "La acción popular",
+    "La acción de tutela",
+    "El habeas corpus",
+    "La acción de cumplimiento",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué artículo de la Constitución se consagra la acción de tutela?"
+options = ["Artículo 40", "Artículo 86", "Artículo 96", "Artículo 100"]
+answer = 1
+
+[[questions]]
+text = "¿Cuál de los siguientes es un derecho fundamental reconocido en la Constitución colombiana?"
+options = [
+    "El derecho a portar armas de fuego",
+    "El derecho a la vida",
+    "El derecho a la reelección presidencial",
+    "El derecho a no pagar impuestos",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué derecho fundamental permite a toda persona presentar solicitudes respetuosas a las autoridades y obtener pronta resolución?"
+options = [
+    "Derecho a la intimidad",
+    "Derecho de petición",
+    "Derecho a la libre expresión",
+    "Derecho al voto",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál de los siguientes derechos está consagrado como fundamental en la Constitución de 1991?"
+options = [
+    "El derecho a una vivienda lujosa",
+    "El derecho a la igualdad ante la ley",
+    "El derecho a viajar sin pasaporte",
+    "El derecho a no ser juzgado por ningún delito",
+]
+answer = 1
+
+# --- Participación Democrática ---
+
+[[questions]]
+text = "¿Cuántos mecanismos de participación democrática establece la Constitución colombiana?"
+options = ["3", "5", "7", "10"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál de los siguientes NO es un mecanismo de participación ciudadana en Colombia?"
+options = [
+    "El plebiscito",
+    "La consulta popular",
+    "El golpe de estado",
+    "El referendo",
+]
+answer = 2
+
+# --- Nacionalidad ---
+
+[[questions]]
+text = "¿Qué artículo de la Constitución regula las normas sobre la nacionalidad colombiana?"
+options = ["Artículo 86", "Artículo 96", "Artículo 100", "Artículo 40"]
+answer = 1
+
+[[questions]]
+text = "¿Puede un extranjero adquirir la nacionalidad colombiana por adopción?"
+options = [
+    "No, la nacionalidad colombiana es solo por nacimiento",
+    "Sí, cumpliendo los requisitos establecidos por la ley",
+    "Solo si renuncia a su nacionalidad de origen",
+    "Solo si es ciudadano de un país vecino",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál de los siguientes es un mecanismo de participación ciudadana en Colombia?"
+options = [
+    "El cabildo abierto",
+    "La dictadura popular",
+    "La imposición legislativa",
+    "El decreto presidencial",
+]
+answer = 0
+
+[[questions]]
+text = "¿Qué garantiza el Artículo 20 de la Constitución colombiana?"
+options = [
+    "El derecho a la propiedad privada",
+    "La libertad de expresión e información",
+    "El derecho a la educación gratuita",
+    "La libertad de comercio internacional",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué establece la Constitución de Colombia sobre la educación?"
+options = [
+    "Es un privilegio solo para ciudadanos colombianos",
+    "Es un derecho y un servicio público con función social",
+    "Es obligatoria solo hasta los 10 años",
+    "No se menciona en la Constitución",
+]
+answer = 1
+
+# --- Templates ---
+
+[[templates]]
+text = "¿Cuál de las siguientes es una función del/de la {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "Dirigir las Fuerzas Armadas",
+    "Recaudar los impuestos nacionales",
+    "Aprobar las leyes del Congreso",
+    "Nombrar a los gobernadores departamentales",
+    "Administrar la justicia penal militar",
+    "Emitir la moneda nacional",
+    "Negociar tratados internacionales",
+    "Declarar la guerra a otros países",
+]
+[[templates.pairs]]
+key = "Procuraduría General de la Nación"
+value = "Vigilar la conducta oficial de quienes desempeñan funciones públicas"
+[[templates.pairs]]
+key = "Contraloría General de la República"
+value = "Vigilar la gestión fiscal de la administración y de los particulares que manejan fondos del Estado"
+[[templates.pairs]]
+key = "Defensoría del Pueblo"
+value = "Promover, ejercer y divulgar los derechos humanos"
+[[templates.pairs]]
+key = "Fiscalía General de la Nación"
+value = "Investigar los delitos y acusar a los presuntos infractores ante los jueces"
+[[templates.pairs]]
+key = "Corte Constitucional"
+value = "Guardar la integridad y supremacía de la Constitución"
+
+[[templates]]
+text = "¿Cuál de los siguientes es un mecanismo de participación ciudadana contemplado en la Constitución colombiana?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "El decreto presidencial",
+    "La orden ejecutiva",
+    "El fallo judicial",
+    "La resolución ministerial",
+    "La circular administrativa",
+    "El acto legislativo automático",
+]
+[[templates.pairs]]
+key = "mecanismo1"
+value = "El voto"
+[[templates.pairs]]
+key = "mecanismo2"
+value = "El plebiscito"
+[[templates.pairs]]
+key = "mecanismo3"
+value = "El referendo"
+[[templates.pairs]]
+key = "mecanismo4"
+value = "La consulta popular"
+[[templates.pairs]]
+key = "mecanismo5"
+value = "El cabildo abierto"
+[[templates.pairs]]
+key = "mecanismo6"
+value = "La iniciativa legislativa popular"
+[[templates.pairs]]
+key = "mecanismo7"
+value = "La revocatoria del mandato"
+
+[[templates]]
+text = "¿Qué derecho fundamental está consagrado en la Constitución de Colombia?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "El derecho a portar armas sin restricción",
+    "El derecho a no pagar impuestos",
+    "El derecho a la reelección indefinida",
+    "El derecho a desobedecer las leyes injustas",
+    "El derecho a la venganza privada",
+    "El derecho a ocupar terrenos baldíos",
+]
+[[templates.pairs]]
+key = "derecho1"
+value = "El derecho a la vida"
+[[templates.pairs]]
+key = "derecho2"
+value = "El derecho a la igualdad"
+[[templates.pairs]]
+key = "derecho3"
+value = "El derecho a la libertad personal"
+[[templates.pairs]]
+key = "derecho4"
+value = "El derecho de petición"
+[[templates.pairs]]
+key = "derecho5"
+value = "El derecho a la libertad de expresión"
+[[templates.pairs]]
+key = "derecho6"
+value = "El derecho a la educación"
+[[templates.pairs]]
+key = "derecho7"
+value = "El derecho al debido proceso"

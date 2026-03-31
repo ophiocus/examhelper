@@ -1,0 +1,24 @@
+[package]
+name = "examhelper"
+version = "0.1.0"
+edition = "2021"
+authors = ["ophiocus <csantanad@gmail.com>"]
+description = "Colombian naturalization exam study helper – reading & multiple-choice practice"
+license = "MIT"
+
+[dependencies]
+eframe = "0.28"
+egui_commonmark = { version = "0.17", features = ["better_syntax_highlighting"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+dirs = "5"
+rand = "0.8"
+
+[build-dependencies]
+winres = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true

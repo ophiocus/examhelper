@@ -1,0 +1,380 @@
+# =============================================================================
+# Historia de Colombia - Banco de Preguntas
+# =============================================================================
+
+# --- Pueblos Precolombinos ---
+
+[[questions]]
+text = "¿Cuál de los siguientes pueblos indígenas habitaba el altiplano cundiboyacense antes de la llegada de los españoles?"
+options = ["Los Tayronas", "Los Muiscas", "Los Quimbayas", "Los Zenúes"]
+answer = 1
+
+[[questions]]
+text = "¿Por qué actividad eran reconocidos los Quimbayas?"
+options = [
+    "La construcción de ciudades de piedra",
+    "La orfebrería y el trabajo del oro",
+    "La navegación marítima",
+    "La astronomía avanzada",
+]
+answer = 1
+
+[[questions]]
+text = "¿Dónde se asentó principalmente la civilización Tayrona?"
+options = [
+    "En el altiplano cundiboyacense",
+    "En la Sierra Nevada de Santa Marta",
+    "En el Valle del Cauca",
+    "En la Amazonía colombiana",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué ceremonia religiosa de los Muiscas dio origen a la leyenda de El Dorado?"
+options = [
+    "La ceremonia del maíz",
+    "La ceremonia del cacique cubierto de oro en la laguna de Guatavita",
+    "La ceremonia del sol en Sogamoso",
+    "La ceremonia de la lluvia",
+]
+answer = 1
+
+# --- Conquista y Colonia ---
+
+[[questions]]
+text = "¿Quién fue el primer europeo en llegar a las costas de lo que hoy es Colombia en 1499?"
+options = [
+    "Cristóbal Colón",
+    "Alonso de Ojeda",
+    "Rodrigo de Bastidas",
+    "Gonzalo Jiménez de Quesada",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién exploró la costa colombiana en 1501 y es considerado el descubridor del litoral colombiano?"
+options = [
+    "Alonso de Ojeda",
+    "Rodrigo de Bastidas",
+    "Vasco Núñez de Balboa",
+    "Francisco Pizarro",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién fundó la ciudad de Santa Fe de Bogotá y en qué año?"
+options = [
+    "Sebastián de Belalcázar en 1536",
+    "Gonzalo Jiménez de Quesada en 1538",
+    "Rodrigo de Bastidas en 1525",
+    "Pedro de Heredia en 1533",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cómo se llamaba la entidad político-administrativa española que gobernó el territorio colombiano durante la colonia?"
+options = [
+    "La Capitanía General de Colombia",
+    "El Virreinato de la Nueva Granada",
+    "La Audiencia de Santafé",
+    "El Reino de Quito",
+]
+answer = 1
+
+# --- Independencia ---
+
+[[questions]]
+text = "¿En qué año ocurrió la revolución de los Comuneros en el Virreinato de la Nueva Granada?"
+options = ["1781", "1810", "1819", "1776"]
+answer = 0
+
+[[questions]]
+text = "¿Quién tradujo la Declaración de los Derechos del Hombre y del Ciudadano al español en la Nueva Granada?"
+options = [
+    "Simón Bolívar",
+    "Antonio Nariño",
+    "Francisco de Paula Santander",
+    "Camilo Torres",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué fecha se celebra como el Grito de Independencia de Colombia?"
+options = [
+    "El 7 de agosto de 1819",
+    "El 20 de julio de 1810",
+    "El 17 de diciembre de 1819",
+    "El 12 de octubre de 1492",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué incidente sirvió como pretexto para el Grito de Independencia del 20 de julio de 1810?"
+options = [
+    "El asesinato de un líder criollo",
+    "El préstamo de un florero del español José González Llorente",
+    "La llegada de tropas españolas a Bogotá",
+    "La declaración de guerra de Napoleón",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué nombre recibe el período de guerras civiles entre 1810 y 1816 en la historia de Colombia?"
+options = ["La Gran Colombia", "La Patria Boba", "La Regeneración", "El Frente Nacional"]
+answer = 1
+
+[[questions]]
+text = "¿En qué fecha se libró la Batalla de Boyacá?"
+options = [
+    "20 de julio de 1810",
+    "7 de agosto de 1819",
+    "17 de diciembre de 1819",
+    "24 de julio de 1783",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué significó la Batalla de Boyacá para la independencia de Colombia?"
+options = [
+    "Fue una derrota para los patriotas",
+    "Selló la independencia de la Nueva Granada",
+    "Marcó el inicio de la Patria Boba",
+    "Fue el comienzo de la colonización española",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué fecha se creó la Gran Colombia en el Congreso de Angostura?"
+options = [
+    "20 de julio de 1810",
+    "7 de agosto de 1819",
+    "17 de diciembre de 1819",
+    "5 de julio de 1811",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué países conformaron la Gran Colombia?"
+options = [
+    "Colombia, Perú y Bolivia",
+    "Colombia (Nueva Granada), Venezuela y Ecuador",
+    "Colombia, Panamá y Costa Rica",
+    "Colombia, Brasil y Venezuela",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién fue el primer presidente de la Gran Colombia?"
+options = [
+    "Francisco de Paula Santander",
+    "Simón Bolívar",
+    "Antonio Nariño",
+    "Rafael Núñez",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué cargo desempeñó Francisco de Paula Santander en la Gran Colombia?"
+options = [
+    "Presidente",
+    "Vicepresidente y encargado del gobierno de la Nueva Granada",
+    "Ministro de Guerra",
+    "Gobernador de Cundinamarca",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién fue Policarpa Salavarrieta?"
+options = [
+    "Una gobernadora colonial",
+    "Una heroína de la independencia fusilada por los españoles",
+    "La primera presidenta de Colombia",
+    "Una exploradora del siglo XVI",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué año se disolvió la Gran Colombia?"
+options = ["1819", "1825", "1830", "1835"]
+answer = 2
+
+# --- República ---
+
+[[questions]]
+text = "¿En qué año se separó Panamá de Colombia?"
+options = ["1886", "1895", "1903", "1910"]
+answer = 2
+
+[[questions]]
+text = "¿Quién promovió la Constitución de 1886 en Colombia?"
+options = [
+    "Simón Bolívar",
+    "Rafael Núñez",
+    "Antonio Nariño",
+    "Jorge Eliécer Gaitán",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cómo se conoce el período de la Constitución de 1886 impulsado por Rafael Núñez?"
+options = ["La Patria Boba", "La Regeneración", "El Frente Nacional", "La Violencia"]
+answer = 1
+
+[[questions]]
+text = "¿Quién fue Jorge Eliécer Gaitán?"
+options = [
+    "Un presidente conservador del siglo XIX",
+    "Un líder político liberal cuyo asesinato desencadenó el Bogotazo",
+    "Un general de la independencia",
+    "El fundador del Frente Nacional",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué fue el Bogotazo?"
+options = [
+    "La fundación de Bogotá en 1538",
+    "Los disturbios del 9 de abril de 1948 tras el asesinato de Jorge Eliécer Gaitán",
+    "Un terremoto que destruyó Bogotá en 1917",
+    "La toma de Bogotá por Bolívar en 1819",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué período de violencia bipartidista se vivió en Colombia aproximadamente entre 1948 y 1958?"
+options = ["La Patria Boba", "La Regeneración", "La Violencia", "El Frente Nacional"]
+answer = 2
+
+[[questions]]
+text = "¿Qué fue el Frente Nacional en Colombia?"
+options = [
+    "Una coalición militar contra las guerrillas",
+    "Un acuerdo entre liberales y conservadores para alternarse el poder entre 1958 y 1974",
+    "Un tratado de paz con Venezuela",
+    "Una reforma constitucional de 1991",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué período estuvo vigente el Frente Nacional?"
+options = ["1948-1958", "1958-1974", "1974-1991", "1991-2010"]
+answer = 1
+
+[[questions]]
+text = "¿En qué año se firmó el acuerdo de paz entre el gobierno colombiano y las FARC?"
+options = ["2010", "2014", "2016", "2018"]
+answer = 2
+
+[[questions]]
+text = "¿En qué año recibió Gabriel García Márquez el Premio Nobel de Literatura?"
+options = ["1967", "1975", "1982", "1990"]
+answer = 2
+
+# --- Templates ---
+
+[[templates]]
+text = "¿En qué año ocurrió {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "1499",
+    "1538",
+    "1717",
+    "1781",
+    "1810",
+    "1819",
+    "1830",
+    "1886",
+    "1903",
+    "1948",
+    "1958",
+    "1991",
+    "2016",
+]
+[[templates.pairs]]
+key = "la Batalla de Boyacá"
+value = "1819"
+[[templates.pairs]]
+key = "el Grito de Independencia"
+value = "1810"
+[[templates.pairs]]
+key = "la creación de la Gran Colombia"
+value = "1819"
+[[templates.pairs]]
+key = "la disolución de la Gran Colombia"
+value = "1830"
+[[templates.pairs]]
+key = "la separación de Panamá"
+value = "1903"
+[[templates.pairs]]
+key = "la promulgación de la Constitución de la Regeneración"
+value = "1886"
+[[templates.pairs]]
+key = "el Bogotazo"
+value = "1948"
+[[templates.pairs]]
+key = "la promulgación de la Constitución vigente"
+value = "1991"
+[[templates.pairs]]
+key = "la firma del acuerdo de paz con las FARC"
+value = "2016"
+[[templates.pairs]]
+key = "la revolución de los Comuneros"
+value = "1781"
+
+[[templates]]
+text = "¿Quién fue {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "Un explorador portugués del siglo XV",
+    "Un virrey español de la Nueva Granada",
+    "Un presidente de la Primera República",
+    "Un general realista en las guerras de independencia",
+    "Un gobernador de la provincia de Cartagena",
+    "Un obispo de la iglesia católica colonial",
+    "Un comerciante criollo de Medellín",
+]
+[[templates.pairs]]
+key = "Simón Bolívar"
+value = "El Libertador y primer presidente de la Gran Colombia"
+[[templates.pairs]]
+key = "Francisco de Paula Santander"
+value = "El Hombre de las Leyes y vicepresidente de la Gran Colombia"
+[[templates.pairs]]
+key = "Antonio Nariño"
+value = "El precursor de la independencia que tradujo los Derechos del Hombre"
+[[templates.pairs]]
+key = "Policarpa Salavarrieta"
+value = "Una heroína de la independencia fusilada por los españoles en 1817"
+[[templates.pairs]]
+key = "Gonzalo Jiménez de Quesada"
+value = "El conquistador español que fundó Santa Fe de Bogotá en 1538"
+[[templates.pairs]]
+key = "Rafael Núñez"
+value = "El impulsor de la Constitución de 1886 y autor de la letra del himno nacional"
+
+[[templates]]
+text = "¿Qué evento histórico se conmemora el {key}?"
+variable = "key"
+answer_template = "{value}"
+distractors = [
+    "La fundación de Cartagena",
+    "El nacimiento de Simón Bolívar",
+    "La creación del Virreinato de la Nueva Granada",
+    "La abolición de la esclavitud",
+    "La primera Constitución de Colombia",
+    "La llegada de Cristóbal Colón a América",
+]
+[[templates.pairs]]
+key = "20 de julio"
+value = "El Grito de Independencia de Colombia"
+[[templates.pairs]]
+key = "7 de agosto"
+value = "La Batalla de Boyacá"
+[[templates.pairs]]
+key = "12 de octubre"
+value = "El Día de la Raza (llegada de los europeos a América)"
+[[templates.pairs]]
+key = "9 de abril"
+value = "El Bogotazo y el asesinato de Jorge Eliécer Gaitán"
