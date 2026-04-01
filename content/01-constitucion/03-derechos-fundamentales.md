@@ -1,218 +1,218 @@
-# Derechos Fundamentales en la Constitucion de Colombia
+# Derechos Fundamentales en la Constitución de Colombia
 
 ## Marco general
 
-El **Titulo II** de la Constitucion Politica de 1991 consagra los derechos, las garantias y los deberes de los ciudadanos. Este titulo se divide en cinco capitulos:
+El **Título II** de la Constitución Política de 1991 consagra los derechos, las garantías y los deberes de los ciudadanos. Este título se divide en cinco capítulos:
 
-1. **Capitulo 1**: De los derechos fundamentales (Articulos 11 a 41)
-2. **Capitulo 2**: De los derechos sociales, economicos y culturales (Articulos 42 a 77)
-3. **Capitulo 3**: De los derechos colectivos y del ambiente (Articulos 78 a 82)
-4. **Capitulo 4**: De la proteccion y aplicacion de los derechos (Articulos 83 a 94)
-5. **Capitulo 5**: De los deberes y obligaciones (Articulo 95)
+1. **Capítulo 1**: De los derechos fundamentales (Artículos 11 a 41)
+2. **Capítulo 2**: De los derechos sociales, económicos y culturales (Artículos 42 a 77)
+3. **Capítulo 3**: De los derechos colectivos y del ambiente (Artículos 78 a 82)
+4. **Capítulo 4**: De la protección y aplicación de los derechos (Artículos 83 a 94)
+5. **Capítulo 5**: De los deberes y obligaciones (Artículo 95)
 
 ---
 
-## Derechos fundamentales (Capitulo 1)
+## Derechos fundamentales (Capítulo 1)
 
 ### Derecho a la vida
 
-- **Articulo 11**: el derecho a la vida es inviolable.
-- **No habra pena de muerte** en Colombia.
-- Este es considerado el derecho fundamental por excelencia, del cual dependen todos los demas.
+- **Artículo 11**: el derecho a la vida es inviolable.
+- **No habrá pena de muerte** en Colombia.
+- Este es considerado el derecho fundamental por excelencia, del cual dependen todos los demás.
 
 ### Derecho a la integridad personal
 
-- **Articulo 12**: nadie sera sometido a desaparicion forzada, a torturas ni a tratos o penas crueles, inhumanos o degradantes.
+- **Artículo 12**: nadie será sometido a desaparición forzada, a torturas ni a tratos o penas crueles, inhumanos o degradantes.
 
 ### Derecho a la igualdad
 
-- **Articulo 13**: todas las personas nacen libres e iguales ante la ley.
-- Recibiran la misma proteccion y trato de las autoridades.
-- Gozaran de los mismos derechos, libertades y oportunidades **sin ninguna discriminacion** por razones de sexo, raza, origen nacional o familiar, lengua, religion, opinion politica o filosofica.
-- El Estado promovera las condiciones para que la igualdad sea real y efectiva (acciones afirmativas).
+- **Artículo 13**: todas las personas nacen libres e iguales ante la ley.
+- Recibirán la misma protección y trato de las autoridades.
+- Gozarán de los mismos derechos, libertades y oportunidades **sin ninguna discriminación** por razones de sexo, raza, origen nacional o familiar, lengua, religión, opinión política o filosófica.
+- El Estado promoverá las condiciones para que la igualdad sea real y efectiva (acciones afirmativas).
 
-### Reconocimiento de la personalidad juridica
+### Reconocimiento de la personalidad jurídica
 
-- **Articulo 14**: toda persona tiene derecho al reconocimiento de su personalidad juridica.
+- **Artículo 14**: toda persona tiene derecho al reconocimiento de su personalidad jurídica.
 
 ### Derecho a la intimidad
 
-- **Articulo 15**: todas las personas tienen derecho a su intimidad personal y familiar y a su buen nombre.
+- **Artículo 15**: todas las personas tienen derecho a su intimidad personal y familiar y a su buen nombre.
 - El Estado debe respetar y hacer respetar este derecho.
-- Proteccion de datos personales (habeas data).
+- Protección de datos personales (habeas data).
 
 ### Libre desarrollo de la personalidad
 
-- **Articulo 16**: toda persona tiene derecho al libre desarrollo de su personalidad sin mas limitaciones que las que imponen los derechos de los demas y el orden juridico.
+- **Artículo 16**: toda persona tiene derecho al libre desarrollo de su personalidad sin más limitaciones que las que imponen los derechos de los demás y el orden jurídico.
 
-### Prohibicion de esclavitud y servidumbre
+### Prohibición de esclavitud y servidumbre
 
-- **Articulo 17**: se prohiben la esclavitud, la servidumbre y la trata de seres humanos en todas sus formas.
+- **Artículo 17**: se prohíben la esclavitud, la servidumbre y la trata de seres humanos en todas sus formas.
 
 ### Libertad de conciencia
 
-- **Articulo 18**: se garantiza la libertad de conciencia. Nadie sera molestado por razon de sus convicciones o creencias ni compelido a revelarlas.
+- **Artículo 18**: se garantiza la libertad de conciencia. Nadie será molestado por razón de sus convicciones o creencias ni compelido a revelarlas.
 
-### Libertad de cultos y religion
+### Libertad de cultos y religión
 
-- **Articulo 19**: se garantiza la libertad de cultos.
-- Toda persona tiene derecho a profesar libremente su religion y a difundirla.
+- **Artículo 19**: se garantiza la libertad de cultos.
+- Toda persona tiene derecho a profesar libremente su religión y a difundirla.
 - Todas las confesiones religiosas e iglesias son igualmente libres ante la ley.
-- Colombia es un Estado laico (no tiene religion oficial desde la Constitucion de 1991).
+- Colombia es un Estado laico (no tiene religión oficial desde la Constitución de 1991).
 
-### Libertad de expresion e informacion
+### Libertad de expresión e información
 
-- **Articulo 20**: se garantiza a toda persona la libertad de expresar y difundir su pensamiento y opiniones.
-- Libertad de informar y recibir informacion veraz e imparcial.
-- Libertad de fundar medios masivos de comunicacion.
-- No habra censura.
+- **Artículo 20**: se garantiza a toda persona la libertad de expresar y difundir su pensamiento y opiniones.
+- Libertad de informar y recibir información veraz e imparcial.
+- Libertad de fundar medios masivos de comunicación.
+- No habrá censura.
 
 ### Derecho a la honra
 
-- **Articulo 21**: se garantiza el derecho a la honra.
+- **Artículo 21**: se garantiza el derecho a la honra.
 
-### Derecho de peticion
+### Derecho de petición
 
-- **Articulo 23**: toda persona tiene derecho a presentar peticiones respetuosas a las autoridades por motivos de interes general o particular y a obtener pronta resolucion.
-- Las autoridades tienen un plazo para responder (generalmente 15 dias habiles).
-- Es uno de los derechos mas usados en la practica diaria.
+- **Artículo 23**: toda persona tiene derecho a presentar peticiones respetuosas a las autoridades por motivos de interés general o particular y a obtener pronta resolución.
+- Las autoridades tienen un plazo para responder (generalmente 15 días hábiles).
+- Es uno de los derechos más usados en la práctica diaria.
 
 ### Derecho a la libertad personal
 
-- **Articulo 28**: toda persona es libre. Nadie puede ser molestado en su persona o familia, ni reducido a prision o arresto, ni detenido, sino en virtud de mandamiento escrito de autoridad judicial competente.
+- **Artículo 28**: toda persona es libre. Nadie puede ser molestado en su persona o familia, ni reducido a prisión o arresto, ni detenido, sino en virtud de mandamiento escrito de autoridad judicial competente.
 
 ### Debido proceso
 
-- **Articulo 29**: el debido proceso se aplicara a toda clase de actuaciones judiciales y administrativas.
-- Nadie podra ser juzgado sino conforme a leyes preexistentes.
-- Presuncion de inocencia.
+- **Artículo 29**: el debido proceso se aplicará a toda clase de actuaciones judiciales y administrativas.
+- Nadie podrá ser juzgado sino conforme a leyes preexistentes.
+- Presunción de inocencia.
 - Derecho a la defensa y a la asistencia de un abogado.
-- Derecho a un proceso publico sin dilaciones injustificadas.
+- Derecho a un proceso público sin dilaciones injustificadas.
 - Derecho a no ser juzgado dos veces por el mismo hecho (non bis in idem).
-- Las pruebas obtenidas con violacion del debido proceso son nulas de pleno derecho.
+- Las pruebas obtenidas con violación del debido proceso son nulas de pleno derecho.
 
 ### Habeas corpus
 
-- **Articulo 30**: quien estuviere privado de su libertad y creyere estarlo ilegalmente, tiene derecho a invocar ante cualquier autoridad judicial, en todo tiempo, por si o por interpuesta persona, el **habeas corpus**.
-- El juez debe resolver en un termino de **36 horas**.
+- **Artículo 30**: quien estuviere privado de su libertad y creyere estarlo ilegalmente, tiene derecho a invocar ante cualquier autoridad judicial, en todo tiempo, por sí o por interpuesta persona, el **habeas corpus**.
+- El juez debe resolver en un término de **36 horas**.
 
-### Derecho a la circulacion y residencia
+### Derecho a la circulación y residencia
 
-- **Articulo 24**: todo colombiano tiene derecho a circular libremente por el territorio nacional, a entrar y salir de el, y a residir en Colombia.
+- **Artículo 24**: todo colombiano tiene derecho a circular libremente por el territorio nacional, a entrar y salir de él, y a residir en Colombia.
 
 ### Derecho al trabajo
 
-- **Articulo 25**: el trabajo es un derecho y una obligacion social y goza de la especial proteccion del Estado.
+- **Artículo 25**: el trabajo es un derecho y una obligación social y goza de la especial protección del Estado.
 - Toda persona tiene derecho a un trabajo en condiciones dignas y justas.
 
-### Libertad de escoger profesion u oficio
+### Libertad de escoger profesión u oficio
 
-- **Articulo 26**: toda persona es libre de escoger profesion u oficio.
+- **Artículo 26**: toda persona es libre de escoger profesión u oficio.
 
-### Libertad de ensenanza, aprendizaje e investigacion
+### Libertad de enseñanza, aprendizaje e investigación
 
-- **Articulo 27**: el Estado garantiza las libertades de ensenanza, aprendizaje, investigacion y catedra.
+- **Artículo 27**: el Estado garantiza las libertades de enseñanza, aprendizaje, investigación y cátedra.
 
-### Derecho de reunion y manifestacion
+### Derecho de reunión y manifestación
 
-- **Articulo 37**: toda parte del pueblo puede reunirse y manifestarse publica y pacificamente. Solo la ley podra establecer los casos en los cuales se puede limitar el ejercicio de este derecho.
+- **Artículo 37**: toda parte del pueblo puede reunirse y manifestarse pública y pacíficamente. Solo la ley podrá establecer los casos en los cuales se puede limitar el ejercicio de este derecho.
 
-### Derecho de asociacion
+### Derecho de asociación
 
-- **Articulo 38**: se garantiza el derecho de libre asociacion para el desarrollo de las distintas actividades que las personas realizan en sociedad.
+- **Artículo 38**: se garantiza el derecho de libre asociación para el desarrollo de las distintas actividades que las personas realizan en sociedad.
 
 ### Derecho a la paz
 
-- **Articulo 22**: la paz es un derecho y un deber de obligatorio cumplimiento.
+- **Artículo 22**: la paz es un derecho y un deber de obligatorio cumplimiento.
 
 ### Derecho de asilo
 
-- **Articulo 36**: se reconoce el derecho de asilo en los terminos previstos en la ley.
+- **Artículo 36**: se reconoce el derecho de asilo en los términos previstos en la ley.
 
 ---
 
-## Derechos sociales, economicos y culturales (Capitulo 2)
+## Derechos sociales, económicos y culturales (Capítulo 2)
 
-Tambien llamados **derechos de segunda generacion**:
+También llamados **derechos de segunda generación**:
 
-- **Familia** (Articulo 42): nucleo fundamental de la sociedad. Proteccion especial del Estado.
-- **Igualdad de genero** (Articulo 43): la mujer y el hombre tienen iguales derechos y oportunidades. Proteccion especial a la mujer embarazada y cabeza de familia.
-- **Derechos de los ninos** (Articulo 44): la vida, la integridad fisica, la salud y la seguridad social, la alimentacion equilibrada, el nombre y la nacionalidad, tener una familia, la educacion, la cultura, la recreacion y la libre expresion de opinion. **Los derechos de los ninos prevalecen sobre los derechos de los demas** (son derechos fundamentales por su naturaleza).
-- **Derechos de los adolescentes** (Articulo 45): proteccion y formacion integral.
-- **Derecho a la seguridad social** (Articulo 48): servicio publico de caracter obligatorio, bajo la direccion del Estado.
-- **Derecho a la salud** (Articulo 49): la atencion de la salud y el saneamiento ambiental son servicios publicos a cargo del Estado. Desde la **Ley Estatutaria 1751 de 2015**, la salud es reconocida como **derecho fundamental autonomo**.
-- **Derecho a la vivienda digna** (Articulo 51).
-- **Derecho a la recreacion, el deporte y el aprovechamiento del tiempo libre** (Articulo 52).
-- **Derecho a la educacion** (Articulo 67): es un derecho de la persona y un servicio publico que tiene funcion social. La educacion sera gratuita en las instituciones del Estado y obligatoria entre los 5 y los 15 anos (comprende un ano de preescolar y nueve de educacion basica).
-- **Derecho a la cultura** (Articulo 70): el Estado tiene el deber de promover y fomentar el acceso a la cultura.
-
----
-
-## Derechos colectivos y del ambiente (Capitulo 3)
-
-Tambien llamados **derechos de tercera generacion**:
-
-- **Derecho a un ambiente sano** (Articulo 79): todas las personas tienen derecho a gozar de un ambiente sano.
-- **Desarrollo sostenible** (Articulo 80): el Estado planificara el manejo y aprovechamiento de los recursos naturales para garantizar el desarrollo sostenible.
-- **Proteccion del espacio publico** (Articulo 82).
-- **Proteccion al consumidor** (Articulo 78): la ley regulara el control de calidad de bienes y servicios ofrecidos a la comunidad.
+- **Familia** (Artículo 42): núcleo fundamental de la sociedad. Protección especial del Estado.
+- **Igualdad de género** (Artículo 43): la mujer y el hombre tienen iguales derechos y oportunidades. Protección especial a la mujer embarazada y cabeza de familia.
+- **Derechos de los niños** (Artículo 44): la vida, la integridad física, la salud y la seguridad social, la alimentación equilibrada, el nombre y la nacionalidad, tener una familia, la educación, la cultura, la recreación y la libre expresión de opinión. **Los derechos de los niños prevalecen sobre los derechos de los demás** (son derechos fundamentales por su naturaleza).
+- **Derechos de los adolescentes** (Artículo 45): protección y formación integral.
+- **Derecho a la seguridad social** (Artículo 48): servicio público de carácter obligatorio, bajo la dirección del Estado.
+- **Derecho a la salud** (Artículo 49): la atención de la salud y el saneamiento ambiental son servicios públicos a cargo del Estado. Desde la **Ley Estatutaria 1751 de 2015**, la salud es reconocida como **derecho fundamental autónomo**.
+- **Derecho a la vivienda digna** (Artículo 51).
+- **Derecho a la recreación, el deporte y el aprovechamiento del tiempo libre** (Artículo 52).
+- **Derecho a la educación** (Artículo 67): es un derecho de la persona y un servicio público que tiene función social. La educación será gratuita en las instituciones del Estado y obligatoria entre los 5 y los 15 años (comprende un año de preescolar y nueve de educación básica).
+- **Derecho a la cultura** (Artículo 70): el Estado tiene el deber de promover y fomentar el acceso a la cultura.
 
 ---
 
-## Mecanismos de proteccion de derechos
+## Derechos colectivos y del ambiente (Capítulo 3)
 
-### Accion de Tutela (Articulo 86)
+También llamados **derechos de tercera generación**:
 
-Es el mecanismo de proteccion de derechos **mas importante** de la Constitucion de 1991:
+- **Derecho a un ambiente sano** (Artículo 79): todas las personas tienen derecho a gozar de un ambiente sano.
+- **Desarrollo sostenible** (Artículo 80): el Estado planificará el manejo y aprovechamiento de los recursos naturales para garantizar el desarrollo sostenible.
+- **Protección del espacio público** (Artículo 82).
+- **Protección al consumidor** (Artículo 78): la ley regulará el control de calidad de bienes y servicios ofrecidos a la comunidad.
 
-- Toda persona puede reclamar ante los jueces la **proteccion inmediata de sus derechos constitucionales fundamentales** cuando estos resulten vulnerados o amenazados.
+---
+
+## Mecanismos de protección de derechos
+
+### Acción de Tutela (Artículo 86)
+
+Es el mecanismo de protección de derechos **más importante** de la Constitución de 1991:
+
+- Toda persona puede reclamar ante los jueces la **protección inmediata de sus derechos constitucionales fundamentales** cuando estos resulten vulnerados o amenazados.
 - Puede ser interpuesta por **cualquier persona**, en cualquier momento y lugar, sin necesidad de abogado.
-- Se resuelve mediante un **procedimiento preferente y sumario** (maximo **10 dias**).
+- Se resuelve mediante un **procedimiento preferente y sumario** (máximo **10 días**).
 - Procede cuando el afectado no dispone de otro medio de defensa judicial, salvo que se utilice como mecanismo transitorio para evitar un perjuicio irremediable.
 - El fallo es de **inmediato cumplimiento**.
-- Todas las sentencias de tutela pueden ser seleccionadas para **revision por la Corte Constitucional**.
+- Todas las sentencias de tutela pueden ser seleccionadas para **revisión por la Corte Constitucional**.
 
-### Accion de Cumplimiento (Articulo 87)
+### Acción de Cumplimiento (Artículo 87)
 
 - Toda persona puede acudir ante la autoridad judicial para hacer efectivo el cumplimiento de una ley o un acto administrativo.
 
-### Acciones Populares y de Grupo (Articulo 88)
+### Acciones Populares y de Grupo (Artículo 88)
 
-- **Acciones populares**: para la proteccion de los derechos e intereses colectivos (medio ambiente, espacio publico, seguridad publica, etc.).
-- **Acciones de grupo**: para obtener el reconocimiento y pago de una indemnizacion por los perjuicios sufridos por un grupo de personas (minimo 20 personas).
+- **Acciones populares**: para la protección de los derechos e intereses colectivos (medio ambiente, espacio público, seguridad pública, etc.).
+- **Acciones de grupo**: para obtener el reconocimiento y pago de una indemnización por los perjuicios sufridos por un grupo de personas (mínimo 20 personas).
 
 ### Habeas Data
 
-- Derivado del **Articulo 15**: derecho de toda persona a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ella en bases de datos o archivos.
+- Derivado del **Artículo 15**: derecho de toda persona a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ella en bases de datos o archivos.
 
 ---
 
-## Deberes y obligaciones (Articulo 95)
+## Deberes y obligaciones (Artículo 95)
 
-La Constitucion tambien establece deberes del ciudadano:
+La Constitución también establece deberes del ciudadano:
 
 - Respetar los derechos ajenos y no abusar de los propios.
 - Obrar conforme al principio de solidaridad social.
-- Respetar y apoyar a las autoridades democraticas.
+- Respetar y apoyar a las autoridades democráticas.
 - Defender y difundir los derechos humanos.
-- Participar en la vida politica, civica y comunitaria del pais.
+- Participar en la vida política, cívica y comunitaria del país.
 - Contribuir al financiamiento de los gastos del Estado (pagar impuestos).
 - Propender al logro y mantenimiento de la paz.
-- Colaborar para el buen funcionamiento de la administracion de justicia.
-- Proteger los recursos culturales y naturales del pais.
+- Colaborar para el buen funcionamiento de la administración de justicia.
+- Proteger los recursos culturales y naturales del país.
 
 ---
 
 ## Datos clave para el examen
 
-| Derecho / Mecanismo | Articulo | Dato clave |
+| Derecho / Mecanismo | Artículo | Dato clave |
 |---------------------|----------|------------|
 | Derecho a la vida | Art. 11 | No hay pena de muerte |
-| Igualdad | Art. 13 | Sin discriminacion |
-| Derecho de peticion | Art. 23 | Respuesta en 15 dias habiles |
-| Debido proceso | Art. 29 | Presuncion de inocencia |
-| Habeas corpus | Art. 30 | Resolucion en 36 horas |
-| Derechos de los ninos | Art. 44 | Prevalecen sobre los demas |
-| Salud como derecho fundamental | Ley 1751/2015 | Derecho fundamental autonomo |
-| Accion de tutela | Art. 86 | Resolucion en 10 dias |
+| Igualdad | Art. 13 | Sin discriminación |
+| Derecho de petición | Art. 23 | Respuesta en 15 días hábiles |
+| Debido proceso | Art. 29 | Presunción de inocencia |
+| Habeas corpus | Art. 30 | Resolución en 36 horas |
+| Derechos de los niños | Art. 44 | Prevalecen sobre los demás |
+| Salud como derecho fundamental | Ley 1751/2015 | Derecho fundamental autónomo |
+| Acción de tutela | Art. 86 | Resolución en 10 días |
 | Paz | Art. 22 | Derecho y deber |

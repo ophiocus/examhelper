@@ -9,7 +9,496 @@ use std::{
     fs,
     path::{Path, PathBuf},
     process::Command,
+    sync::{
+        atomic::{AtomicBool, AtomicU8, Ordering},
+        mpsc, Arc, Mutex,
+    },
+    thread,
 };
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// TEXT-TO-SPEECH ENGINE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/// A voice entry for the GUI dropdown.
+#[derive(Debug, Clone)]
+struct VoiceInfo {
+    name: String,
+    language: String,
+}
+
+/// Commands sent from the GUI thread to the TTS worker thread.
+enum TtsCommand {
+    /// Speak this text (stripped of markdown). Interrupts any current speech.
+    Speak(String),
+    /// Stop current speech.
+    Stop,
+    /// Set speaking rate. Slider value 0.0–1.0 mapped to WinRT rate.
+    SetRate(f32),
+    /// Switch to a voice by name.
+    SetVoice(String),
+    /// Shutdown the worker thread.
+    Quit,
+}
+
+/// Map a 0.0–1.0 slider value to WinRT speech rate.
+/// Linear ramp: 0.25× → 0.5× → 0.75× → 1.0× → 1.25× → 1.50× → 2.0×
+fn slider_to_rate(slider: f32) -> f32 {
+    let clamped = slider.clamp(0.0, 1.0);
+    // 0.0 → 0.25, 1.0 → 2.0  (linear: 0.25 + 1.75 * slider)
+    0.25 + 1.75 * clamped
+}
+
+/// Narration state visible to the GUI for rendering controls.
+#[derive(Debug, Clone, Copy, PartialEq)]
+enum NarrationState {
+    Idle,
+    Speaking,
+    Stopped,
+}
+
+/// Shared state between the GUI and TTS worker.
+struct TtsShared {
+    /// 0 = Idle, 1 = Speaking, 2 = Stopped
+    state: AtomicU8,
+    /// Index of the current chunk being spoken (for progress display).
+    current_chunk: std::sync::atomic::AtomicUsize,
+    /// Total chunks in the current text.
+    total_chunks: std::sync::atomic::AtomicUsize,
+    /// Available voices (populated by worker on init).
+    voices: Mutex<Vec<VoiceInfo>>,
+    /// Currently selected voice name.
+    selected_voice: Mutex<String>,
+}
+
+impl TtsShared {
+    fn new() -> Self {
+        Self {
+            state: AtomicU8::new(0),
+            current_chunk: std::sync::atomic::AtomicUsize::new(0),
+            total_chunks: std::sync::atomic::AtomicUsize::new(0),
+            voices: Mutex::new(Vec::new()),
+            selected_voice: Mutex::new(String::new()),
+        }
+    }
+
+    fn set_state(&self, s: NarrationState) {
+        let v = match s {
+            NarrationState::Idle => 0,
+            NarrationState::Speaking => 1,
+            NarrationState::Stopped => 2,
+        };
+        self.state.store(v, Ordering::Relaxed);
+    }
+
+    fn get_state(&self) -> NarrationState {
+        match self.state.load(Ordering::Relaxed) {
+            1 => NarrationState::Speaking,
+            2 => NarrationState::Stopped,
+            _ => NarrationState::Idle,
+        }
+    }
+}
+
+/// Controller handle held by the GUI.
+struct TtsController {
+    tx: mpsc::Sender<TtsCommand>,
+    shared: Arc<TtsShared>,
+    autoplay: bool,
+}
+
+impl TtsController {
+    /// Spawn a TTS worker thread and return the controller.
+    fn spawn() -> Self {
+        let (tx, rx) = mpsc::channel::<TtsCommand>();
+        let shared = Arc::new(TtsShared::new());
+        let shared_clone = Arc::clone(&shared);
+
+        thread::spawn(move || {
+            Self::worker(rx, shared_clone);
+        });
+
+        Self {
+            tx,
+            shared,
+            autoplay: false,
+        }
+    }
+
+    fn worker(rx: mpsc::Receiver<TtsCommand>, shared: Arc<TtsShared>) {
+        // Initialize TTS engine on this thread (COM requirement on Windows)
+        let mut tts = match tts::Tts::default() {
+            Ok(t) => t,
+            Err(e) => {
+                eprintln!("TTS init failed: {e}");
+                return;
+            }
+        };
+
+        // Build voice list for the GUI and pick a default Spanish voice
+        let mut all_voices: Vec<tts::Voice> = Vec::new();
+        if let Ok(voices) = tts.voices() {
+            // Populate shared voice info for GUI
+            {
+                let mut voice_list = shared.voices.lock().unwrap();
+                for v in &voices {
+                    voice_list.push(VoiceInfo {
+                        name: v.name().to_string(),
+                        language: v.language().to_string(),
+                    });
+                }
+            }
+            all_voices = voices;
+
+            // Auto-select best Spanish voice: es-CO > es-MX > any es-*
+            let spanish_voice = all_voices.iter()
+                .find(|v| v.language().to_string().to_lowercase().starts_with("es-co"))
+                .or_else(|| all_voices.iter().find(|v| v.language().to_string().to_lowercase().starts_with("es-mx")))
+                .or_else(|| all_voices.iter().find(|v| v.language().to_string().to_lowercase().starts_with("es")));
+
+            if let Some(voice) = spanish_voice {
+                let _ = tts.set_voice(voice);
+                if let Ok(mut sel) = shared.selected_voice.lock() {
+                    *sel = voice.name().to_string();
+                }
+            } else if let Some(first) = all_voices.first() {
+                // No Spanish voice, use whatever is default
+                if let Ok(mut sel) = shared.selected_voice.lock() {
+                    *sel = first.name().to_string();
+                }
+            }
+        }
+
+        // Set a sane default rate
+        let normal = tts.normal_rate();
+        let _ = tts.set_rate(normal);
+
+        // Use a stop flag to interrupt chunk playback
+        let stop_flag = Arc::new(AtomicBool::new(false));
+
+        loop {
+            match rx.recv() {
+                Ok(TtsCommand::Speak(text)) => {
+                    stop_flag.store(false, Ordering::Relaxed);
+
+                    // Split text into sentences/paragraphs for interruptible playback
+                    let chunks = split_into_chunks(&text);
+                    let total = chunks.len();
+                    shared.total_chunks.store(total, Ordering::Relaxed);
+                    shared.current_chunk.store(0, Ordering::Relaxed);
+                    shared.set_state(NarrationState::Speaking);
+
+                    for (i, chunk) in chunks.iter().enumerate() {
+                        // Check for stop/new commands between chunks
+                        if stop_flag.load(Ordering::Relaxed) {
+                            break;
+                        }
+                        // Drain any pending commands (stop or new speak)
+                        if let Ok(cmd) = rx.try_recv() {
+                            match cmd {
+                                TtsCommand::Stop => {
+                                    let _ = tts.stop();
+                                    shared.set_state(NarrationState::Stopped);
+                                    break;
+                                }
+                                TtsCommand::Speak(new_text) => {
+                                    let _ = tts.stop();
+                                    // Re-enqueue new speak and break current loop
+                                    let _ = shared.set_state(NarrationState::Idle);
+                                    // We can't re-send easily, so just process inline
+                                    // by recursing via the main loop
+                                    let chunks2 = split_into_chunks(&new_text);
+                                    let total2 = chunks2.len();
+                                    shared.total_chunks.store(total2, Ordering::Relaxed);
+                                    shared.current_chunk.store(0, Ordering::Relaxed);
+                                    shared.set_state(NarrationState::Speaking);
+                                    for (j, c2) in chunks2.iter().enumerate() {
+                                        if let Ok(cmd2) = rx.try_recv() {
+                                            match cmd2 {
+                                                TtsCommand::Stop => {
+                                                    let _ = tts.stop();
+                                                    shared.set_state(NarrationState::Stopped);
+                                                    break;
+                                                }
+                                                TtsCommand::SetRate(r) => {
+                                                    let _ = tts.set_rate(slider_to_rate(r));
+                                                }
+                                                TtsCommand::Quit => {
+                                                    let _ = tts.stop();
+                                                    return;
+                                                }
+                                                _ => {}
+                                            }
+                                        }
+                                        shared.current_chunk.store(j, Ordering::Relaxed);
+                                        // Speak and wait (blocking on this thread is fine)
+                                        let _ = tts.speak(c2, false);
+                                        // Busy-wait for speech to finish
+                                        while tts.is_speaking().unwrap_or(false) {
+                                            thread::sleep(std::time::Duration::from_millis(50));
+                                            if let Ok(cmd2) = rx.try_recv() {
+                                                match cmd2 {
+                                                    TtsCommand::Stop => {
+                                                        let _ = tts.stop();
+                                                        shared.set_state(NarrationState::Stopped);
+                                                        break;
+                                                    }
+                                                    TtsCommand::SetRate(r) => {
+                                                        let _ = tts.set_rate(slider_to_rate(r));
+                                                    }
+                                                    _ => {}
+                                                }
+                                            }
+                                        }
+                                        if shared.get_state() == NarrationState::Stopped {
+                                            break;
+                                        }
+                                    }
+                                    if shared.get_state() == NarrationState::Speaking {
+                                        shared.set_state(NarrationState::Idle);
+                                    }
+                                    break; // exit outer chunk loop
+                                }
+                                TtsCommand::SetRate(r) => {
+                                    let _ = tts.set_rate(slider_to_rate(r));
+                                }
+                                TtsCommand::SetVoice(name) => {
+                                    if let Some(voice) = all_voices.iter().find(|v| v.name() == name) {
+                                        let _ = tts.set_voice(voice);
+                                        if let Ok(mut sel) = shared.selected_voice.lock() {
+                                            *sel = name;
+                                        }
+                                    }
+                                }
+                                TtsCommand::Quit => {
+                                    let _ = tts.stop();
+                                    return;
+                                }
+                            }
+                            continue;
+                        }
+
+                        shared.current_chunk.store(i, Ordering::Relaxed);
+                        let _ = tts.speak(chunk, false);
+
+                        // Wait for this chunk to finish
+                        while tts.is_speaking().unwrap_or(false) {
+                            thread::sleep(std::time::Duration::from_millis(50));
+                            // Check for stop during playback
+                            if let Ok(cmd) = rx.try_recv() {
+                                match cmd {
+                                    TtsCommand::Stop => {
+                                        let _ = tts.stop();
+                                        shared.set_state(NarrationState::Stopped);
+                                        break;
+                                    }
+                                    TtsCommand::SetRate(r) => {
+                                        let _ = tts.set_rate(slider_to_rate(r));
+                                    }
+                                    TtsCommand::SetVoice(name) => {
+                                        if let Some(voice) = all_voices.iter().find(|v| v.name() == name) {
+                                            let _ = tts.set_voice(voice);
+                                            if let Ok(mut sel) = shared.selected_voice.lock() {
+                                                *sel = name;
+                                            }
+                                        }
+                                    }
+                                    TtsCommand::Quit => {
+                                        let _ = tts.stop();
+                                        return;
+                                    }
+                                    _ => {
+                                        // New Speak will be handled next iteration
+                                        stop_flag.store(true, Ordering::Relaxed);
+                                    }
+                                }
+                            }
+                        }
+                        if shared.get_state() == NarrationState::Stopped {
+                            break;
+                        }
+                    }
+                    // Mark done if we finished naturally
+                    if shared.get_state() == NarrationState::Speaking {
+                        shared.set_state(NarrationState::Idle);
+                    }
+                }
+                Ok(TtsCommand::Stop) => {
+                    // Nothing currently speaking
+                    shared.set_state(NarrationState::Idle);
+                }
+                Ok(TtsCommand::SetRate(r)) => {
+                    let _ = tts.set_rate(slider_to_rate(r));
+                }
+                Ok(TtsCommand::SetVoice(name)) => {
+                    if let Some(voice) = all_voices.iter().find(|v| v.name() == name) {
+                        let _ = tts.set_voice(voice);
+                        if let Ok(mut sel) = shared.selected_voice.lock() {
+                            *sel = name;
+                        }
+                    }
+                }
+                Ok(TtsCommand::Quit) | Err(_) => {
+                    let _ = tts.stop();
+                    return;
+                }
+            }
+        }
+    }
+
+    fn speak(&self, text: &str) {
+        let cleaned = strip_markdown(text);
+        let _ = self.tx.send(TtsCommand::Speak(cleaned));
+    }
+
+    fn stop(&self) {
+        let _ = self.tx.send(TtsCommand::Stop);
+    }
+
+    fn set_rate(&self, rate: f32) {
+        let _ = self.tx.send(TtsCommand::SetRate(rate));
+    }
+
+    fn set_voice(&self, name: &str) {
+        let _ = self.tx.send(TtsCommand::SetVoice(name.to_string()));
+    }
+
+    fn state(&self) -> NarrationState {
+        self.shared.get_state()
+    }
+
+    fn progress(&self) -> (usize, usize) {
+        (
+            self.shared.current_chunk.load(Ordering::Relaxed),
+            self.shared.total_chunks.load(Ordering::Relaxed),
+        )
+    }
+
+    fn voices(&self) -> Vec<VoiceInfo> {
+        self.shared.voices.lock().unwrap().clone()
+    }
+
+    fn selected_voice_name(&self) -> String {
+        self.shared.selected_voice.lock().unwrap().clone()
+    }
+}
+
+impl Drop for TtsController {
+    fn drop(&mut self) {
+        let _ = self.tx.send(TtsCommand::Quit);
+    }
+}
+
+/// Strip markdown syntax to produce clean text for speech.
+fn strip_markdown(md: &str) -> String {
+    let mut out = String::with_capacity(md.len());
+    for line in md.lines() {
+        let trimmed = line.trim();
+
+        // Skip horizontal rules
+        if trimmed == "---" || trimmed == "***" || trimmed == "___" {
+            out.push('\n');
+            continue;
+        }
+
+        // Strip heading markers
+        let line_clean = if trimmed.starts_with('#') {
+            let stripped = trimmed.trim_start_matches('#').trim();
+            stripped
+        } else {
+            trimmed
+        };
+
+        // Skip empty lines (preserve paragraph breaks)
+        if line_clean.is_empty() {
+            out.push('\n');
+            continue;
+        }
+
+        // Strip inline markdown
+        let mut result = String::new();
+        let mut chars = line_clean.chars().peekable();
+        while let Some(c) = chars.next() {
+            match c {
+                '*' | '_' => {
+                    // Skip bold/italic markers
+                    while chars.peek() == Some(&'*') || chars.peek() == Some(&'_') {
+                        chars.next();
+                    }
+                }
+                '`' => {
+                    // Skip code backticks
+                    while chars.peek() == Some(&'`') {
+                        chars.next();
+                    }
+                }
+                '[' => {
+                    // Extract link text [text](url) → text
+                    let mut link_text = String::new();
+                    for lc in chars.by_ref() {
+                        if lc == ']' { break; }
+                        link_text.push(lc);
+                    }
+                    // Skip (url) part
+                    if chars.peek() == Some(&'(') {
+                        chars.next();
+                        for lc in chars.by_ref() {
+                            if lc == ')' { break; }
+                        }
+                    }
+                    result.push_str(&link_text);
+                }
+                '|' => {
+                    // Table cell separator → space
+                    result.push(' ');
+                }
+                '-' if trimmed.starts_with("- ") && result.is_empty() => {
+                    // List item marker, skip the dash
+                    result.push(' ');
+                }
+                _ => result.push(c),
+            }
+        }
+
+        out.push_str(result.trim());
+        out.push(' ');
+    }
+    out
+}
+
+/// Split text into speakable chunks (by paragraph/double-newline, then by sentence).
+fn split_into_chunks(text: &str) -> Vec<String> {
+    let mut chunks = Vec::new();
+
+    // Split by paragraph first
+    for paragraph in text.split("\n\n") {
+        let p = paragraph.trim();
+        if p.is_empty() { continue; }
+
+        // If paragraph is short enough, keep it as one chunk
+        if p.len() < 300 {
+            chunks.push(p.to_string());
+        } else {
+            // Split long paragraphs by sentence
+            let mut current = String::new();
+            for part in p.split(". ") {
+                if current.len() + part.len() > 250 && !current.is_empty() {
+                    chunks.push(current.trim().to_string());
+                    current.clear();
+                }
+                current.push_str(part);
+                current.push_str(". ");
+            }
+            if !current.trim().is_empty() {
+                chunks.push(current.trim().to_string());
+            }
+        }
+    }
+
+    // Filter out very short/empty chunks
+    chunks.retain(|c| c.len() > 2);
+    chunks
+}
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // DATA MODELS
@@ -439,6 +928,63 @@ enum AppMode {
     ExamInProgress,
     ExamResults,
     ProgressView,
+    Settings,
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// VOICE MANAGEMENT (Windows Speech Packs)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+#[derive(Debug, Clone)]
+struct SpeechCapability {
+    name: String,
+    installed: bool,
+}
+
+/// Query Windows for available speech language packs.
+fn query_speech_capabilities() -> Vec<SpeechCapability> {
+    let output = Command::new("powershell")
+        .args([
+            "-NoProfile", "-Command",
+            r#"Get-WindowsCapability -Online -Name 'Language.Speech*' | ForEach-Object { "$($_.Name)|$($_.State)" }"#,
+        ])
+        .output();
+
+    match output {
+        Ok(out) if out.status.success() => {
+            String::from_utf8_lossy(&out.stdout)
+                .lines()
+                .filter(|l| !l.trim().is_empty())
+                .map(|line| {
+                    let parts: Vec<&str> = line.splitn(2, '|').collect();
+                    let name = parts.first().unwrap_or(&"").trim().to_string();
+                    let state = parts.get(1).unwrap_or(&"").trim().to_string();
+                    SpeechCapability {
+                        name,
+                        installed: state == "Installed",
+                    }
+                })
+                .collect()
+        }
+        _ => Vec::new(), // Needs elevation — will show message
+    }
+}
+
+/// Install a speech capability (requires elevation).
+fn install_speech_capability(cap_name: &str) {
+    let script = format!(
+        "Add-WindowsCapability -Online -Name '{}'",
+        cap_name
+    );
+    let _ = Command::new("powershell")
+        .args([
+            "-NoProfile", "-Command",
+            &format!(
+                "Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile','-Command','{}' -Wait",
+                script.replace('\'', "''")
+            ),
+        ])
+        .spawn();
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -565,12 +1111,25 @@ struct ExamHelperApp {
     current_content: String,
     md_cache: CommonMarkCache,
 
+    /// System-native pixels-per-point captured at startup; zoom is applied on top.
+    native_ppp: f32,
+    /// Zoom preview while dragging — committed to `config.zoom` on release.
+    drag_zoom: Option<f32>,
+
     // Questions
     question_banks: Vec<(String, QuestionBank)>,
 
     // Exam
     exam_state: Option<ExamState>,
     exam_category_selection: Vec<bool>,
+
+    // TTS
+    tts: TtsController,
+    narration_rate: f32, // 0.0–1.0
+
+    // Settings / Voice management
+    speech_caps: Option<Vec<SpeechCapability>>,
+    speech_caps_loading: bool,
 
     // UI state
     mode: AppMode,
@@ -581,15 +1140,43 @@ struct ExamHelperApp {
 }
 
 impl ExamHelperApp {
-    fn new(_cc: &eframe::CreationContext<'_>) -> Self {
+    fn new(cc: &eframe::CreationContext<'_>) -> Self {
         let config = Config::load();
         let progress = Progress::load();
+        let native_ppp = cc.egui_ctx.pixels_per_point();
+        apply_theme(&cc.egui_ctx, config.dark_mode);
+        cc.egui_ctx.set_pixels_per_point(native_ppp * config.zoom);
 
-        // Determine app directory (where the exe lives)
-        let app_dir = std::env::current_exe()
-            .ok()
-            .and_then(|p| p.parent().map(|p| p.to_path_buf()))
-            .unwrap_or_else(|| PathBuf::from("."));
+        // Determine app directory: check exe location first, then walk up
+        // to find the project root (where content/ and questions/ live).
+        // This handles both `cargo run` (exe in target/debug/) and release
+        // deployments (exe next to content/).
+        let app_dir = {
+            let exe_dir = std::env::current_exe()
+                .ok()
+                .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+                .unwrap_or_else(|| PathBuf::from("."));
+
+            if exe_dir.join("content").is_dir() {
+                exe_dir
+            } else {
+                // Walk up from exe dir looking for content/
+                let mut candidate = exe_dir.clone();
+                loop {
+                    if candidate.join("content").is_dir() {
+                        break candidate;
+                    }
+                    if !candidate.pop() {
+                        // Fallback: try current working directory
+                        let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+                        if cwd.join("content").is_dir() {
+                            break cwd;
+                        }
+                        break exe_dir;
+                    }
+                }
+            }
+        };
 
         let content_dir = app_dir.join("content");
         let questions_dir = app_dir.join("questions");
@@ -606,9 +1193,15 @@ impl ExamHelperApp {
             selected_file: None,
             current_content: String::new(),
             md_cache: CommonMarkCache::default(),
+            native_ppp,
+            drag_zoom: None,
             question_banks,
             exam_state: None,
             exam_category_selection,
+            tts: TtsController::spawn(),
+            narration_rate: 0.5,
+            speech_caps: None,
+            speech_caps_loading: false,
             mode: AppMode::Study,
             sidebar_width: 260.0,
             git_status: GitStatus::Idle,
@@ -627,9 +1220,14 @@ impl ExamHelperApp {
 
     fn load_file(&mut self, path: &PathBuf) {
         if let Ok(content) = fs::read_to_string(path) {
-            self.current_content = content;
+            self.current_content = content.clone();
             self.selected_file = Some(path.clone());
             self.md_cache = CommonMarkCache::default();
+
+            // Autoplay narration if enabled
+            if self.tts.autoplay {
+                self.tts.speak(&content);
+            }
         }
     }
 
@@ -672,6 +1270,7 @@ impl ExamHelperApp {
                 .button(RichText::new("Examen").color(exam_color).size(14.0))
                 .clicked()
             {
+                self.tts.stop();
                 self.mode = AppMode::ExamSetup;
             }
 
@@ -689,6 +1288,27 @@ impl ExamHelperApp {
                 .clicked()
             {
                 self.mode = AppMode::ProgressView;
+            }
+
+            let settings_color = if self.mode == AppMode::Settings {
+                Color32::from_rgb(200, 150, 255)
+            } else {
+                Color32::from_rgb(180, 180, 180)
+            };
+            if ui
+                .button(
+                    RichText::new("Config")
+                        .color(settings_color)
+                        .size(14.0),
+                )
+                .clicked()
+            {
+                self.tts.stop();
+                self.mode = AppMode::Settings;
+                // Trigger capability scan if not done yet
+                if self.speech_caps.is_none() && !self.speech_caps_loading {
+                    self.speech_caps_loading = true;
+                }
             }
 
             ui.separator();
@@ -720,22 +1340,36 @@ impl ExamHelperApp {
                 };
                 if ui.button(RichText::new(theme_label).size(12.0)).clicked() {
                     self.config.dark_mode = !self.config.dark_mode;
+                    apply_theme(ui.ctx(), self.config.dark_mode);
                     self.config.save();
-                    self.theme_applied = false;
                 }
 
-                // Zoom controls
-                ui.label(
-                    RichText::new(format!("{}%", (self.config.zoom * 100.0) as u32)).size(12.0),
-                );
-                if ui.button(RichText::new("+").size(12.0)).clicked() {
-                    self.config.zoom = (self.config.zoom + 0.1).min(3.0);
-                    self.config.save();
-                }
-                if ui.button(RichText::new("-").size(12.0)).clicked() {
-                    self.config.zoom = (self.config.zoom - 0.1).max(0.5);
-                    self.config.save();
-                }
+                ui.separator();
+
+                // Zoom preset buttons (MDReader style)
+                ui.menu_button(RichText::new("Zoom").size(12.0), |ui| {
+                    for &(label, factor) in &[
+                        ("75%",  0.75_f32),
+                        ("100%", 1.00_f32),
+                        ("125%", 1.25_f32),
+                        ("150%", 1.50_f32),
+                        ("200%", 2.00_f32),
+                    ] {
+                        if ui.button(label).clicked() {
+                            self.config.zoom = factor;
+                            ui.ctx().set_pixels_per_point(self.native_ppp * factor);
+                            self.config.save();
+                            ui.close_menu();
+                        }
+                    }
+                    ui.separator();
+                    if ui.button("Reset zoom").clicked() {
+                        self.config.zoom = 1.0;
+                        ui.ctx().set_pixels_per_point(self.native_ppp);
+                        self.config.save();
+                        ui.close_menu();
+                    }
+                });
             });
         });
     }
@@ -859,20 +1493,123 @@ impl ExamHelperApp {
             return;
         }
 
-        let zoom = self.config.zoom;
+        // ── Narration control bar ────────────────────────────────────────
+        ui.horizontal(|ui| {
+            ui.spacing_mut().item_spacing.x = 6.0;
 
+            let tts_state = self.tts.state();
+
+            // Play / Stop button
+            if tts_state == NarrationState::Speaking {
+                if ui
+                    .button(
+                        RichText::new("Detener")
+                            .size(13.0)
+                            .color(Color32::from_rgb(255, 100, 100)),
+                    )
+                    .clicked()
+                {
+                    self.tts.stop();
+                }
+
+                // Progress indicator
+                let (current, total) = self.tts.progress();
+                if total > 0 {
+                    let pct = (current + 1) as f32 / total as f32;
+                    ui.add(
+                        egui::ProgressBar::new(pct)
+                            .desired_width(120.0)
+                            .show_percentage(),
+                    );
+                }
+                // Request repaint while speaking so progress updates
+                ui.ctx().request_repaint();
+            } else {
+                if ui
+                    .button(
+                        RichText::new("Narrar")
+                            .size(13.0)
+                            .color(Color32::from_rgb(80, 200, 120)),
+                    )
+                    .clicked()
+                {
+                    self.tts.speak(&self.current_content);
+                }
+            }
+
+            ui.separator();
+
+            // Rate slider
+            ui.label(RichText::new("Velocidad:").size(11.0).weak());
+            let old_rate = self.narration_rate;
+            ui.add(egui::Slider::new(&mut self.narration_rate, 0.0..=1.0).show_value(false));
+            if (self.narration_rate - old_rate).abs() > 0.001 {
+                self.tts.set_rate(self.narration_rate);
+            }
+
+            // Speed label — multiplier + word
+            let speed_x = slider_to_rate(self.narration_rate);
+            let speed_word = if speed_x < 0.6 {
+                "Lento"
+            } else if speed_x < 1.1 {
+                "Normal"
+            } else {
+                "Rápido"
+            };
+            ui.label(RichText::new(format!("{:.1}× {}", speed_x, speed_word)).size(11.0).weak());
+
+            ui.separator();
+
+            // Autoplay toggle
+            let autoplay_color = if self.tts.autoplay {
+                Color32::from_rgb(255, 205, 0)
+            } else {
+                Color32::from_rgb(150, 150, 150)
+            };
+            if ui
+                .button(
+                    RichText::new(if self.tts.autoplay { "Auto: ON" } else { "Auto: OFF" })
+                        .size(11.0)
+                        .color(autoplay_color),
+                )
+                .on_hover_text("Narrar automáticamente al seleccionar un tema")
+                .clicked()
+            {
+                self.tts.autoplay = !self.tts.autoplay;
+            }
+
+            ui.separator();
+
+            // Voice selector dropdown
+            let voices = self.tts.voices();
+            if !voices.is_empty() {
+                let current_voice = self.tts.selected_voice_name();
+                let display = voices.iter()
+                    .find(|v| v.name == current_voice)
+                    .map(|v| format!("{} ({})", v.name.replace("Microsoft ", ""), v.language))
+                    .unwrap_or_else(|| current_voice.clone());
+
+                egui::ComboBox::from_id_source("voice_selector")
+                    .selected_text(RichText::new(&display).size(11.0))
+                    .width(140.0)
+                    .show_ui(ui, |ui: &mut egui::Ui| {
+                        for voice in &voices {
+                            let label = format!("{} ({})", voice.name.replace("Microsoft ", ""), voice.language);
+                            let is_selected = voice.name == current_voice;
+                            if ui.selectable_label(is_selected, &label).clicked() {
+                                self.tts.set_voice(&voice.name);
+                            }
+                        }
+                    });
+            }
+        });
+
+        ui.separator();
+
+        // ── Content ──────────────────────────────────────────────────────
         ScrollArea::vertical()
             .auto_shrink([false; 2])
             .show(ui, |ui| {
-                // Scale text via ctx
-                let mut style = (*ui.ctx().style()).clone();
-                style.override_text_style = Some(egui::TextStyle::Body);
-                style.spacing.item_spacing.y = 4.0 * zoom;
-                for (_text_style, font_id) in style.text_styles.iter_mut() {
-                    font_id.size *= zoom;
-                }
-                ui.set_style(style);
-
                 CommonMarkViewer::new("study_content")
                     .show(ui, &mut self.md_cache, &self.current_content);
 
@@ -1073,8 +1810,6 @@ impl ExamHelperApp {
             nav_data,
         ) = exam_data;
 
-        let zoom = self.config.zoom;
-
         // Top progress bar
         ui.add_space(10.0);
         ui.horizontal(|ui| {
@@ -1150,7 +1885,7 @@ impl ExamHelperApp {
 
                     let response = ui.selectable_label(
                         is_selected,
-                        RichText::new(label_text).size(15.0 * zoom).color(color),
+                        RichText::new(label_text).size(15.0).color(color),
                     );
 
                     if response.clicked() {
@@ -1621,6 +2356,235 @@ impl ExamHelperApp {
                 });
         }
     }
+
+    fn render_settings(&mut self, ui: &mut egui::Ui) {
+        ui.add_space(20.0);
+        ui.label(
+            RichText::new("Configuración")
+                .size(22.0)
+                .strong()
+                .color(Color32::from_rgb(200, 150, 255)),
+        );
+        ui.add_space(15.0);
+        ui.separator();
+
+        ScrollArea::vertical()
+            .auto_shrink([false; 2])
+            .show(ui, |ui| {
+                // ── Voice Configuration ──
+                ui.add_space(10.0);
+                ui.label(RichText::new("Voces de Narración").size(18.0).strong());
+                ui.add_space(8.0);
+
+                // Currently installed voices
+                let voices = self.tts.voices();
+                let current = self.tts.selected_voice_name();
+
+                ui.label(RichText::new("Voces instaladas:").size(14.0).strong());
+                ui.add_space(5.0);
+
+                if voices.is_empty() {
+                    ui.label(
+                        RichText::new("Cargando voces...")
+                            .size(13.0)
+                            .color(Color32::from_rgb(150, 150, 170)),
+                    );
+                } else {
+                    egui::Grid::new("voices_grid")
+                        .striped(true)
+                        .min_col_width(120.0)
+                        .show(ui, |ui| {
+                            ui.label(RichText::new("Nombre").size(12.0).strong());
+                            ui.label(RichText::new("Idioma").size(12.0).strong());
+                            ui.label(RichText::new("Estado").size(12.0).strong());
+                            ui.end_row();
+
+                            for voice in &voices {
+                                let is_current = voice.name == current;
+                                let name_color = if is_current {
+                                    Color32::from_rgb(80, 200, 120)
+                                } else {
+                                    Color32::from_rgb(200, 200, 200)
+                                };
+
+                                let lang_color = if voice.language.starts_with("es") {
+                                    Color32::from_rgb(255, 205, 0)
+                                } else {
+                                    Color32::from_rgb(150, 150, 170)
+                                };
+
+                                ui.label(RichText::new(&voice.name).size(12.0).color(name_color));
+                                ui.label(RichText::new(&voice.language).size(12.0).color(lang_color));
+
+                                if is_current {
+                                    ui.label(
+                                        RichText::new("Activa")
+                                            .size(12.0)
+                                            .color(Color32::from_rgb(80, 200, 120)),
+                                    );
+                                } else {
+                                    if ui
+                                        .button(RichText::new("Seleccionar").size(11.0))
+                                        .clicked()
+                                    {
+                                        self.tts.set_voice(&voice.name);
+                                    }
+                                }
+                                ui.end_row();
+                            }
+                        });
+
+                    // Highlight if no Spanish voice
+                    let has_spanish = voices.iter().any(|v| v.language.to_lowercase().starts_with("es"));
+                    if !has_spanish {
+                        ui.add_space(8.0);
+                        ui.label(
+                            RichText::new("⚠ No hay voces en español instaladas. Instala una abajo.")
+                                .size(13.0)
+                                .color(Color32::from_rgb(255, 100, 100)),
+                        );
+                    }
+                }
+
+                ui.add_space(20.0);
+                ui.separator();
+                ui.add_space(10.0);
+
+                // ── Speech Pack Installation ──
+                ui.label(
+                    RichText::new("Paquetes de Voz del Sistema")
+                        .size(18.0)
+                        .strong(),
+                );
+                ui.add_space(5.0);
+                ui.label(
+                    RichText::new("Instalar nuevos paquetes de voz para Windows (requiere permisos de administrador).")
+                        .size(12.0)
+                        .weak(),
+                );
+                ui.add_space(8.0);
+
+                // Load capabilities on demand
+                if self.speech_caps_loading && self.speech_caps.is_none() {
+                    ui.label("Consultando paquetes disponibles...");
+                    ui.spinner();
+                    // Do the query (blocking but fast enough)
+                    let caps = query_speech_capabilities();
+                    if caps.is_empty() {
+                        self.speech_caps = Some(Vec::new());
+                    } else {
+                        self.speech_caps = Some(caps);
+                    }
+                    self.speech_caps_loading = false;
+                }
+
+                if let Some(ref caps) = self.speech_caps {
+                    if caps.is_empty() {
+                        ui.label(
+                            RichText::new("No se pudo consultar los paquetes. Ejecuta la app como administrador o instala manualmente:")
+                                .size(12.0)
+                                .color(Color32::from_rgb(255, 165, 0)),
+                        );
+                        ui.add_space(5.0);
+                        ui.label(
+                            RichText::new("Configuración → Hora e idioma → Voz → Agregar voces")
+                                .size(12.0),
+                        );
+                    } else {
+                        egui::Grid::new("speech_caps_grid")
+                            .striped(true)
+                            .min_col_width(200.0)
+                            .show(ui, |ui| {
+                                ui.label(RichText::new("Paquete").size(12.0).strong());
+                                ui.label(RichText::new("Estado").size(12.0).strong());
+                                ui.label(RichText::new("Acción").size(12.0).strong());
+                                ui.end_row();
+
+                                // Sort: Spanish first, then installed, then others
+                                let mut sorted_caps = caps.clone();
+                                sorted_caps.sort_by(|a, b| {
+                                    let a_es = a.name.contains("es-");
+                                    let b_es = b.name.contains("es-");
+                                    b_es.cmp(&a_es)
+                                        .then(b.installed.cmp(&a.installed))
+                                        .then(a.name.cmp(&b.name))
+                                });
+
+                                for cap in &sorted_caps {
+                                    // Extract language code from name like "Language.Speech~~~es-ES~0.0.1.0"
+                                    let lang_code = cap.name
+                                        .split("~~~")
+                                        .nth(1)
+                                        .and_then(|s| s.split('~').next())
+                                        .unwrap_or(&cap.name);
+
+                                    let is_spanish = lang_code.starts_with("es");
+                                    let name_color = if is_spanish {
+                                        Color32::from_rgb(255, 205, 0)
+                                    } else {
+                                        Color32::from_rgb(180, 180, 180)
+                                    };
+
+                                    ui.label(RichText::new(lang_code).size(12.0).color(name_color));
+
+                                    if cap.installed {
+                                        ui.label(
+                                            RichText::new("Instalado")
+                                                .size(12.0)
+                                                .color(Color32::from_rgb(80, 200, 120)),
+                                        );
+                                        ui.label(RichText::new("—").size(12.0).weak());
+                                    } else {
+                                        ui.label(
+                                            RichText::new("No instalado")
+                                                .size(12.0)
+                                                .color(Color32::from_rgb(150, 150, 170)),
+                                        );
+                                        if ui
+                                            .button(
+                                                RichText::new("Instalar")
+                                                    .size(11.0)
+                                                    .color(Color32::from_rgb(80, 200, 120)),
+                                            )
+                                            .clicked()
+                                        {
+                                            install_speech_capability(&cap.name);
+                                        }
+                                    }
+                                    ui.end_row();
+                                }
+                            });
+
+                        ui.add_space(10.0);
+                        if ui
+                            .button(RichText::new("Refrescar lista").size(12.0))
+                            .clicked()
+                        {
+                            self.speech_caps = None;
+                            self.speech_caps_loading = true;
+                        }
+
+                        ui.add_space(5.0);
+                        ui.label(
+                            RichText::new("Después de instalar un paquete, reinicia la aplicación para que aparezca la nueva voz.")
+                                .size(11.0)
+                                .weak(),
+                        );
+                    }
+                } else {
+                    if ui
+                        .button(
+                            RichText::new("Escanear paquetes de voz disponibles")
+                                .size(13.0)
+                                .color(Color32::from_rgb(100, 149, 237)),
+                        )
+                        .clicked()
+                    {
+                        self.speech_caps_loading = true;
+                    }
+                }
+            });
+    }
 }
 
 fn count_files(nodes: &[ContentNode]) -> usize {
@@ -1656,6 +2620,57 @@ impl eframe::App for ExamHelperApp {
                 self.render_top_bar(ui);
                 ui.add_space(4.0);
             });
+
+        // ── status bar with draggable zoom (MDReader style) ──────────────
+        egui::TopBottomPanel::bottom("statusbar").show(ctx, |ui| {
+            ui.horizontal(|ui| {
+                // Current file path
+                if let Some(ref p) = self.selected_file {
+                    ui.label(
+                        RichText::new(p.file_name().unwrap_or_default().to_string_lossy().as_ref())
+                            .weak()
+                            .size(11.0),
+                    );
+                }
+
+                ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                    // Draggable zoom label
+                    let display_zoom = self.drag_zoom.unwrap_or(self.config.zoom);
+                    let pct = (display_zoom * 100.0).round() as i32;
+
+                    let response = ui
+                        .add(
+                            egui::Label::new(
+                                RichText::new(format!(" {pct}% "))
+                                    .monospace()
+                                    .size(11.0),
+                            )
+                            .sense(egui::Sense::drag()),
+                        )
+                        .on_hover_text("Arrastra para zoom");
+
+                    if response.hovered() || response.dragged() {
+                        ctx.set_cursor_icon(egui::CursorIcon::ResizeHorizontal);
+                    }
+
+                    if response.dragged() {
+                        let z = self.drag_zoom.get_or_insert(self.config.zoom);
+                        *z = (*z + response.drag_delta().x * 0.003).clamp(0.25, 4.0);
+                    }
+
+                    if response.drag_stopped() {
+                        if let Some(z) = self.drag_zoom.take() {
+                            self.config.zoom = z;
+                            ctx.set_pixels_per_point(self.native_ppp * z);
+                            self.config.save();
+                        }
+                    }
+
+                    ui.separator();
+                    ui.label(RichText::new("zoom").weak().size(11.0));
+                });
+            });
+        });
 
         // Git status window
         self.render_git_status_window(ctx);
@@ -1701,6 +2716,11 @@ impl eframe::App for ExamHelperApp {
             AppMode::ProgressView => {
                 egui::CentralPanel::default().show(ctx, |ui| {
                     self.render_progress_view(ui);
+                });
+            }
+            AppMode::Settings => {
+                egui::CentralPanel::default().show(ctx, |ui| {
+                    self.render_settings(ui);
                 });
             }
         }

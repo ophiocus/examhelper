@@ -1,98 +1,98 @@
 # Las Seis Regiones Naturales de Colombia
 
-Colombia se divide en **seis regiones naturales**, cada una con caracteristicas geograficas, climaticas, culturales y economicas distintas.
+Colombia se divide en **seis regiones naturales**, cada una con características geográficas, climáticas, culturales y económicas distintas.
 
 ---
 
-## 1. Region Andina
+## 1. Región Andina
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ubicacion** | Centro y occidente del pais |
-| **Caracteristica principal** | Atravesada por las tres cordilleras de los Andes |
-| **Poblacion** | **La region mas poblada de Colombia** |
-| **Clima** | Variado segun la altitud (todos los pisos termicos) |
+| **Ubicación** | Centro y occidente del país |
+| **Característica principal** | Atravesada por las tres cordilleras de los Andes |
+| **Población** | **La región más poblada de Colombia** |
+| **Clima** | Variado según la altitud (todos los pisos térmicos) |
 
 ### Las tres cordilleras
 
-| Cordillera | Ubicacion | Caracteristicas |
+| Cordillera | Ubicación | Características |
 |------------|-----------|-----------------|
-| **Occidental** | Mas cercana al Pacifico | La mas baja de las tres |
-| **Central** | Entre los rios Cauca y Magdalena | La mas alta. Tiene volcanes y nevados |
-| **Oriental** | Mas cercana a Venezuela | La mas ancha. Incluye el altiplano cundiboyacense |
+| **Occidental** | Más cercana al Pacífico | La más baja de las tres |
+| **Central** | Entre los ríos Cauca y Magdalena | La más alta. Tiene volcanes y nevados |
+| **Oriental** | Más cercana a Venezuela | La más ancha. Incluye el altiplano cundiboyacense |
 
 ### Principales ciudades
 
-- **Bogota** (capital del pais, en Cundinamarca)
-- **Medellin** (capital de Antioquia)
+- **Bogotá** (capital del país, en Cundinamarca)
+- **Medellín** (capital de Antioquia)
 - **Cali** (capital del Valle del Cauca)
 - **Bucaramanga** (capital de Santander)
 - **Manizales**, **Pereira**, **Armenia** (Eje Cafetero)
 
-### Economia
+### Economía
 
-- **Cafe** (principal producto de exportacion agricola)
+- **Café** (principal producto de exportación agrícola)
 - **Flores** (Colombia es el segundo exportador mundial)
-- **Papa**, maiz, frijol, hortalizas
-- Industria y servicios (especialmente en Bogota y Medellin)
+- **Papa**, maíz, fríjol, hortalizas
+- Industria y servicios (especialmente en Bogotá y Medellín)
 
 ---
 
-## 2. Region Caribe
+## 2. Región Caribe
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ubicacion** | Costa norte de Colombia |
-| **Caracteristica principal** | Banada por el mar Caribe |
-| **Clima** | Calido y seco en general, humedo en algunas zonas |
+| **Ubicación** | Costa norte de Colombia |
+| **Característica principal** | Bañada por el mar Caribe |
+| **Clima** | Cálido y seco en general, húmedo en algunas zonas |
 | **Cultura** | Cuna de la cumbia, el vallenato y el carnaval de Barranquilla |
 
 ### Principales ciudades
 
-- **Barranquilla** (capital del Atlantico, principal puerto del Caribe)
-- **Cartagena** (capital de Bolivar, Patrimonio de la Humanidad)
-- **Santa Marta** (capital del Magdalena, ciudad mas antigua de Colombia)
+- **Barranquilla** (capital del Atlántico, principal puerto del Caribe)
+- **Cartagena** (capital de Bolívar, Patrimonio de la Humanidad)
+- **Santa Marta** (capital del Magdalena, ciudad más antigua de Colombia)
 - **Valledupar** (capital del Cesar, cuna del vallenato)
-- **Monteria**, **Riohacha**, **Sincelejo**
+- **Montería**, **Riohacha**, **Sincelejo**
 
 ### Elementos destacados
 
-- **Sierra Nevada de Santa Marta:** montana costera mas alta del mundo. Hogar de los pueblos indigenas Kogui, Arhuaco, Wiwa y Kankuamo.
+- **Sierra Nevada de Santa Marta:** montaña costera más alta del mundo. Hogar de los pueblos indígenas Kogui, Arhuaco, Wiwa y Kankuamo.
 - **Turismo:** Cartagena, Santa Marta, Parque Tayrona, Islas del Rosario.
-- **Ganaderia:** actividad economica importante, especialmente en Cordoba y Cesar.
-- **La Guajira:** peninsula desertica, comunidad indigena Wayuu.
+- **Ganadería:** actividad económica importante, especialmente en Córdoba y Cesar.
+- **La Guajira:** península desértica, comunidad indígena Wayuu.
 
 ---
 
-## 3. Region Pacifica
+## 3. Región Pacífica
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ubicacion** | Costa occidental, banada por el oceano Pacifico |
-| **Caracteristica principal** | Una de las regiones mas lluviosas del mundo |
-| **Clima** | Calido y muy humedo (alta pluviosidad) |
-| **Poblacion** | Predominantemente **comunidades afrocolombianas e indigenas** |
+| **Ubicación** | Costa occidental, bañada por el océano Pacífico |
+| **Característica principal** | Una de las regiones más lluviosas del mundo |
+| **Clima** | Cálido y muy húmedo (alta pluviosidad) |
+| **Población** | Predominantemente **comunidades afrocolombianas e indígenas** |
 
 ### Elementos destacados
 
-- **Puerto de Buenaventura:** el **principal puerto comercial de Colombia**. Maneja mas del 60% del comercio exterior maritimo del pais.
+- **Puerto de Buenaventura:** el **principal puerto comercial de Colombia**. Maneja más del 60% del comercio exterior marítimo del país.
 - **Biodiversidad:** es una de las regiones con mayor biodiversidad del planeta.
-- Selvas tropicales humedas, manglares, esteros.
-- **Departamentos principales:** Choco, y partes de Valle del Cauca, Cauca y Narino.
-- **Ballenas jorobadas:** visitan la costa pacifica entre julio y octubre.
+- Selvas tropicales húmedas, manglares, esteros.
+- **Departamentos principales:** Chocó, y partes de Valle del Cauca, Cauca y Nariño.
+- **Ballenas jorobadas:** visitan la costa pacífica entre julio y octubre.
 
-> **Para el examen:** Buenaventura es el puerto mas importante de Colombia sobre el Pacifico.
+> **Para el examen:** Buenaventura es el puerto más importante de Colombia sobre el Pacífico.
 
 ---
 
-## 4. Region Orinoquia (Llanos Orientales)
+## 4. Región Orinoquia (Llanos Orientales)
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ubicacion** | Este de Colombia, cuenca del rio Orinoco |
-| **Caracteristica principal** | Grandes llanuras y sabanas |
-| **Clima** | Calido, con estacion seca y estacion de lluvias |
-| **Cultura** | Llanera: musica llanera, joropo, coleo |
+| **Ubicación** | Este de Colombia, cuenca del río Orinoco |
+| **Característica principal** | Grandes llanuras y sabanas |
+| **Clima** | Cálido, con estación seca y estación de lluvias |
+| **Cultura** | Llanera: música llanera, joropo, coleo |
 
 ### Departamentos
 
@@ -101,78 +101,78 @@ Colombia se divide en **seis regiones naturales**, cada una con caracteristicas 
 | Meta | Villavicencio |
 | Casanare | Yopal |
 | Arauca | Arauca |
-| Vichada | Puerto Carreno |
+| Vichada | Puerto Carreño |
 
-### Economia
+### Economía
 
-- **Ganaderia extensiva** (grandes hatos ganaderos)
-- **Petroleo** (especialmente en Casanare y Meta)
+- **Ganadería extensiva** (grandes hatos ganaderos)
+- **Petróleo** (especialmente en Casanare y Meta)
 - Agricultura: arroz, palma africana, soya
 - Villavicencio es conocida como "La Puerta del Llano"
 
 ---
 
-## 5. Region Amazonica
+## 5. Región Amazónica
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ubicacion** | Sur y sureste de Colombia |
-| **Caracteristica principal** | Selva tropical amazonica |
-| **Poblacion** | **La region menos poblada de Colombia** |
-| **Clima** | Calido y muy humedo |
+| **Ubicación** | Sur y sureste de Colombia |
+| **Característica principal** | Selva tropical amazónica |
+| **Población** | **La región menos poblada de Colombia** |
+| **Clima** | Cálido y muy húmedo |
 
 ### Departamentos
 
 | Departamento | Capital |
 |-------------|---------|
 | Amazonas | **Leticia** |
-| Caqueta | Florencia |
-| Guainia | Inirida |
-| Guaviare | San Jose del Guaviare |
+| Caquetá | Florencia |
+| Guainía | Inírida |
+| Guaviare | San José del Guaviare |
 | Putumayo | Mocoa |
-| Vaupes | Mitu |
+| Vaupés | Mitú |
 
 ### Elementos destacados
 
-- **Leticia:** capital del departamento del Amazonas. Ciudad fronteriza con Brasil (Tabatinga) y Peru.
+- **Leticia:** capital del departamento del Amazonas. Ciudad fronteriza con Brasil (Tabatinga) y Perú.
 - Gran diversidad de flora y fauna.
-- Hogar de numerosos **pueblos indigenas**.
-- Rios importantes: Amazonas, Caqueta, Putumayo, Vaupes, Guainia.
-- La selva amazonica es fundamental para la regulacion del clima mundial.
+- Hogar de numerosos **pueblos indígenas**.
+- Ríos importantes: Amazonas, Caquetá, Putumayo, Vaupés, Guainía.
+- La selva amazónica es fundamental para la regulación del clima mundial.
 
-> **Para el examen:** La Region Amazonica es la mas extensa en territorio pero la menos poblada.
+> **Para el examen:** La Región Amazónica es la más extensa en territorio pero la menos poblada.
 
 ---
 
-## 6. Region Insular
+## 6. Región Insular
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ubicacion** | Islas en el mar Caribe y en el oceano Pacifico |
-| **Caracteristica principal** | Compuesta por islas y cayos |
-| **Cultura** | Comunidad **raizal** (afrodescendiente angloparlante en San Andres y Providencia) |
+| **Ubicación** | Islas en el mar Caribe y en el océano Pacífico |
+| **Característica principal** | Compuesta por islas y cayos |
+| **Cultura** | Comunidad **raizal** (afrodescendiente angloparlante en San Andrés y Providencia) |
 
 ### Islas principales
 
-| Islas | Oceano | Caracteristicas |
+| Islas | Océano | Características |
 |-------|--------|-----------------|
-| **San Andres** | Caribe | Isla mas grande. Centro turistico y comercial. Reserva de Biosfera Seaflower (UNESCO). |
+| **San Andrés** | Caribe | Isla más grande. Centro turístico y comercial. Reserva de Biosfera Seaflower (UNESCO). |
 | **Providencia** | Caribe | Conocida por el "Mar de los Siete Colores". |
 | **Santa Catalina** | Caribe | Conectada a Providencia por un puente peatonal. |
-| **Isla Malpelo** | Pacifico | Patrimonio de la Humanidad (UNESCO). Santuario de fauna. |
-| **Isla Gorgona** | Pacifico | Parque Nacional Natural. Antigua prision. |
+| **Isla Malpelo** | Pacífico | Patrimonio de la Humanidad (UNESCO). Santuario de fauna. |
+| **Isla Gorgona** | Pacífico | Parque Nacional Natural. Antigua prisión. |
 
-> **Para el examen:** San Andres y Providencia estan en el Caribe. Malpelo y Gorgona estan en el Pacifico. La comunidad raizal es propia de San Andres y Providencia.
+> **Para el examen:** San Andrés y Providencia están en el Caribe. Malpelo y Gorgona están en el Pacífico. La comunidad raizal es propia de San Andrés y Providencia.
 
 ---
 
 ## Cuadro comparativo de las regiones
 
-| Region | Caracteristica clave | Ciudad principal | Economia principal |
+| Región | Característica clave | Ciudad principal | Economía principal |
 |--------|---------------------|------------------|-------------------|
-| **Andina** | Tres cordilleras, la mas poblada | Bogota, Medellin, Cali | Cafe, flores, industria |
-| **Caribe** | Costa norte, cultura festiva | Barranquilla, Cartagena | Turismo, ganaderia |
-| **Pacifica** | Muy lluviosa, gran biodiversidad | Buenaventura, Quibdo | Puerto comercial, pesca |
-| **Orinoquia** | Llanuras y sabanas | Villavicencio | Ganaderia, petroleo |
-| **Amazonica** | Selva, menos poblada | Leticia | Recursos naturales |
-| **Insular** | Islas Caribe y Pacifico | San Andres | Turismo, comercio |
+| **Andina** | Tres cordilleras, la más poblada | Bogotá, Medellín, Cali | Café, flores, industria |
+| **Caribe** | Costa norte, cultura festiva | Barranquilla, Cartagena | Turismo, ganadería |
+| **Pacífica** | Muy lluviosa, gran biodiversidad | Buenaventura, Quibdó | Puerto comercial, pesca |
+| **Orinoquia** | Llanuras y sabanas | Villavicencio | Ganadería, petróleo |
+| **Amazónica** | Selva, menos poblada | Leticia | Recursos naturales |
+| **Insular** | Islas Caribe y Pacífico | San Andrés | Turismo, comercio |

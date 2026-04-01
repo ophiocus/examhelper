@@ -1,97 +1,97 @@
 # Datos Generales de Colombia
 
-## Ubicacion geografica
+## Ubicación geográfica
 
-Colombia se encuentra ubicada en el **noroeste de America del Sur**. Es el unico pais sudamericano que posee costas tanto en el **oceano Atlantico** (mar Caribe) como en el **oceano Pacifico**.
+Colombia se encuentra ubicada en el **noroeste de América del Sur**. Es el único país sudamericano que posee costas tanto en el **océano Atlántico** (mar Caribe) como en el **océano Pacífico**.
 
 ---
 
-## Superficie y tamano
+## Superficie y tamaño
 
 | Dato | Valor |
 |------|-------|
-| Area total | **1.141.748 km²** (aproximadamente) |
-| Posicion en Sudamerica | **4to pais mas grande** |
-| Paises mas grandes | Brasil, Argentina, Peru |
+| Área total | **1.141.748 km²** (aproximadamente) |
+| Posición en Sudamérica | **4to país más grande** |
+| Países más grandes | Brasil, Argentina, Perú |
 
 ---
 
 ## Fronteras terrestres
 
-Colombia comparte fronteras terrestres con **cinco paises**:
+Colombia comparte fronteras terrestres con **cinco países**:
 
-| Pais | Ubicacion de la frontera |
+| País | Ubicación de la frontera |
 |------|--------------------------|
 | **Venezuela** | Este y noreste |
 | **Brasil** | Sureste |
-| **Peru** | Sur |
+| **Perú** | Sur |
 | **Ecuador** | Suroeste |
-| **Panama** | Noroeste |
+| **Panamá** | Noroeste |
 
-> **Dato clave para el examen:** Son 5 fronteras terrestres. Recuerda: **Ve-Bra-Pe-Ec-Pa** (Venezuela, Brasil, Peru, Ecuador, Panama).
+> **Dato clave para el examen:** Son 5 fronteras terrestres. Recuerda: **Ve-Bra-Pe-Ec-Pa** (Venezuela, Brasil, Perú, Ecuador, Panamá).
 
 ---
 
-## Fronteras maritimas
+## Fronteras marítimas
 
-Colombia tiene fronteras maritimas con **seis paises** adicionales:
+Colombia tiene fronteras marítimas con **seis países** adicionales:
 
-| Pais | Mar |
+| País | Mar |
 |------|-----|
-| Costa Rica | Caribe y Pacifico |
+| Costa Rica | Caribe y Pacífico |
 | Nicaragua | Caribe |
 | Honduras | Caribe |
 | Jamaica | Caribe |
-| Haiti | Caribe |
-| Republica Dominicana | Caribe |
+| Haití | Caribe |
+| República Dominicana | Caribe |
 
 ---
 
-## Punto mas alto
+## Punto más alto
 
-El punto mas alto de Colombia es el **Pico Cristobal Colon**, con una altitud de **5.775 metros sobre el nivel del mar**. Se encuentra en la **Sierra Nevada de Santa Marta**, en la Region Caribe.
+El punto más alto de Colombia es el **Pico Cristóbal Colón**, con una altitud de **5.775 metros sobre el nivel del mar**. Se encuentra en la **Sierra Nevada de Santa Marta**, en la Región Caribe.
 
-> **Dato importante:** La Sierra Nevada de Santa Marta es la montana costera mas alta del mundo.
+> **Dato importante:** La Sierra Nevada de Santa Marta es la montaña costera más alta del mundo.
 
 ---
 
-## Principales rios
+## Principales ríos
 
-| Rio | Importancia |
+| Río | Importancia |
 |-----|-------------|
-| **Magdalena** | Principal rio de Colombia. Atraviesa el pais de sur a norte. Fundamental para el transporte y la economia. |
-| **Cauca** | Segundo rio mas importante. Afluente del Magdalena. Recorre el occidente del pais. |
-| **Amazonas** | El rio mas largo y caudaloso del mundo. Pasa por el sur de Colombia (Leticia). |
+| **Magdalena** | Principal río de Colombia. Atraviesa el país de sur a norte. Fundamental para el transporte y la economía. |
+| **Cauca** | Segundo río más importante. Afluente del Magdalena. Recorre el occidente del país. |
+| **Amazonas** | El río más largo y caudaloso del mundo. Pasa por el sur de Colombia (Leticia). |
 | **Orinoco** | Frontera natural con Venezuela en el oriente. |
-| **Atrato** | Uno de los rios mas caudalosos del mundo. Desemboca en el golfo de Uraba (Caribe). |
-| **Caqueta** | Principal rio de la region amazonica colombiana. |
+| **Atrato** | Uno de los ríos más caudalosos del mundo. Desemboca en el golfo de Urabá (Caribe). |
+| **Caquetá** | Principal río de la región amazónica colombiana. |
 
 ---
 
 ## Biodiversidad
 
-Colombia es un pais **megadiverso**:
+Colombia es un país **megadiverso**:
 
 - Alberga aproximadamente el **10% de todas las especies del mundo**.
-- Es el **segundo pais con mayor biodiversidad** del planeta.
-- Primer lugar mundial en diversidad de **aves y orquideas**.
-- Gran variedad de ecosistemas: selvas, paramos, arrecifes de coral, manglares, sabanas.
+- Es el **segundo país con mayor biodiversidad** del planeta.
+- Primer lugar mundial en diversidad de **aves y orquídeas**.
+- Gran variedad de ecosistemas: selvas, páramos, arrecifes de coral, manglares, sabanas.
 
 ---
 
-## Clima y pisos termicos
+## Clima y pisos térmicos
 
-Colombia tiene un **clima tropical**, pero la temperatura varia segun la **altitud**. Este sistema se conoce como **pisos termicos**:
+Colombia tiene un **clima tropical**, pero la temperatura varía según la **altitud**. Este sistema se conoce como **pisos térmicos**:
 
-| Piso termico | Altitud | Temperatura promedio | Productos tipicos |
+| Piso térmico | Altitud | Temperatura promedio | Productos típicos |
 |--------------|---------|----------------------|-------------------|
-| **Calido** | 0 - 1.000 m | Mayor a 24°C | Cana de azucar, arroz, algodon, platano |
-| **Templado** | 1.000 - 2.000 m | 17°C - 24°C | Cafe, cacao, frijol, maiz |
-| **Frio** | 2.000 - 3.000 m | 12°C - 17°C | Papa, trigo, cebada, flores |
-| **Paramo** | 3.000 - 4.500 m | Menor a 12°C | Frailejones, musgos (no apto para agricultura intensiva) |
+| **Cálido** | 0 - 1.000 m | Mayor a 24°C | Caña de azúcar, arroz, algodón, plátano |
+| **Templado** | 1.000 - 2.000 m | 17°C - 24°C | Café, cacao, fríjol, maíz |
+| **Frío** | 2.000 - 3.000 m | 12°C - 17°C | Papa, trigo, cebada, flores |
+| **Páramo** | 3.000 - 4.500 m | Menor a 12°C | Frailejones, musgos (no apto para agricultura intensiva) |
 | **Glacial** | Mayor a 4.500 m | Menor a 0°C | Nieves perpetuas |
 
-> **Para el examen:** Colombia no tiene estaciones (primavera, verano, otono, invierno). El clima depende de la altitud, no de la epoca del ano. Tiene periodos de lluvia y periodos secos.
+> **Para el examen:** Colombia no tiene estaciones (primavera, verano, otoño, invierno). El clima depende de la altitud, no de la época del año. Tiene períodos de lluvia y períodos secos.
 
 ---
 
@@ -99,13 +99,13 @@ Colombia tiene un **clima tropical**, pero la temperatura varia segun la **altit
 
 | Pregunta frecuente | Respuesta |
 |--------------------|-----------|
-| Ubicacion | Noroeste de America del Sur |
-| Costas | Atlantico (Caribe) y Pacifico |
-| Area | 1.141.748 km² |
-| Tamano en Sudamerica | 4to mas grande |
-| Fronteras terrestres | 5 paises |
-| Fronteras maritimas | 6 paises |
-| Punto mas alto | Pico Cristobal Colon (5.775 m) |
-| Rio principal | Magdalena |
+| Ubicación | Noroeste de América del Sur |
+| Costas | Atlántico (Caribe) y Pacífico |
+| Área | 1.141.748 km² |
+| Tamaño en Sudamérica | 4to más grande |
+| Fronteras terrestres | 5 países |
+| Fronteras marítimas | 6 países |
+| Punto más alto | Pico Cristóbal Colón (5.775 m) |
+| Río principal | Magdalena |
 | Biodiversidad | Megadiverso, 10% especies mundiales |
-| Clima | Tropical, varia por altitud |
+| Clima | Tropical, varía por altitud |
