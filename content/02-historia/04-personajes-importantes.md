@@ -95,10 +95,10 @@
 - Colaboró en la fuga de prisioneros patriotas y en el reclutamiento de soldados para la causa independentista.
 - Fue descubierta, arrestada y condenada a muerte por el régimen de **Pablo Morillo**.
 - Antes de ser fusilada, pronunció palabras desafiantes contra los españoles, según la tradición: "¡Pueblo indolente! ¡Cuán distinta sería hoy vuestra suerte si conocierais el precio de la libertad!".
-- Su imagen ha aparecido en **billetes y monedas colombianas**. Actualmente aparece en el billete de 10.000 pesos.
+- Su imagen ha aparecido en **billetes y monedas colombianas**. Apareció en ediciones anteriores del billete de 10.000 pesos (actualmente este billete presenta a Virginia Gutiérrez de Pineda).
 - Es un símbolo del papel de las mujeres en la independencia.
 
-> **Para el examen:** La Pola fue una espía patriota fusilada en 1817. Su imagen aparece en el billete de 10.000 pesos.
+> **Para el examen:** La Pola fue una espía patriota fusilada en 1817. Su imagen apareció en el billete de 10.000 pesos y es símbolo del papel de las mujeres en la independencia.
 
 ---
 

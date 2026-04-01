@@ -27,17 +27,22 @@
 - Se celebra en el mes de **abril** en la ciudad de **Valledupar**, departamento del Cesar.
 - Dedicado a la **música vallenata**, género musical tradicional de la región Caribe.
 - Incluye competencias de acordeón, caja vallenata, guacharaca y canto.
-- La música vallenata fue declarada Patrimonio Inmaterial de la Humanidad por la UNESCO.
+- La música vallenata fue inscrita en la **Lista de Patrimonio Cultural Inmaterial que requiere medidas urgentes de salvaguardia** de la UNESCO en **2015**.
 
 ### Semana Santa en Popayán
-- Declarada **Patrimonio Inmaterial de la Humanidad** por la UNESCO.
+- Declarada **Patrimonio Inmaterial de la Humanidad** por la UNESCO en **2009**.
 - Se celebra en la ciudad de **Popayán**, departamento del Cauca.
 - Es una de las celebraciones religiosas más antiguas y tradicionales de América Latina.
 - Incluye procesiones solemnes con imágenes religiosas de gran valor histórico y artístico.
 
+### Feria de Cali
+- Se celebra del **25 al 30 de diciembre** en la ciudad de **Cali**, departamento del Valle del Cauca.
+- Conocida como la **Feria de la Caña** o **Feria de la Salsa**, celebra la música salsa, la cultura caleña y las tradiciones del suroccidente colombiano.
+- Incluye cabalgata, conciertos masivos, desfiles y el **Salsódromo** (desfile de escuelas y grupos de salsa).
+
 ### Carnaval de Negros y Blancos (Pasto)
 - Se celebra en el mes de **enero** en la ciudad de **San Juan de Pasto**, departamento de Nariño.
-- Declarado **Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO**.
+- Declarado **Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO** en **2009**.
 - El 5 de enero es el Día de los Negros y el 6 de enero es el Día de los Blancos.
 - Tiene raíces indígenas, africanas y españolas.
 
@@ -75,16 +80,19 @@ Colombia tiene una rica diversidad gastronómica que varía según la región:
 
 | Sitio | Tipo | Ubicación |
 |-------|------|-----------|
-| **Centro histórico de Cartagena** | Cultural | Bolívar (Costa Caribe) |
-| **Parque Arqueológico de San Agustín** | Cultural | Huila |
-| **Parque Arqueológico de Tierradentro** | Cultural | Cauca |
-| **Santuario de Las Lajas** | Cultural | Nariño (frontera con Ecuador) |
-| **Paisaje Cultural Cafetero** | Cultural | Eje Cafetero (Caldas, Quindío, Risaralda, Valle del Cauca) |
-| **Qhapaq Ñan (Camino Inca)** | Cultural | Sistema vial andino compartido con otros países sudamericanos |
-| **Carnaval de Barranquilla** | Inmaterial | Atlántico |
-| **Semana Santa en Popayán** | Inmaterial | Cauca |
-| **Carnaval de Negros y Blancos** | Inmaterial | Nariño |
-| **Música vallenata** | Inmaterial | Región Caribe |
+| **Centro histórico de Cartagena** (1984) | Cultural | Bolívar (Costa Caribe) |
+| **Parque Nacional Los Katíos** (1994) | Natural | Chocó (frontera con Panamá) |
+| **Parque Arqueológico de San Agustín** (1995) | Cultural | Huila |
+| **Parque Arqueológico de Tierradentro** (1995) | Cultural | Cauca |
+| **Centro histórico de Mompox** (1995) | Cultural | Bolívar |
+| **Santuario de Malpelo** (2006) | Natural | Océano Pacífico |
+| **Paisaje Cultural Cafetero** (2011) | Cultural | Eje Cafetero (Caldas, Quindío, Risaralda, Valle del Cauca) |
+| **Qhapaq Ñan (Camino Inca)** (2014) | Cultural | Sistema vial andino compartido con otros países sudamericanos |
+| **Serranía de Chiribiquete** (2018) | Mixto | Caquetá / Guaviare (Amazonía) |
+| **Carnaval de Barranquilla** (2003) | Inmaterial | Atlántico |
+| **Semana Santa en Popayán** (2009) | Inmaterial | Cauca |
+| **Carnaval de Negros y Blancos** (2009) | Inmaterial | Nariño |
+| **Música vallenata** (2015) | Inmaterial (salvaguardia urgente) | Región Caribe |
 
 ---
 

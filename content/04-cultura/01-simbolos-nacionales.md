@@ -27,15 +27,18 @@ El escudo de armas de Colombia fue establecido por **Francisco de Paula Santande
 
 El escudo se divide en **tres secciones**:
 
-1. **Parte superior (franja azul)**: El **cóndor andino** con las alas extendidas, mirando hacia la derecha. Lleva en su pico una **cinta con el lema "Libertad y Orden"**, que es el lema nacional de Colombia.
+El escudo tiene al **cóndor andino** posado en la parte superior, con las alas extendidas, mirando hacia la derecha. Entre el cóndor y el escudo hay una **cinta con el lema "Libertad y Orden"**, que es el lema nacional de Colombia.
 
-2. **Parte media**: Una **granada de oro** sobre fondo azul, que recuerda el nombre histórico de Colombia (Nueva Granada), y un **cuerno de la abundancia** del cual salen monedas de oro, simbolizando la riqueza y la prosperidad del país.
+El escudo propiamente dicho se divide en **tres franjas**:
+
+1. **Parte superior**: Una **granada de oro** sobre fondo azul, que recuerda el nombre histórico de Colombia (Nueva Granada), flanqueada por **dos cuernos de la abundancia**: uno con monedas de oro y otro con frutos tropicales, simbolizando la riqueza y prosperidad del país.
+
+2. **Parte media**: Un **gorro frigio** (gorro de la libertad) rojo sobre fondo de platino, símbolo de la **libertad** del pueblo colombiano.
 
 3. **Parte inferior**: Representa el **istmo de Panamá** (que fue parte de Colombia hasta 1903) con **dos barcos** navegando a cada lado, simbolizando el comercio marítimo y la posición estratégica entre los dos océanos.
 
 ### Elementos adicionales
 
-- El **cóndor andino** se posa sobre la parte superior del escudo.
 - A los lados del escudo se encuentran **cuatro banderas nacionales**, dos a cada lado.
 - El lema nacional de Colombia es: **"Libertad y Orden"**.
 
@@ -47,7 +50,7 @@ El escudo se divide en **tres secciones**:
 - Fue declarada flor nacional desde **1936**.
 - Su nombre científico es **Cattleya trianae**.
 - Fue nombrada en honor al naturalista colombiano **José Jerónimo Triana**.
-- Es una orquídea nativa de Colombia y se caracteriza por sus colores blanco, morado y amarillo, que evocan los colores de la bandera.
+- Es una orquídea nativa de Colombia. El labelo (labio) de la flor presenta tonos **amarillo, azul y rojo** que evocan los colores de la bandera nacional.
 
 ---
 
@@ -56,7 +59,7 @@ El escudo se divide en **tres secciones**:
 - Nombre científico: **Ceroxylon quindiuense**.
 - Es la **palma más alta del mundo**, pudiendo alcanzar hasta **60 metros** de altura.
 - Crece principalmente en el **Valle de Cocora**, ubicado en el departamento del Quindío, en la región del Eje Cafetero.
-- Es una especie protegida y endémica de los Andes colombianos.
+- Es una especie protegida, nativa de los Andes de Colombia y Perú.
 - Fue declarada árbol nacional de Colombia.
 
 ---

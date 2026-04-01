@@ -2021,6 +2021,18 @@ impl ExamHelperApp {
         }
     }
 
+    /// Returns the official passing threshold for each exam category
+    /// per the 2025 Cancillería/Universidad de Antioquia guide.
+    fn get_pass_threshold(category: &str) -> u32 {
+        match category {
+            "Constitución" | "constitucion" => 60,  // 12/20 = 60%
+            "Geografía" | "geografia" => 55,         // 11/20 = 55%
+            "Historia" | "historia" => 40,           // 8/20 = 40%
+            "Cultura" | "cultura" => 40,             // 8/20 = 40%
+            _ => 50,                                 // fallback
+        }
+    }
+
     fn render_exam_results(&mut self, ui: &mut egui::Ui) {
         // Extract all display data upfront
         let display_data = match &self.exam_state {
@@ -2066,7 +2078,17 @@ impl ExamHelperApp {
             0
         };
 
-        let result_color = if percentage >= 70 {
+        // Check if ALL categories pass individually (official exam rules)
+        let all_categories_pass = results.iter().all(|(cat, score, total)| {
+            if *total == 0 { return true; }
+            let pct = (*score as f64 / *total as f64 * 100.0) as u32;
+            let threshold = Self::get_pass_threshold(cat);
+            pct >= threshold
+        });
+
+        let overall_pass = all_categories_pass && total_questions > 0;
+
+        let result_color = if overall_pass {
             Color32::from_rgb(80, 200, 120)
         } else if percentage >= 50 {
             Color32::from_rgb(255, 165, 0)
@@ -2093,10 +2115,10 @@ impl ExamHelperApp {
             .color(result_color),
         );
 
-        let pass_text = if percentage >= 70 {
+        let pass_text = if overall_pass {
             "APROBADO — Buen trabajo!"
         } else {
-            "REPROBADO — Sigue estudiando, tu puedes!"
+            "REPROBADO — Debes aprobar TODAS las categorias individualmente."
         };
         ui.label(RichText::new(pass_text).size(16.0).color(result_color));
 
@@ -2114,18 +2136,21 @@ impl ExamHelperApp {
             } else {
                 0
             };
-            let cat_color = if pct >= 70 {
+            let threshold = Self::get_pass_threshold(cat);
+            let cat_passed = pct >= threshold;
+            let cat_color = if cat_passed {
                 Color32::from_rgb(80, 200, 120)
-            } else if pct >= 50 {
+            } else if pct >= threshold.saturating_sub(15) {
                 Color32::from_rgb(255, 165, 0)
             } else {
                 Color32::from_rgb(255, 80, 80)
             };
 
             ui.horizontal(|ui| {
-                ui.label(RichText::new(format!("{}: ", cat)).size(14.0));
+                let status = if cat_passed { "✓" } else { "✗" };
+                ui.label(RichText::new(format!("{} {}: ", status, cat)).size(14.0));
                 ui.label(
-                    RichText::new(format!("{}/{} ({}%)", score, total, pct))
+                    RichText::new(format!("{}/{} ({}%) [min: {}%]", score, total, pct, threshold))
                         .size(14.0)
                         .color(cat_color),
                 );
@@ -2305,17 +2330,19 @@ impl ExamHelperApp {
                         } else {
                             0
                         };
-                        let color = if pct >= 70 {
+                        let threshold = Self::get_pass_threshold(&record.category);
+                        let color = if pct >= threshold {
                             Color32::from_rgb(80, 200, 120)
-                        } else if pct >= 50 {
+                        } else if pct >= threshold.saturating_sub(15) {
                             Color32::from_rgb(255, 165, 0)
                         } else {
                             Color32::from_rgb(255, 80, 80)
                         };
 
                         ui.horizontal(|ui| {
+                            let status = if pct >= threshold { "✓" } else { "✗" };
                             ui.label(
-                                RichText::new(format!("{}: ", record.category)).size(13.0),
+                                RichText::new(format!("{} {}: ", status, record.category)).size(13.0),
                             );
                             ui.label(
                                 RichText::new(format!(

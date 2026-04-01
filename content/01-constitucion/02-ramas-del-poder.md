@@ -14,7 +14,7 @@ Los diferentes órganos del Estado tienen funciones separadas, pero **colaboran 
 
 - Es el **Jefe de Estado**, **Jefe de Gobierno** y **suprema autoridad administrativa** (Artículo 115).
 - Es elegido por **voto popular directo** para un período de **4 años**.
-- **No puede ser reelegido** para el período inmediatamente siguiente (reforma mediante Acto Legislativo 02 de 2015 que eliminó la reelección presidencial).
+- **No puede ser reelegido** bajo ningún título ni para ningún período (Acto Legislativo 02 de 2015 eliminó la reelección presidencial de forma absoluta).
 - Para ser elegido en primera vuelta necesita la **mitad más uno de los votos**; de lo contrario, se realiza una **segunda vuelta** entre los dos candidatos más votados.
 - Requisitos: ser colombiano por nacimiento, ciudadano en ejercicio y mayor de 30 años.
 
@@ -67,7 +67,7 @@ El Congreso es un cuerpo **bicameral**, compuesto por:
 
 #### Senado de la República
 
-- **108 senadores** (100 por circunscripción nacional + 2 por circunscripción especial indígena + 5 de las circunscripciones transitorias especiales de paz + 1 del partido que obtuvo la segunda votación para Presidente).
+- **108 senadores** en el período 2022-2026 (100 por circunscripción nacional + 2 por circunscripción especial indígena + 5 de las circunscripciones transitorias especiales de paz + 1 del partido que obtuvo la segunda votación para Presidente). **Nota:** las 5 curules de paz son transitorias y expiran después de 2026, dejando **103 senadores**.
 - Elegidos por voto popular para períodos de **4 años**.
 - Circunscripción nacional: todos los colombianos pueden votar por cualquier candidato al Senado.
 
@@ -128,7 +128,7 @@ El Congreso es un cuerpo **bicameral**, compuesto por:
 #### Consejo de Estado
 
 - **Máximo tribunal de la jurisdicción contencioso-administrativa**.
-- Compuesto por **27 magistrados** elegidos para períodos de **8 años**.
+- Compuesto por **31 magistrados** (27 en la Sala de lo Contencioso Administrativo + 4 en la Sala de Consulta y Servicio Civil), elegidos para períodos de **8 años**.
 - Funciones: conocer de las acciones de nulidad contra decretos del Gobierno, actuar como cuerpo supremo consultivo del Gobierno.
 
 #### Consejo Superior de la Judicatura
@@ -176,7 +176,7 @@ Son autónomos e independientes de las tres ramas del poder público.
 
 ### Contraloría General de la República
 
-- Dirigida por el **Contralor General**, elegido por el Congreso en pleno de terna conformada por la Corte Constitucional, la Corte Suprema y el Consejo de Estado.
+- Dirigida por el **Contralor General**, elegido por el Congreso en pleno a partir de una lista de elegibles resultante de un **concurso público de méritos** (convocatoria pública abierta).
 - Período de **4 años**.
 - Funciones:
   - Ejercer el **control fiscal** sobre la administración y los particulares que manejan fondos públicos.
@@ -218,9 +218,9 @@ Son autónomos e independientes de las tres ramas del poder público.
 
 | Dato clave | Respuesta |
 |------------|-----------|
-| Senadores | 108 |
+| Senadores | 108 (2022-2026), 103 (desde 2026) |
 | Representantes a la Cámara | Aproximadamente 188 |
 | Período presidencial | 4 años |
-| Reelección presidencial | No permitida (desde 2015) |
+| Reelección presidencial | Prohibida absolutamente (desde 2015) |
 | Períodos de sesiones del Congreso | Dos al año |
 | Magistrados Corte Constitucional | 9 |

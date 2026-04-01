@@ -82,11 +82,11 @@ options = ["5 años", "6 años", "4 años", "3 años"]
 answer = 2
 
 [[questions]]
-text = "¿Se permite la reelección presidencial inmediata en Colombia actualmente?"
+text = "¿Se permite la reelección presidencial en Colombia actualmente?"
 options = [
     "Sí, por un período adicional",
     "Sí, de forma indefinida",
-    "No, no se permite la reelección inmediata",
+    "No, está prohibida absolutamente desde el Acto Legislativo 02 de 2015",
     "Solo si lo aprueba el Congreso",
 ]
 answer = 2

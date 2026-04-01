@@ -36,7 +36,7 @@ Colombia está dividida en **32 departamentos** y un **Distrito Capital** (Bogot
 
 ---
 
-## Región Caribe (7 departamentos)
+## Región Caribe (7 departamentos) + Región Insular (1 departamento)
 
 | N.° | Departamento | Capital |
 |-----|-------------|---------|
@@ -46,9 +46,10 @@ Colombia está dividida en **32 departamentos** y un **Distrito Capital** (Bogot
 | 4 | Córdoba | **Montería** |
 | 5 | La Guajira | **Riohacha** |
 | 6 | Magdalena | **Santa Marta** |
-| 7 | Sucre | **Sincelejo** |
+| 7 | San Andrés y Providencia | **San Andrés** |
+| 8 | Sucre | **Sincelejo** |
 
-> **Tip para el examen:** Santa Marta es la ciudad más antigua de Colombia (fundada en 1525). Cartagena es Patrimonio de la Humanidad.
+> **Tip para el examen:** Santa Marta es la ciudad más antigua de Colombia (fundada en 1525). Cartagena es Patrimonio de la Humanidad. El **Archipiélago de San Andrés, Providencia y Santa Catalina** es el único departamento insular de Colombia, ubicado en el mar Caribe. La comunidad **raizal** es su grupo étnico característico.
 
 ---
 
@@ -123,12 +124,13 @@ Colombia está dividida en **32 departamentos** y un **Distrito Capital** (Bogot
 | 24 | Quindío | Armenia | Andina |
 | 25 | Risaralda | Pereira | Andina |
 | 26 | Santander | Bucaramanga | Andina |
-| 27 | Sucre | Sincelejo | Caribe |
-| 28 | Tolima | Ibagué | Andina |
-| 29 | Valle del Cauca | Cali | Pacífica |
-| 30 | Vaupés | Mitú | Amazónica |
-| 31 | Vichada | Puerto Carreño | Orinoquia |
-| 32 | **Bogotá D.C.** | **(Distrito Capital)** | **Andina** |
+| 27 | San Andrés y Providencia | San Andrés | Insular / Caribe |
+| 28 | Sucre | Sincelejo | Caribe |
+| 29 | Tolima | Ibagué | Andina |
+| 30 | Valle del Cauca | Cali | Pacífica |
+| 31 | Vaupés | Mitú | Amazónica |
+| 32 | Vichada | Puerto Carreño | Orinoquia |
+| — | **Bogotá D.C.** | **(Distrito Capital)** | **Andina** |
 
 ---
 
@@ -137,11 +139,11 @@ Colombia está dividida en **32 departamentos** y un **Distrito Capital** (Bogot
 | Región | Número de departamentos |
 |--------|------------------------|
 | Andina | 10 |
-| Caribe | 7 |
+| Caribe | 7 (+ 1 Insular) |
 | Amazónica | 6 |
 | Pacífica | 4 |
 | Orinoquia | 4 |
-| Insular | *(San Andrés y Providencia forman parte del Caribe administrativamente)* |
+| Insular | 1 (San Andrés y Providencia, capital: San Andrés) |
 | **Total** | **32 departamentos + Bogotá D.C.** |
 
 ---

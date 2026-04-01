@@ -53,21 +53,19 @@ Son colombianos por adopción (Artículo 96, literal b):
 
 ## Normativa sobre naturalización
 
-### Ley 43 de 1993
+### Ley 43 de 1993 (DEROGADA)
 
-Esta ley reglamenta lo relacionado con la adquisición, renuncia, pérdida y recuperación de la nacionalidad colombiana. Establece:
+Esta ley reglamentaba lo relacionado con la adquisición, renuncia, pérdida y recuperación de la nacionalidad colombiana. Fue **derogada y reemplazada** por la Ley 2332 de 2023.
 
-- Los requisitos y procedimientos para la naturalización.
-- Las causales de pérdida de la nacionalidad adquirida por adopción.
-- Los derechos y obligaciones de los colombianos por adopción.
+### Ley 2332 de 2023 (LEY VIGENTE)
 
-### Ley 2332 de 2023
+Esta es la ley actual que rige la nacionalidad colombiana. Entró en vigor el **25 de septiembre de 2023**:
 
-Esta ley actualizó y modificó aspectos del régimen de nacionalidad colombiana:
-
-- Simplificó procedimientos de naturalización.
-- Modificó tiempos de residencia requeridos para ciertos casos.
+- Reemplazó completamente la Ley 43 de 1993.
+- Estableció nuevos tiempos de residencia para la naturalización.
+- Agregó **cultura** como tema obligatorio del examen de naturalización.
 - Modernizó el marco jurídico de la nacionalidad.
+- El **Artículo 13** rige específicamente el examen de conocimientos.
 
 ---
 
@@ -93,9 +91,11 @@ Para obtener la **carta de naturalización**, el extranjero debe cumplir:
 | Regla general (extranjero con visa de residente) | 5 años |
 | Esposo(a) o compañero(a) permanente de colombiano(a) por nacimiento | 2 años |
 | Padre o madre de nacional colombiano por nacimiento | 2 años |
-| Nacional de un país latinoamericano o del Caribe por nacimiento | 1 año (con principio de reciprocidad) |
-| Nacional de España por nacimiento | 2 años (convenio de doble nacionalidad) |
+| Nacional de un país con tratado de reciprocidad (ej. España) | 2 años |
 | Nacional originario de un Estado con tratado o convenio de nacionalidad | Según el tratado correspondiente |
+| Persona apátrida (sin nacionalidad) | 1 año |
+
+> **Nota importante:** Bajo la Ley 2332 de 2023 (vigente), ya **no existe** el beneficio de 1 año para latinoamericanos y del Caribe que contemplaba la derogada Ley 43 de 1993. Los latinoamericanos se rigen por la regla general de 5 años, o 2 años si aplica reciprocidad o tienen vínculo familiar con colombiano.
 
 ### Documentos requeridos
 
@@ -150,7 +150,7 @@ La nacionalidad colombiana por adopción se puede perder por:
 - Pueden obtener **pasaporte colombiano**.
 - Pueden acceder a servicios de salud, educación y seguridad social.
 
-### Restricciones (Artículo 100 de la Constitución)
+### Restricciones (diversos artículos de la Constitución y Ley 2332 de 2023)
 
 Los colombianos por adopción **no pueden** ejercer los siguientes cargos (reservados a colombianos por nacimiento):
 
@@ -206,8 +206,8 @@ Todo colombiano tiene las siguientes obligaciones:
 | Tiempo de domicilio general para naturalización | 5 años con visa de residente |
 | Tiempo para cónyuges de colombianos | 2 años |
 | Tiempo para padres de colombianos | 2 años |
-| Tiempo para latinoamericanos y del Caribe | 1 año (con reciprocidad) |
+| Tiempo para apátridas | 1 año |
 | Edad para ejercer ciudadanía | 18 años |
 | Cargos vedados a naturalizados | Presidente, Vicepresidente, Senador, Magistrado de altas cortes, entre otros |
-| Ley principal de nacionalidad | Ley 43 de 1993, Ley 2332 de 2023 |
+| Ley principal de nacionalidad | Ley 2332 de 2023 (reemplazó Ley 43 de 1993) |
 | Servicio militar para naturalizados | Exentos |

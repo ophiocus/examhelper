@@ -36,9 +36,9 @@ Varios factores internos y externos crearon las condiciones para el movimiento i
 - **Fecha:** Viernes **20 de julio de 1810** en Santa Fe de Bogotá.
 - **Los hechos:**
   1. Los criollos planearon provocar un incidente para iniciar la revuelta.
-  2. Los hermanos **Francisco y Antonio Morales** pidieron prestado un florero al comerciante español **José González Llorente** con el pretexto de decorar una cena para el comisionado real Antonio Villavicencio.
+  2. El criollo **Luis de Rubio** fue enviado a pedir prestado un florero al comerciante español **José González Llorente** con el pretexto de decorar una cena para el comisionado real Antonio Villavicencio.
   3. Llorente se negó a prestar el florero (según la versión tradicional).
-  4. Los criollos aprovecharon la negativa para incitar al pueblo, presentando la respuesta de Llorente como una ofensa contra los americanos.
+  4. Los hermanos **Francisco y Antonio Morales** y otros conspiradores aprovecharon la negativa para incitar al pueblo, presentando la respuesta de Llorente como una ofensa contra los americanos.
   5. Se formó una multitud que exigió la creación de una **Junta de Gobierno** propia.
 - **Resultado:** Se creó la **Junta Suprema de Santa Fe**, primer gobierno autónomo. Este día se celebra como el **Día de la Independencia de Colombia**.
 

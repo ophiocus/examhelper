@@ -94,7 +94,7 @@ Es importante conocer las distintas denominaciones que ha tenido el país:
   2. **Guillermo León Valencia** (1962-1966) - Conservador
   3. **Carlos Lleras Restrepo** (1966-1970) - Liberal
   4. **Misael Pastrana Borrero** (1970-1974) - Conservador
-- **Críticas:** Excluyó a otros partidos y movimientos políticos, lo que contribuyó al surgimiento de grupos guerrilleros como las FARC (1964), el ELN (1964) y el M-19 (1970).
+- **Críticas:** Excluyó a otros partidos y movimientos políticos, lo que contribuyó al surgimiento de grupos guerrilleros como las FARC (1964), el ELN (1964) y el M-19 (fundado en 1974, nombrado por las elecciones del 19 de abril de 1970).
 
 ---
 
