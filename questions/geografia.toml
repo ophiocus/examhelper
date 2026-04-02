@@ -416,3 +416,150 @@ value = "Región Amazonía"
 [[templates.pairs]]
 key = "San Andrés y Providencia"
 value = "Región Insular"
+
+# --- Cordilleras y Relieve ---
+
+[[questions]]
+text = "¿Cuántas cordilleras conforman los Andes colombianos?"
+options = ["Dos", "Tres", "Cuatro", "Cinco"]
+answer = 1
+
+[[questions]]
+text = "¿Cuál de las tres cordilleras colombianas es la más alta?"
+options = ["La Occidental", "La Oriental", "La Central", "Todas tienen la misma altura"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál de las tres cordilleras colombianas es la más ancha?"
+options = ["La Occidental", "La Central", "La Oriental", "La del Chocó"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es la cordillera más baja de las tres cordilleras colombianas?"
+options = ["La Oriental", "La Central", "La Occidental", "La Sierra Nevada"]
+answer = 2
+
+# --- Macizo Colombiano ---
+
+[[questions]]
+text = "¿Cómo se conoce al Macizo Colombiano por ser el origen de los principales ríos del país?"
+options = [
+    "Nudo de los Pastos",
+    "Estrella Fluvial Colombiana",
+    "Cuna de los Andes",
+    "Sierra Central",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué ríos nacen en el Macizo Colombiano?"
+options = [
+    "Amazonas y Orinoco",
+    "Atrato y Meta",
+    "Magdalena, Cauca, Caquetá y Patía",
+    "Guaviare y Putumayo",
+]
+answer = 2
+
+# --- Ríos ---
+
+[[questions]]
+text = "¿Cuál es la longitud aproximada del río Magdalena?"
+options = ["980 km", "1.528 km", "2.100 km", "1.350 km"]
+answer = 1
+
+[[questions]]
+text = "¿Dónde desemboca el río Magdalena?"
+options = [
+    "En el océano Pacífico",
+    "En el río Orinoco",
+    "En el mar Caribe, en Barranquilla (Bocas de Ceniza)",
+    "En el lago de Tota",
+]
+answer = 2
+
+[[questions]]
+text = "¿En qué departamento se encuentra el río Atrato y cuál es su distinción?"
+options = [
+    "Antioquia; es el más largo de Colombia",
+    "Chocó; es uno de los ríos con mayor caudal del mundo para su longitud",
+    "Nariño; nace en el Macizo Colombiano",
+    "Cauca; es afluente del Orinoco",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es el segundo río más importante de Colombia y afluente del Magdalena?"
+options = ["El río Atrato", "El río Cauca", "El río Meta", "El río Putumayo"]
+answer = 1
+
+# --- Páramos ---
+
+[[questions]]
+text = "¿Qué porcentaje aproximado de los páramos del mundo se encuentra en Colombia?"
+options = ["10%", "25%", "50%", "75%"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el páramo más grande del mundo?"
+options = [
+    "Páramo de Chingaza",
+    "Páramo de Cruz Verde",
+    "Páramo de Sumapaz",
+    "Páramo del Cocuy",
+]
+answer = 2
+
+# --- Pisos térmicos y volcanes ---
+
+[[questions]]
+text = "¿En qué piso térmico se encuentra Bogotá?"
+options = ["Cálido", "Templado", "Frío", "Páramo"]
+answer = 2
+
+[[questions]]
+text = "¿Qué tragedia causó la erupción del Nevado del Ruiz en 1985?"
+options = [
+    "La destrucción de Popayán",
+    "La tragedia de Armero, con más de 20.000 muertos",
+    "La inundación de Barranquilla",
+    "El terremoto de Armenia",
+]
+answer = 1
+
+# --- Biodiversidad ---
+
+[[questions]]
+text = "¿Qué posición ocupa Colombia en biodiversidad a nivel mundial?"
+options = [
+    "Primer país más biodiverso",
+    "Segundo país más biodiverso",
+    "Tercer país más biodiverso",
+    "Quinto país más biodiverso",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué categorías de biodiversidad ocupa Colombia el primer lugar mundial?"
+options = [
+    "Mamíferos y reptiles",
+    "Aves y orquídeas",
+    "Anfibios y peces",
+    "Insectos y hongos",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuántos Parques Nacionales Naturales tiene Colombia?"
+options = ["32", "45", "59", "72"]
+answer = 2
+
+[[questions]]
+text = "¿Qué significa que Colombia sea un país megadiverso?"
+options = [
+    "Que tiene muchos volcanes activos",
+    "Que es uno de los 17 países con mayor diversidad biológica del planeta",
+    "Que tiene la mayor extensión de selva del mundo",
+    "Que posee más de 100 departamentos",
+]
+answer = 1

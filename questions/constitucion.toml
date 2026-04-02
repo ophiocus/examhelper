@@ -405,3 +405,172 @@ value = "El derecho a la educación"
 [[templates.pairs]]
 key = "derecho7"
 value = "El derecho al debido proceso"
+
+# --- Organismos de Control (detalle) ---
+
+[[questions]]
+text = "¿Qué es el Ministerio Público en Colombia?"
+options = [
+    "Un ministerio del Gobierno Nacional encargado de comunicaciones",
+    "El órgano de control compuesto por la Procuraduría General y la Defensoría del Pueblo",
+    "Una entidad que administra los medios de comunicación estatales",
+    "La oficina de prensa del Presidente de la República",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién elige al Procurador General de la Nación?"
+options = [
+    "El Presidente de la República directamente",
+    "La Corte Constitucional",
+    "El Senado, de terna conformada por el Presidente, la Corte Suprema y el Consejo de Estado",
+    "El Congreso en pleno mediante concurso de méritos",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el período del Procurador General de la Nación?"
+options = ["2 años con reelección", "4 años sin reelección", "6 años sin reelección", "4 años con posibilidad de reelección"]
+answer = 1
+
+[[questions]]
+text = "¿Quién elige al Defensor del Pueblo en Colombia?"
+options = [
+    "El Senado de la República",
+    "El Presidente de la República",
+    "La Cámara de Representantes, de terna elaborada por el Presidente",
+    "La Corte Constitucional",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cómo se elige al Contralor General de la República según la reforma del Acto Legislativo 04 de 2019?"
+options = [
+    "Es nombrado directamente por el Presidente de la República",
+    "Es elegido por el Congreso en pleno a partir de una lista de elegibles conformada mediante concurso público de méritos",
+    "Es elegido por la Corte Suprema de Justicia",
+    "Es elegido por el Senado de terna del Presidente",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es la función principal de la Contraloría General de la República?"
+options = [
+    "Investigar y sancionar los delitos penales",
+    "Vigilar la conducta de los servidores públicos",
+    "Ejercer el control fiscal del Estado y vigilar la gestión de los recursos públicos",
+    "Organizar y supervisar las elecciones nacionales",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es la función principal del Banco de la República?"
+options = [
+    "Recaudar los impuestos nacionales",
+    "Regular la política monetaria y emitir la moneda legal de Colombia",
+    "Administrar el presupuesto del Gobierno Nacional",
+    "Otorgar créditos de vivienda a los ciudadanos",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuántos magistrados componen el Consejo Nacional Electoral (CNE)?"
+options = ["5 magistrados", "7 magistrados", "9 magistrados", "12 magistrados"]
+answer = 2
+
+[[questions]]
+text = "¿Quién elige al Registrador Nacional del Estado Civil?"
+options = [
+    "El Presidente de la República",
+    "El Congreso en pleno",
+    "Los presidentes de la Corte Constitucional, la Corte Suprema de Justicia y el Consejo de Estado",
+    "El Consejo Nacional Electoral",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuántos miembros tiene la Junta Directiva del Banco de la República?"
+options = ["5 miembros", "7 miembros", "9 miembros", "12 miembros"]
+answer = 1
+
+# --- Organización Territorial ---
+
+[[questions]]
+text = "¿Qué artículo de la Constitución define las entidades territoriales de Colombia?"
+options = ["Artículo 246", "Artículo 286", "Artículo 311", "Artículo 322"]
+answer = 1
+
+[[questions]]
+text = "¿Cuáles son las entidades territoriales según el Artículo 286 de la Constitución?"
+options = [
+    "Nación, departamentos y municipios",
+    "Departamentos, distritos, municipios y territorios indígenas",
+    "Regiones, provincias y departamentos",
+    "Departamentos, municipios y corregimientos",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cómo son elegidos los gobernadores en Colombia y cuál es su período?"
+options = [
+    "Nombrados por el Presidente para un período de 4 años",
+    "Elegidos por las Asambleas Departamentales para 2 años",
+    "Elegidos por voto popular para un período de 4 años",
+    "Elegidos por el Congreso para un período de 6 años",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es la entidad fundamental de la división político-administrativa del Estado colombiano?"
+options = [
+    "El departamento (Artículo 298)",
+    "El distrito (Artículo 322)",
+    "El municipio (Artículo 311)",
+    "La región (Artículo 306)",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuál es el estatus especial de Bogotá según la Constitución?"
+options = [
+    "Municipio Especial",
+    "Distrito Capital de la República",
+    "Departamento Autónomo",
+    "Región Administrativa Especial",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál de las siguientes ciudades es un Distrito Especial reconocido por la Constitución colombiana?"
+options = [
+    "Medellín — Distrito Industrial y Comercial",
+    "Cartagena de Indias — Distrito Turístico, Histórico y Cultural",
+    "Cali — Distrito Deportivo y Cultural",
+    "Bucaramanga — Distrito Universitario",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué son los resguardos indígenas en Colombia?"
+options = [
+    "Parques naturales administrados por el Estado",
+    "Zonas militares en territorios fronterizos",
+    "Propiedad colectiva de la tierra reconocida a los pueblos indígenas, de carácter imprescriptible, inalienable e inembargable",
+    "Municipios con población mayoritariamente indígena",
+]
+answer = 2
+
+[[questions]]
+text = "¿Cuántos departamentos tiene Colombia?"
+options = ["28 departamentos", "30 departamentos", "32 departamentos", "35 departamentos"]
+answer = 2
+
+[[questions]]
+text = "¿Pueden los gobernadores y alcaldes ser reelegidos para el período inmediatamente siguiente?"
+options = [
+    "Sí, pueden ser reelegidos una vez",
+    "No, la reelección inmediata está prohibida",
+    "Solo los alcaldes pueden ser reelegidos",
+    "Solo si lo aprueba la Asamblea o el Concejo",
+]
+answer = 1

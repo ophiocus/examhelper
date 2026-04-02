@@ -399,3 +399,130 @@ value = "Manizales"
 [[templates.pairs]]
 key = "el Festival Iberoamericano de Teatro"
 value = "Bogotá"
+
+# --- Patrimonio UNESCO ---
+
+[[questions]]
+text = "¿Cuál fue el primer sitio colombiano inscrito en la Lista del Patrimonio Mundial de la UNESCO?"
+options = [
+    "San Agustín",
+    "El Paisaje Cultural Cafetero",
+    "Puerto, fortalezas y conjunto monumental de Cartagena",
+    "Los Katíos",
+]
+answer = 2
+
+[[questions]]
+text = "¿En qué año fue inscrito Cartagena como Patrimonio de la Humanidad?"
+options = ["1978", "1984", "1991", "1995"]
+answer = 1
+
+[[questions]]
+text = "¿Cuál es el sitio más reciente inscrito por Colombia en el Patrimonio Mundial de la UNESCO?"
+options = [
+    "Paisaje Cultural Cafetero",
+    "Santuario de Malpelo",
+    "Serranía de Chiribiquete",
+    "Qhapaq Ñan",
+]
+answer = 2
+
+[[questions]]
+text = "¿En qué año fue inscrita la Serranía de Chiribiquete como Patrimonio de la Humanidad?"
+options = ["2011", "2014", "2016", "2018"]
+answer = 3
+
+[[questions]]
+text = "¿Cuántos sitios del Patrimonio Mundial de la UNESCO tiene Colombia?"
+options = ["5", "7", "9", "12"]
+answer = 2
+
+[[questions]]
+text = "¿Cuántos elementos de Patrimonio Cultural Inmaterial de la UNESCO tiene Colombia?"
+options = ["8", "10", "15", "20"]
+answer = 2
+
+[[questions]]
+text = "¿En qué año fue declarado el Espacio Cultural de Palenque de San Basilio Patrimonio Inmaterial de la UNESCO?"
+options = ["2003", "2005", "2008", "2011"]
+answer = 2
+
+# --- San Basilio de Palenque ---
+
+[[questions]]
+text = "¿Qué distinción histórica tiene San Basilio de Palenque?"
+options = [
+    "Fue la primera capital de Colombia",
+    "Fue el primer pueblo libre de América",
+    "Fue la primera ciudad amurallada del continente",
+    "Fue el primer puerto del Caribe",
+]
+answer = 1
+
+# --- Diversidad étnica y lingüística ---
+
+[[questions]]
+text = "¿Cuál es el pueblo indígena más numeroso de Colombia?"
+options = ["Los Nasa", "Los Emberá", "Los Wayuu", "Los Zenú"]
+answer = 2
+
+[[questions]]
+text = "¿Qué artículo de la Constitución de 1991 reconoce que Colombia es un país pluriétnico y multicultural?"
+options = ["Artículo 1", "Artículo 7", "Artículo 13", "Artículo 67"]
+answer = 1
+
+[[questions]]
+text = "¿Cuántas lenguas indígenas vivas tiene Colombia aproximadamente?"
+options = ["Menos de 20", "Alrededor de 35", "Más de 65", "Más de 100"]
+answer = 2
+
+[[questions]]
+text = "Según el Artículo 10 de la Constitución, ¿cuál es el idioma oficial de Colombia?"
+options = ["El español y el inglés", "El castellano", "Todas las lenguas indígenas", "No tiene idioma oficial"]
+answer = 1
+
+# --- Tejo ---
+
+[[questions]]
+text = "¿Cuál es el deporte nacional oficial de Colombia y mediante qué ley fue declarado?"
+options = [
+    "El fútbol, Ley 100 de 1993",
+    "El ciclismo, Ley 200 de 1995",
+    "El tejo, Ley 613 de 2000",
+    "El béisbol, Ley 50 de 1990",
+]
+answer = 2
+
+# --- Gastronomía ---
+
+[[questions]]
+text = "¿De qué región colombiana es típica la bandeja paisa?"
+options = ["Bogotá", "Costa Caribe", "Antioquia", "Tolima"]
+answer = 2
+
+[[questions]]
+text = "¿En qué zona de Colombia se produce el café colombiano reconocido mundialmente?"
+options = [
+    "Los Llanos Orientales",
+    "La Costa Caribe",
+    "El Eje Cafetero (Caldas, Quindío, Risaralda)",
+    "La Amazonia",
+]
+answer = 2
+
+# --- Deportistas y artistas destacados ---
+
+[[questions]]
+text = "¿Cuántas medallas de oro olímpicas ha ganado Mariana Pajón en BMX?"
+options = ["Una", "Dos", "Tres", "Ninguna"]
+answer = 1
+
+[[questions]]
+text = "¿Quién es el pintor y escultor colombiano famoso por sus figuras voluminosas, nacido en Medellín?"
+options = [
+    "Alejandro Obregón",
+    "Fernando Botero",
+    "Enrique Grau",
+    "Omar Rayo",
+]
+answer = 1

@@ -378,3 +378,229 @@ value = "El Día de la Raza (llegada de los europeos a América)"
 [[templates.pairs]]
 key = "9 de abril"
 value = "El Bogotazo y el asesinato de Jorge Eliécer Gaitán"
+
+# --- Guerra de los Mil Días y Separación de Panamá ---
+
+[[questions]]
+text = "¿En qué período ocurrió la Guerra de los Mil Días?"
+options = ["1885-1888", "1895-1898", "1899-1902", "1903-1906"]
+answer = 2
+
+[[questions]]
+text = "¿Cuál fue la causa principal de la Guerra de los Mil Días?"
+options = [
+    "Un conflicto con Venezuela por territorios fronterizos",
+    "El enfrentamiento entre el Partido Liberal y el Partido Conservador",
+    "La invasión de Estados Unidos a territorio colombiano",
+    "Una rebelión indígena contra el gobierno central",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál fue la batalla más sangrienta de la Guerra de los Mil Días?"
+options = [
+    "La Batalla de Peralonso",
+    "La Batalla de Boyacá",
+    "La Batalla de Palonegro",
+    "La Batalla de Carabobo",
+]
+answer = 2
+
+[[questions]]
+text = "¿Aproximadamente cuántas personas murieron en la Guerra de los Mil Días?"
+options = ["10.000", "50.000", "100.000", "500.000"]
+answer = 2
+
+[[questions]]
+text = "¿En qué fecha se separó Panamá de Colombia?"
+options = [
+    "3 de noviembre de 1903",
+    "20 de julio de 1903",
+    "7 de agosto de 1903",
+    "12 de octubre de 1902",
+]
+answer = 0
+
+[[questions]]
+text = "¿Qué tratado rechazó el Senado colombiano en 1903, lo cual precipitó la separación de Panamá?"
+options = [
+    "El Tratado Urrutia-Thomson",
+    "El Tratado Herrán-Hay",
+    "El Tratado Hay-Bunau-Varilla",
+    "El Tratado Mallarino-Bidlack",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué indemnización recibió Colombia de Estados Unidos por la separación de Panamá mediante el Tratado Urrutia-Thomson?"
+options = [
+    "10 millones de dólares",
+    "15 millones de dólares",
+    "25 millones de dólares",
+    "50 millones de dólares",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué buque de guerra estadounidense impidió que tropas colombianas sofocaran la separación de Panamá?"
+options = ["USS Maine", "USS Nashville", "USS Constitution", "USS Missouri"]
+answer = 1
+
+# --- Conflicto Armado y Proceso de Paz ---
+
+[[questions]]
+text = "¿En qué fecha fue asesinado Jorge Eliécer Gaitán, desencadenando el Bogotazo?"
+options = [
+    "20 de julio de 1948",
+    "9 de abril de 1948",
+    "7 de agosto de 1948",
+    "12 de octubre de 1948",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién fue el general que gobernó Colombia entre 1953 y 1957 e introdujo la televisión y el sufragio femenino?"
+options = [
+    "Rafael Reyes",
+    "Gustavo Rojas Pinilla",
+    "Laureano Gómez",
+    "Mariano Ospina Pérez",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué año se inauguró la televisión en Colombia durante el gobierno de Rojas Pinilla?"
+options = ["1950", "1953", "1954", "1957"]
+answer = 2
+
+[[questions]]
+text = "¿Qué fue el Frente Nacional y en qué período estuvo vigente?"
+options = [
+    "Una coalición militar contra las guerrillas (1974-1991)",
+    "Un acuerdo de alternancia en el poder entre liberales y conservadores (1958-1974)",
+    "Un pacto entre guerrillas y el gobierno (1991-2010)",
+    "Una alianza de partidos para reformar la Constitución (1948-1958)",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué año fueron fundadas las FARC?"
+options = ["1948", "1958", "1964", "1974"]
+answer = 2
+
+[[questions]]
+text = "¿Qué sucedió en el Palacio de Justicia el 6 y 7 de noviembre de 1985?"
+options = [
+    "Se firmó la Constitución de 1991",
+    "El M-19 tomó el Palacio y el Ejército realizó una retoma violenta",
+    "Se celebró el primer plebiscito del Frente Nacional",
+    "Las FARC declararon un cese al fuego unilateral",
+]
+answer = 1
+
+[[questions]]
+text = "¿En qué ciudad se llevaron a cabo las negociaciones de paz entre el gobierno colombiano y las FARC?"
+options = ["Quito, Ecuador", "Caracas, Venezuela", "La Habana, Cuba", "Ciudad de México, México"]
+answer = 2
+
+[[questions]]
+text = "¿En qué fecha se firmó el Acuerdo Final de Paz con las FARC?"
+options = [
+    "2 de octubre de 2016",
+    "24 de noviembre de 2016",
+    "10 de diciembre de 2016",
+    "30 de noviembre de 2016",
+]
+answer = 1
+
+[[questions]]
+text = "¿Quién recibió el Premio Nobel de la Paz en 2016 por el proceso de paz con las FARC?"
+options = [
+    "Álvaro Uribe Vélez",
+    "Andrés Pastrana",
+    "Juan Manuel Santos",
+    "César Gaviria",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué es la JEP (Jurisdicción Especial para la Paz)?"
+options = [
+    "Un partido político fundado tras el acuerdo de paz",
+    "Un tribunal especial para investigar y juzgar crímenes del conflicto armado",
+    "Una organización internacional de derechos humanos",
+    "Un programa de reforma agraria para excombatientes",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué resultado tuvo el plebiscito por la paz del 2 de octubre de 2016?"
+options = [
+    "El Sí ganó con amplia mayoría",
+    "El No ganó por estrecho margen (50,2%)",
+    "Hubo empate técnico y se declaró nulo",
+    "No se alcanzó el umbral mínimo de participación",
+]
+answer = 1
+
+# --- Constitución de 1991 ---
+
+[[questions]]
+text = "¿Qué fue la Séptima Papeleta de 1990?"
+options = [
+    "Un decreto presidencial para reformar la Constitución",
+    "Un movimiento estudiantil que promovió una papeleta informal para convocar una Asamblea Constituyente",
+    "El séptimo intento de reformar la Constitución de 1886",
+    "Una propuesta del Congreso para elegir un nuevo presidente",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué presidente convocó la Asamblea Nacional Constituyente que redactó la Constitución de 1991?"
+options = [
+    "Virgilio Barco",
+    "Belisario Betancur",
+    "César Gaviria Trujillo",
+    "Ernesto Samper",
+]
+answer = 2
+
+[[questions]]
+text = "¿Quiénes fueron los tres copresidentes de la Asamblea Nacional Constituyente de 1991?"
+options = [
+    "César Gaviria, Álvaro Uribe y Andrés Pastrana",
+    "Horacio Serpa, Antonio Navarro Wolff y Álvaro Gómez Hurtado",
+    "Rafael Núñez, Miguel Antonio Caro y Carlos Holguín",
+    "Alberto Lleras, Laureano Gómez y Guillermo León Valencia",
+]
+answer = 1
+
+[[questions]]
+text = "¿Qué es la Acción de Tutela consagrada en el Artículo 86 de la Constitución de 1991?"
+options = [
+    "Un impuesto para financiar programas sociales",
+    "Un mecanismo para proteger los derechos fundamentales ante un juez",
+    "Un procedimiento para reformar la Constitución",
+    "Una ley para regular las elecciones presidenciales",
+]
+answer = 1
+
+[[questions]]
+text = "¿Cuál de las siguientes es una innovación de la Constitución de 1991 frente a la de 1886?"
+options = [
+    "Estableció el catolicismo como religión oficial",
+    "Eliminó la doble nacionalidad",
+    "Creó la Corte Constitucional, la Fiscalía General y la Defensoría del Pueblo",
+    "Fortaleció el centralismo y eliminó la autonomía territorial",
+]
+answer = 2
+
+[[questions]]
+text = "¿Qué estableció la Constitución de 1991 respecto a la religión, a diferencia de la Constitución de 1886?"
+options = [
+    "Mantuvo el catolicismo como religión oficial",
+    "Prohibió todas las religiones",
+    "Garantizó la libertad de cultos sin religión oficial",
+    "Estableció el protestantismo como nueva religión oficial",
+]
+answer = 2
