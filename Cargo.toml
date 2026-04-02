@@ -1,9 +1,9 @@
 [package]
 name = "examhelper"
-version = "0.1.6"
+version = "0.3.2"
 edition = "2021"
 authors = ["ophiocus <csantanad@gmail.com>"]
-description = "Colombian naturalization exam study helper – reading & multiple-choice practice"
+description = "Pluggable learning console with cartridge-based study modules, TTS narration, and exam practice"
 license = "MIT"
 
 [dependencies]

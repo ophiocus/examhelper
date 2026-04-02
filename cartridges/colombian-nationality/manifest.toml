@@ -1,0 +1,26 @@
+id = "colombian-nationality-exam"
+name = "Examen de Nacionalidad Colombiana"
+description = "Estudio y practica para el examen de naturalización colombiana"
+version = "1.0.0"
+language = "es"
+tts_voice_preference = ["es-CO", "es-MX", "es"]
+accent_color = [255, 205, 0]
+
+[exam]
+default_questions_per_category = 10
+
+[[exam.categories]]
+name = "Constitución"
+pass_threshold = 60
+
+[[exam.categories]]
+name = "Geografía"
+pass_threshold = 55
+
+[[exam.categories]]
+name = "Historia"
+pass_threshold = 40
+
+[[exam.categories]]
+name = "Cultura"
+pass_threshold = 40
