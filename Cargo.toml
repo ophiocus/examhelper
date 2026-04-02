@@ -1,6 +1,6 @@
 [package]
 name = "examhelper"
-version = "0.1.0"
+version = "0.1.6"
 edition = "2021"
 authors = ["ophiocus <csantanad@gmail.com>"]
 description = "Colombian naturalization exam study helper – reading & multiple-choice practice"
