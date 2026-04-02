@@ -1628,6 +1628,7 @@ impl ExamHelperApp {
             let (current_idx, _total) = self.tts.progress();
 
             ScrollArea::vertical()
+                .id_source("karaoke_scroll")
                 .auto_shrink([false; 2])
                 .show(ui, |ui| {
                     ui.add_space(8.0);
@@ -1636,34 +1637,35 @@ impl ExamHelperApp {
                         let is_past = i < current_idx;
 
                         if is_current {
-                            // Highlighted chunk with background
+                            // Highlighted chunk with visible background
                             let frame = egui::Frame::none()
-                                .fill(Color32::from_rgba_premultiplied(255, 205, 0, 40))
-                                .inner_margin(egui::Margin::same(8.0))
-                                .rounding(egui::Rounding::same(4.0));
-                            frame.show(ui, |ui| {
-                                let response = ui.label(
+                                .fill(Color32::from_rgb(60, 50, 10))
+                                .stroke(egui::Stroke::new(2.0, Color32::from_rgb(255, 205, 0)))
+                                .inner_margin(egui::Margin::same(10.0))
+                                .rounding(egui::Rounding::same(6.0));
+                            let r = frame.show(ui, |ui| {
+                                ui.label(
                                     RichText::new(chunk)
                                         .size(15.0)
-                                        .color(Color32::from_rgb(255, 255, 255))
+                                        .color(Color32::from_rgb(255, 235, 120))
                                         .strong(),
                                 );
-                                // Scroll the current chunk into view
-                                response.scroll_to_me(Some(egui::Align::Center));
                             });
+                            // Scroll the entire frame into view
+                            r.response.scroll_to_me(Some(egui::Align::Center));
                         } else if is_past {
                             // Already spoken — dimmed
                             ui.label(
                                 RichText::new(chunk)
                                     .size(14.0)
-                                    .color(Color32::from_rgb(120, 120, 140)),
+                                    .color(Color32::from_rgb(100, 100, 115)),
                             );
                         } else {
                             // Upcoming — normal
                             ui.label(
                                 RichText::new(chunk)
                                     .size(14.0)
-                                    .color(Color32::from_rgb(200, 200, 210)),
+                                    .color(Color32::from_rgb(190, 190, 200)),
                             );
                         }
                         ui.add_space(6.0);
