@@ -10,7 +10,7 @@ use std::{
     path::{Path, PathBuf},
     process::Command,
     sync::{
-        atomic::{AtomicBool, AtomicU8, Ordering},
+        atomic::{AtomicBool, AtomicU8, AtomicUsize, Ordering},
         mpsc, Arc, Mutex,
     },
     thread,
@@ -62,23 +62,26 @@ struct TtsShared {
     /// 0 = Idle, 1 = Speaking, 2 = Stopped
     state: AtomicU8,
     /// Index of the current chunk being spoken (for progress display).
-    current_chunk: std::sync::atomic::AtomicUsize,
+    current_chunk: AtomicUsize,
     /// Total chunks in the current text.
-    total_chunks: std::sync::atomic::AtomicUsize,
+    total_chunks: AtomicUsize,
     /// Available voices (populated by worker on init).
     voices: Mutex<Vec<VoiceInfo>>,
     /// Currently selected voice name.
     selected_voice: Mutex<String>,
+    /// The stripped text chunks sent to TTS, for karaoke-style highlighting.
+    narration_chunks: Mutex<Vec<String>>,
 }
 
 impl TtsShared {
     fn new() -> Self {
         Self {
             state: AtomicU8::new(0),
-            current_chunk: std::sync::atomic::AtomicUsize::new(0),
-            total_chunks: std::sync::atomic::AtomicUsize::new(0),
+            current_chunk: AtomicUsize::new(0),
+            total_chunks: AtomicUsize::new(0),
             voices: Mutex::new(Vec::new()),
             selected_voice: Mutex::new(String::new()),
+            narration_chunks: Mutex::new(Vec::new()),
         }
     }
 
@@ -348,6 +351,11 @@ impl TtsController {
 
     fn speak(&self, text: &str) {
         let cleaned = strip_markdown(text);
+        // Pre-compute chunks so the GUI can render them for karaoke highlighting
+        let chunks = split_into_chunks(&cleaned);
+        if let Ok(mut nc) = self.shared.narration_chunks.lock() {
+            *nc = chunks;
+        }
         let _ = self.tx.send(TtsCommand::Speak(cleaned));
     }
 
@@ -380,6 +388,10 @@ impl TtsController {
 
     fn selected_voice_name(&self) -> String {
         self.shared.selected_voice.lock().unwrap().clone()
+    }
+
+    fn narration_chunks(&self) -> Vec<String> {
+        self.shared.narration_chunks.lock().unwrap().clone()
     }
 }
 
@@ -1607,39 +1619,93 @@ impl ExamHelperApp {
         ui.separator();
 
         // ── Content ──────────────────────────────────────────────────────
-        ScrollArea::vertical()
-            .auto_shrink([false; 2])
-            .show(ui, |ui| {
-                CommonMarkViewer::new("study_content")
-                    .show(ui, &mut self.md_cache, &self.current_content);
+        let tts_state = self.tts.state();
+        let is_narrating = tts_state == NarrationState::Speaking;
 
-                ui.add_space(20.0);
+        if is_narrating {
+            // Karaoke mode: show stripped text chunks with the current one highlighted
+            let chunks = self.tts.narration_chunks();
+            let (current_idx, _total) = self.tts.progress();
 
-                // Mark as read button
-                if let Some(ref path) = self.selected_file {
-                    let path_str = path.to_string_lossy().to_string();
-                    if !self.progress.is_read(&path_str) {
-                        ui.separator();
-                        if ui
-                            .button(
-                                RichText::new("Marcar como leido")
+            ScrollArea::vertical()
+                .auto_shrink([false; 2])
+                .show(ui, |ui| {
+                    ui.add_space(8.0);
+                    for (i, chunk) in chunks.iter().enumerate() {
+                        let is_current = i == current_idx;
+                        let is_past = i < current_idx;
+
+                        if is_current {
+                            // Highlighted chunk with background
+                            let frame = egui::Frame::none()
+                                .fill(Color32::from_rgba_premultiplied(255, 205, 0, 40))
+                                .inner_margin(egui::Margin::same(8.0))
+                                .rounding(egui::Rounding::same(4.0));
+                            frame.show(ui, |ui| {
+                                let response = ui.label(
+                                    RichText::new(chunk)
+                                        .size(15.0)
+                                        .color(Color32::from_rgb(255, 255, 255))
+                                        .strong(),
+                                );
+                                // Scroll the current chunk into view
+                                response.scroll_to_me(Some(egui::Align::Center));
+                            });
+                        } else if is_past {
+                            // Already spoken — dimmed
+                            ui.label(
+                                RichText::new(chunk)
                                     .size(14.0)
-                                    .color(Color32::from_rgb(80, 200, 120)),
-                            )
-                            .clicked()
-                        {
-                            self.progress.mark_read(&path_str);
+                                    .color(Color32::from_rgb(120, 120, 140)),
+                            );
+                        } else {
+                            // Upcoming — normal
+                            ui.label(
+                                RichText::new(chunk)
+                                    .size(14.0)
+                                    .color(Color32::from_rgb(200, 200, 210)),
+                            );
                         }
-                    } else {
-                        ui.separator();
-                        ui.label(
-                            RichText::new("Tema completado")
-                                .size(12.0)
-                                .color(Color32::from_rgb(80, 200, 120)),
-                        );
+                        ui.add_space(6.0);
                     }
-                }
-            });
+                    ui.add_space(20.0);
+                });
+        } else {
+            // Normal markdown view
+            ScrollArea::vertical()
+                .auto_shrink([false; 2])
+                .show(ui, |ui| {
+                    CommonMarkViewer::new("study_content")
+                        .show(ui, &mut self.md_cache, &self.current_content);
+
+                    ui.add_space(20.0);
+
+                    // Mark as read button
+                    if let Some(ref path) = self.selected_file {
+                        let path_str = path.to_string_lossy().to_string();
+                        if !self.progress.is_read(&path_str) {
+                            ui.separator();
+                            if ui
+                                .button(
+                                    RichText::new("Marcar como leido")
+                                        .size(14.0)
+                                        .color(Color32::from_rgb(80, 200, 120)),
+                                )
+                                .clicked()
+                            {
+                                self.progress.mark_read(&path_str);
+                            }
+                        } else {
+                            ui.separator();
+                            ui.label(
+                                RichText::new("Tema completado")
+                                    .size(12.0)
+                                    .color(Color32::from_rgb(80, 200, 120)),
+                            );
+                        }
+                    }
+                });
+        }
     }
 
     fn render_exam_setup(&mut self, ui: &mut egui::Ui) {
