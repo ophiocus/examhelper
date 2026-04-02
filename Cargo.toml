@@ -16,6 +16,12 @@ dirs = "5"
 rand = "0.8"
 tts = "0.26"
 
+[package.metadata.wix]
+upgrade-guid = "A1B2C3D4-E5F6-7890-ABCD-EF1234567890"
+path-guid = "B2C3D4E5-F6A7-8901-BCDE-F23456789012"
+license = false
+eula = false
+
 [build-dependencies]
 winres = "0.1"
 

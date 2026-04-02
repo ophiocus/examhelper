@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='windows-1252'?>
+
+<?if $(sys.BUILDARCH) = x64 or $(sys.BUILDARCH) = arm64 ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+<?else ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+<?endif ?>
+
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+    <Product
+        Id='*'
+        Name='ExamHelper'
+        UpgradeCode='A1B2C3D4-E5F6-7890-ABCD-EF1234567890'
+        Manufacturer='ophiocus'
+        Language='1033'
+        Codepage='1252'
+        Version='$(var.Version)'>
+
+        <Package Id='*'
+            Keywords='Installer'
+            Description='Colombian naturalization exam study helper with TTS narration'
+            Manufacturer='ophiocus'
+            InstallerVersion='450'
+            Languages='1033'
+            Compressed='yes'
+            InstallScope='perMachine'
+            SummaryCodepage='1252'
+            />
+
+        <MajorUpgrade
+            Schedule='afterInstallInitialize'
+            DowngradeErrorMessage='A newer version of [ProductName] is already installed. Setup will now exit.'/>
+
+        <Media Id='1' Cabinet='media1.cab' EmbedCab='yes' DiskPrompt='CD-ROM #1'/>
+        <Property Id='DiskPrompt' Value='ExamHelper Installation'/>
+
+        <Directory Id='TARGETDIR' Name='SourceDir'>
+            <Directory Id='$(var.PlatformProgramFilesFolder)' Name='PFiles'>
+                <Directory Id='APPLICATIONFOLDER' Name='examhelper'>
+
+                    <Component Id='License' Guid='*'>
+                        <File Id='LicenseFile'
+                            DiskId='1'
+                            Source='wix\License.rtf'
+                            KeyPath='yes'/>
+                    </Component>
+
+                    <Directory Id='Bin' Name='bin'>
+                        <Component Id='Path' Guid='B2C3D4E5-F6A7-8901-BCDE-F23456789012' KeyPath='yes'>
+                            <Environment
+                                Id='PATH'
+                                Name='PATH'
+                                Value='[Bin]'
+                                Permanent='no'
+                                Part='last'
+                                Action='set'
+                                System='yes'/>
+                        </Component>
+                        <Component Id='binary0' Guid='*'>
+                            <File
+                                Id='exe0'
+                                Name='examhelper.exe'
+                                DiskId='1'
+                                Source='$(var.CargoTargetBinDir)\examhelper.exe'
+                                KeyPath='yes'/>
+                        </Component>
+                    </Directory>
+
+                    <!-- Content files bundled with installer -->
+                    <Directory Id='Content' Name='content'>
+                        <Directory Id='ContentConstitucion' Name='01-constitucion'>
+                            <Component Id='ContentConstitucion' Guid='*'>
+                                <File Id='c01' Source='content\01-constitucion\01-estructura-del-estado.md' KeyPath='yes'/>
+                                <File Id='c02' Source='content\01-constitucion\02-ramas-del-poder.md'/>
+                                <File Id='c03' Source='content\01-constitucion\03-derechos-fundamentales.md'/>
+                                <File Id='c04' Source='content\01-constitucion\04-participacion-democratica.md'/>
+                                <File Id='c05' Source='content\01-constitucion\05-nacionalidad.md'/>
+                                <File Id='c06' Source='content\01-constitucion\06-organismos-de-control.md'/>
+                                <File Id='c07' Source='content\01-constitucion\07-organizacion-territorial.md'/>
+                            </Component>
+                        </Directory>
+                        <Directory Id='ContentHistoria' Name='02-historia'>
+                            <Component Id='ContentHistoria' Guid='*'>
+                                <File Id='h01' Source='content\02-historia\01-epoca-precolombina-y-colonia.md' KeyPath='yes'/>
+                                <File Id='h02' Source='content\02-historia\02-independencia.md'/>
+                                <File Id='h03' Source='content\02-historia\03-republica.md'/>
+                                <File Id='h04' Source='content\02-historia\04-personajes-importantes.md'/>
+                                <File Id='h05' Source='content\02-historia\05-guerra-mil-dias-y-panama.md'/>
+                                <File Id='h06' Source='content\02-historia\06-conflicto-armado-y-paz.md'/>
+                                <File Id='h07' Source='content\02-historia\07-constitucion-de-1991.md'/>
+                            </Component>
+                        </Directory>
+                        <Directory Id='ContentGeografia' Name='03-geografia'>
+                            <Component Id='ContentGeografia' Guid='*'>
+                                <File Id='g01' Source='content\03-geografia\01-datos-generales.md' KeyPath='yes'/>
+                                <File Id='g02' Source='content\03-geografia\02-regiones-naturales.md'/>
+                                <File Id='g03' Source='content\03-geografia\03-departamentos-y-capitales.md'/>
+                                <File Id='g04' Source='content\03-geografia\04-rios-y-relieve.md'/>
+                                <File Id='g05' Source='content\03-geografia\05-biodiversidad.md'/>
+                            </Component>
+                        </Directory>
+                        <Directory Id='ContentCultura' Name='04-cultura'>
+                            <Component Id='ContentCultura' Guid='*'>
+                                <File Id='cu01' Source='content\04-cultura\01-simbolos-nacionales.md' KeyPath='yes'/>
+                                <File Id='cu02' Source='content\04-cultura\02-himno-nacional.md'/>
+                                <File Id='cu03' Source='content\04-cultura\03-fiestas-y-patrimonio.md'/>
+                                <File Id='cu04' Source='content\04-cultura\04-patrimonio-unesco.md'/>
+                                <File Id='cu05' Source='content\04-cultura\05-diversidad-etnica-y-linguistica.md'/>
+                                <File Id='cu06' Source='content\04-cultura\06-gastronomia-y-deportes.md'/>
+                            </Component>
+                        </Directory>
+                    </Directory>
+
+                    <!-- Question banks -->
+                    <Directory Id='Questions' Name='questions'>
+                        <Component Id='QuestionFiles' Guid='*'>
+                            <File Id='q01' Source='questions\constitucion.toml' KeyPath='yes'/>
+                            <File Id='q02' Source='questions\historia.toml'/>
+                            <File Id='q03' Source='questions\geografia.toml'/>
+                            <File Id='q04' Source='questions\cultura.toml'/>
+                        </Component>
+                    </Directory>
+
+                    <Component Id='DesktopShortcut' Guid='C3D4E5F6-A7B8-9012-CDEF-345678901234'>
+                        <Shortcut Id='DesktopShortcut'
+                            Name='ExamHelper'
+                            Description='Colombian naturalization exam study helper'
+                            Directory='DesktopFolder'
+                            Target='[Bin]examhelper.exe'
+                            WorkingDirectory='APPLICATIONFOLDER'
+                            Icon='ProductICO' />
+                        <RegistryValue Root='HKCU'
+                            Key='Software\ophiocus\ExamHelper'
+                            Name='DesktopShortcut'
+                            Type='integer'
+                            Value='1'
+                            KeyPath='yes' />
+                    </Component>
+
+                </Directory>
+            </Directory>
+            <Directory Id='DesktopFolder' Name='Desktop' />
+        </Directory>
+
+        <Feature
+            Id='Binaries'
+            Title='Application'
+            Description='Installs ExamHelper with all study content and question banks.'
+            Level='1'
+            ConfigurableDirectory='APPLICATIONFOLDER'
+            AllowAdvertise='no'
+            Display='expand'
+            Absent='disallow'>
+
+            <ComponentRef Id='License'/>
+            <ComponentRef Id='binary0'/>
+            <ComponentRef Id='DesktopShortcut'/>
+            <ComponentRef Id='ContentConstitucion'/>
+            <ComponentRef Id='ContentHistoria'/>
+            <ComponentRef Id='ContentGeografia'/>
+            <ComponentRef Id='ContentCultura'/>
+            <ComponentRef Id='QuestionFiles'/>
+
+            <Feature
+                Id='Environment'
+                Title='PATH Environment Variable'
+                Description='Add the install location of the [ProductName] executable to the PATH system environment variable.'
+                Level='1'
+                Absent='allow'>
+                <ComponentRef Id='Path'/>
+            </Feature>
+        </Feature>
+
+        <SetProperty Id='ARPINSTALLLOCATION' Value='[APPLICATIONFOLDER]' After='CostFinalize'/>
+
+        <Icon Id='ProductICO' SourceFile='assets\icon.ico'/>
+        <Property Id='ARPPRODUCTICON' Value='ProductICO' />
+        <Property Id='ARPHELPLINK' Value='https://github.com/ophiocus/examhelper'/>
+
+        <UI>
+            <UIRef Id='WixUI_FeatureTree'/>
+        </UI>
+
+        <WixVariable Id='WixUILicenseRtf' Value='wix\License.rtf'/>
+
+    </Product>
+
+</Wix>

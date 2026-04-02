@@ -4,7 +4,7 @@ fn main() {
         let mut res = winres::WindowsResource::new();
         res.set("ProductName", "ExamHelper");
         res.set("FileDescription", "Colombian Naturalization Exam Study Helper");
-        // res.set_icon("assets/icon.ico"); // uncomment when icon is available
+        res.set_icon("assets/icon.ico");
         let _ = res.compile();
     }
 }
