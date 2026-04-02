@@ -40,86 +40,67 @@
                 <Directory Id='APPLICATIONFOLDER' Name='examhelper'>
 
                     <Component Id='License' Guid='*'>
-                        <File Id='LicenseFile'
-                            DiskId='1'
-                            Source='wix\License.rtf'
-                            KeyPath='yes'/>
+                        <File Id='LicenseFile' DiskId='1' Source='wix\License.rtf' KeyPath='yes'/>
                     </Component>
 
                     <Directory Id='Bin' Name='bin'>
                         <Component Id='Path' Guid='B2C3D4E5-F6A7-8901-BCDE-F23456789012' KeyPath='yes'>
-                            <Environment
-                                Id='PATH'
-                                Name='PATH'
-                                Value='[Bin]'
-                                Permanent='no'
-                                Part='last'
-                                Action='set'
-                                System='yes'/>
+                            <Environment Id='PATH' Name='PATH' Value='[Bin]' Permanent='no' Part='last' Action='set' System='yes'/>
                         </Component>
                         <Component Id='binary0' Guid='*'>
-                            <File
-                                Id='exe0'
-                                Name='examhelper.exe'
-                                DiskId='1'
-                                Source='$(var.CargoTargetBinDir)\examhelper.exe'
-                                KeyPath='yes'/>
+                            <File Id='exe0' Name='examhelper.exe' DiskId='1' Source='$(var.CargoTargetBinDir)\examhelper.exe' KeyPath='yes'/>
                         </Component>
                     </Directory>
 
-                    <!-- Content files bundled with installer -->
+                    <!-- Content: Constitución -->
                     <Directory Id='Content' Name='content'>
-                        <Directory Id='ContentConstitucion' Name='01-constitucion'>
-                            <Component Id='ContentConstitucion' Guid='*'>
-                                <File Id='c01' Source='content\01-constitucion\01-estructura-del-estado.md' KeyPath='yes'/>
-                                <File Id='c02' Source='content\01-constitucion\02-ramas-del-poder.md'/>
-                                <File Id='c03' Source='content\01-constitucion\03-derechos-fundamentales.md'/>
-                                <File Id='c04' Source='content\01-constitucion\04-participacion-democratica.md'/>
-                                <File Id='c05' Source='content\01-constitucion\05-nacionalidad.md'/>
-                                <File Id='c06' Source='content\01-constitucion\06-organismos-de-control.md'/>
-                                <File Id='c07' Source='content\01-constitucion\07-organizacion-territorial.md'/>
-                            </Component>
+                        <Directory Id='DirConstitucion' Name='01-constitucion'>
+                            <Component Id='c01' Guid='*'><File Id='fc01' Source='content\01-constitucion\01-estructura-del-estado.md' KeyPath='yes'/></Component>
+                            <Component Id='c02' Guid='*'><File Id='fc02' Source='content\01-constitucion\02-ramas-del-poder.md' KeyPath='yes'/></Component>
+                            <Component Id='c03' Guid='*'><File Id='fc03' Source='content\01-constitucion\03-derechos-fundamentales.md' KeyPath='yes'/></Component>
+                            <Component Id='c04' Guid='*'><File Id='fc04' Source='content\01-constitucion\04-participacion-democratica.md' KeyPath='yes'/></Component>
+                            <Component Id='c05' Guid='*'><File Id='fc05' Source='content\01-constitucion\05-nacionalidad.md' KeyPath='yes'/></Component>
+                            <Component Id='c06' Guid='*'><File Id='fc06' Source='content\01-constitucion\06-organismos-de-control.md' KeyPath='yes'/></Component>
+                            <Component Id='c07' Guid='*'><File Id='fc07' Source='content\01-constitucion\07-organizacion-territorial.md' KeyPath='yes'/></Component>
                         </Directory>
-                        <Directory Id='ContentHistoria' Name='02-historia'>
-                            <Component Id='ContentHistoria' Guid='*'>
-                                <File Id='h01' Source='content\02-historia\01-epoca-precolombina-y-colonia.md' KeyPath='yes'/>
-                                <File Id='h02' Source='content\02-historia\02-independencia.md'/>
-                                <File Id='h03' Source='content\02-historia\03-republica.md'/>
-                                <File Id='h04' Source='content\02-historia\04-personajes-importantes.md'/>
-                                <File Id='h05' Source='content\02-historia\05-guerra-mil-dias-y-panama.md'/>
-                                <File Id='h06' Source='content\02-historia\06-conflicto-armado-y-paz.md'/>
-                                <File Id='h07' Source='content\02-historia\07-constitucion-de-1991.md'/>
-                            </Component>
+
+                        <!-- Content: Historia -->
+                        <Directory Id='DirHistoria' Name='02-historia'>
+                            <Component Id='h01' Guid='*'><File Id='fh01' Source='content\02-historia\01-epoca-precolombina-y-colonia.md' KeyPath='yes'/></Component>
+                            <Component Id='h02' Guid='*'><File Id='fh02' Source='content\02-historia\02-independencia.md' KeyPath='yes'/></Component>
+                            <Component Id='h03' Guid='*'><File Id='fh03' Source='content\02-historia\03-republica.md' KeyPath='yes'/></Component>
+                            <Component Id='h04' Guid='*'><File Id='fh04' Source='content\02-historia\04-personajes-importantes.md' KeyPath='yes'/></Component>
+                            <Component Id='h05' Guid='*'><File Id='fh05' Source='content\02-historia\05-guerra-mil-dias-y-panama.md' KeyPath='yes'/></Component>
+                            <Component Id='h06' Guid='*'><File Id='fh06' Source='content\02-historia\06-conflicto-armado-y-paz.md' KeyPath='yes'/></Component>
+                            <Component Id='h07' Guid='*'><File Id='fh07' Source='content\02-historia\07-constitucion-de-1991.md' KeyPath='yes'/></Component>
                         </Directory>
-                        <Directory Id='ContentGeografia' Name='03-geografia'>
-                            <Component Id='ContentGeografia' Guid='*'>
-                                <File Id='g01' Source='content\03-geografia\01-datos-generales.md' KeyPath='yes'/>
-                                <File Id='g02' Source='content\03-geografia\02-regiones-naturales.md'/>
-                                <File Id='g03' Source='content\03-geografia\03-departamentos-y-capitales.md'/>
-                                <File Id='g04' Source='content\03-geografia\04-rios-y-relieve.md'/>
-                                <File Id='g05' Source='content\03-geografia\05-biodiversidad.md'/>
-                            </Component>
+
+                        <!-- Content: Geografía -->
+                        <Directory Id='DirGeografia' Name='03-geografia'>
+                            <Component Id='g01' Guid='*'><File Id='fg01' Source='content\03-geografia\01-datos-generales.md' KeyPath='yes'/></Component>
+                            <Component Id='g02' Guid='*'><File Id='fg02' Source='content\03-geografia\02-regiones-naturales.md' KeyPath='yes'/></Component>
+                            <Component Id='g03' Guid='*'><File Id='fg03' Source='content\03-geografia\03-departamentos-y-capitales.md' KeyPath='yes'/></Component>
+                            <Component Id='g04' Guid='*'><File Id='fg04' Source='content\03-geografia\04-rios-y-relieve.md' KeyPath='yes'/></Component>
+                            <Component Id='g05' Guid='*'><File Id='fg05' Source='content\03-geografia\05-biodiversidad.md' KeyPath='yes'/></Component>
                         </Directory>
-                        <Directory Id='ContentCultura' Name='04-cultura'>
-                            <Component Id='ContentCultura' Guid='*'>
-                                <File Id='cu01' Source='content\04-cultura\01-simbolos-nacionales.md' KeyPath='yes'/>
-                                <File Id='cu02' Source='content\04-cultura\02-himno-nacional.md'/>
-                                <File Id='cu03' Source='content\04-cultura\03-fiestas-y-patrimonio.md'/>
-                                <File Id='cu04' Source='content\04-cultura\04-patrimonio-unesco.md'/>
-                                <File Id='cu05' Source='content\04-cultura\05-diversidad-etnica-y-linguistica.md'/>
-                                <File Id='cu06' Source='content\04-cultura\06-gastronomia-y-deportes.md'/>
-                            </Component>
+
+                        <!-- Content: Cultura -->
+                        <Directory Id='DirCultura' Name='04-cultura'>
+                            <Component Id='cu01' Guid='*'><File Id='fcu01' Source='content\04-cultura\01-simbolos-nacionales.md' KeyPath='yes'/></Component>
+                            <Component Id='cu02' Guid='*'><File Id='fcu02' Source='content\04-cultura\02-himno-nacional.md' KeyPath='yes'/></Component>
+                            <Component Id='cu03' Guid='*'><File Id='fcu03' Source='content\04-cultura\03-fiestas-y-patrimonio.md' KeyPath='yes'/></Component>
+                            <Component Id='cu04' Guid='*'><File Id='fcu04' Source='content\04-cultura\04-patrimonio-unesco.md' KeyPath='yes'/></Component>
+                            <Component Id='cu05' Guid='*'><File Id='fcu05' Source='content\04-cultura\05-diversidad-etnica-y-linguistica.md' KeyPath='yes'/></Component>
+                            <Component Id='cu06' Guid='*'><File Id='fcu06' Source='content\04-cultura\06-gastronomia-y-deportes.md' KeyPath='yes'/></Component>
                         </Directory>
                     </Directory>
 
                     <!-- Question banks -->
                     <Directory Id='Questions' Name='questions'>
-                        <Component Id='QuestionFiles' Guid='*'>
-                            <File Id='q01' Source='questions\constitucion.toml' KeyPath='yes'/>
-                            <File Id='q02' Source='questions\historia.toml'/>
-                            <File Id='q03' Source='questions\geografia.toml'/>
-                            <File Id='q04' Source='questions\cultura.toml'/>
-                        </Component>
+                        <Component Id='q01' Guid='*'><File Id='fq01' Source='questions\constitucion.toml' KeyPath='yes'/></Component>
+                        <Component Id='q02' Guid='*'><File Id='fq02' Source='questions\historia.toml' KeyPath='yes'/></Component>
+                        <Component Id='q03' Guid='*'><File Id='fq03' Source='questions\geografia.toml' KeyPath='yes'/></Component>
+                        <Component Id='q04' Guid='*'><File Id='fq04' Source='questions\cultura.toml' KeyPath='yes'/></Component>
                     </Directory>
 
                     <Component Id='DesktopShortcut' Guid='C3D4E5F6-A7B8-9012-CDEF-345678901234'>
@@ -156,11 +137,22 @@
             <ComponentRef Id='License'/>
             <ComponentRef Id='binary0'/>
             <ComponentRef Id='DesktopShortcut'/>
-            <ComponentRef Id='ContentConstitucion'/>
-            <ComponentRef Id='ContentHistoria'/>
-            <ComponentRef Id='ContentGeografia'/>
-            <ComponentRef Id='ContentCultura'/>
-            <ComponentRef Id='QuestionFiles'/>
+
+            <!-- Content files -->
+            <ComponentRef Id='c01'/><ComponentRef Id='c02'/><ComponentRef Id='c03'/>
+            <ComponentRef Id='c04'/><ComponentRef Id='c05'/><ComponentRef Id='c06'/>
+            <ComponentRef Id='c07'/>
+            <ComponentRef Id='h01'/><ComponentRef Id='h02'/><ComponentRef Id='h03'/>
+            <ComponentRef Id='h04'/><ComponentRef Id='h05'/><ComponentRef Id='h06'/>
+            <ComponentRef Id='h07'/>
+            <ComponentRef Id='g01'/><ComponentRef Id='g02'/><ComponentRef Id='g03'/>
+            <ComponentRef Id='g04'/><ComponentRef Id='g05'/>
+            <ComponentRef Id='cu01'/><ComponentRef Id='cu02'/><ComponentRef Id='cu03'/>
+            <ComponentRef Id='cu04'/><ComponentRef Id='cu05'/><ComponentRef Id='cu06'/>
+
+            <!-- Question banks -->
+            <ComponentRef Id='q01'/><ComponentRef Id='q02'/>
+            <ComponentRef Id='q03'/><ComponentRef Id='q04'/>
 
             <Feature
                 Id='Environment'
