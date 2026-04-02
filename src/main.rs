@@ -413,6 +413,33 @@ fn strip_markdown(md: &str) -> String {
             continue;
         }
 
+        // Handle table rows: split cells, skip separator rows
+        if trimmed.starts_with('|') && trimmed.ends_with('|') {
+            // Skip separator rows like |---|---|---|
+            let inner = &trimmed[1..trimmed.len()-1];
+            let is_separator = inner.split('|').all(|cell| {
+                let c = cell.trim();
+                !c.is_empty() && c.chars().all(|ch| ch == '-' || ch == ':')
+            });
+            if is_separator {
+                continue;
+            }
+            // Read each cell with a comma pause, end row with a period
+            let cells: Vec<&str> = inner.split('|')
+                .map(|c| c.trim())
+                .filter(|c| !c.is_empty())
+                .collect();
+            for (i, cell) in cells.iter().enumerate() {
+                let clean = strip_inline_markdown(cell);
+                out.push_str(&clean);
+                if i + 1 < cells.len() {
+                    out.push_str(", ");
+                }
+            }
+            out.push_str(".\n");
+            continue;
+        }
+
         // Strip heading markers
         let line_clean = if trimmed.starts_with('#') {
             let stripped = trimmed.trim_start_matches('#').trim();
@@ -428,54 +455,60 @@ fn strip_markdown(md: &str) -> String {
         }
 
         // Strip inline markdown
-        let mut result = String::new();
-        let mut chars = line_clean.chars().peekable();
-        while let Some(c) = chars.next() {
-            match c {
-                '*' | '_' => {
-                    // Skip bold/italic markers
-                    while chars.peek() == Some(&'*') || chars.peek() == Some(&'_') {
-                        chars.next();
-                    }
-                }
-                '`' => {
-                    // Skip code backticks
-                    while chars.peek() == Some(&'`') {
-                        chars.next();
-                    }
-                }
-                '[' => {
-                    // Extract link text [text](url) → text
-                    let mut link_text = String::new();
-                    for lc in chars.by_ref() {
-                        if lc == ']' { break; }
-                        link_text.push(lc);
-                    }
-                    // Skip (url) part
-                    if chars.peek() == Some(&'(') {
-                        chars.next();
-                        for lc in chars.by_ref() {
-                            if lc == ')' { break; }
-                        }
-                    }
-                    result.push_str(&link_text);
-                }
-                '|' => {
-                    // Table cell separator → space
-                    result.push(' ');
-                }
-                '-' if trimmed.starts_with("- ") && result.is_empty() => {
-                    // List item marker, skip the dash
-                    result.push(' ');
-                }
-                _ => result.push(c),
-            }
-        }
+        let result = strip_inline_markdown(line_clean);
 
         out.push_str(result.trim());
         out.push(' ');
     }
     out
+}
+
+/// Strip inline markdown formatting (bold, italic, code, links) from a piece of text.
+fn strip_inline_markdown(text: &str) -> String {
+    let mut result = String::new();
+    let mut chars = text.chars().peekable();
+    while let Some(c) = chars.next() {
+        match c {
+            '*' | '_' => {
+                // Skip bold/italic markers
+                while chars.peek() == Some(&'*') || chars.peek() == Some(&'_') {
+                    chars.next();
+                }
+            }
+            '`' => {
+                // Skip code backticks
+                while chars.peek() == Some(&'`') {
+                    chars.next();
+                }
+            }
+            '[' => {
+                // Extract link text [text](url) → text
+                let mut link_text = String::new();
+                for lc in chars.by_ref() {
+                    if lc == ']' { break; }
+                    link_text.push(lc);
+                }
+                // Skip (url) part
+                if chars.peek() == Some(&'(') {
+                    chars.next();
+                    for lc in chars.by_ref() {
+                        if lc == ')' { break; }
+                    }
+                }
+                result.push_str(&link_text);
+            }
+            '|' => {
+                // Stray pipe → comma
+                result.push_str(", ");
+            }
+            '-' if text.starts_with("- ") && result.is_empty() => {
+                // List item marker, skip the dash
+                result.push(' ');
+            }
+            _ => result.push(c),
+        }
+    }
+    result
 }
 
 /// Split text into speakable chunks (by paragraph/double-newline, then by sentence).
