@@ -4,7 +4,7 @@ pub use strip::{split_into_lang_chunks, strip_lang_tags, strip_markdown, LangChu
 
 use std::collections::HashMap;
 use std::sync::{
-    atomic::{AtomicBool, AtomicU8, AtomicUsize, Ordering},
+    atomic::{AtomicU8, AtomicUsize, Ordering},
     mpsc, Arc, Mutex,
 };
 use std::thread;
@@ -18,12 +18,10 @@ pub struct VoiceInfo {
 
 /// Commands sent from the GUI thread to the TTS worker thread.
 pub enum TtsCommand {
-    /// Speak pre-chunked text with per-chunk language annotations.
     Speak(Vec<LangChunk>),
     Stop,
     SetRate(f32),
     SetVoice(String),
-    /// Map of language code → voice name for auto-switching.
     SetVoiceMap(HashMap<String, String>),
     Quit,
 }
@@ -96,9 +94,13 @@ impl TtsController {
         let shared = Arc::new(TtsShared::new());
         let shared_clone = Arc::clone(&shared);
 
-        thread::spawn(move || {
-            Self::worker(rx, shared_clone);
-        });
+        thread::Builder::new()
+            .name("tts-worker".to_string())
+            .stack_size(4 * 1024 * 1024)
+            .spawn(move || {
+                Self::worker(rx, shared_clone);
+            })
+            .expect("failed to spawn TTS thread");
 
         Self {
             tx,
@@ -130,15 +132,20 @@ impl TtsController {
             }
             all_voices = voices;
 
-            // Pick a sensible default voice (English or first available)
             let default_voice = all_voices
                 .iter()
                 .find(|v| {
-                    v.language().to_string().to_lowercase().starts_with("en-us")
+                    v.language()
+                        .to_string()
+                        .to_lowercase()
+                        .starts_with("en-us")
                 })
                 .or_else(|| {
                     all_voices.iter().find(|v| {
-                        v.language().to_string().to_lowercase().starts_with("en")
+                        v.language()
+                            .to_string()
+                            .to_lowercase()
+                            .starts_with("en")
                     })
                 })
                 .or(all_voices.first());
@@ -154,119 +161,30 @@ impl TtsController {
         let normal = tts.normal_rate();
         let _ = tts.set_rate(normal);
 
-        let stop_flag = Arc::new(AtomicBool::new(false));
-
-        // Language → voice name mapping, set by the GUI when cartridge changes
         let mut voice_map: HashMap<String, String> = HashMap::new();
         let mut current_voice_lang = String::new();
 
+        // Main command loop — kept flat to minimize stack depth
         loop {
             match rx.recv() {
-                Ok(TtsCommand::Speak(chunks)) => {
-                    stop_flag.store(false, Ordering::Relaxed);
-
-                    let total = chunks.len();
-                    shared.total_chunks.store(total, Ordering::Relaxed);
-                    shared.current_chunk.store(0, Ordering::Relaxed);
-                    shared.set_state(NarrationState::Speaking);
-
-                    // Store chunks for karaoke display
-                    if let Ok(mut nc) = shared.narration_chunks.lock() {
-                        *nc = chunks.clone();
-                    }
-
-                    for (i, chunk) in chunks.iter().enumerate() {
-                        if stop_flag.load(Ordering::Relaxed) {
-                            break;
+                Ok(TtsCommand::Speak(initial_chunks)) => {
+                    // Narration loop: handles the current chunks, and if a new
+                    // Speak arrives mid-narration, swaps in the new chunks and
+                    // restarts — all without adding stack frames.
+                    let mut chunks = initial_chunks;
+                    'narrate: loop {
+                        let total = chunks.len();
+                        shared.total_chunks.store(total, Ordering::Relaxed);
+                        shared.current_chunk.store(0, Ordering::Relaxed);
+                        shared.set_state(NarrationState::Speaking);
+                        if let Ok(mut nc) = shared.narration_chunks.lock() {
+                            *nc = chunks.clone();
                         }
 
-                        // Drain any pending commands
-                        if let Ok(cmd) = rx.try_recv() {
-                            match cmd {
-                                TtsCommand::Stop => {
-                                    let _ = tts.stop();
-                                    shared.set_state(NarrationState::Stopped);
-                                    break;
-                                }
-                                TtsCommand::SetRate(r) => {
-                                    let _ = tts.set_rate(slider_to_rate(r));
-                                }
-                                TtsCommand::SetVoice(name) => {
-                                    if let Some(voice) =
-                                        all_voices.iter().find(|v| v.name() == name)
-                                    {
-                                        let _ = tts.set_voice(voice);
-                                        if let Ok(mut sel) = shared.selected_voice.lock() {
-                                            *sel = name;
-                                        }
-                                        current_voice_lang.clear();
-                                    }
-                                }
-                                TtsCommand::SetVoiceMap(map) => {
-                                    voice_map = map;
-                                }
-                                TtsCommand::Quit => {
-                                    let _ = tts.stop();
-                                    return;
-                                }
-                                TtsCommand::Speak(new_chunks) => {
-                                    // New speak request — restart from scratch
-                                    let _ = tts.stop();
-                                    let total2 = new_chunks.len();
-                                    shared.total_chunks.store(total2, Ordering::Relaxed);
-                                    shared.current_chunk.store(0, Ordering::Relaxed);
-                                    if let Ok(mut nc) = shared.narration_chunks.lock() {
-                                        *nc = new_chunks.clone();
-                                    }
-                                    // Process the new chunks in a recursive-ish way
-                                    // by breaking and letting the outer loop handle it
-                                    // Actually, we'll just recursively handle it inline
-                                    speak_chunks(
-                                        &mut tts,
-                                        &new_chunks,
-                                        &rx,
-                                        &shared,
-                                        &all_voices,
-                                        &mut voice_map,
-                                        &mut current_voice_lang,
-                                    );
-                                    break;
-                                }
-                            }
-                            if shared.get_state() == NarrationState::Stopped {
-                                break;
-                            }
-                            // If we handled a non-break command, still need to
-                            // continue with current chunk
-                        }
+                        let mut restart_with: Option<Vec<LangChunk>> = None;
 
-                        // Switch voice if chunk language differs from current
-                        if chunk.lang != current_voice_lang {
-                            if let Some(voice_name) = voice_map.get(&chunk.lang) {
-                                if let Some(voice) =
-                                    all_voices.iter().find(|v| v.name() == voice_name.as_str())
-                                {
-                                    let _ = tts.set_voice(voice);
-                                    current_voice_lang = chunk.lang.clone();
-                                }
-                            } else {
-                                // Try matching by prefix directly
-                                let lang_lower = chunk.lang.to_lowercase();
-                                if let Some(voice) = all_voices.iter().find(|v| {
-                                    v.language().to_string().to_lowercase().starts_with(&lang_lower)
-                                }) {
-                                    let _ = tts.set_voice(voice);
-                                    current_voice_lang = chunk.lang.clone();
-                                }
-                            }
-                        }
-
-                        shared.current_chunk.store(i, Ordering::Relaxed);
-                        let _ = tts.speak(&chunk.text, false);
-
-                        // Wait for utterance to finish
-                        while tts.is_speaking().unwrap_or(false) {
-                            thread::sleep(std::time::Duration::from_millis(50));
+                        for (i, chunk) in chunks.iter().enumerate() {
+                            // Check for commands between chunks
                             if let Ok(cmd) = rx.try_recv() {
                                 match cmd {
                                     TtsCommand::Stop => {
@@ -274,14 +192,19 @@ impl TtsController {
                                         shared.set_state(NarrationState::Stopped);
                                         break;
                                     }
+                                    TtsCommand::Speak(new) => {
+                                        let _ = tts.stop();
+                                        restart_with = Some(new);
+                                        break;
+                                    }
                                     TtsCommand::SetRate(r) => {
                                         let _ = tts.set_rate(slider_to_rate(r));
                                     }
                                     TtsCommand::SetVoice(name) => {
-                                        if let Some(voice) =
+                                        if let Some(v) =
                                             all_voices.iter().find(|v| v.name() == name)
                                         {
-                                            let _ = tts.set_voice(voice);
+                                            let _ = tts.set_voice(v);
                                             if let Ok(mut sel) = shared.selected_voice.lock() {
                                                 *sel = name;
                                             }
@@ -295,18 +218,97 @@ impl TtsController {
                                         let _ = tts.stop();
                                         return;
                                     }
-                                    _ => {
-                                        stop_flag.store(true, Ordering::Relaxed);
+                                }
+                                if shared.get_state() == NarrationState::Stopped {
+                                    break;
+                                }
+                            }
+
+                            // Switch voice if chunk language differs
+                            if chunk.lang != current_voice_lang {
+                                let voice_name = voice_map.get(&chunk.lang);
+                                let found = voice_name.and_then(|vn| {
+                                    all_voices.iter().find(|v| v.name() == vn.as_str())
+                                });
+                                let found = found.or_else(|| {
+                                    let ll = chunk.lang.to_lowercase();
+                                    all_voices.iter().find(|v| {
+                                        v.language()
+                                            .to_string()
+                                            .to_lowercase()
+                                            .starts_with(&ll)
+                                    })
+                                });
+                                if let Some(v) = found {
+                                    let _ = tts.set_voice(v);
+                                    current_voice_lang = chunk.lang.clone();
+                                }
+                            }
+
+                            shared.current_chunk.store(i, Ordering::Relaxed);
+                            let _ = tts.speak(&chunk.text, false);
+
+                            // Wait for utterance to finish, checking for commands
+                            while tts.is_speaking().unwrap_or(false) {
+                                thread::sleep(std::time::Duration::from_millis(50));
+                                if let Ok(cmd) = rx.try_recv() {
+                                    match cmd {
+                                        TtsCommand::Stop => {
+                                            let _ = tts.stop();
+                                            shared.set_state(NarrationState::Stopped);
+                                            break;
+                                        }
+                                        TtsCommand::Speak(new) => {
+                                            let _ = tts.stop();
+                                            restart_with = Some(new);
+                                            break;
+                                        }
+                                        TtsCommand::SetRate(r) => {
+                                            let _ = tts.set_rate(slider_to_rate(r));
+                                        }
+                                        TtsCommand::SetVoice(name) => {
+                                            if let Some(v) =
+                                                all_voices.iter().find(|v| v.name() == name)
+                                            {
+                                                let _ = tts.set_voice(v);
+                                                if let Ok(mut sel) =
+                                                    shared.selected_voice.lock()
+                                                {
+                                                    *sel = name;
+                                                }
+                                                current_voice_lang.clear();
+                                            }
+                                        }
+                                        TtsCommand::SetVoiceMap(map) => {
+                                            voice_map = map;
+                                        }
+                                        TtsCommand::Quit => {
+                                            let _ = tts.stop();
+                                            return;
+                                        }
                                     }
                                 }
                             }
+                            if shared.get_state() == NarrationState::Stopped
+                                || restart_with.is_some()
+                            {
+                                break;
+                            }
                         }
-                        if shared.get_state() == NarrationState::Stopped {
-                            break;
+
+                        // If a new Speak arrived, swap chunks and re-enter narrate loop
+                        match restart_with {
+                            Some(new) => {
+                                chunks = new;
+                                continue 'narrate;
+                            }
+                            None => {
+                                if shared.get_state() == NarrationState::Speaking {
+                                    shared.set_state(NarrationState::Idle);
+                                }
+                                break 'narrate;
+                            }
                         }
-                    }
-                    if shared.get_state() == NarrationState::Speaking {
-                        shared.set_state(NarrationState::Idle);
                     }
                 }
                 Ok(TtsCommand::Stop) => {
@@ -357,12 +359,10 @@ impl TtsController {
         let _ = self.tx.send(TtsCommand::SetVoice(name.to_string()));
     }
 
-    /// Set the language→voice mapping for per-chunk voice switching.
     pub fn set_voice_map(&self, map: HashMap<String, String>) {
         let _ = self.tx.send(TtsCommand::SetVoiceMap(map));
     }
 
-    /// Set the default language for content without explicit `{{lang:XX}}` tags.
     pub fn set_default_lang(&self, lang: &str) {
         if let Ok(mut dl) = self.default_lang.lock() {
             *dl = lang.to_string();
@@ -396,84 +396,5 @@ impl TtsController {
 impl Drop for TtsController {
     fn drop(&mut self) {
         let _ = self.tx.send(TtsCommand::Quit);
-    }
-}
-
-/// Helper for handling a new Speak request mid-narration.
-fn speak_chunks(
-    tts: &mut tts::Tts,
-    chunks: &[LangChunk],
-    rx: &mpsc::Receiver<TtsCommand>,
-    shared: &Arc<TtsShared>,
-    all_voices: &[tts::Voice],
-    voice_map: &mut HashMap<String, String>,
-    current_voice_lang: &mut String,
-) {
-    let total = chunks.len();
-    shared.total_chunks.store(total, Ordering::Relaxed);
-    shared.current_chunk.store(0, Ordering::Relaxed);
-    shared.set_state(NarrationState::Speaking);
-
-    for (i, chunk) in chunks.iter().enumerate() {
-        if let Ok(cmd) = rx.try_recv() {
-            match cmd {
-                TtsCommand::Stop => {
-                    let _ = tts.stop();
-                    shared.set_state(NarrationState::Stopped);
-                    return;
-                }
-                TtsCommand::SetRate(r) => {
-                    let _ = tts.set_rate(slider_to_rate(r));
-                }
-                TtsCommand::SetVoiceMap(map) => {
-                    *voice_map = map;
-                }
-                TtsCommand::Quit => {
-                    let _ = tts.stop();
-                    return;
-                }
-                _ => {}
-            }
-        }
-
-        // Switch voice for language
-        if chunk.lang != *current_voice_lang {
-            if let Some(voice_name) = voice_map.get(&chunk.lang) {
-                if let Some(voice) = all_voices.iter().find(|v| v.name() == voice_name.as_str()) {
-                    let _ = tts.set_voice(voice);
-                    *current_voice_lang = chunk.lang.clone();
-                }
-            }
-        }
-
-        shared.current_chunk.store(i, Ordering::Relaxed);
-        let _ = tts.speak(&chunk.text, false);
-
-        while tts.is_speaking().unwrap_or(false) {
-            thread::sleep(std::time::Duration::from_millis(50));
-            if let Ok(cmd) = rx.try_recv() {
-                match cmd {
-                    TtsCommand::Stop => {
-                        let _ = tts.stop();
-                        shared.set_state(NarrationState::Stopped);
-                        return;
-                    }
-                    TtsCommand::SetRate(r) => {
-                        let _ = tts.set_rate(slider_to_rate(r));
-                    }
-                    TtsCommand::Quit => {
-                        let _ = tts.stop();
-                        return;
-                    }
-                    _ => {}
-                }
-            }
-        }
-        if shared.get_state() == NarrationState::Stopped {
-            return;
-        }
-    }
-    if shared.get_state() == NarrationState::Speaking {
-        shared.set_state(NarrationState::Idle);
     }
 }
