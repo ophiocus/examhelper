@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 1: Introduction to Japanese
 
 Japanese uses **three writing systems** that work together:
@@ -14,7 +15,9 @@ Japanese uses **three writing systems** that work together:
 
 A typical Japanese sentence mixes all three:
 
+{{lang:ja}}
 **私はコーヒーを飲みます。**
+{{lang:en}}
 - 私 (わたし) = I — *kanji*
 - は = topic marker — *hiragana*
 - コーヒー = coffee — *katakana*

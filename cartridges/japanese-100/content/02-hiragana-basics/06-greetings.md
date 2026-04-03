@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 6: Greetings & Self-Introduction
 
 ## Essential Greetings
@@ -34,23 +35,36 @@ The basic formula:
 
 ### Example Introduction
 
-> はじめまして。
-> カルロスです。
-> コロンビアから来ました。
-> どうぞよろしくおねがいします。
+{{lang:ja}}
+はじめまして。
+カルロスです。
+コロンビアから来ました。
+どうぞよろしくおねがいします。
 
+{{lang:en}}
 ## Key Phrase: です (desu)
 
 **です** is the polite copula — roughly equals "is/am/are":
 
-- 私は学生**です**。(watashi wa gakusei **desu**) = I **am** a student.
-- これは本**です**。(kore wa hon **desu**) = This **is** a book.
-- 日本人**です**。(nihonjin **desu**) = [I] **am** Japanese.
+{{lang:ja}}
+私は学生です。
+これは本です。
+日本人です。
+
+{{lang:en}}
+- watashi wa gakusei desu = I am a student.
+- kore wa hon desu = This is a book.
+- nihonjin desu = I am Japanese.
 
 The negative form is **ではありません** (dewa arimasen) or casually **じゃない** (janai):
 
-- 学生**ではありません**。= [I] am **not** a student.
-- 日本人**じゃない**。= [I'm] **not** Japanese.
+{{lang:ja}}
+学生ではありません。
+日本人じゃない。
+
+{{lang:en}}
+- I am not a student.
+- I'm not Japanese.
 
 ## Common First Conversation
 

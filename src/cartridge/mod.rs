@@ -7,6 +7,17 @@ pub use registry::CartridgeRegistry;
 use serde::Deserialize;
 use std::path::PathBuf;
 
+/// A language used by this cartridge, with TTS voice matching preferences.
+#[derive(Debug, Clone, Deserialize)]
+pub struct LanguageConfig {
+    /// ISO 639-1 language code (e.g. "ja", "en", "es").
+    pub code: String,
+    /// Ordered prefixes to match against system TTS voice language strings.
+    /// e.g. ["ja-JP", "ja"] or ["es-CO", "es-MX", "es"].
+    #[serde(default)]
+    pub tts_preference: Vec<String>,
+}
+
 /// Metadata describing a cartridge.
 #[derive(Debug, Clone, Deserialize)]
 #[allow(dead_code)]
@@ -15,17 +26,55 @@ pub struct CartridgeManifest {
     pub name: String,
     pub description: String,
     pub version: String,
-    /// ISO 639-1 language code.
+    /// Primary language (kept for backward compat / default language for TTS).
+    #[serde(default)]
     pub language: String,
-    /// Preferred TTS voice language prefixes, e.g. ["es-CO", "es-MX", "es"].
+    /// Legacy single-language TTS voice preference (deprecated, use `languages`).
     #[serde(default)]
     pub tts_voice_preference: Vec<String>,
+    /// All languages used in this cartridge's content, with per-language TTS preferences.
+    /// Content switches between these via `{{lang:XX}}` tags.
+    #[serde(default)]
+    pub languages: Vec<LanguageConfig>,
     /// Accent color for UI theming (RGB).
     #[serde(default = "default_accent")]
     pub accent_color: [u8; 3],
     /// Exam configuration.
     #[serde(default)]
     pub exam: ExamConfig,
+}
+
+impl CartridgeManifest {
+    /// Return all language configs, falling back to the legacy single-language field.
+    pub fn all_languages(&self) -> Vec<LanguageConfig> {
+        if !self.languages.is_empty() {
+            return self.languages.clone();
+        }
+        // Fall back to legacy single language + tts_voice_preference
+        if !self.language.is_empty() {
+            vec![LanguageConfig {
+                code: self.language.clone(),
+                tts_preference: if self.tts_voice_preference.is_empty() {
+                    vec![self.language.clone()]
+                } else {
+                    self.tts_voice_preference.clone()
+                },
+            }]
+        } else {
+            Vec::new()
+        }
+    }
+
+    /// Return the default/primary language code.
+    pub fn default_language(&self) -> &str {
+        if let Some(first) = self.languages.first() {
+            &first.code
+        } else if !self.language.is_empty() {
+            &self.language
+        } else {
+            "en"
+        }
+    }
 }
 
 fn default_accent() -> [u8; 3] {

@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 5: Hiragana — M, Y, R, W Rows & N
 
 ## M-Row (ま行 まぎょう)

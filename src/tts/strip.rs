@@ -1,4 +1,12 @@
+/// A chunk of text with its language code for TTS voice switching.
+#[derive(Debug, Clone)]
+pub struct LangChunk {
+    pub text: String,
+    pub lang: String,
+}
+
 /// Strip markdown syntax to produce clean text for speech.
+/// `{{lang:XX}}` tags are stripped but tracked — they affect the returned LangChunks.
 pub fn strip_markdown(md: &str) -> String {
     let mut out = String::with_capacity(md.len());
     for line in md.lines() {
@@ -6,6 +14,13 @@ pub fn strip_markdown(md: &str) -> String {
 
         // Skip horizontal rules
         if trimmed == "---" || trimmed == "***" || trimmed == "___" {
+            out.push('\n');
+            continue;
+        }
+
+        // Preserve language switch tags as markers for chunking
+        if trimmed.starts_with("{{lang:") && trimmed.ends_with("}}") {
+            out.push_str(trimmed);
             out.push('\n');
             continue;
         }
@@ -117,10 +132,59 @@ fn strip_inline_markdown(text: &str) -> String {
     result
 }
 
-/// Split text into speakable chunks (by paragraph, then by sentence).
-pub fn split_into_chunks(text: &str) -> Vec<String> {
-    let mut chunks = Vec::new();
+/// Parse a `{{lang:XX}}` tag, returning the language code.
+fn parse_lang_tag(line: &str) -> Option<&str> {
+    let trimmed = line.trim();
+    if trimmed.starts_with("{{lang:") && trimmed.ends_with("}}") {
+        Some(&trimmed[7..trimmed.len() - 2])
+    } else {
+        None
+    }
+}
 
+/// Split text into speakable chunks annotated with language codes.
+/// Language switches are triggered by `{{lang:XX}}` markers in the text.
+pub fn split_into_lang_chunks(text: &str, default_lang: &str) -> Vec<LangChunk> {
+    let mut chunks = Vec::new();
+    let mut current_lang = default_lang.to_string();
+    let mut current_text = String::new();
+
+    for paragraph in text.split("\n\n") {
+        let p = paragraph.trim();
+        if p.is_empty() {
+            if !current_text.trim().is_empty() {
+                current_text.push_str("\n\n");
+            }
+            continue;
+        }
+
+        // Check each line for lang tags
+        for line in p.lines() {
+            if let Some(lang) = parse_lang_tag(line) {
+                // Flush accumulated text as chunks in the current language
+                flush_text_as_chunks(&current_text, &current_lang, &mut chunks);
+                current_text.clear();
+                current_lang = lang.to_string();
+            } else {
+                current_text.push_str(line.trim());
+                current_text.push(' ');
+            }
+        }
+        // Paragraph boundary
+        if !current_text.trim().is_empty() {
+            current_text.push_str("\n\n");
+        }
+    }
+
+    // Flush remaining text
+    flush_text_as_chunks(&current_text, &current_lang, &mut chunks);
+
+    chunks.retain(|c| c.text.len() > 2);
+    chunks
+}
+
+/// Split a block of same-language text into reasonably sized chunks.
+fn flush_text_as_chunks(text: &str, lang: &str, chunks: &mut Vec<LangChunk>) {
     for paragraph in text.split("\n\n") {
         let p = paragraph.trim();
         if p.is_empty() {
@@ -128,23 +192,47 @@ pub fn split_into_chunks(text: &str) -> Vec<String> {
         }
 
         if p.len() < 300 {
-            chunks.push(p.to_string());
+            chunks.push(LangChunk {
+                text: p.to_string(),
+                lang: lang.to_string(),
+            });
         } else {
             let mut current = String::new();
             for part in p.split(". ") {
                 if current.len() + part.len() > 250 && !current.is_empty() {
-                    chunks.push(current.trim().to_string());
+                    chunks.push(LangChunk {
+                        text: current.trim().to_string(),
+                        lang: lang.to_string(),
+                    });
                     current.clear();
                 }
                 current.push_str(part);
                 current.push_str(". ");
             }
             if !current.trim().is_empty() {
-                chunks.push(current.trim().to_string());
+                chunks.push(LangChunk {
+                    text: current.trim().to_string(),
+                    lang: lang.to_string(),
+                });
             }
         }
     }
+}
 
-    chunks.retain(|c| c.len() > 2);
-    chunks
+/// Strip `{{lang:XX}}` tags from markdown for display (not TTS).
+pub fn strip_lang_tags(content: &str) -> String {
+    content
+        .lines()
+        .filter(|line| parse_lang_tag(line).is_none())
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
+// Keep backward compat — old split_into_chunks is now a thin wrapper
+#[allow(dead_code)]
+pub fn split_into_chunks(text: &str) -> Vec<String> {
+    split_into_lang_chunks(text, "en")
+        .into_iter()
+        .map(|c| c.text)
+        .collect()
 }

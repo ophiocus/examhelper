@@ -1,6 +1,6 @@
 use super::{
     slug_to_title, Cartridge, CartridgeManifest, CategoryConfig, ContentKind, ContentNode,
-    DisplayQuestion, ExamConfig,
+    DisplayQuestion, ExamConfig, LanguageConfig,
 };
 use rand::seq::SliceRandom;
 use serde::Deserialize;
@@ -99,6 +99,14 @@ impl FilesystemCartridge {
                 "es-MX".to_string(),
                 "es".to_string(),
             ],
+            languages: vec![LanguageConfig {
+                code: "es".to_string(),
+                tts_preference: vec![
+                    "es-CO".to_string(),
+                    "es-MX".to_string(),
+                    "es".to_string(),
+                ],
+            }],
             accent_color: [255, 205, 0],
             exam: ExamConfig {
                 default_questions_per_category: 10,

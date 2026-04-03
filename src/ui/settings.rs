@@ -25,11 +25,42 @@ impl ExamHelperApp {
 
                 let voices = self.tts.voices();
                 let current = self.tts.selected_voice_name();
-                let cart_lang = self
+                let cart_langs: Vec<String> = self
                     .registry
                     .active()
-                    .map(|c| c.manifest().language.clone())
-                    .unwrap_or_else(|| "es".to_string());
+                    .map(|c| {
+                        c.manifest()
+                            .all_languages()
+                            .iter()
+                            .map(|l| l.code.clone())
+                            .collect()
+                    })
+                    .unwrap_or_else(|| vec!["es".to_string()]);
+
+                // Show per-language voice status
+                if !cart_langs.is_empty() {
+                    ui.label(RichText::new("Cartridge Languages:").size(14.0).strong());
+                    ui.add_space(4.0);
+                    for lang_code in &cart_langs {
+                        let has_voice = voices.iter().any(|v| {
+                            v.language.to_lowercase().starts_with(&lang_code.to_lowercase())
+                        });
+                        let (status, color) = if has_voice {
+                            ("OK", Color32::from_rgb(80, 200, 120))
+                        } else {
+                            ("MISSING", Color32::from_rgb(255, 100, 100))
+                        };
+                        ui.horizontal(|ui| {
+                            ui.label(
+                                RichText::new(format!("  [{lang_code}]"))
+                                    .size(13.0)
+                                    .monospace(),
+                            );
+                            ui.label(RichText::new(status).size(12.0).color(color));
+                        });
+                    }
+                    ui.add_space(8.0);
+                }
 
                 ui.label(RichText::new("Voces instaladas:").size(14.0).strong());
                 ui.add_space(5.0);
@@ -58,7 +89,10 @@ impl ExamHelperApp {
                                     Color32::from_rgb(200, 200, 200)
                                 };
 
-                                let lang_color = if voice.language.to_lowercase().starts_with(&cart_lang) {
+                                let is_cart_lang = cart_langs.iter().any(|cl| {
+                                    voice.language.to_lowercase().starts_with(&cl.to_lowercase())
+                                });
+                                let lang_color = if is_cart_lang {
                                     Color32::from_rgb(255, 205, 0)
                                 } else {
                                     Color32::from_rgb(150, 150, 170)
@@ -91,19 +125,17 @@ impl ExamHelperApp {
                             }
                         });
 
-                    let has_matching_voice = voices
-                        .iter()
-                        .any(|v| v.language.to_lowercase().starts_with(&cart_lang));
-                    if !has_matching_voice {
+                    if !self.missing_voices.is_empty() {
                         ui.add_space(8.0);
                         let cart_name = self
                             .registry
                             .active()
                             .map(|c| c.manifest().name.clone())
                             .unwrap_or_default();
+                        let missing_str = self.missing_voices.join(", ");
                         ui.label(
                             RichText::new(format!(
-                                "No voice found for '{cart_lang}' (required by {cart_name}). Install one below."
+                                "Missing voices for [{missing_str}] (required by {cart_name}). Install below or via Windows Settings."
                             ))
                             .size(13.0)
                             .color(Color32::from_rgb(255, 100, 100)),

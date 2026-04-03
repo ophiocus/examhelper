@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 9: Katakana — Part 1
 
 ## Why Katakana?

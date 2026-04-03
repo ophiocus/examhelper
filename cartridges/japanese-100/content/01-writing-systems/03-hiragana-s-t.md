@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 3: Hiragana — S-Row & T-Row
 
 ## S-Row (さ行 さぎょう)

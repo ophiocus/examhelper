@@ -80,9 +80,9 @@ impl ExamHelperApp {
                     self.exam_category_selection = vec![true; num_cats];
                     self.mode = AppMode::Study;
 
-                    // Apply cartridge fonts and auto-select matching TTS voice
+                    // Apply cartridge fonts and build TTS voice map
                     crate::app::apply_cartridge_fonts(ui.ctx(), &self.registry);
-                    self.apply_cartridge_voice();
+                    self.missing_voices = self.apply_cartridge_voices();
                 }
             }
 

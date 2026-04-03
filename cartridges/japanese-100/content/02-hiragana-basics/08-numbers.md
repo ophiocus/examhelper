@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 8: Numbers & Counting
 
 ## Basic Numbers (1-10)

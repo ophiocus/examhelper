@@ -9,6 +9,7 @@ use crate::ui::git_update::GitStatus;
 use eframe::egui;
 use egui::{RichText, ScrollArea};
 use egui_commonmark::CommonMarkCache;
+use std::collections::HashMap;
 use std::path::PathBuf;
 
 /// Load fonts provided by the active cartridge as fallbacks in egui.
@@ -85,6 +86,8 @@ pub struct ExamHelperApp {
     pub tts: TtsController,
     pub narration_rate: f32,
     pub voice_applied: bool,
+    /// Language codes from the active cartridge that have no TTS voice installed.
+    pub missing_voices: Vec<String>,
 
     // Settings / Voice management
     pub speech_caps: Option<Vec<SpeechCapability>>,
@@ -142,6 +145,7 @@ impl ExamHelperApp {
             exam_category_selection: vec![true; num_categories],
             tts,
             voice_applied: false,
+            missing_voices: Vec::new(),
             narration_rate: 0.5,
             speech_caps: None,
             speech_caps_loading: false,
@@ -153,22 +157,58 @@ impl ExamHelperApp {
         }
     }
 
-    /// Select the best TTS voice matching the active cartridge's language preferences.
-    pub fn apply_cartridge_voice(&self) {
-        if let Some(cart) = self.registry.active() {
-            let prefs = &cart.manifest().tts_voice_preference;
-            let voices = self.tts.voices();
+    /// Build and apply the language→voice map for the active cartridge.
+    /// Returns a list of language codes that have no matching voice installed.
+    pub fn apply_cartridge_voices(&self) -> Vec<String> {
+        let cart = match self.registry.active() {
+            Some(c) => c,
+            None => return Vec::new(),
+        };
+
+        let manifest = cart.manifest();
+        let lang_configs = manifest.all_languages();
+        let voices = self.tts.voices();
+        let mut voice_map: HashMap<String, String> = HashMap::new();
+        let mut missing: Vec<String> = Vec::new();
+
+        // Set the default language for content without explicit tags
+        self.tts.set_default_lang(manifest.default_language());
+
+        for lc in &lang_configs {
             // Try each preference prefix in order
-            let best = prefs.iter().find_map(|pref| {
+            let best = lc.tts_preference.iter().find_map(|pref| {
                 let pref_lower = pref.to_lowercase();
                 voices.iter().find(|v| {
                     v.language.to_lowercase().starts_with(&pref_lower)
                 })
             });
+
+            // Fallback: try the bare language code
+            let best = best.or_else(|| {
+                let code_lower = lc.code.to_lowercase();
+                voices.iter().find(|v| {
+                    v.language.to_lowercase().starts_with(&code_lower)
+                })
+            });
+
             if let Some(voice) = best {
-                self.tts.set_voice(&voice.name);
+                voice_map.insert(lc.code.clone(), voice.name.clone());
+            } else {
+                missing.push(lc.code.clone());
             }
         }
+
+        // Set the primary voice (first language's voice)
+        if let Some(first_lang) = lang_configs.first() {
+            if let Some(voice_name) = voice_map.get(&first_lang.code) {
+                self.tts.set_voice(voice_name);
+            }
+        }
+
+        // Send the full map to the worker
+        self.tts.set_voice_map(voice_map);
+
+        missing
     }
 
     pub fn load_file(&mut self, path: &PathBuf) {
@@ -220,11 +260,11 @@ impl eframe::App for ExamHelperApp {
             self.theme_applied = true;
         }
 
-        // Auto-select TTS voice for active cartridge (deferred until voices are loaded)
+        // Auto-select TTS voices for active cartridge (deferred until voices are loaded)
         if !self.voice_applied {
             let voices = self.tts.voices();
             if !voices.is_empty() {
-                self.apply_cartridge_voice();
+                self.missing_voices = self.apply_cartridge_voices();
                 self.voice_applied = true;
             }
         }

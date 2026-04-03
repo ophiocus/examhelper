@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 10: Essential Vocabulary
 
 ## Family (家族 かぞく)

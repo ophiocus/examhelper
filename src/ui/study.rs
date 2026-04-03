@@ -1,7 +1,7 @@
 use crate::app::ExamHelperApp;
 use crate::cartridge::{ContentKind, ContentNode};
 use crate::progress::AppProgress;
-use crate::tts::NarrationState;
+use crate::tts::{strip_lang_tags, NarrationState};
 use eframe::egui;
 use egui::{Color32, RichText, ScrollArea};
 use egui_commonmark::CommonMarkViewer;
@@ -216,6 +216,21 @@ impl ExamHelperApp {
                 self.tts.autoplay = !self.tts.autoplay;
             }
 
+            // Missing voice warning
+            if !self.missing_voices.is_empty() {
+                ui.separator();
+                let missing_str = self.missing_voices.join(", ");
+                ui.label(
+                    RichText::new(format!("Missing TTS: {missing_str}"))
+                        .size(11.0)
+                        .color(Color32::from_rgb(255, 100, 100)),
+                )
+                .on_hover_text(format!(
+                    "No TTS voice installed for: {}. Install voice packs in Settings.",
+                    missing_str
+                ));
+            }
+
             ui.separator();
 
             // Voice selector dropdown
@@ -260,7 +275,7 @@ impl ExamHelperApp {
         let is_narrating = tts_state == NarrationState::Speaking;
 
         if is_narrating {
-            // Karaoke mode
+            // Karaoke mode — shows language-annotated chunks
             let chunks = self.tts.narration_chunks();
             let (current_idx, _total) = self.tts.progress();
 
@@ -269,9 +284,20 @@ impl ExamHelperApp {
                 .auto_shrink([false; 2])
                 .show(ui, |ui| {
                     ui.add_space(8.0);
+                    let mut prev_lang = String::new();
                     for (i, chunk) in chunks.iter().enumerate() {
                         let is_current = i == current_idx;
                         let is_past = i < current_idx;
+
+                        // Show language badge when language switches
+                        if chunk.lang != prev_lang {
+                            ui.label(
+                                RichText::new(format!("[{}]", chunk.lang.to_uppercase()))
+                                    .size(10.0)
+                                    .color(Color32::from_rgb(120, 120, 180)),
+                            );
+                            prev_lang = chunk.lang.clone();
+                        }
 
                         if is_current {
                             let frame = egui::Frame::none()
@@ -284,7 +310,7 @@ impl ExamHelperApp {
                                 .rounding(egui::Rounding::same(6.0));
                             let r = frame.show(ui, |ui| {
                                 ui.label(
-                                    RichText::new(chunk)
+                                    RichText::new(&chunk.text)
                                         .size(15.0)
                                         .color(Color32::from_rgb(255, 235, 120))
                                         .strong(),
@@ -293,13 +319,13 @@ impl ExamHelperApp {
                             r.response.scroll_to_me(Some(egui::Align::Center));
                         } else if is_past {
                             ui.label(
-                                RichText::new(chunk)
+                                RichText::new(&chunk.text)
                                     .size(14.0)
                                     .color(Color32::from_rgb(100, 100, 115)),
                             );
                         } else {
                             ui.label(
-                                RichText::new(chunk)
+                                RichText::new(&chunk.text)
                                     .size(14.0)
                                     .color(Color32::from_rgb(190, 190, 200)),
                             );
@@ -313,8 +339,9 @@ impl ExamHelperApp {
             ScrollArea::vertical()
                 .auto_shrink([false; 2])
                 .show(ui, |ui| {
-                    // Split content on multimedia tags and render segments
-                    let segments = split_multimedia(&self.current_content);
+                    // Strip language tags before display, then split on multimedia tags
+                    let cleaned = strip_lang_tags(&self.current_content);
+                    let segments = split_multimedia(&cleaned);
                     for segment in &segments {
                         match segment {
                             ContentSegment::Markdown(md) => {

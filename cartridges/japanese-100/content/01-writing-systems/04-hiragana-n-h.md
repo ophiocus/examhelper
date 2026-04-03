@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 4: Hiragana — N-Row & H-Row
 
 ## N-Row (な行 なぎょう)

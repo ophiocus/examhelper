@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 2: Hiragana — Vowels & K-Row
 
 ## The Vowels (母音 ぼいん)
@@ -56,6 +57,10 @@ Add two small dots (゛) to the K-row to get the G-row:
 
 Read these aloud:
 
+{{lang:ja}}
+あか。いけ。かぎ。こい。おおきい。かお。えき。あき。
+
+{{lang:en}}
 1. **あか** (aka) = red
 2. **いけ** (ike) = pond
 3. **かぎ** (kagi) = key

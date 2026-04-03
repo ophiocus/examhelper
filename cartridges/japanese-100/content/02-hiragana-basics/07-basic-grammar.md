@@ -1,3 +1,4 @@
+{{lang:en}}
 # Chapter 7: Basic Sentence Structure
 
 ## The Core Pattern
