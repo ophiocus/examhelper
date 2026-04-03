@@ -25,6 +25,11 @@ impl ExamHelperApp {
 
                 let voices = self.tts.voices();
                 let current = self.tts.selected_voice_name();
+                let cart_lang = self
+                    .registry
+                    .active()
+                    .map(|c| c.manifest().language.clone())
+                    .unwrap_or_else(|| "es".to_string());
 
                 ui.label(RichText::new("Voces instaladas:").size(14.0).strong());
                 ui.add_space(5.0);
@@ -53,7 +58,7 @@ impl ExamHelperApp {
                                     Color32::from_rgb(200, 200, 200)
                                 };
 
-                                let lang_color = if voice.language.starts_with("es") {
+                                let lang_color = if voice.language.to_lowercase().starts_with(&cart_lang) {
                                     Color32::from_rgb(255, 205, 0)
                                 } else {
                                     Color32::from_rgb(150, 150, 170)
@@ -86,15 +91,20 @@ impl ExamHelperApp {
                             }
                         });
 
-                    let has_spanish = voices
+                    let has_matching_voice = voices
                         .iter()
-                        .any(|v| v.language.to_lowercase().starts_with("es"));
-                    if !has_spanish {
+                        .any(|v| v.language.to_lowercase().starts_with(&cart_lang));
+                    if !has_matching_voice {
                         ui.add_space(8.0);
+                        let cart_name = self
+                            .registry
+                            .active()
+                            .map(|c| c.manifest().name.clone())
+                            .unwrap_or_default();
                         ui.label(
-                            RichText::new(
-                                "No hay voces en español instaladas. Instala una abajo.",
-                            )
+                            RichText::new(format!(
+                                "No voice found for '{cart_lang}' (required by {cart_name}). Install one below."
+                            ))
                             .size(13.0)
                             .color(Color32::from_rgb(255, 100, 100)),
                         );

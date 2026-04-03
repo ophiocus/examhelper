@@ -1,0 +1,107 @@
+[[questions]]
+text = "What particle marks the topic of a sentence?"
+options = ["が", "を", "は", "に"]
+answer = 2
+
+[[questions]]
+text = "What particle marks the direct object?"
+options = ["は", "が", "に", "を"]
+answer = 3
+
+[[questions]]
+text = "What does です (desu) roughly mean?"
+options = ["do/does", "is/am/are", "have/has", "want/wants"]
+answer = 1
+
+[[questions]]
+text = "How do you make a question in Japanese?"
+options = ["Change word order", "Add か at the end", "Add ね at the end", "Raise your voice only"]
+answer = 1
+
+[[questions]]
+text = "What particle indicates direction ('to' a place)?"
+options = ["で", "を", "は", "に"]
+answer = 3
+
+[[questions]]
+text = "What particle means 'of' or possession?"
+options = ["は", "の", "が", "で"]
+answer = 1
+
+[[questions]]
+text = "What is the negative form of です?"
+options = ["ではありません", "でした", "でしょう", "ですか"]
+answer = 0
+
+[[questions]]
+text = "Which type of adjective ends in い?"
+options = ["な-adjective", "い-adjective", "の-adjective", "と-adjective"]
+answer = 1
+
+[[questions]]
+text = "What does おおきい (ookii) mean?"
+options = ["small", "new", "big", "old"]
+answer = 2
+
+[[questions]]
+text = "How do you say 'I eat bread' in Japanese word order?"
+options = ["I bread eat", "I eat bread", "Eat I bread", "Bread I eat"]
+answer = 0
+
+[[questions]]
+text = "What is the polite verb ending for present tense?"
+options = ["ない", "た", "ます", "て"]
+answer = 2
+
+[[questions]]
+text = "What particle marks the location where an action occurs?"
+options = ["に", "で", "を", "は"]
+answer = 1
+
+[[questions]]
+text = "What does 'genki' (げんき) mean as a な-adjective?"
+options = ["Quiet", "Pretty", "Healthy/Energetic", "Convenient"]
+answer = 2
+
+[[questions]]
+text = "How do you say 'Mr./Mrs. Tanaka'?"
+options = ["田中くん", "田中さん", "田中さま", "田中ちゃん"]
+answer = 1
+
+[[questions]]
+text = "Which number reading is avoided because it sounds like 'death'?"
+options = ["く (ku) for 9", "し (shi) for 4", "なな (nana) for 7", "ろく (roku) for 6"]
+answer = 1
+
+[[questions]]
+text = "What is the general-purpose counter for objects (1-9)?"
+options = ["個 (ko)", "つ (tsu)", "本 (hon)", "枚 (mai)"]
+answer = 1
+
+[[questions]]
+text = "How do you say 'three people' in Japanese?"
+options = ["さんこ", "さんにん", "みっつ", "さんまい"]
+answer = 1
+
+[[questions]]
+text = "What does いくつ mean?"
+options = ["How much (price)?", "How many?", "How old?", "How far?"]
+answer = 1
+
+[[templates]]
+text = "What is {key} in Japanese?"
+variable = "number"
+answer_template = "{value}"
+distractors = ["いち", "に", "さん", "よん", "ご", "ろく", "なな", "はち", "きゅう", "じゅう", "にじゅう", "さんじゅう", "ひゃく", "せん"]
+pairs = [
+    { key = "1", value = "いち" },
+    { key = "2", value = "に" },
+    { key = "3", value = "さん" },
+    { key = "5", value = "ご" },
+    { key = "6", value = "ろく" },
+    { key = "8", value = "はち" },
+    { key = "10", value = "じゅう" },
+    { key = "20", value = "にじゅう" },
+    { key = "100", value = "ひゃく" },
+    { key = "1000", value = "せん" },
+]

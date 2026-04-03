@@ -10,6 +10,21 @@ pub fn strip_markdown(md: &str) -> String {
             continue;
         }
 
+        // Skip multimedia tags — don't read URLs aloud
+        // Format: {{video:URL:title}} or {{image:URL:caption}}
+        if trimmed.starts_with("{{video:") || trimmed.starts_with("{{image:") {
+            // Extract title/caption for TTS
+            if let Some(last_colon) = trimmed.rfind(':') {
+                let title = &trimmed[last_colon + 1..trimmed.len().saturating_sub(2)];
+                let title = title.trim();
+                if !title.is_empty() {
+                    out.push_str(title);
+                    out.push_str(". ");
+                }
+            }
+            continue;
+        }
+
         // Handle table rows: split cells, skip separator rows
         if trimmed.starts_with('|') && trimmed.ends_with('|') {
             let inner = &trimmed[1..trimmed.len() - 1];

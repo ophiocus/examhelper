@@ -1,0 +1,112 @@
+[[questions]]
+text = "What does おはようございます mean?"
+options = ["Good night", "Good morning", "Good evening", "Goodbye"]
+answer = 1
+
+[[questions]]
+text = "What does こんにちは mean?"
+options = ["Good morning", "Good night", "Hello / Good day", "Thank you"]
+answer = 2
+
+[[questions]]
+text = "What does ありがとうございます mean?"
+options = ["I'm sorry", "Excuse me", "Please", "Thank you very much"]
+answer = 3
+
+[[questions]]
+text = "What does すみません mean?"
+options = ["Thank you", "Excuse me / Sorry", "Please", "Goodbye"]
+answer = 1
+
+[[questions]]
+text = "How do you say 'I don't understand' in Japanese?"
+options = ["わかります", "わかりません", "しりません", "できません"]
+answer = 1
+
+[[questions]]
+text = "What does the word あか (aka) mean?"
+options = ["Blue", "Green", "Red", "Yellow"]
+answer = 2
+
+[[questions]]
+text = "What does しろ (shiro) mean?"
+options = ["Black", "White", "Brown", "Red"]
+answer = 1
+
+[[questions]]
+text = "Which Japanese word means 'water'?"
+options = ["みず", "みせ", "みち", "みどり"]
+answer = 0
+
+[[questions]]
+text = "What does にちようび mean?"
+options = ["Monday", "Saturday", "Sunday", "Friday"]
+answer = 2
+
+[[questions]]
+text = "What does あした (ashita) mean?"
+options = ["Yesterday", "Today", "Tomorrow", "Now"]
+answer = 2
+
+[[questions]]
+text = "What does たべます (tabemasu) mean?"
+options = ["drink", "eat", "sleep", "go"]
+answer = 1
+
+[[questions]]
+text = "What is the humble word for 'father' (your own)?"
+options = ["おとうさん", "ちち", "おっと", "あに"]
+answer = 1
+
+[[questions]]
+text = "Which color word covers both blue and green in traditional Japanese?"
+options = ["みどり", "あお", "きいろ", "むらさき"]
+answer = 1
+
+[[questions]]
+text = "How do you say 'Where is the bathroom?' in Japanese?"
+options = ["トイレはどこですか", "トイレはなんですか", "トイレはいくらですか", "トイレはだれですか"]
+answer = 0
+
+[[questions]]
+text = "What does いくらですか mean?"
+options = ["What is this?", "Where is it?", "How much is it?", "Who is it?"]
+answer = 2
+
+[[templates]]
+text = "What does {key} mean in English?"
+variable = "word"
+answer_template = "{value}"
+distractors = ["dog", "cat", "mountain", "river", "sky", "flower", "bird", "tree", "rain", "snow", "moon", "star", "sun", "fish", "water"]
+pairs = [
+    { key = "いぬ (inu)", value = "dog" },
+    { key = "ねこ (neko)", value = "cat" },
+    { key = "やま (yama)", value = "mountain" },
+    { key = "そら (sora)", value = "sky" },
+    { key = "はな (hana)", value = "flower" },
+    { key = "とり (tori)", value = "bird" },
+    { key = "ゆき (yuki)", value = "snow" },
+    { key = "つき (tsuki)", value = "moon" },
+    { key = "ほし (hoshi)", value = "star" },
+    { key = "みず (mizu)", value = "water" },
+    { key = "なつ (natsu)", value = "summer" },
+    { key = "ふゆ (fuyu)", value = "winter" },
+    { key = "よる (yoru)", value = "night" },
+    { key = "もり (mori)", value = "forest" },
+    { key = "りんご (ringo)", value = "apple" },
+]
+
+[[templates]]
+text = "What day of the week is {key}?"
+variable = "day"
+answer_template = "{value}"
+distractors = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+pairs = [
+    { key = "にちようび", value = "Sunday" },
+    { key = "げつようび", value = "Monday" },
+    { key = "かようび", value = "Tuesday" },
+    { key = "すいようび", value = "Wednesday" },
+    { key = "もくようび", value = "Thursday" },
+    { key = "きんようび", value = "Friday" },
+    { key = "どようび", value = "Saturday" },
+]

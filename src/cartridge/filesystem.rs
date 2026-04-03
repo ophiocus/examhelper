@@ -194,6 +194,37 @@ impl Cartridge for FilesystemCartridge {
         }
     }
 
+    fn fonts(&self) -> Vec<(String, Vec<u8>)> {
+        let fonts_dir = self.root_dir.join("fonts");
+        if !fonts_dir.is_dir() {
+            return Vec::new();
+        }
+        let mut result = Vec::new();
+        if let Ok(entries) = fs::read_dir(&fonts_dir) {
+            let mut entries: Vec<_> = entries.filter_map(|e| e.ok()).collect();
+            entries.sort_by_key(|e| e.file_name());
+            for entry in entries {
+                let path = entry.path();
+                let ext = path
+                    .extension()
+                    .and_then(|e| e.to_str())
+                    .unwrap_or("")
+                    .to_lowercase();
+                if matches!(ext.as_str(), "ttf" | "ttc" | "otf") {
+                    if let Ok(data) = fs::read(&path) {
+                        let name = path
+                            .file_name()
+                            .unwrap_or_default()
+                            .to_string_lossy()
+                            .to_string();
+                        result.push((name, data));
+                    }
+                }
+            }
+        }
+        result
+    }
+
     fn reload(&mut self) {
         let content_dir = self.root_dir.join("content");
         let questions_dir = self.root_dir.join("questions");

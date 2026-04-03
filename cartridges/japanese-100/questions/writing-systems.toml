@@ -1,0 +1,129 @@
+[[questions]]
+text = "How many writing systems does Japanese use?"
+options = ["One", "Two", "Three", "Four"]
+answer = 2
+
+[[questions]]
+text = "Which writing system is used for foreign loanwords?"
+options = ["Hiragana", "Katakana", "Kanji", "Romaji"]
+answer = 1
+
+[[questions]]
+text = "What is the Japanese word order?"
+options = ["SVO (Subject-Verb-Object)", "SOV (Subject-Object-Verb)", "VSO (Verb-Subject-Object)", "OVS (Object-Verb-Subject)"]
+answer = 1
+
+[[questions]]
+text = "How many basic hiragana characters are there?"
+options = ["26", "36", "46", "52"]
+answer = 2
+
+[[questions]]
+text = "What is the hiragana for 'ka'?"
+options = ["き", "か", "く", "こ"]
+answer = 1
+
+[[questions]]
+text = "What is the hiragana for 'shi'?"
+options = ["さ", "す", "し", "せ"]
+answer = 2
+
+[[questions]]
+text = "What does adding dakuten (゛) to か produce?"
+options = ["ぱ", "が", "ば", "だ"]
+answer = 1
+
+[[questions]]
+text = "What is the hiragana for 'tsu'?"
+options = ["た", "ち", "つ", "て"]
+answer = 2
+
+[[questions]]
+text = "Which hiragana is pronounced 'wa' when used as a particle?"
+options = ["わ", "は", "お", "を"]
+answer = 1
+
+[[questions]]
+text = "Which particle marks the direct object of a verb?"
+options = ["は", "が", "を", "に"]
+answer = 2
+
+[[questions]]
+text = "What is the hiragana for 'fu'?"
+options = ["は", "ひ", "ふ", "ほ"]
+answer = 2
+
+[[questions]]
+text = "What sound does adding handakuten (゜) to は make?"
+options = ["ba", "pa", "da", "ga"]
+answer = 1
+
+[[questions]]
+text = "Which hiragana is the only standalone consonant?"
+options = ["を", "ん", "の", "も"]
+answer = 1
+
+[[questions]]
+text = "How many vowel sounds does Japanese have?"
+options = ["3", "5", "7", "10"]
+answer = 1
+
+[[questions]]
+text = "What is 'chi' in hiragana?"
+options = ["た", "つ", "ち", "て"]
+answer = 2
+
+[[questions]]
+text = "Which pair of katakana is easily confused?"
+options = ["ア and オ", "カ and ケ", "シ and ツ", "ナ and ニ"]
+answer = 2
+
+[[questions]]
+text = "How are long vowels written in katakana?"
+options = ["Double the character", "With a dash ー", "With a small っ", "With a circle ゜"]
+answer = 1
+
+[[questions]]
+text = "What does コーヒー mean?"
+options = ["Tea", "Coffee", "Cake", "Cookie"]
+answer = 1
+
+[[templates]]
+text = "What is the romaji reading of {key}?"
+variable = "hiragana"
+answer_template = "{value}"
+distractors = ["ka", "ki", "ku", "ke", "ko", "sa", "shi", "su", "se", "so", "ta", "chi", "tsu", "te", "to", "na", "ni", "nu", "ne", "no", "ha", "hi", "fu", "he", "ho", "ma", "mi", "mu", "me", "mo"]
+pairs = [
+    { key = "あ", value = "a" },
+    { key = "い", value = "i" },
+    { key = "う", value = "u" },
+    { key = "え", value = "e" },
+    { key = "お", value = "o" },
+    { key = "か", value = "ka" },
+    { key = "さ", value = "sa" },
+    { key = "た", value = "ta" },
+    { key = "な", value = "na" },
+    { key = "は", value = "ha" },
+    { key = "ま", value = "ma" },
+    { key = "や", value = "ya" },
+    { key = "ら", value = "ra" },
+    { key = "わ", value = "wa" },
+]
+
+[[templates]]
+text = "What is the romaji reading of the katakana {key}?"
+variable = "katakana"
+answer_template = "{value}"
+distractors = ["a", "i", "u", "e", "o", "ka", "ki", "ku", "ke", "ko", "sa", "shi", "su", "se", "so", "ta", "chi", "tsu", "te", "to", "na", "ni"]
+pairs = [
+    { key = "ア", value = "a" },
+    { key = "カ", value = "ka" },
+    { key = "サ", value = "sa" },
+    { key = "タ", value = "ta" },
+    { key = "ナ", value = "na" },
+    { key = "キ", value = "ki" },
+    { key = "シ", value = "shi" },
+    { key = "ツ", value = "tsu" },
+    { key = "コ", value = "ko" },
+    { key = "ノ", value = "no" },
+]

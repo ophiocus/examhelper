@@ -11,6 +11,44 @@ use egui::{RichText, ScrollArea};
 use egui_commonmark::CommonMarkCache;
 use std::path::PathBuf;
 
+/// Load fonts provided by the active cartridge as fallbacks in egui.
+/// Cartridges ship their own font files in `fonts/` — this avoids requiring
+/// system-wide language/font pack installation.
+pub fn apply_cartridge_fonts(ctx: &egui::Context, registry: &CartridgeRegistry) {
+    let cart = match registry.active() {
+        Some(c) => c,
+        None => return,
+    };
+
+    let font_entries = cart.fonts();
+    if font_entries.is_empty() {
+        return;
+    }
+
+    let mut fonts = egui::FontDefinitions::default();
+
+    for (i, (name, data)) in font_entries.into_iter().enumerate() {
+        let key = format!("cart_font_{i}_{name}");
+        fonts.font_data.insert(
+            key.clone(),
+            egui::FontData {
+                font: std::borrow::Cow::Owned(data),
+                index: 0,
+                tweak: Default::default(),
+            },
+        );
+        // Add as fallback for both families
+        if let Some(family) = fonts.families.get_mut(&egui::FontFamily::Proportional) {
+            family.push(key.clone());
+        }
+        if let Some(family) = fonts.families.get_mut(&egui::FontFamily::Monospace) {
+            family.push(key);
+        }
+    }
+
+    ctx.set_fonts(fonts);
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AppMode {
     Study,
@@ -46,6 +84,7 @@ pub struct ExamHelperApp {
     // TTS
     pub tts: TtsController,
     pub narration_rate: f32,
+    pub voice_applied: bool,
 
     // Settings / Voice management
     pub speech_caps: Option<Vec<SpeechCapability>>,
@@ -76,6 +115,14 @@ impl ExamHelperApp {
             registry.set_active_by_id(&config.active_cartridge);
         }
 
+        // Load cartridge fonts as fallback glyphs
+        apply_cartridge_fonts(&cc.egui_ctx, &registry);
+
+        // Auto-select TTS voice matching cartridge language
+        let tts = TtsController::spawn();
+        // Defer voice selection slightly — voices load async in the worker thread
+        // We'll apply cartridge voice preference on first frame instead (see update())
+
         let num_categories = registry
             .active()
             .map(|c| c.exam_categories().len())
@@ -93,7 +140,8 @@ impl ExamHelperApp {
             drag_zoom: None,
             exam_state: None,
             exam_category_selection: vec![true; num_categories],
-            tts: TtsController::spawn(),
+            tts,
+            voice_applied: false,
             narration_rate: 0.5,
             speech_caps: None,
             speech_caps_loading: false,
@@ -102,6 +150,24 @@ impl ExamHelperApp {
             git_status: GitStatus::Idle,
             show_git_status: false,
             theme_applied: false,
+        }
+    }
+
+    /// Select the best TTS voice matching the active cartridge's language preferences.
+    pub fn apply_cartridge_voice(&self) {
+        if let Some(cart) = self.registry.active() {
+            let prefs = &cart.manifest().tts_voice_preference;
+            let voices = self.tts.voices();
+            // Try each preference prefix in order
+            let best = prefs.iter().find_map(|pref| {
+                let pref_lower = pref.to_lowercase();
+                voices.iter().find(|v| {
+                    v.language.to_lowercase().starts_with(&pref_lower)
+                })
+            });
+            if let Some(voice) = best {
+                self.tts.set_voice(&voice.name);
+            }
         }
     }
 
@@ -152,6 +218,15 @@ impl eframe::App for ExamHelperApp {
         if !self.theme_applied {
             apply_theme(ctx, self.config.dark_mode);
             self.theme_applied = true;
+        }
+
+        // Auto-select TTS voice for active cartridge (deferred until voices are loaded)
+        if !self.voice_applied {
+            let voices = self.tts.voices();
+            if !voices.is_empty() {
+                self.apply_cartridge_voice();
+                self.voice_applied = true;
+            }
         }
 
         // Top bar

@@ -1,0 +1,22 @@
+id = "japanese-100"
+name = "Japanese in 100 Chapters"
+description = "Learn Japanese from zero to conversational in 100 progressive chapters"
+version = "0.1.0"
+language = "ja"
+tts_voice_preference = ["ja-JP", "ja"]
+accent_color = [220, 50, 50]
+
+[exam]
+default_questions_per_category = 10
+
+[[exam.categories]]
+name = "Writing Systems"
+pass_threshold = 60
+
+[[exam.categories]]
+name = "Vocabulary"
+pass_threshold = 50
+
+[[exam.categories]]
+name = "Grammar"
+pass_threshold = 50

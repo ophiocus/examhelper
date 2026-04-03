@@ -309,15 +309,29 @@ impl ExamHelperApp {
                     ui.add_space(20.0);
                 });
         } else {
-            // Normal markdown view
+            // Normal markdown view with multimedia support
             ScrollArea::vertical()
                 .auto_shrink([false; 2])
                 .show(ui, |ui| {
-                    CommonMarkViewer::new("study_content").show(
-                        ui,
-                        &mut self.md_cache,
-                        &self.current_content,
-                    );
+                    // Split content on multimedia tags and render segments
+                    let segments = split_multimedia(&self.current_content);
+                    for segment in &segments {
+                        match segment {
+                            ContentSegment::Markdown(md) => {
+                                CommonMarkViewer::new("study_content").show(
+                                    ui,
+                                    &mut self.md_cache,
+                                    md,
+                                );
+                            }
+                            ContentSegment::Video { url, title } => {
+                                render_video_embed(ui, url, title);
+                            }
+                            ContentSegment::Image { url, caption } => {
+                                render_image_embed(ui, url, caption);
+                            }
+                        }
+                    }
 
                     ui.add_space(20.0);
 
@@ -348,4 +362,139 @@ impl ExamHelperApp {
                 });
         }
     }
+}
+
+// ── Multimedia content support ─────────────────────────────────────────────
+//
+// Content files can embed multimedia references using these tags:
+//   {{video:URL:Title}}    — renders as a clickable video link
+//   {{image:URL:Caption}}  — renders as an image placeholder
+//
+// These are stripped from TTS output (only the title/caption is read).
+
+enum ContentSegment {
+    Markdown(String),
+    Video { url: String, title: String },
+    Image { url: String, caption: String },
+}
+
+fn split_multimedia(content: &str) -> Vec<ContentSegment> {
+    let mut segments = Vec::new();
+    let mut current_md = String::new();
+
+    for line in content.lines() {
+        let trimmed = line.trim();
+        if let Some(media) = parse_media_tag(trimmed) {
+            if !current_md.trim().is_empty() {
+                segments.push(ContentSegment::Markdown(current_md.clone()));
+                current_md.clear();
+            }
+            segments.push(media);
+        } else {
+            current_md.push_str(line);
+            current_md.push('\n');
+        }
+    }
+
+    if !current_md.trim().is_empty() {
+        segments.push(ContentSegment::Markdown(current_md));
+    }
+
+    // If no multimedia tags found, return the whole content as one segment
+    if segments.is_empty() {
+        segments.push(ContentSegment::Markdown(content.to_string()));
+    }
+
+    segments
+}
+
+fn parse_media_tag(line: &str) -> Option<ContentSegment> {
+    if line.starts_with("{{video:") && line.ends_with("}}") {
+        let inner = &line[8..line.len() - 2];
+        let (url, title) = split_media_fields(inner);
+        Some(ContentSegment::Video { url, title })
+    } else if line.starts_with("{{image:") && line.ends_with("}}") {
+        let inner = &line[8..line.len() - 2];
+        let (url, caption) = split_media_fields(inner);
+        Some(ContentSegment::Image { url, caption })
+    } else {
+        None
+    }
+}
+
+fn split_media_fields(inner: &str) -> (String, String) {
+    // Split on the last colon to get URL:title
+    if let Some(pos) = inner.rfind(':') {
+        let url = inner[..pos].trim().to_string();
+        let title = inner[pos + 1..].trim().to_string();
+        (url, title)
+    } else {
+        (inner.trim().to_string(), String::new())
+    }
+}
+
+fn render_video_embed(ui: &mut egui::Ui, url: &str, title: &str) {
+    ui.add_space(8.0);
+    let frame = egui::Frame::none()
+        .fill(Color32::from_rgb(30, 30, 45))
+        .stroke(egui::Stroke::new(1.0, Color32::from_rgb(80, 80, 120)))
+        .inner_margin(egui::Margin::same(12.0))
+        .rounding(egui::Rounding::same(6.0));
+    frame.show(ui, |ui| {
+        ui.horizontal(|ui| {
+            ui.label(
+                RichText::new("▶")
+                    .size(20.0)
+                    .color(Color32::from_rgb(255, 80, 80)),
+            );
+            ui.vertical(|ui| {
+                let display_title = if title.is_empty() { "Video" } else { title };
+                if ui
+                    .link(RichText::new(display_title).size(14.0).strong())
+                    .clicked()
+                {
+                    let _ = open::that(url);
+                }
+                ui.label(
+                    RichText::new(url)
+                        .size(10.0)
+                        .color(Color32::from_rgb(120, 120, 150)),
+                );
+            });
+        });
+    });
+    ui.add_space(8.0);
+}
+
+fn render_image_embed(ui: &mut egui::Ui, url: &str, caption: &str) {
+    ui.add_space(8.0);
+    let frame = egui::Frame::none()
+        .fill(Color32::from_rgb(30, 35, 30))
+        .stroke(egui::Stroke::new(1.0, Color32::from_rgb(80, 120, 80)))
+        .inner_margin(egui::Margin::same(12.0))
+        .rounding(egui::Rounding::same(6.0));
+    frame.show(ui, |ui| {
+        ui.horizontal(|ui| {
+            ui.label(
+                RichText::new("🖼")
+                    .size(20.0)
+                    .color(Color32::from_rgb(80, 200, 120)),
+            );
+            ui.vertical(|ui| {
+                let display_caption = if caption.is_empty() { "Image" } else { caption };
+                if ui
+                    .link(RichText::new(display_caption).size(14.0).strong())
+                    .clicked()
+                {
+                    let _ = open::that(url);
+                }
+                ui.label(
+                    RichText::new(url)
+                        .size(10.0)
+                        .color(Color32::from_rgb(120, 150, 120)),
+                );
+            });
+        });
+    });
+    ui.add_space(8.0);
 }

@@ -112,6 +112,13 @@ pub trait Cartridge: Send + Sync {
     /// Return the passing threshold percentage for a category name.
     fn pass_threshold(&self, category: &str) -> u32;
 
+    /// Return font data bundled with this cartridge: Vec<(font_name, raw_bytes)>.
+    /// Fonts are loaded as fallbacks so the app can render the cartridge's language
+    /// without requiring system-wide language pack installation.
+    fn fonts(&self) -> Vec<(String, Vec<u8>)> {
+        Vec::new() // Default: no custom fonts
+    }
+
     /// Reload content and questions from disk.
     fn reload(&mut self);
 }
