@@ -1,79 +1,107 @@
-{{lang:en}}
 # Chapter 3: Hiragana — S-Row & T-Row
 
-## S-Row (さ行 さぎょう)
+## S-Row
 
-| Hiragana | Romaji | Example Word |
-|----------|--------|-------------|
-| さ | sa | さくら (sakura) = cherry blossom |
-| し | shi | しお (shio) = salt |
-| す | su | すし (sushi) = sushi |
-| せ | se | せかい (sekai) = world |
-| そ | so | そら (sora) = sky |
+{{lang:ja}}
+さ し す せ そ
+{{/lang}}
 
-**Note:** し is "shi" not "si" — this is one of the few irregular readings.
+- さ (sa) — a samurai slashing with a sword
+- し (shi) — a fishhook: "she caught a fish!" Note: it's "shi" not "si"
+- す (su) — a wavy line like a sushi roll sideways
+- せ (se) — a mouth saying something
+- そ (so) — a zigzag, so sharp!
 
-### Memory Aids
+Example words:
 
-- **さ (sa)**: A **sa**murai slashing with a sword
-- **し (shi)**: A fishhook — "**she** caught a fish!"
-- **す (su)**: A wavy line like a **su**shi roll sideways
-- **せ (se)**: A mouth **say**ing something
-- **そ (so)**: A zigzag — **so** sharp!
+{{lang:ja}}
+さくら
+しお
+すし
+せかい
+そら
+{{/lang}}
+
+- さくら (sakura) = cherry blossom
+- しお (shio) = salt
+- すし (sushi) = sushi
+- せかい (sekai) = world
+- そら (sora) = sky
 
 ## Dakuten — Z-Row
 
-| Base | Dakuten | Romaji | Example |
-|------|---------|--------|---------|
-| さ | ざ | za | ざっし (zasshi) = magazine |
-| し | じ | ji | じかん (jikan) = time |
-| す | ず | zu | すず (suzu) = bell |
-| せ | ぜ | ze | ぜんぶ (zenbu) = everything |
-| そ | ぞ | zo | ぞう (zou) = elephant |
+Add two dots to the S-row to get voiced Z sounds:
 
-**Note:** じ is "ji" not "zi" — another irregular reading.
+{{lang:ja}}
+ざ じ ず ぜ ぞ
+{{/lang}}
 
-## T-Row (た行 たぎょう)
+- ざ (za) — ざっし (zasshi) = magazine
+- じ (ji) — じかん (jikan) = time. Note: it's "ji" not "zi"
+- ず (zu) — すず (suzu) = bell
+- ぜ (ze) — ぜんぶ (zenbu) = everything
+- ぞ (zo) — ぞう (zou) = elephant
 
-| Hiragana | Romaji | Example Word |
-|----------|--------|-------------|
-| た | ta | たまご (tamago) = egg |
-| ち | chi | ちず (chizu) = map |
-| つ | tsu | つき (tsuki) = moon |
-| て | te | てがみ (tegami) = letter |
-| と | to | とり (tori) = bird |
+## T-Row
 
-**Note:** ち is "chi" (not "ti") and つ is "tsu" (not "tu").
+{{lang:ja}}
+た ち つ て と
+{{/lang}}
 
-### Memory Aids
+- た (ta) — looks like "ta" written together
+- ち (chi) — a cheerleader doing a kick. Note: "chi" not "ti"
+- つ (tsu) — a tsunami wave. Note: "tsu" not "tu"
+- て (te) — reaching out a hand
+- と (to) — a toe with a nail
 
-- **た (ta)**: Looks like "ta" written together
-- **ち (chi)**: A **chee**rleader doing a kick
-- **つ (tsu)**: A **tsu**nami wave
-- **て (te)**: An angel or a cross — reaching out a hand
-- **と (to)**: A **to**e with a nail
+Example words:
+
+{{lang:ja}}
+たまご
+ちず
+つき
+てがみ
+とり
+{{/lang}}
+
+- たまご (tamago) = egg
+- ちず (chizu) = map
+- つき (tsuki) = moon
+- てがみ (tegami) = letter
+- とり (tori) = bird
 
 ## Dakuten — D-Row
 
-| Base | Dakuten | Romaji | Example |
-|------|---------|--------|---------|
-| た | だ | da | だいがく (daigaku) = university |
-| ち | ぢ | ji | ちぢむ (chijimu) = to shrink |
-| つ | づ | zu | つづく (tsuzuku) = to continue |
-| て | で | de | でんわ (denwa) = telephone |
-| と | ど | do | どこ (doko) = where |
+{{lang:ja}}
+だ ぢ づ で ど
+{{/lang}}
 
-**Note:** ぢ and づ are rarely used — じ and ず are preferred.
+- だ (da) — だいがく (daigaku) = university
+- ぢ (ji) — rarely used, じ is preferred
+- づ (zu) — rarely used, ず is preferred
+- で (de) — でんわ (denwa) = telephone
+- ど (do) — どこ (doko) = where
 
-## Combined Practice
+## Practice
 
 Read these words using all characters learned so far:
 
-1. **すごい** (sugoi) = amazing
-2. **ちかてつ** (chikatetsu) = subway
-3. **おとうさん** (otousan) = father
-4. **しごと** (shigoto) = work/job
-5. **でぐち** (deguchi) = exit
-6. **たいせつ** (taisetsu) = important
-7. **ざせき** (zaseki) = seat
-8. **どうぞ** (douzo) = please (go ahead)
+{{lang:ja}}
+すごい
+ちかてつ
+おとうさん
+しごと
+でぐち
+たいせつ
+ざせき
+どうぞ
+{{/lang}}
+
+- すごい (sugoi) = amazing
+- ちかてつ (chikatetsu) = subway
+- おとうさん (otousan) = father
+- しごと (shigoto) = work, job
+- でぐち (deguchi) = exit
+- たいせつ (taisetsu) = important
+- ざせき (zaseki) = seat
+- どうぞ (douzo) = please, go ahead

@@ -2,17 +2,18 @@ id = "japanese-100"
 name = "Japanese in 100 Chapters"
 description = "Learn Japanese from zero to conversational in 100 progressive chapters"
 version = "0.1.0"
-language = "ja"
+language = "en"
 accent_color = [220, 50, 50]
 
 # All languages used in content — TTS needs voices for each
-[[languages]]
-code = "ja"
-tts_preference = ["ja-JP", "ja"]
-
+# First language = default (unmarked text language)
 [[languages]]
 code = "en"
 tts_preference = ["en-US", "en-GB", "en"]
+
+[[languages]]
+code = "ja"
+tts_preference = ["ja-JP", "ja"]
 
 [exam]
 default_questions_per_category = 10

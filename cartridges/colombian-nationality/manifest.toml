@@ -6,6 +6,10 @@ language = "es"
 tts_voice_preference = ["es-CO", "es-MX", "es"]
 accent_color = [255, 205, 0]
 
+[[languages]]
+code = "es"
+tts_preference = ["es-CO", "es-MX", "es"]
+
 [exam]
 default_questions_per_category = 10
 

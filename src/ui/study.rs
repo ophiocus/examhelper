@@ -1,7 +1,7 @@
 use crate::app::ExamHelperApp;
 use crate::cartridge::{ContentKind, ContentNode};
 use crate::progress::AppProgress;
-use crate::tts::{strip_lang_tags, NarrationState};
+use crate::tts::NarrationState;
 use eframe::egui;
 use egui::{Color32, RichText, ScrollArea};
 use egui_commonmark::CommonMarkViewer;
@@ -124,6 +124,15 @@ impl ExamHelperApp {
             });
             return;
         }
+
+        let accent = self
+            .registry
+            .active()
+            .map(|c| {
+                let [r, g, b] = c.manifest().accent_color;
+                Color32::from_rgb(r, g, b)
+            })
+            .unwrap_or(Color32::from_rgb(255, 205, 0));
 
         // ── Narration control bar ────────────────────────────────────────
         ui.horizontal(|ui| {
@@ -275,8 +284,8 @@ impl ExamHelperApp {
         let is_narrating = tts_state == NarrationState::Speaking;
 
         if is_narrating {
-            // Karaoke mode — shows language-annotated chunks
-            let chunks = self.tts.narration_chunks();
+            // Karaoke mode — flat (text, lang) pairs from ranges
+            let flat = self.tts.narration_chunks_flat();
             let (current_idx, _total) = self.tts.progress();
 
             ScrollArea::vertical()
@@ -285,18 +294,18 @@ impl ExamHelperApp {
                 .show(ui, |ui| {
                     ui.add_space(8.0);
                     let mut prev_lang = String::new();
-                    for (i, chunk) in chunks.iter().enumerate() {
+                    for (i, (text, lang)) in flat.iter().enumerate() {
                         let is_current = i == current_idx;
                         let is_past = i < current_idx;
 
-                        // Show language badge when language switches
-                        if chunk.lang != prev_lang {
+                        // Show language badge at range boundaries
+                        if *lang != prev_lang {
                             ui.label(
-                                RichText::new(format!("[{}]", chunk.lang.to_uppercase()))
+                                RichText::new(format!("[{}]", lang.to_uppercase()))
                                     .size(10.0)
                                     .color(Color32::from_rgb(120, 120, 180)),
                             );
-                            prev_lang = chunk.lang.clone();
+                            prev_lang = lang.clone();
                         }
 
                         if is_current {
@@ -310,7 +319,7 @@ impl ExamHelperApp {
                                 .rounding(egui::Rounding::same(6.0));
                             let r = frame.show(ui, |ui| {
                                 ui.label(
-                                    RichText::new(&chunk.text)
+                                    RichText::new(text)
                                         .size(15.0)
                                         .color(Color32::from_rgb(255, 235, 120))
                                         .strong(),
@@ -319,13 +328,13 @@ impl ExamHelperApp {
                             r.response.scroll_to_me(Some(egui::Align::Center));
                         } else if is_past {
                             ui.label(
-                                RichText::new(&chunk.text)
+                                RichText::new(text)
                                     .size(14.0)
                                     .color(Color32::from_rgb(100, 100, 115)),
                             );
                         } else {
                             ui.label(
-                                RichText::new(&chunk.text)
+                                RichText::new(text)
                                     .size(14.0)
                                     .color(Color32::from_rgb(190, 190, 200)),
                             );
@@ -335,13 +344,11 @@ impl ExamHelperApp {
                     ui.add_space(20.0);
                 });
         } else {
-            // Normal markdown view with multimedia support
+            // Normal view with language blocks + multimedia
             ScrollArea::vertical()
                 .auto_shrink([false; 2])
                 .show(ui, |ui| {
-                    // Strip language tags before display, then split on multimedia tags
-                    let cleaned = strip_lang_tags(&self.current_content);
-                    let segments = split_multimedia(&cleaned);
+                    let segments = split_content(&self.current_content);
                     for segment in &segments {
                         match segment {
                             ContentSegment::Markdown(md) => {
@@ -356,6 +363,9 @@ impl ExamHelperApp {
                             }
                             ContentSegment::Image { url, caption } => {
                                 render_image_embed(ui, url, caption);
+                            }
+                            ContentSegment::LanguageBlock { lang, text } => {
+                                render_language_block(ui, lang, text, accent);
                             }
                         }
                     }
@@ -391,26 +401,65 @@ impl ExamHelperApp {
     }
 }
 
-// ── Multimedia content support ─────────────────────────────────────────────
+// ── Content segmentation ──────────────────────────────────────────────────
 //
-// Content files can embed multimedia references using these tags:
-//   {{video:URL:Title}}    — renders as a clickable video link
-//   {{image:URL:Caption}}  — renders as an image placeholder
-//
-// These are stripped from TTS output (only the title/caption is read).
+// Splits raw markdown content into segments:
+//   - Regular markdown (rendered via CommonMarkViewer)
+//   - Language blocks: {{lang:XX}} ... {{/lang}} (rendered with bespoke styling)
+//   - Multimedia: {{video:URL:title}}, {{image:URL:caption}}
 
 enum ContentSegment {
     Markdown(String),
     Video { url: String, title: String },
     Image { url: String, caption: String },
+    LanguageBlock { lang: String, text: String },
 }
 
-fn split_multimedia(content: &str) -> Vec<ContentSegment> {
+fn is_lang_close_tag(line: &str) -> bool {
+    let t = line.trim();
+    t == "{{/lang}}"
+}
+
+fn split_content(content: &str) -> Vec<ContentSegment> {
     let mut segments = Vec::new();
     let mut current_md = String::new();
+    let mut in_lang_block: Option<String> = None;
+    let mut lang_text = String::new();
 
     for line in content.lines() {
         let trimmed = line.trim();
+
+        // If inside a language block, check for close tag first
+        if in_lang_block.is_some() {
+            if is_lang_close_tag(trimmed) {
+                let lang = in_lang_block.take().unwrap();
+                if !lang_text.trim().is_empty() {
+                    segments.push(ContentSegment::LanguageBlock {
+                        lang,
+                        text: lang_text.trim().to_string(),
+                    });
+                }
+                lang_text.clear();
+            } else {
+                lang_text.push_str(line);
+                lang_text.push('\n');
+            }
+            continue;
+        }
+
+        // Not inside a language block — check for open tag
+        if let Some(lang) = parse_lang_open_tag(trimmed) {
+            // Flush accumulated markdown
+            if !current_md.trim().is_empty() {
+                segments.push(ContentSegment::Markdown(current_md.clone()));
+                current_md.clear();
+            }
+            in_lang_block = Some(lang.to_string());
+            lang_text.clear();
+            continue;
+        }
+
+        // Check for multimedia tags
         if let Some(media) = parse_media_tag(trimmed) {
             if !current_md.trim().is_empty() {
                 segments.push(ContentSegment::Markdown(current_md.clone()));
@@ -423,16 +472,33 @@ fn split_multimedia(content: &str) -> Vec<ContentSegment> {
         }
     }
 
+    // Flush remaining
+    if let Some(lang) = in_lang_block {
+        if !lang_text.trim().is_empty() {
+            segments.push(ContentSegment::LanguageBlock {
+                lang,
+                text: lang_text.trim().to_string(),
+            });
+        }
+    }
     if !current_md.trim().is_empty() {
         segments.push(ContentSegment::Markdown(current_md));
     }
 
-    // If no multimedia tags found, return the whole content as one segment
     if segments.is_empty() {
         segments.push(ContentSegment::Markdown(content.to_string()));
     }
 
     segments
+}
+
+fn parse_lang_open_tag(line: &str) -> Option<&str> {
+    let t = line.trim();
+    if t.starts_with("{{lang:") && t.ends_with("}}") && !t.contains("/lang") {
+        Some(&t[7..t.len() - 2])
+    } else {
+        None
+    }
 }
 
 fn parse_media_tag(line: &str) -> Option<ContentSegment> {
@@ -450,7 +516,6 @@ fn parse_media_tag(line: &str) -> Option<ContentSegment> {
 }
 
 fn split_media_fields(inner: &str) -> (String, String) {
-    // Split on the last colon to get URL:title
     if let Some(pos) = inner.rfind(':') {
         let url = inner[..pos].trim().to_string();
         let title = inner[pos + 1..].trim().to_string();
@@ -458,6 +523,76 @@ fn split_media_fields(inner: &str) -> (String, String) {
     } else {
         (inner.trim().to_string(), String::new())
     }
+}
+
+// ── Bespoke language block renderer ───────────────────────────────────────
+
+fn render_language_block(ui: &mut egui::Ui, lang: &str, text: &str, accent: Color32) {
+    ui.add_space(6.0);
+
+    // Darken accent for background tint
+    let bg = Color32::from_rgb(
+        (accent.r() as u16 / 6) as u8 + 15,
+        (accent.g() as u16 / 6) as u8 + 10,
+        (accent.b() as u16 / 6) as u8 + 10,
+    );
+
+    let frame = egui::Frame::none()
+        .fill(bg)
+        .stroke(egui::Stroke::new(3.0, accent))
+        .inner_margin(egui::Margin {
+            left: 16.0,
+            right: 12.0,
+            top: 10.0,
+            bottom: 10.0,
+        })
+        .rounding(egui::Rounding {
+            nw: 0.0,
+            ne: 6.0,
+            sw: 0.0,
+            se: 6.0,
+        });
+
+    frame.show(ui, |ui| {
+        // Language badge
+        ui.label(
+            RichText::new(lang.to_uppercase())
+                .size(9.0)
+                .color(Color32::from_rgba_premultiplied(
+                    accent.r(),
+                    accent.g(),
+                    accent.b(),
+                    160,
+                ))
+                .strong(),
+        );
+        ui.add_space(4.0);
+
+        // Render each line at a comfortable size
+        for line in text.lines() {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                ui.add_space(6.0);
+                continue;
+            }
+
+            // Parenthetical romaji/translations get smaller, dimmer styling
+            if trimmed.starts_with('(') && trimmed.ends_with(')') {
+                ui.label(
+                    RichText::new(trimmed)
+                        .size(13.0)
+                        .color(Color32::from_rgb(170, 160, 140)),
+                );
+            } else {
+                ui.label(
+                    RichText::new(trimmed)
+                        .size(18.0)
+                        .color(Color32::from_rgb(240, 235, 220)),
+                );
+            }
+        }
+    });
+    ui.add_space(6.0);
 }
 
 fn render_video_embed(ui: &mut egui::Ui, url: &str, title: &str) {

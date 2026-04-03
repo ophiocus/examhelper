@@ -1,107 +1,187 @@
-{{lang:en}}
 # Chapter 7: Basic Sentence Structure
 
 ## The Core Pattern
 
-Almost every Japanese sentence follows this pattern:
+Almost every Japanese sentence follows this pattern: Topic は Comment です.
 
-**[Topic] は [Comment] です。**
+{{lang:ja}}
+私は学生です。
+{{/lang}}
 
-- 私は学生です。(watashi wa gakusei desu) = I am a student.
-- 田中さんは先生です。(Tanaka-san wa sensei desu) = Mr. Tanaka is a teacher.
+(watashi wa gakusei desu = I am a student)
 
-## Particles: The Glue of Japanese
+{{lang:ja}}
+田中さんは先生です。
+{{/lang}}
+
+(Tanaka-san wa sensei desu = Mr. Tanaka is a teacher)
+
+## Particles
 
 Particles are small words that mark the grammatical role of each word. They are the most important concept in Japanese grammar.
 
 ### は (wa) — Topic Marker
 
-Marks what you're talking about. Pronounced "wa" (not "ha") when used as a particle.
+Pronounced "wa" when used as a particle. Marks what you're talking about:
 
-- **私は**カルロスです。= As for **me**, I am Carlos.
-- **東京は**おおきいです。= As for **Tokyo**, it is big.
+{{lang:ja}}
+私はカルロスです。
+{{/lang}}
+
+(watashi wa Karurosu desu = as for me, I am Carlos)
+
+{{lang:ja}}
+東京はおおきいです。
+{{/lang}}
+
+(Toukyou wa ookii desu = as for Tokyo, it is big)
 
 ### が (ga) — Subject Marker
 
-Marks the grammatical subject, especially for new information or emphasis:
+Marks the subject, especially for new information or emphasis:
 
-- **だれが**来ましたか？= **Who** came? (unknown → が)
-- **田中さんが**来ました。= **Tanaka** came. (new info answer)
+{{lang:ja}}
+だれが来ましたか？
+田中さんが来ました。
+{{/lang}}
+
+- dare ga kimashita ka? = who came?
+- Tanaka-san ga kimashita = Tanaka came (answering with new info)
 
 ### を (o) — Object Marker
 
 Marks the direct object of a verb:
 
-- パンを食べる。(pan **o** taberu) = Eat bread.
-- 水を飲む。(mizu **o** nomu) = Drink water.
+{{lang:ja}}
+パンを食べる。
+水を飲む。
+{{/lang}}
 
-### に (ni) — Direction / Time / Location
+- pan o taberu = eat bread
+- mizu o nomu = drink water
 
-Multiple uses:
+### に (ni) — Direction, Time, Location
 
-- 学校**に**行く。= Go **to** school. (direction)
-- 7時**に**起きる。= Wake up **at** 7. (time)
-- 東京**に**住んでいる。= Live **in** Tokyo. (location)
+This particle has multiple uses:
 
-### で (de) — Location of Action / Means
+{{lang:ja}}
+学校に行く。
+7時に起きる。
+東京に住んでいる。
+{{/lang}}
 
-- 学校**で**勉強する。= Study **at** school.
-- バス**で**行く。= Go **by** bus.
+- gakkou ni iku = go to school (direction)
+- shichiji ni okiru = wake up at 7 (time)
+- Toukyou ni sundeiru = live in Tokyo (location)
 
-### の (no) — Possession / Connection
+### で (de) — Location of Action, Means
 
-- 私**の**本 = **my** book
-- 日本**の**食べ物 = Japan**'s** food
+{{lang:ja}}
+学校で勉強する。
+バスで行く。
+{{/lang}}
+
+- gakkou de benkyou suru = study at school
+- basu de iku = go by bus
+
+### の (no) — Possession
+
+{{lang:ja}}
+私の本
+日本の食べ物
+{{/lang}}
+
+- watashi no hon = my book
+- nihon no tabemono = Japan's food
 
 ## Question Particle か (ka)
 
-Add か to the end of any statement to make it a question:
+Add か to any statement to make it a question. No change in word order needed:
 
-- 学生です。= [I] am a student.
-- 学生です**か**？= Are [you] a student?
+{{lang:ja}}
+学生です。
+学生ですか？
+{{/lang}}
 
-No change in word order — just add か.
+- gakusei desu = I am a student
+- gakusei desu ka? = are you a student?
 
-## Basic Adjectives
+## Adjectives
 
-Japanese has two types of adjectives:
+Japanese has two types of adjectives.
 
-### い-Adjectives (end in い)
+### い-Adjectives
 
-| Japanese | Romaji | Meaning |
-|----------|--------|---------|
-| おおきい | ookii | big |
-| ちいさい | chiisai | small |
-| たかい | takai | expensive / tall |
-| やすい | yasui | cheap |
-| あたらしい | atarashii | new |
-| ふるい | furui | old (things) |
-| いい/よい | ii/yoi | good |
-| わるい | warui | bad |
+These end in い and can go directly before a noun or with です:
 
-Usage: directly before noun or with です
+{{lang:ja}}
+おおきい
+ちいさい
+たかい
+やすい
+あたらしい
+ふるい
+いい
+わるい
+{{/lang}}
 
-- **おおきい**いぬ = a **big** dog
-- このいぬは**おおきい**です。= This dog **is big**.
+- おおきい (ookii) = big
+- ちいさい (chiisai) = small
+- たかい (takai) = expensive or tall
+- やすい (yasui) = cheap
+- あたらしい (atarashii) = new
+- ふるい (furui) = old (for things)
+- いい (ii) = good
+- わるい (warui) = bad
 
-### な-Adjectives (need な before nouns)
+Example usage:
 
-| Japanese | Romaji | Meaning |
-|----------|--------|---------|
-| げんき(な) | genki | healthy/energetic |
-| しずか(な) | shizuka | quiet |
-| きれい(な) | kirei | pretty/clean |
-| べんり(な) | benri | convenient |
+{{lang:ja}}
+おおきいいぬ
+このいぬはおおきいです。
+{{/lang}}
 
-Usage:
+- ookii inu = a big dog
+- kono inu wa ookii desu = this dog is big
 
-- **しずかな**まち = a **quiet** town
-- このまちは**しずか**です。= This town **is quiet**.
+### な-Adjectives
+
+These need な before nouns:
+
+{{lang:ja}}
+げんきな
+しずかな
+きれいな
+べんりな
+{{/lang}}
+
+- げんき (genki) = healthy, energetic
+- しずか (shizuka) = quiet
+- きれい (kirei) = pretty, clean
+- べんり (benri) = convenient
+
+Example:
+
+{{lang:ja}}
+しずかなまち
+このまちはしずかです。
+{{/lang}}
+
+- shizuka na machi = a quiet town
+- kono machi wa shizuka desu = this town is quiet
 
 ## Practice Sentences
 
-1. 私はがくせいです。(I am a student.)
-2. 日本語はおもしろいです。(Japanese is interesting.)
-3. ねこがすきです。(I like cats.)
-4. 毎日コーヒーをのみます。(I drink coffee every day.)
-5. 東京はおおきいです。(Tokyo is big.)
+{{lang:ja}}
+私はがくせいです。
+日本語はおもしろいです。
+ねこがすきです。
+毎日コーヒーをのみます。
+東京はおおきいです。
+{{/lang}}
+
+- I am a student.
+- Japanese is interesting.
+- I like cats.
+- I drink coffee every day.
+- Tokyo is big.

@@ -1,50 +1,81 @@
-{{lang:en}}
 # Chapter 1: Introduction to Japanese
 
-Japanese uses **three writing systems** that work together:
+Japanese uses three writing systems that work together. This is what makes it unique — and what can seem overwhelming at first. But each system has a clear purpose.
 
 ## The Three Scripts
 
-| Script | Name | Purpose | Example |
-|--------|------|---------|---------|
-| ひらがな | Hiragana | Native Japanese words, grammar | たべる (to eat) |
-| カタカナ | Katakana | Foreign loanwords, emphasis | コーヒー (coffee) |
-| 漢字 | Kanji | Chinese characters, meaning-dense | 食べる (to eat) |
+**Hiragana** is used for native Japanese words and grammar. It's curvy and flowing:
+
+{{lang:ja}}
+ひらがな
+たべる
+{{/lang}}
+
+(hiragana — taberu, "to eat")
+
+**Katakana** is used for foreign loanwords and emphasis. It's angular and sharp:
+
+{{lang:ja}}
+カタカナ
+コーヒー
+{{/lang}}
+
+(katakana — koohii, "coffee")
+
+**Kanji** are Chinese characters used for meaning-dense words:
+
+{{lang:ja}}
+漢字
+食べる
+{{/lang}}
+
+(kanji — taberu, "to eat" — same word as hiragana but written with kanji)
 
 ## How They Work Together
 
-A typical Japanese sentence mixes all three:
+A typical Japanese sentence mixes all three scripts. Here's an example:
 
 {{lang:ja}}
-**私はコーヒーを飲みます。**
-{{lang:en}}
-- 私 (わたし) = I — *kanji*
-- は = topic marker — *hiragana*
-- コーヒー = coffee — *katakana*
-- を = object marker — *hiragana*
-- 飲みます (のみます) = drink — *kanji + hiragana*
+私はコーヒーを飲みます。
+{{/lang}}
+
+Breaking it down:
+
+- 私 (watashi) = "I" — this is kanji
+- は (wa) = topic marker — this is hiragana
+- コーヒー (koohii) = "coffee" — this is katakana (foreign word)
+- を (o) = object marker — this is hiragana
+- 飲みます (nomimasu) = "drink" — kanji plus hiragana
 
 ## Pronunciation Basics
 
-Japanese has only **5 vowel sounds** and they never change:
+Japanese has only five vowel sounds and they never change:
 
-| Vowel | Sound | Like English |
-|-------|-------|-------------|
-| あ a | ah | f**a**ther |
-| い i | ee | s**ee** |
-| う u | oo | b**oo**t (shorter) |
-| え e | eh | b**e**d |
-| お o | oh | g**o** |
+{{lang:ja}}
+あ い う え お
+{{/lang}}
 
-Every Japanese syllable is either a vowel alone or a consonant + vowel. This makes pronunciation very regular — no silent letters, no variable sounds.
+- あ (a) = "ah" like in father
+- い (i) = "ee" like in see
+- う (u) = "oo" like in boot, but shorter
+- え (e) = "eh" like in bed
+- お (o) = "oh" like in go
+
+Every Japanese syllable is either a vowel alone or a consonant plus a vowel. No silent letters, no variable sounds.
 
 ## Word Order
 
-Japanese is **SOV** (Subject-Object-Verb), the opposite of English SVO:
+Japanese is SOV — Subject, Object, Verb. The opposite of English.
 
-- English: I eat sushi → **S**ubject **V**erb **O**bject
-- Japanese: 私は寿司を食べる → **S**ubject **O**bject **V**erb
-- Literally: I sushi eat
+In English you say: "I eat sushi" — Subject, Verb, Object.
+
+In Japanese:
+
+{{lang:ja}}
+私は寿司を食べる
+{{/lang}}
+
+(watashi wa sushi o taberu — literally "I sushi eat")
 
 ## Why Learn Japanese?
 

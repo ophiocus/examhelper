@@ -1,111 +1,115 @@
-{{lang:en}}
 # Chapter 9: Katakana — Part 1
 
 ## Why Katakana?
 
-Katakana is used for:
+Katakana is used for foreign loanwords, foreign names, onomatopoeia, emphasis (like caps lock in English), and scientific terms. It mirrors hiragana — same sounds, but angular shapes instead of curvy ones.
 
-- **Foreign loanwords**: コーヒー (koohii) = coffee
-- **Foreign names**: カルロス (Karurosu) = Carlos
-- **Onomatopoeia**: ワンワン (wanwan) = woof woof
-- **Emphasis**: Like CAPS LOCK in English
-- **Scientific terms**: ウイルス (uirusu) = virus
+## Vowels
 
-## Katakana Chart — Vowels & K through N
+{{lang:ja}}
+ア イ ウ エ オ
+{{/lang}}
 
-Katakana mirrors hiragana — same sounds, angular shapes:
+Same sounds as hiragana あ い う え お, but written with sharp angular strokes.
 
-### Vowels
+## K-Row
 
-| Katakana | Hiragana | Romaji |
-|----------|----------|--------|
-| ア | あ | a |
-| イ | い | i |
-| ウ | う | u |
-| エ | え | e |
-| オ | お | o |
+{{lang:ja}}
+カ キ ク ケ コ
+{{/lang}}
 
-### K-Row
+(ka, ki, ku, ke, ko)
 
-| Katakana | Hiragana | Romaji |
-|----------|----------|--------|
-| カ | か | ka |
-| キ | き | ki |
-| ク | く | ku |
-| ケ | け | ke |
-| コ | こ | ko |
+## S-Row
 
-### S-Row
+{{lang:ja}}
+サ シ ス セ ソ
+{{/lang}}
 
-| Katakana | Hiragana | Romaji |
-|----------|----------|--------|
-| サ | さ | sa |
-| シ | し | shi |
-| ス | す | su |
-| セ | せ | se |
-| ソ | そ | so |
+(sa, shi, su, se, so)
 
-**Warning:** シ (shi) and ツ (tsu) look similar! シ has horizontal strokes, ツ has vertical strokes.
+Warning: シ (shi) and ツ (tsu) look very similar! シ has strokes going right to left. ツ has strokes going top to down.
 
-### T-Row
+## T-Row
 
-| Katakana | Hiragana | Romaji |
-|----------|----------|--------|
-| タ | た | ta |
-| チ | ち | chi |
-| ツ | つ | tsu |
-| テ | て | te |
-| ト | と | to |
+{{lang:ja}}
+タ チ ツ テ ト
+{{/lang}}
 
-### N-Row
+(ta, chi, tsu, te, to)
 
-| Katakana | Hiragana | Romaji |
-|----------|----------|--------|
-| ナ | な | na |
-| ニ | に | ni |
-| ヌ | ぬ | nu |
-| ネ | ね | ne |
-| ノ | の | no |
+## N-Row
 
-## Special Katakana Rules
+{{lang:ja}}
+ナ ニ ヌ ネ ノ
+{{/lang}}
 
-### Long Vowels
+(na, ni, nu, ne, no)
 
-Use ー (a dash) to extend vowels:
+## Long Vowels
 
-- コーヒー (koohii) = coffee (two long vowels!)
+In katakana, use a dash ー to extend vowels:
+
+{{lang:ja}}
+コーヒー
+ケーキ
+スキー
+ノート
+{{/lang}}
+
+- コーヒー (koohii) = coffee — two long vowels!
 - ケーキ (keeki) = cake
 - スキー (sukii) = skiing
 - ノート (nooto) = notebook
 
-### Easily Confused Pairs
+## Easily Confused Pairs
 
-| Pair | Difference |
-|------|-----------|
-| シ (shi) vs ツ (tsu) | シ: strokes go right→left. ツ: strokes go top→down |
-| ソ (so) vs ン (n) | ソ: stroke goes up. ン: stroke goes down |
-| ノ (no) vs メ (me) | ノ: one stroke. メ: two strokes crossing |
+シ (shi) vs ツ (tsu): シ strokes go right to left, ツ strokes go top to down.
 
-## Common Loanwords (Using Characters Learned)
+ソ (so) vs ン (n): ソ stroke goes up, ン stroke goes down.
 
-| Katakana | Romaji | English Origin |
-|----------|--------|---------------|
-| タクシー | takushii | taxi |
-| テスト | tesuto | test |
-| ナイス | naisu | nice |
-| コスト | kosuto | cost |
-| カット | katto | cut |
-| セット | setto | set |
-| ネット | netto | net/internet |
-| スーツ | suutsu | suit |
+ノ (no) vs メ (me): ノ is one stroke, メ is two strokes crossing.
 
-## Practice: Read These Words
+## Common Loanwords
 
-1. **カナ** (kana) = kana (writing system name)
-2. **キス** (kisu) = kiss
-3. **ステーキ** (suteeki) = steak
-4. **オーケー** (ookee) = OK
-5. **サイン** (sain) = sign/autograph
-6. **テニス** (tenisu) = tennis
-7. **ココナッツ** (kokonattsu) = coconut
-8. **コンテスト** (kontesuto) = contest
+{{lang:ja}}
+タクシー
+テスト
+ナイス
+コスト
+カット
+セット
+ネット
+スーツ
+{{/lang}}
+
+- タクシー (takushii) = taxi
+- テスト (tesuto) = test
+- ナイス (naisu) = nice
+- コスト (kosuto) = cost
+- カット (katto) = cut
+- セット (setto) = set
+- ネット (netto) = net, internet
+- スーツ (suutsu) = suit
+
+## Practice
+
+{{lang:ja}}
+カナ
+キス
+ステーキ
+オーケー
+サイン
+テニス
+ココナッツ
+コンテスト
+{{/lang}}
+
+- カナ (kana) = kana, the writing system name
+- キス (kisu) = kiss
+- ステーキ (suteeki) = steak
+- オーケー (ookee) = OK
+- サイン (sain) = sign, autograph
+- テニス (tenisu) = tennis
+- ココナッツ (kokonattsu) = coconut
+- コンテスト (kontesuto) = contest

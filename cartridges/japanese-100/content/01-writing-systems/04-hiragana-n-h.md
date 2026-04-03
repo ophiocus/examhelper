@@ -1,83 +1,138 @@
-{{lang:en}}
 # Chapter 4: Hiragana — N-Row & H-Row
 
-## N-Row (な行 なぎょう)
+## N-Row
 
-| Hiragana | Romaji | Example Word |
-|----------|--------|-------------|
-| な | na | なつ (natsu) = summer |
-| に | ni | にく (niku) = meat |
-| ぬ | nu | いぬ (inu) = dog |
-| ね | ne | ねこ (neko) = cat |
-| の | no | のど (nodo) = throat |
+{{lang:ja}}
+な に ぬ ね の
+{{/lang}}
 
-### Memory Aids
+- な (na) — a naughty person crossing their arms
+- に (ni) — a knee bending
+- ぬ (nu) — noodles twirling on a fork
+- ね (ne) — a snail, never in a hurry
+- の (no) — a no sign, a circle with a slash
 
-- **な (na)**: A **na**ughty person crossing their arms
-- **に (ni)**: A **knee** bending
-- **ぬ (nu)**: **Noo**dles twirling on a fork
-- **ね (ne)**: A snail — "**ne**ver in a hurry"
-- **の (no)**: A **no** sign — a circle with a slash
+Example words:
 
-**の** is one of the most common characters. It means "of/belonging to":
-- 日本**の**食べ物 (nihon **no** tabemono) = Japan's food
-- 私**の**名前 (watashi **no** namae) = my name
+{{lang:ja}}
+なつ
+にく
+いぬ
+ねこ
+のど
+{{/lang}}
 
-## H-Row (は行 はぎょう)
+- なつ (natsu) = summer
+- にく (niku) = meat
+- いぬ (inu) = dog
+- ねこ (neko) = cat
+- のど (nodo) = throat
 
-| Hiragana | Romaji | Example Word |
-|----------|--------|-------------|
-| は | ha | はな (hana) = flower / nose |
-| ひ | hi | ひと (hito) = person |
-| ふ | fu | ふゆ (fuyu) = winter |
-| へ | he | へや (heya) = room |
-| ほ | ho | ほし (hoshi) = star |
+The character の is one of the most common in Japanese. It means "of" or "belonging to":
 
-**Important:** は is normally "ha" but when used as a topic particle it's pronounced "wa":
-- 私**は**日本人です = watashi **wa** nihonjin desu = I am Japanese
+{{lang:ja}}
+日本の食べ物
+私の名前
+{{/lang}}
 
-Similarly, へ is "he" but as a direction particle it's pronounced "e":
-- 学校**へ**行く = gakkou **e** iku = go to school
+- nihon no tabemono = Japan's food
+- watashi no namae = my name
 
-### Memory Aids
+## H-Row
 
-- **は (ha)**: A person **ha**-**ha** laughing
-- **ひ (hi)**: A smiling face — "**hee** hee!"
-- **ふ (fu)**: Mount **Fu**ji
-- **へ (he)**: A hill or mountain — going up
-- **ほ (ho)**: Santa saying "**ho** ho ho" with a sack
+{{lang:ja}}
+は ひ ふ へ ほ
+{{/lang}}
 
-## Dakuten — B-Row / Handakuten — P-Row
+- は (ha) — a person ha-ha laughing
+- ひ (hi) — a smiling face, "hee hee!"
+- ふ (fu) — Mount Fuji
+- へ (he) — a hill going up
+- ほ (ho) — Santa saying "ho ho ho" with a sack
 
-The H-row is unique: it has both dakuten (voiced → B) and handakuten (half-voiced → P):
+Example words:
 
-| Base | Dakuten (゛) | Handakuten (゜) |
-|------|-------------|----------------|
-| は ha | ば ba | ぱ pa |
-| ひ hi | び bi | ぴ pi |
-| ふ fu | ぶ bu | ぷ pu |
-| へ he | べ be | ぺ pe |
-| ほ ho | ぼ bo | ぽ po |
+{{lang:ja}}
+はな
+ひと
+ふゆ
+へや
+ほし
+{{/lang}}
 
-### B-Row Examples
+- はな (hana) = flower or nose
+- ひと (hito) = person
+- ふゆ (fuyu) = winter
+- へや (heya) = room
+- ほし (hoshi) = star
 
-- **ばんごはん** (bangohan) = dinner
-- **びょういん** (byouin) = hospital
-- **ぶた** (buta) = pig
+**Important exceptions:** When は is used as a topic particle, it's pronounced "wa":
 
-### P-Row Examples
+{{lang:ja}}
+私は日本人です
+{{/lang}}
 
-- **ぱん** (pan) = bread
-- **てんぷら** (tenpura) = tempura
-- **きっぷ** (kippu) = ticket
+(watashi wa nihonjin desu = I am Japanese)
 
-## Practice Words
+When へ is used as a direction particle, it's pronounced "e":
 
-1. **にほん** (nihon) = Japan
-2. **はなび** (hanabi) = fireworks
-3. **ぬいぐるみ** (nuigurumi) = stuffed animal
-4. **ひこうき** (hikouki) = airplane
-5. **ふとん** (futon) = futon/bedding
-6. **ほんとう** (hontou) = truth/really
-7. **ばしょ** (basho) = place
-8. **ぴかぴか** (pikapika) = shiny/sparkling
+{{lang:ja}}
+学校へ行く
+{{/lang}}
+
+(gakkou e iku = go to school)
+
+## B-Row and P-Row
+
+The H-row is unique — it has two modified forms. Add two dots for B sounds, add a small circle for P sounds:
+
+{{lang:ja}}
+ば び ぶ べ ぼ
+ぱ ぴ ぷ ぺ ぽ
+{{/lang}}
+
+B-row examples:
+
+{{lang:ja}}
+ばんごはん
+びょういん
+ぶた
+{{/lang}}
+
+- ばんごはん (bangohan) = dinner
+- びょういん (byouin) = hospital
+- ぶた (buta) = pig
+
+P-row examples:
+
+{{lang:ja}}
+ぱん
+てんぷら
+きっぷ
+{{/lang}}
+
+- ぱん (pan) = bread
+- てんぷら (tenpura) = tempura
+- きっぷ (kippu) = ticket
+
+## Practice
+
+{{lang:ja}}
+にほん
+はなび
+ぬいぐるみ
+ひこうき
+ふとん
+ほんとう
+ばしょ
+ぴかぴか
+{{/lang}}
+
+- にほん (nihon) = Japan
+- はなび (hanabi) = fireworks
+- ぬいぐるみ (nuigurumi) = stuffed animal
+- ひこうき (hikouki) = airplane
+- ふとん (futon) = futon, bedding
+- ほんとう (hontou) = truth, really
+- ばしょ (basho) = place
+- ぴかぴか (pikapika) = shiny, sparkling

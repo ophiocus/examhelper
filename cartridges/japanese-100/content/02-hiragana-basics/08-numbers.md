@@ -1,96 +1,105 @@
-{{lang:en}}
 # Chapter 8: Numbers & Counting
 
-## Basic Numbers (1-10)
+## Basic Numbers 1 to 10
 
-| Number | Kanji | Hiragana | Romaji |
-|--------|-------|----------|--------|
-| 1 | 一 | いち | ichi |
-| 2 | 二 | に | ni |
-| 3 | 三 | さん | san |
-| 4 | 四 | よん / し | yon / shi |
-| 5 | 五 | ご | go |
-| 6 | 六 | ろく | roku |
-| 7 | 七 | なな / しち | nana / shichi |
-| 8 | 八 | はち | hachi |
-| 9 | 九 | きゅう / く | kyuu / ku |
-| 10 | 十 | じゅう | juu |
+{{lang:ja}}
+一　いち
+二　に
+三　さん
+四　よん
+五　ご
+六　ろく
+七　なな
+八　はち
+九　きゅう
+十　じゅう
+{{/lang}}
 
-**Note:** 4 and 7 have two readings. よん (yon) and なな (nana) are preferred in most situations because し (shi) sounds like 死 (death) and しち (shichi) can be confused with いち (ichi).
+- 一 いち (ichi) = 1
+- 二 に (ni) = 2
+- 三 さん (san) = 3
+- 四 よん (yon) = 4 — also read し (shi), but yon is preferred because shi sounds like 死 (death)
+- 五 ご (go) = 5
+- 六 ろく (roku) = 6
+- 七 なな (nana) = 7 — also read しち (shichi), but nana is preferred to avoid confusion with いち
+- 八 はち (hachi) = 8
+- 九 きゅう (kyuu) = 9 — also read く (ku)
+- 十 じゅう (juu) = 10
 
-## Teens and Tens
+## Building Larger Numbers
 
-Build larger numbers by combining:
+Japanese numbers are built by simple math — combining tens and ones:
 
-| Number | Japanese | Pattern |
-|--------|----------|---------|
-| 11 | じゅういち | 10 + 1 |
-| 12 | じゅうに | 10 + 2 |
-| 20 | にじゅう | 2 × 10 |
-| 25 | にじゅうご | 2 × 10 + 5 |
-| 30 | さんじゅう | 3 × 10 |
-| 99 | きゅうじゅうきゅう | 9 × 10 + 9 |
+{{lang:ja}}
+じゅういち
+じゅうに
+にじゅう
+にじゅうご
+さんじゅう
+きゅうじゅうきゅう
+{{/lang}}
+
+- じゅういち (juuichi) = 11 — literally "ten one"
+- じゅうに (juuni) = 12 — "ten two"
+- にじゅう (nijuu) = 20 — "two tens"
+- にじゅうご (nijuugo) = 25 — "two tens five"
+- さんじゅう (sanjuu) = 30 — "three tens"
+- きゅうじゅうきゅう (kyuujuukyuu) = 99 — "nine tens nine"
 
 ## Hundreds and Thousands
 
-| Number | Japanese | Romaji |
-|--------|----------|--------|
-| 100 | ひゃく | hyaku |
-| 200 | にひゃく | nihyaku |
-| 300 | さんびゃく | sanbyaku |
-| 600 | ろっぴゃく | roppyaku |
-| 800 | はっぴゃく | happyaku |
-| 1,000 | せん | sen |
-| 3,000 | さんぜん | sanzen |
-| 8,000 | はっせん | hassen |
-| 10,000 | いちまん | ichiman |
+{{lang:ja}}
+ひゃく
+せん
+いちまん
+{{/lang}}
 
-**Note:** Some numbers cause sound changes (300→sanbyaku, not sanhyaku).
+- ひゃく (hyaku) = 100
+- せん (sen) = 1,000
+- いちまん (ichiman) = 10,000
 
-## Counters (助数詞 じょすうし)
+Some numbers cause sound changes: 300 is さんびゃく (sanbyaku, not sanhyaku), 600 is ろっぴゃく (roppyaku), 800 is はっぴゃく (happyaku), 3000 is さんぜん (sanzen), 8000 is はっせん (hassen).
 
-Japanese uses **counters** after numbers, like "3 *sheets* of paper" or "2 *cups* of coffee". You cannot just say "3 dogs" — you need the right counter.
+## Counters
 
-### Essential Counters
+Japanese uses counters after numbers, similar to how English says "three sheets of paper" or "two cups of coffee." You cannot just say a number plus a noun — you need the right counter.
 
-| Counter | For | Example |
-|---------|-----|---------|
-| つ | general (1-9 only) | みっつ (mittsu) = 3 things |
-| 人 (にん) | people | 三人 (sannin) = 3 people |
-| 個 (こ) | small objects | 五個 (goko) = 5 pieces |
-| 枚 (まい) | flat things | 二枚 (nimai) = 2 sheets |
-| 本 (ほん) | long things | 三本 (sanbon) = 3 bottles |
-| 匹 (ひき) | small animals | 二匹 (nihiki) = 2 animals |
-| 台 (だい) | machines/vehicles | 一台 (ichidai) = 1 car |
-| 杯 (はい) | cups/glasses | 一杯 (ippai) = 1 cup |
+The safest counter is つ, using native Japanese numbers 1 through 9:
 
-### The General Counter (つ)
+{{lang:ja}}
+ひとつ
+ふたつ
+みっつ
+よっつ
+いつつ
+むっつ
+ななつ
+やっつ
+ここのつ
+とお
+{{/lang}}
 
-For 1-9, use the native Japanese number + つ:
+- ひとつ (hitotsu) = 1 thing
+- ふたつ (futatsu) = 2 things
+- みっつ (mittsu) = 3 things
+- よっつ (yottsu) = 4 things
+- いつつ (itsutsu) = 5 things
+- むっつ (muttsu) = 6 things
+- ななつ (nanatsu) = 7 things
+- やっつ (yattsu) = 8 things
+- ここのつ (kokonotsu) = 9 things
+- とお (too) = 10 things
 
-| Count | Japanese |
-|-------|----------|
-| 1 | ひとつ |
-| 2 | ふたつ |
-| 3 | みっつ |
-| 4 | よっつ |
-| 5 | いつつ |
-| 6 | むっつ |
-| 7 | ななつ |
-| 8 | やっつ |
-| 9 | ここのつ |
-| 10 | とお |
-
-This is the safest counter when you don't know which specific counter to use.
-
-## Asking "How many?"
-
-- いくつ？ (ikutsu) = How many? (general)
-- 何人？(なんにん nannin) = How many people?
-- いくら？(ikura) = How much? (price)
+Other common counters: 人 (にん, nin) for people, 個 (こ, ko) for small objects, 枚 (まい, mai) for flat things, 本 (ほん, hon) for long things, 匹 (ひき, hiki) for small animals.
 
 ## Useful Phrases
 
-- これはいくらですか？= How much is this?
-- 二つください。= Two, please.
-- 三人です。= [We are a party of] three people.
+{{lang:ja}}
+これはいくらですか？
+二つください。
+三人です。
+{{/lang}}
+
+- kore wa ikura desu ka? = how much is this?
+- futatsu kudasai = two, please
+- sannin desu = we are a party of three

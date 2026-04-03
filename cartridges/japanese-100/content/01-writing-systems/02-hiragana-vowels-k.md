@@ -1,71 +1,83 @@
-{{lang:en}}
 # Chapter 2: Hiragana — Vowels & K-Row
 
-## The Vowels (母音 ぼいん)
+## The Vowels
 
-These are the foundation. Every other hiragana is built by adding a consonant before these vowels.
+These five characters are the foundation. Every other hiragana adds a consonant before one of these vowels.
 
-| Hiragana | Romaji | Stroke Order Hint |
-|----------|--------|-------------------|
-| あ | a | 3 strokes: cross, curve, sweep |
-| い | i | 2 strokes: two curves |
-| う | u | 2 strokes: top dash, curve |
-| え | e | 2 strokes: cross and curve |
-| お | o | 3 strokes: cross, hook, loop |
+{{lang:ja}}
+あ い う え お
+{{/lang}}
 
-### Memory Aids
+- あ (a) — 3 strokes. Looks like an antenna on a roof.
+- い (i) — 2 strokes. Two people standing: "ee! two of us!"
+- う (u) — 2 strokes. A nose from the side, say "oo" with pursed lips.
+- え (e) — 2 strokes. An energetic dancer with arms out.
+- お (o) — 3 strokes. A baseball pitcher throwing: "oh!"
 
-- **あ (a)**: Looks like an **a**ntenna on a roof
-- **い (i)**: Two people standing — "**ee**! two of us!"
-- **う (u)**: A nose from the side — say "**oo**" with pursed lips
-- **え (e)**: An **e**nergetic dancer with arms out
-- **お (o)**: A baseball pitcher throwing — "**oh**!"
-
-## K-Row (か行 かぎょう)
+## K-Row
 
 Add the "k" consonant to each vowel:
 
-| Hiragana | Romaji | Example Word |
-|----------|--------|-------------|
-| か | ka | かさ (kasa) = umbrella |
-| き | ki | きく (kiku) = chrysanthemum |
-| く | ku | くち (kuchi) = mouth |
-| け | ke | けさ (kesa) = this morning |
-| こ | ko | こえ (koe) = voice |
+{{lang:ja}}
+か き く け こ
+{{/lang}}
 
-### Memory Aids
+- か (ka) — looks like a cat with whiskers
+- き (ki) — a key with teeth on the side
+- く (ku) — a cuckoo bird's beak
+- け (ke) — a keg on its side
+- こ (ko) — two horizontal lines, a cot to sleep on
 
-- **か (ka)**: Looks like a **ca**t with whiskers
-- **き (ki)**: A **key** with teeth on the side
-- **く (ku)**: A **coo**koo bird's beak
-- **け (ke)**: A **ke**g on its side
-- **こ (ko)**: Two horizontal lines — a **co**t to sleep on
-
-## Dakuten (Voiced) — G-Row
-
-Add two small dots (゛) to the K-row to get the G-row:
-
-| Base | Dakuten | Romaji | Example |
-|------|---------|--------|---------|
-| か | が | ga | がっこう (gakkou) = school |
-| き | ぎ | gi | ぎんこう (ginkou) = bank |
-| く | ぐ | gu | ぐんて (gunte) = gloves |
-| け | げ | ge | げんき (genki) = healthy/energetic |
-| こ | ご | go | ごはん (gohan) = rice/meal |
-
-## Practice Words
-
-Read these aloud:
+Example words:
 
 {{lang:ja}}
-あか。いけ。かぎ。こい。おおきい。かお。えき。あき。
+かさ
+きく
+くち
+けさ
+こえ
+{{/lang}}
 
-{{lang:en}}
-1. **あか** (aka) = red
-2. **いけ** (ike) = pond
-3. **かぎ** (kagi) = key
-4. **こい** (koi) = carp (the fish)
-5. **おおきい** (ookii) = big
-6. **かお** (kao) = face
-7. **えき** (eki) = train station
-8. **あき** (aki) = autumn
+- かさ (kasa) = umbrella
+- きく (kiku) = chrysanthemum
+- くち (kuchi) = mouth
+- けさ (kesa) = this morning
+- こえ (koe) = voice
+
+## Dakuten — The G-Row
+
+Add two small dots to the K-row characters to voice them into G sounds:
+
+{{lang:ja}}
+が ぎ ぐ げ ご
+{{/lang}}
+
+- が (ga) — がっこう (gakkou) = school
+- ぎ (gi) — ぎんこう (ginkou) = bank
+- ぐ (gu) — ぐんて (gunte) = gloves
+- げ (ge) — げんき (genki) = healthy, energetic
+- ご (go) — ごはん (gohan) = rice, meal
+
+## Practice
+
+Read these words aloud:
+
+{{lang:ja}}
+あか
+いけ
+かぎ
+こい
+おおきい
+かお
+えき
+あき
+{{/lang}}
+
+- あか (aka) = red
+- いけ (ike) = pond
+- かぎ (kagi) = key
+- こい (koi) = carp
+- おおきい (ookii) = big
+- かお (kao) = face
+- えき (eki) = train station
+- あき (aki) = autumn

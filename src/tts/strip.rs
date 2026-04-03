@@ -1,12 +1,13 @@
-/// A chunk of text with its language code for TTS voice switching.
+/// A contiguous range of same-language text, pre-split into speakable chunks.
+/// The TTS worker exhausts all chunks in one range before switching voice.
 #[derive(Debug, Clone)]
-pub struct LangChunk {
-    pub text: String,
+pub struct LangRange {
     pub lang: String,
+    pub chunks: Vec<String>,
 }
 
 /// Strip markdown syntax to produce clean text for speech.
-/// `{{lang:XX}}` tags are stripped but tracked — they affect the returned LangChunks.
+/// Language tags (`{{lang:XX}}`, `{{/lang}}`) are preserved as markers for range splitting.
 pub fn strip_markdown(md: &str) -> String {
     let mut out = String::with_capacity(md.len());
     for line in md.lines() {
@@ -18,17 +19,15 @@ pub fn strip_markdown(md: &str) -> String {
             continue;
         }
 
-        // Preserve language switch tags as markers for chunking
-        if trimmed.starts_with("{{lang:") && trimmed.ends_with("}}") {
+        // Preserve language tags as markers
+        if parse_lang_open(trimmed).is_some() || is_lang_close(trimmed) {
             out.push_str(trimmed);
             out.push('\n');
             continue;
         }
 
-        // Skip multimedia tags — don't read URLs aloud
-        // Format: {{video:URL:title}} or {{image:URL:caption}}
+        // Skip multimedia tags — only read title/caption
         if trimmed.starts_with("{{video:") || trimmed.starts_with("{{image:") {
-            // Extract title/caption for TTS
             if let Some(last_colon) = trimmed.rfind(':') {
                 let title = &trimmed[last_colon + 1..trimmed.len().saturating_sub(2)];
                 let title = title.trim();
@@ -73,7 +72,6 @@ pub fn strip_markdown(md: &str) -> String {
             trimmed
         };
 
-        // Skip empty lines (preserve paragraph breaks)
         if line_clean.is_empty() {
             out.push('\n');
             continue;
@@ -81,7 +79,7 @@ pub fn strip_markdown(md: &str) -> String {
 
         let result = strip_inline_markdown(line_clean);
         out.push_str(result.trim());
-        out.push(' ');
+        out.push('\n');
     }
     out
 }
@@ -132,107 +130,90 @@ fn strip_inline_markdown(text: &str) -> String {
     result
 }
 
-/// Parse a `{{lang:XX}}` tag, returning the language code.
-fn parse_lang_tag(line: &str) -> Option<&str> {
-    let trimmed = line.trim();
-    if trimmed.starts_with("{{lang:") && trimmed.ends_with("}}") {
-        Some(&trimmed[7..trimmed.len() - 2])
+/// Parse `{{lang:XX}}` — returns the language code.
+fn parse_lang_open(line: &str) -> Option<&str> {
+    let t = line.trim();
+    if t.starts_with("{{lang:") && t.ends_with("}}") && !t.contains("/lang") {
+        Some(&t[7..t.len() - 2])
     } else {
         None
     }
 }
 
-/// Split text into speakable chunks annotated with language codes.
-/// Language switches are triggered by `{{lang:XX}}` markers in the text.
-pub fn split_into_lang_chunks(text: &str, default_lang: &str) -> Vec<LangChunk> {
-    let mut chunks = Vec::new();
+/// Check if line is `{{/lang}}`.
+fn is_lang_close(line: &str) -> bool {
+    line.trim() == "{{/lang}}"
+}
+
+/// Split stripped text into language ranges. Each range is a contiguous block
+/// of same-language text, internally split into speakable chunks.
+pub fn split_into_ranges(text: &str, default_lang: &str) -> Vec<LangRange> {
+    let mut ranges: Vec<LangRange> = Vec::new();
     let mut current_lang = default_lang.to_string();
     let mut current_text = String::new();
 
-    for paragraph in text.split("\n\n") {
-        let p = paragraph.trim();
-        if p.is_empty() {
-            if !current_text.trim().is_empty() {
-                current_text.push_str("\n\n");
-            }
-            continue;
-        }
-
-        // Check each line for lang tags
-        for line in p.lines() {
-            if let Some(lang) = parse_lang_tag(line) {
-                // Flush accumulated text as chunks in the current language
-                flush_text_as_chunks(&current_text, &current_lang, &mut chunks);
-                current_text.clear();
-                current_lang = lang.to_string();
-            } else {
-                current_text.push_str(line.trim());
-                current_text.push(' ');
-            }
-        }
-        // Paragraph boundary
-        if !current_text.trim().is_empty() {
-            current_text.push_str("\n\n");
+    for line in text.lines() {
+        if let Some(lang) = parse_lang_open(line) {
+            // Flush accumulated text as a range
+            flush_range(&current_text, &current_lang, &mut ranges);
+            current_text.clear();
+            current_lang = lang.to_string();
+        } else if is_lang_close(line) {
+            // Flush and return to default
+            flush_range(&current_text, &current_lang, &mut ranges);
+            current_text.clear();
+            current_lang = default_lang.to_string();
+        } else {
+            current_text.push_str(line);
+            current_text.push('\n');
         }
     }
 
-    // Flush remaining text
-    flush_text_as_chunks(&current_text, &current_lang, &mut chunks);
-
-    chunks.retain(|c| c.text.len() > 2);
-    chunks
+    // Flush remaining
+    flush_range(&current_text, &current_lang, &mut ranges);
+    ranges
 }
 
-/// Split a block of same-language text into reasonably sized chunks.
-fn flush_text_as_chunks(text: &str, lang: &str, chunks: &mut Vec<LangChunk>) {
+/// Split a block of text into speakable chunks and push as a LangRange.
+fn flush_range(text: &str, lang: &str, ranges: &mut Vec<LangRange>) {
+    let mut chunks = Vec::new();
     for paragraph in text.split("\n\n") {
         let p = paragraph.trim();
         if p.is_empty() {
             continue;
         }
-
         if p.len() < 300 {
-            chunks.push(LangChunk {
-                text: p.to_string(),
-                lang: lang.to_string(),
-            });
+            chunks.push(p.to_string());
         } else {
             let mut current = String::new();
             for part in p.split(". ") {
                 if current.len() + part.len() > 250 && !current.is_empty() {
-                    chunks.push(LangChunk {
-                        text: current.trim().to_string(),
-                        lang: lang.to_string(),
-                    });
+                    chunks.push(current.trim().to_string());
                     current.clear();
                 }
                 current.push_str(part);
                 current.push_str(". ");
             }
             if !current.trim().is_empty() {
-                chunks.push(LangChunk {
-                    text: current.trim().to_string(),
-                    lang: lang.to_string(),
-                });
+                chunks.push(current.trim().to_string());
             }
         }
     }
+    chunks.retain(|c| c.len() > 2);
+    if !chunks.is_empty() {
+        ranges.push(LangRange {
+            lang: lang.to_string(),
+            chunks,
+        });
+    }
 }
-
-/// Strip `{{lang:XX}}` tags from markdown for display (not TTS).
-pub fn strip_lang_tags(content: &str) -> String {
-    content
-        .lines()
-        .filter(|line| parse_lang_tag(line).is_none())
-        .collect::<Vec<_>>()
-        .join("\n")
-}
-
-// Keep backward compat — old split_into_chunks is now a thin wrapper
-#[allow(dead_code)]
-pub fn split_into_chunks(text: &str) -> Vec<String> {
-    split_into_lang_chunks(text, "en")
-        .into_iter()
-        .map(|c| c.text)
-        .collect()
+/// Flatten ranges into (text, lang) pairs for karaoke display.
+pub fn flatten_ranges(ranges: &[LangRange]) -> Vec<(String, String)> {
+    let mut out = Vec::new();
+    for range in ranges {
+        for chunk in &range.chunks {
+            out.push((chunk.clone(), range.lang.clone()));
+        }
+    }
+    out
 }
