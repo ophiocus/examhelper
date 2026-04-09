@@ -134,6 +134,24 @@ impl ExamHelperApp {
             })
             .unwrap_or(Color32::from_rgb(255, 205, 0));
 
+        // ── Handle playback mode actions on narration finish ──────────
+        if self.tts.take_finished() {
+            use crate::tts::PlaybackMode;
+            match self.tts.playback_mode {
+                PlaybackMode::Loop => {
+                    self.tts.speak(&self.current_content);
+                }
+                PlaybackMode::Continue => {
+                    self.advance_to_next();
+                }
+                _ => {}
+            }
+        }
+        // Keep repainting while speaking so we can detect finish
+        if self.tts.state() == NarrationState::Speaking {
+            ui.ctx().request_repaint_after(std::time::Duration::from_millis(200));
+        }
+
         // ── Narration control bar ────────────────────────────────────────
         ui.horizontal(|ui| {
             ui.spacing_mut().item_spacing.x = 6.0;
@@ -203,26 +221,35 @@ impl ExamHelperApp {
 
             ui.separator();
 
-            // Autoplay toggle
-            let autoplay_color = if self.tts.autoplay {
-                Color32::from_rgb(255, 205, 0)
-            } else {
-                Color32::from_rgb(150, 150, 150)
-            };
-            if ui
-                .button(
-                    RichText::new(if self.tts.autoplay {
-                        "Auto: ON"
-                    } else {
-                        "Auto: OFF"
-                    })
-                    .size(11.0)
-                    .color(autoplay_color),
-                )
-                .on_hover_text("Narrar automáticamente al seleccionar un tema")
-                .clicked()
+            // Playback mode cycle button
             {
-                self.tts.autoplay = !self.tts.autoplay;
+                use crate::tts::PlaybackMode;
+                let mode = self.tts.playback_mode;
+                let (color, hover) = match mode {
+                    PlaybackMode::Manual => (
+                        Color32::from_rgb(150, 150, 150),
+                        "Click to cycle: Manual → Auto → Loop → Next",
+                    ),
+                    PlaybackMode::AutoRead => (
+                        Color32::from_rgb(255, 205, 0),
+                        "Auto-narrate on section select",
+                    ),
+                    PlaybackMode::Loop => (
+                        Color32::from_rgb(120, 180, 255),
+                        "Repeat current section when it ends",
+                    ),
+                    PlaybackMode::Continue => (
+                        Color32::from_rgb(80, 210, 110),
+                        "Advance to next section when it ends",
+                    ),
+                };
+                if ui
+                    .button(RichText::new(mode.label()).size(11.0).color(color))
+                    .on_hover_text(hover)
+                    .clicked()
+                {
+                    self.tts.playback_mode = mode.next();
+                }
             }
 
             // Missing voice warning

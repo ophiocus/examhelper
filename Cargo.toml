@@ -1,6 +1,6 @@
 [package]
 name = "examhelper"
-version = "0.3.5"
+version = "0.3.6"
 edition = "2021"
 authors = ["ophiocus <csantanad@gmail.com>"]
 description = "Pluggable learning console with cartridge-based study modules, TTS narration, and exam practice"
@@ -16,6 +16,7 @@ dirs = "5"
 rand = "0.8"
 tts = "0.26"
 open = "5"
+reqwest = { version = "0.12", features = ["blocking", "json"] }
 
 [package.metadata.wix]
 upgrade-guid = "A1B2C3D4-E5F6-7890-ABCD-EF1234567890"

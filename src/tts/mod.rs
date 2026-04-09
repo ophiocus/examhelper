@@ -34,6 +34,8 @@ pub enum NarrationState {
     Idle,
     Speaking,
     Stopped,
+    /// Narration completed naturally (not stopped by user).
+    Finished,
 }
 
 pub struct TtsShared {
@@ -62,6 +64,7 @@ impl TtsShared {
             NarrationState::Idle => 0,
             NarrationState::Speaking => 1,
             NarrationState::Stopped => 2,
+            NarrationState::Finished => 3,
         };
         self.state.store(v, Ordering::Relaxed);
     }
@@ -70,15 +73,53 @@ impl TtsShared {
         match self.state.load(Ordering::Relaxed) {
             1 => NarrationState::Speaking,
             2 => NarrationState::Stopped,
+            3 => NarrationState::Finished,
             _ => NarrationState::Idle,
         }
+    }
+}
+
+/// Controls what happens after narration finishes.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum PlaybackMode {
+    /// Manual — narrate only when the user clicks.
+    Manual,
+    /// AutoRead — narrate automatically when selecting a new section.
+    AutoRead,
+    /// Loop — repeat the current section when it ends.
+    Loop,
+    /// Continue — advance to the next section and narrate it.
+    Continue,
+}
+
+impl PlaybackMode {
+    pub fn next(self) -> Self {
+        match self {
+            Self::Manual => Self::AutoRead,
+            Self::AutoRead => Self::Loop,
+            Self::Loop => Self::Continue,
+            Self::Continue => Self::Manual,
+        }
+    }
+
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::Manual => "Manual",
+            Self::AutoRead => "Auto",
+            Self::Loop => "Loop",
+            Self::Continue => "Next",
+        }
+    }
+
+    pub fn auto_narrate_on_select(self) -> bool {
+        matches!(self, Self::AutoRead | Self::Continue)
     }
 }
 
 pub struct TtsController {
     tx: mpsc::Sender<TtsCommand>,
     shared: Arc<TtsShared>,
-    pub autoplay: bool,
+    pub playback_mode: PlaybackMode,
     default_lang: Mutex<String>,
 }
 
@@ -99,7 +140,7 @@ impl TtsController {
         Self {
             tx,
             shared,
-            autoplay: false,
+            playback_mode: PlaybackMode::Manual,
             default_lang: Mutex::new("en".to_string()),
         }
     }
@@ -277,7 +318,7 @@ impl TtsController {
                             }
                             None => {
                                 if shared.get_state() == NarrationState::Speaking {
-                                    shared.set_state(NarrationState::Idle);
+                                    shared.set_state(NarrationState::Finished);
                                 }
                                 break 'narrate;
                             }
@@ -338,6 +379,16 @@ impl TtsController {
 
     pub fn state(&self) -> NarrationState {
         self.shared.get_state()
+    }
+
+    /// Check if narration just finished naturally. Consumes the state (sets to Idle).
+    pub fn take_finished(&self) -> bool {
+        if self.shared.get_state() == NarrationState::Finished {
+            self.shared.set_state(NarrationState::Idle);
+            true
+        } else {
+            false
+        }
     }
 
     pub fn progress(&self) -> (usize, usize) {

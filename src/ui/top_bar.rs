@@ -1,6 +1,5 @@
 use crate::app::{AppMode, ExamHelperApp};
 use crate::theme::apply_theme;
-use crate::ui::git_update::git_pull;
 use eframe::egui;
 use egui::{Color32, RichText};
 
@@ -151,28 +150,6 @@ impl ExamHelperApp {
                 if self.speech_caps.is_none() && !self.speech_caps_loading {
                     self.speech_caps_loading = true;
                 }
-            }
-
-            ui.separator();
-
-            // Git update button
-            if ui
-                .button(RichText::new("Actualizar Contenido").size(12.0))
-                .clicked()
-            {
-                self.git_status = crate::ui::git_update::GitStatus::Updating;
-                match git_pull(&self.app_dir) {
-                    Ok(msg) => {
-                        self.git_status = crate::ui::git_update::GitStatus::Success(msg);
-                        if let Some(cart) = self.registry.active_mut() {
-                            cart.reload();
-                        }
-                    }
-                    Err(msg) => {
-                        self.git_status = crate::ui::git_update::GitStatus::Error(msg);
-                    }
-                }
-                self.show_git_status = true;
             }
 
             // Theme toggle + zoom (right-aligned)

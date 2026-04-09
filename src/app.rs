@@ -5,7 +5,7 @@ use crate::progress::AppProgress;
 use crate::speech_caps::SpeechCapability;
 use crate::theme::apply_theme;
 use crate::tts::TtsController;
-use crate::ui::git_update::GitStatus;
+use crate::ui::git_update::{check_latest_release, UpdateState};
 use eframe::egui;
 use egui::{RichText, ScrollArea};
 use egui_commonmark::CommonMarkCache;
@@ -96,8 +96,9 @@ pub struct ExamHelperApp {
     // UI state
     pub mode: AppMode,
     pub sidebar_width: f32,
-    pub git_status: GitStatus,
-    pub show_git_status: bool,
+    pub update_state: UpdateState,
+    pub update_error: Option<String>,
+    pub update_rx: Option<std::sync::mpsc::Receiver<Option<crate::ui::git_update::UpdateAvailable>>>,
     pub theme_applied: bool,
 }
 
@@ -131,6 +132,12 @@ impl ExamHelperApp {
             .map(|c| c.exam_categories().len())
             .unwrap_or(0);
 
+        // Spawn background update check
+        let (update_tx, update_rx) = std::sync::mpsc::channel();
+        std::thread::spawn(move || {
+            let _ = update_tx.send(check_latest_release());
+        });
+
         Self {
             config,
             progress,
@@ -151,8 +158,9 @@ impl ExamHelperApp {
             speech_caps_loading: false,
             mode: AppMode::Study,
             sidebar_width: 260.0,
-            git_status: GitStatus::Idle,
-            show_git_status: false,
+            update_state: UpdateState::Checking,
+            update_error: None,
+            update_rx: Some(update_rx),
             theme_applied: false,
         }
     }
@@ -218,10 +226,45 @@ impl ExamHelperApp {
                 self.selected_file = Some(path.clone());
                 self.md_cache = CommonMarkCache::default();
 
-                if self.tts.autoplay {
+                if self.tts.playback_mode.auto_narrate_on_select() {
                     self.tts.speak(&content);
                 }
             }
+        }
+    }
+
+    /// Collect all file paths from the content tree in display order.
+    pub fn ordered_files(&self) -> Vec<PathBuf> {
+        let cart = match self.registry.active() {
+            Some(c) => c,
+            None => return Vec::new(),
+        };
+        let mut files = Vec::new();
+        collect_files(cart.content_tree(), &mut files);
+        files
+    }
+
+    /// Load the next file after the current one. Returns true if advanced.
+    pub fn advance_to_next(&mut self) -> bool {
+        let files = self.ordered_files();
+        if let Some(ref current) = self.selected_file {
+            if let Some(idx) = files.iter().position(|f| f == current) {
+                if idx + 1 < files.len() {
+                    let next = files[idx + 1].clone();
+                    self.load_file(&next);
+                    return true;
+                }
+            }
+        }
+        false
+    }
+}
+
+fn collect_files(nodes: &[crate::cartridge::ContentNode], out: &mut Vec<PathBuf>) {
+    for node in nodes {
+        match &node.kind {
+            crate::cartridge::ContentKind::File => out.push(node.path.clone()),
+            crate::cartridge::ContentKind::Dir(children) => collect_files(children, out),
         }
     }
 }
@@ -260,6 +303,20 @@ impl eframe::App for ExamHelperApp {
             self.theme_applied = true;
         }
 
+        // Poll background update check
+        if let Some(ref rx) = self.update_rx {
+            if let Ok(result) = rx.try_recv() {
+                self.update_state = match result {
+                    Some(avail) => UpdateState::Available(avail),
+                    None => UpdateState::Idle,
+                };
+                self.update_rx = None;
+            }
+        }
+        if matches!(self.update_state, UpdateState::Checking) {
+            ctx.request_repaint_after(std::time::Duration::from_secs(1));
+        }
+
         // Auto-select TTS voices for active cartridge (deferred until voices are loaded)
         if !self.voice_applied {
             let voices = self.tts.voices();
@@ -281,6 +338,13 @@ impl eframe::App for ExamHelperApp {
         // Status bar with draggable zoom
         egui::TopBottomPanel::bottom("statusbar").show(ctx, |ui| {
             ui.horizontal(|ui| {
+                // Version label — clickable to check for updates
+                self.render_version_button(ui);
+
+                ui.separator();
+
+                self.render_update_status(ui);
+
                 if let Some(ref p) = self.selected_file {
                     ui.label(
                         RichText::new(
@@ -337,8 +401,7 @@ impl eframe::App for ExamHelperApp {
             });
         });
 
-        // Git status window
-        self.render_git_status_window(ctx);
+        // (update status is rendered inline in the status bar)
 
         match self.mode.clone() {
             AppMode::Study => {
