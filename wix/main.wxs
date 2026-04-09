@@ -19,7 +19,7 @@
 
         <Package Id='*'
             Keywords='Installer'
-            Description='Colombian naturalization exam study helper with TTS narration'
+            Description='Pluggable learning console with cartridge-based study modules, TTS narration, and exam practice'
             Manufacturer='ophiocus'
             InstallerVersion='450'
             Languages='1033'
@@ -52,61 +52,104 @@
                         </Component>
                     </Directory>
 
-                    <!-- Content: Constitución -->
-                    <Directory Id='Content' Name='content'>
-                        <Directory Id='DirConstitucion' Name='01-constitucion'>
-                            <Component Id='c01' Guid='*'><File Id='fc01' Source='content\01-constitucion\01-estructura-del-estado.md' KeyPath='yes'/></Component>
-                            <Component Id='c02' Guid='*'><File Id='fc02' Source='content\01-constitucion\02-ramas-del-poder.md' KeyPath='yes'/></Component>
-                            <Component Id='c03' Guid='*'><File Id='fc03' Source='content\01-constitucion\03-derechos-fundamentales.md' KeyPath='yes'/></Component>
-                            <Component Id='c04' Guid='*'><File Id='fc04' Source='content\01-constitucion\04-participacion-democratica.md' KeyPath='yes'/></Component>
-                            <Component Id='c05' Guid='*'><File Id='fc05' Source='content\01-constitucion\05-nacionalidad.md' KeyPath='yes'/></Component>
-                            <Component Id='c06' Guid='*'><File Id='fc06' Source='content\01-constitucion\06-organismos-de-control.md' KeyPath='yes'/></Component>
-                            <Component Id='c07' Guid='*'><File Id='fc07' Source='content\01-constitucion\07-organizacion-territorial.md' KeyPath='yes'/></Component>
+                    <!-- ── Cartridges ──────────────────────────────────────── -->
+                    <Directory Id='Cartridges' Name='cartridges'>
+
+                        <!-- Colombian Nationality -->
+                        <Directory Id='CartColombian' Name='colombian-nationality'>
+                            <Component Id='col_manifest' Guid='*'>
+                                <File Id='col_manifest_f' Source='cartridges\colombian-nationality\manifest.toml' KeyPath='yes'/>
+                            </Component>
+
+                            <Directory Id='ColContent' Name='content'>
+                                <Directory Id='ColConstitucion' Name='01-constitucion'>
+                                    <Component Id='cc01' Guid='*'><File Id='fcc01' Source='cartridges\colombian-nationality\content\01-constitucion\01-estructura-del-estado.md' KeyPath='yes'/></Component>
+                                    <Component Id='cc02' Guid='*'><File Id='fcc02' Source='cartridges\colombian-nationality\content\01-constitucion\02-ramas-del-poder.md' KeyPath='yes'/></Component>
+                                    <Component Id='cc03' Guid='*'><File Id='fcc03' Source='cartridges\colombian-nationality\content\01-constitucion\03-derechos-fundamentales.md' KeyPath='yes'/></Component>
+                                    <Component Id='cc04' Guid='*'><File Id='fcc04' Source='cartridges\colombian-nationality\content\01-constitucion\04-participacion-democratica.md' KeyPath='yes'/></Component>
+                                    <Component Id='cc05' Guid='*'><File Id='fcc05' Source='cartridges\colombian-nationality\content\01-constitucion\05-nacionalidad.md' KeyPath='yes'/></Component>
+                                    <Component Id='cc06' Guid='*'><File Id='fcc06' Source='cartridges\colombian-nationality\content\01-constitucion\06-organismos-de-control.md' KeyPath='yes'/></Component>
+                                    <Component Id='cc07' Guid='*'><File Id='fcc07' Source='cartridges\colombian-nationality\content\01-constitucion\07-organizacion-territorial.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='ColHistoria' Name='02-historia'>
+                                    <Component Id='ch01' Guid='*'><File Id='fch01' Source='cartridges\colombian-nationality\content\02-historia\01-epoca-precolombina.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch01b' Guid='*'><File Id='fch01b' Source='cartridges\colombian-nationality\content\02-historia\01b-colonia.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch02' Guid='*'><File Id='fch02' Source='cartridges\colombian-nationality\content\02-historia\02-independencia.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch03' Guid='*'><File Id='fch03' Source='cartridges\colombian-nationality\content\02-historia\03-republica.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch04' Guid='*'><File Id='fch04' Source='cartridges\colombian-nationality\content\02-historia\04-personajes-importantes.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch05' Guid='*'><File Id='fch05' Source='cartridges\colombian-nationality\content\02-historia\05-guerra-mil-dias-y-panama.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch06' Guid='*'><File Id='fch06' Source='cartridges\colombian-nationality\content\02-historia\06-conflicto-armado-y-paz.md' KeyPath='yes'/></Component>
+                                    <Component Id='ch07' Guid='*'><File Id='fch07' Source='cartridges\colombian-nationality\content\02-historia\07-constitucion-de-1991.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='ColGeografia' Name='03-geografia'>
+                                    <Component Id='cg01' Guid='*'><File Id='fcg01' Source='cartridges\colombian-nationality\content\03-geografia\01-datos-generales.md' KeyPath='yes'/></Component>
+                                    <Component Id='cg02' Guid='*'><File Id='fcg02' Source='cartridges\colombian-nationality\content\03-geografia\02-regiones-naturales.md' KeyPath='yes'/></Component>
+                                    <Component Id='cg03' Guid='*'><File Id='fcg03' Source='cartridges\colombian-nationality\content\03-geografia\03-departamentos-y-capitales.md' KeyPath='yes'/></Component>
+                                    <Component Id='cg04' Guid='*'><File Id='fcg04' Source='cartridges\colombian-nationality\content\03-geografia\04-rios-y-relieve.md' KeyPath='yes'/></Component>
+                                    <Component Id='cg05' Guid='*'><File Id='fcg05' Source='cartridges\colombian-nationality\content\03-geografia\05-biodiversidad.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='ColCultura' Name='04-cultura'>
+                                    <Component Id='ccu01' Guid='*'><File Id='fccu01' Source='cartridges\colombian-nationality\content\04-cultura\01-simbolos-nacionales.md' KeyPath='yes'/></Component>
+                                    <Component Id='ccu02' Guid='*'><File Id='fccu02' Source='cartridges\colombian-nationality\content\04-cultura\02-himno-nacional.md' KeyPath='yes'/></Component>
+                                    <Component Id='ccu03' Guid='*'><File Id='fccu03' Source='cartridges\colombian-nationality\content\04-cultura\03-fiestas-y-patrimonio.md' KeyPath='yes'/></Component>
+                                    <Component Id='ccu04' Guid='*'><File Id='fccu04' Source='cartridges\colombian-nationality\content\04-cultura\04-patrimonio-unesco.md' KeyPath='yes'/></Component>
+                                    <Component Id='ccu05' Guid='*'><File Id='fccu05' Source='cartridges\colombian-nationality\content\04-cultura\05-diversidad-etnica-y-linguistica.md' KeyPath='yes'/></Component>
+                                    <Component Id='ccu06' Guid='*'><File Id='fccu06' Source='cartridges\colombian-nationality\content\04-cultura\06-gastronomia-y-deportes.md' KeyPath='yes'/></Component>
+                                </Directory>
+                            </Directory>
+
+                            <Directory Id='ColQuestions' Name='questions'>
+                                <Component Id='cq01' Guid='*'><File Id='fcq01' Source='cartridges\colombian-nationality\questions\constitucion.toml' KeyPath='yes'/></Component>
+                                <Component Id='cq02' Guid='*'><File Id='fcq02' Source='cartridges\colombian-nationality\questions\historia.toml' KeyPath='yes'/></Component>
+                                <Component Id='cq03' Guid='*'><File Id='fcq03' Source='cartridges\colombian-nationality\questions\geografia.toml' KeyPath='yes'/></Component>
+                                <Component Id='cq04' Guid='*'><File Id='fcq04' Source='cartridges\colombian-nationality\questions\cultura.toml' KeyPath='yes'/></Component>
+                            </Directory>
                         </Directory>
 
-                        <!-- Content: Historia -->
-                        <Directory Id='DirHistoria' Name='02-historia'>
-                            <Component Id='h01' Guid='*'><File Id='fh01' Source='content\02-historia\01-epoca-precolombina-y-colonia.md' KeyPath='yes'/></Component>
-                            <Component Id='h02' Guid='*'><File Id='fh02' Source='content\02-historia\02-independencia.md' KeyPath='yes'/></Component>
-                            <Component Id='h03' Guid='*'><File Id='fh03' Source='content\02-historia\03-republica.md' KeyPath='yes'/></Component>
-                            <Component Id='h04' Guid='*'><File Id='fh04' Source='content\02-historia\04-personajes-importantes.md' KeyPath='yes'/></Component>
-                            <Component Id='h05' Guid='*'><File Id='fh05' Source='content\02-historia\05-guerra-mil-dias-y-panama.md' KeyPath='yes'/></Component>
-                            <Component Id='h06' Guid='*'><File Id='fh06' Source='content\02-historia\06-conflicto-armado-y-paz.md' KeyPath='yes'/></Component>
-                            <Component Id='h07' Guid='*'><File Id='fh07' Source='content\02-historia\07-constitucion-de-1991.md' KeyPath='yes'/></Component>
+                        <!-- Japanese 100 -->
+                        <Directory Id='CartJapanese' Name='japanese-100'>
+                            <Component Id='jp_manifest' Guid='*'>
+                                <File Id='jp_manifest_f' Source='cartridges\japanese-100\manifest.toml' KeyPath='yes'/>
+                            </Component>
+
+                            <Directory Id='JpFonts' Name='fonts'>
+                                <Component Id='jp_font' Guid='*'>
+                                    <File Id='fjp_font' Source='cartridges\japanese-100\fonts\NotoSansJP-Regular.otf' KeyPath='yes'/>
+                                </Component>
+                            </Directory>
+
+                            <Directory Id='JpContent' Name='content'>
+                                <Directory Id='JpWriting' Name='01-writing-systems'>
+                                    <Component Id='jw01' Guid='*'><File Id='fjw01' Source='cartridges\japanese-100\content\01-writing-systems\01-introduction.md' KeyPath='yes'/></Component>
+                                    <Component Id='jw02' Guid='*'><File Id='fjw02' Source='cartridges\japanese-100\content\01-writing-systems\02-hiragana-vowels-k.md' KeyPath='yes'/></Component>
+                                    <Component Id='jw03' Guid='*'><File Id='fjw03' Source='cartridges\japanese-100\content\01-writing-systems\03-hiragana-s-t.md' KeyPath='yes'/></Component>
+                                    <Component Id='jw04' Guid='*'><File Id='fjw04' Source='cartridges\japanese-100\content\01-writing-systems\04-hiragana-n-h.md' KeyPath='yes'/></Component>
+                                    <Component Id='jw05' Guid='*'><File Id='fjw05' Source='cartridges\japanese-100\content\01-writing-systems\05-hiragana-m-y-r-w-n.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='JpBasics' Name='02-hiragana-basics'>
+                                    <Component Id='jb06' Guid='*'><File Id='fjb06' Source='cartridges\japanese-100\content\02-hiragana-basics\06-greetings.md' KeyPath='yes'/></Component>
+                                    <Component Id='jb07' Guid='*'><File Id='fjb07' Source='cartridges\japanese-100\content\02-hiragana-basics\07-basic-grammar.md' KeyPath='yes'/></Component>
+                                    <Component Id='jb08' Guid='*'><File Id='fjb08' Source='cartridges\japanese-100\content\02-hiragana-basics\08-numbers.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='JpFirstWords' Name='03-first-words'>
+                                    <Component Id='jf09' Guid='*'><File Id='fjf09' Source='cartridges\japanese-100\content\03-first-words\09-katakana-intro.md' KeyPath='yes'/></Component>
+                                    <Component Id='jf10' Guid='*'><File Id='fjf10' Source='cartridges\japanese-100\content\03-first-words\10-essential-vocabulary.md' KeyPath='yes'/></Component>
+                                </Directory>
+                            </Directory>
+
+                            <Directory Id='JpQuestions' Name='questions'>
+                                <Component Id='jq01' Guid='*'><File Id='fjq01' Source='cartridges\japanese-100\questions\grammar.toml' KeyPath='yes'/></Component>
+                                <Component Id='jq02' Guid='*'><File Id='fjq02' Source='cartridges\japanese-100\questions\vocabulary.toml' KeyPath='yes'/></Component>
+                                <Component Id='jq03' Guid='*'><File Id='fjq03' Source='cartridges\japanese-100\questions\writing-systems.toml' KeyPath='yes'/></Component>
+                            </Directory>
                         </Directory>
 
-                        <!-- Content: Geografía -->
-                        <Directory Id='DirGeografia' Name='03-geografia'>
-                            <Component Id='g01' Guid='*'><File Id='fg01' Source='content\03-geografia\01-datos-generales.md' KeyPath='yes'/></Component>
-                            <Component Id='g02' Guid='*'><File Id='fg02' Source='content\03-geografia\02-regiones-naturales.md' KeyPath='yes'/></Component>
-                            <Component Id='g03' Guid='*'><File Id='fg03' Source='content\03-geografia\03-departamentos-y-capitales.md' KeyPath='yes'/></Component>
-                            <Component Id='g04' Guid='*'><File Id='fg04' Source='content\03-geografia\04-rios-y-relieve.md' KeyPath='yes'/></Component>
-                            <Component Id='g05' Guid='*'><File Id='fg05' Source='content\03-geografia\05-biodiversidad.md' KeyPath='yes'/></Component>
-                        </Directory>
-
-                        <!-- Content: Cultura -->
-                        <Directory Id='DirCultura' Name='04-cultura'>
-                            <Component Id='cu01' Guid='*'><File Id='fcu01' Source='content\04-cultura\01-simbolos-nacionales.md' KeyPath='yes'/></Component>
-                            <Component Id='cu02' Guid='*'><File Id='fcu02' Source='content\04-cultura\02-himno-nacional.md' KeyPath='yes'/></Component>
-                            <Component Id='cu03' Guid='*'><File Id='fcu03' Source='content\04-cultura\03-fiestas-y-patrimonio.md' KeyPath='yes'/></Component>
-                            <Component Id='cu04' Guid='*'><File Id='fcu04' Source='content\04-cultura\04-patrimonio-unesco.md' KeyPath='yes'/></Component>
-                            <Component Id='cu05' Guid='*'><File Id='fcu05' Source='content\04-cultura\05-diversidad-etnica-y-linguistica.md' KeyPath='yes'/></Component>
-                            <Component Id='cu06' Guid='*'><File Id='fcu06' Source='content\04-cultura\06-gastronomia-y-deportes.md' KeyPath='yes'/></Component>
-                        </Directory>
-                    </Directory>
-
-                    <!-- Question banks -->
-                    <Directory Id='Questions' Name='questions'>
-                        <Component Id='q01' Guid='*'><File Id='fq01' Source='questions\constitucion.toml' KeyPath='yes'/></Component>
-                        <Component Id='q02' Guid='*'><File Id='fq02' Source='questions\historia.toml' KeyPath='yes'/></Component>
-                        <Component Id='q03' Guid='*'><File Id='fq03' Source='questions\geografia.toml' KeyPath='yes'/></Component>
-                        <Component Id='q04' Guid='*'><File Id='fq04' Source='questions\cultura.toml' KeyPath='yes'/></Component>
                     </Directory>
 
                     <Component Id='DesktopShortcut' Guid='C3D4E5F6-A7B8-9012-CDEF-345678901234'>
                         <Shortcut Id='DesktopShortcut'
                             Name='ExamHelper'
-                            Description='Colombian naturalization exam study helper'
+                            Description='Learning console with TTS narration and exam practice'
                             Directory='DesktopFolder'
                             Target='[Bin]examhelper.exe'
                             WorkingDirectory='APPLICATIONFOLDER'
@@ -127,7 +170,7 @@
         <Feature
             Id='Binaries'
             Title='Application'
-            Description='Installs ExamHelper with all study content and question banks.'
+            Description='Installs ExamHelper with all cartridges.'
             Level='1'
             ConfigurableDirectory='APPLICATIONFOLDER'
             AllowAdvertise='no'
@@ -138,21 +181,29 @@
             <ComponentRef Id='binary0'/>
             <ComponentRef Id='DesktopShortcut'/>
 
-            <!-- Content files -->
-            <ComponentRef Id='c01'/><ComponentRef Id='c02'/><ComponentRef Id='c03'/>
-            <ComponentRef Id='c04'/><ComponentRef Id='c05'/><ComponentRef Id='c06'/>
-            <ComponentRef Id='c07'/>
-            <ComponentRef Id='h01'/><ComponentRef Id='h02'/><ComponentRef Id='h03'/>
-            <ComponentRef Id='h04'/><ComponentRef Id='h05'/><ComponentRef Id='h06'/>
-            <ComponentRef Id='h07'/>
-            <ComponentRef Id='g01'/><ComponentRef Id='g02'/><ComponentRef Id='g03'/>
-            <ComponentRef Id='g04'/><ComponentRef Id='g05'/>
-            <ComponentRef Id='cu01'/><ComponentRef Id='cu02'/><ComponentRef Id='cu03'/>
-            <ComponentRef Id='cu04'/><ComponentRef Id='cu05'/><ComponentRef Id='cu06'/>
+            <!-- Colombian cartridge -->
+            <ComponentRef Id='col_manifest'/>
+            <ComponentRef Id='cc01'/><ComponentRef Id='cc02'/><ComponentRef Id='cc03'/>
+            <ComponentRef Id='cc04'/><ComponentRef Id='cc05'/><ComponentRef Id='cc06'/>
+            <ComponentRef Id='cc07'/>
+            <ComponentRef Id='ch01'/><ComponentRef Id='ch01b'/><ComponentRef Id='ch02'/>
+            <ComponentRef Id='ch03'/><ComponentRef Id='ch04'/><ComponentRef Id='ch05'/>
+            <ComponentRef Id='ch06'/><ComponentRef Id='ch07'/>
+            <ComponentRef Id='cg01'/><ComponentRef Id='cg02'/><ComponentRef Id='cg03'/>
+            <ComponentRef Id='cg04'/><ComponentRef Id='cg05'/>
+            <ComponentRef Id='ccu01'/><ComponentRef Id='ccu02'/><ComponentRef Id='ccu03'/>
+            <ComponentRef Id='ccu04'/><ComponentRef Id='ccu05'/><ComponentRef Id='ccu06'/>
+            <ComponentRef Id='cq01'/><ComponentRef Id='cq02'/>
+            <ComponentRef Id='cq03'/><ComponentRef Id='cq04'/>
 
-            <!-- Question banks -->
-            <ComponentRef Id='q01'/><ComponentRef Id='q02'/>
-            <ComponentRef Id='q03'/><ComponentRef Id='q04'/>
+            <!-- Japanese cartridge -->
+            <ComponentRef Id='jp_manifest'/>
+            <ComponentRef Id='jp_font'/>
+            <ComponentRef Id='jw01'/><ComponentRef Id='jw02'/><ComponentRef Id='jw03'/>
+            <ComponentRef Id='jw04'/><ComponentRef Id='jw05'/>
+            <ComponentRef Id='jb06'/><ComponentRef Id='jb07'/><ComponentRef Id='jb08'/>
+            <ComponentRef Id='jf09'/><ComponentRef Id='jf10'/>
+            <ComponentRef Id='jq01'/><ComponentRef Id='jq02'/><ComponentRef Id='jq03'/>
 
             <Feature
                 Id='Environment'

@@ -1,138 +1,157 @@
-# ExamHelper — Naturalización Colombia
+# ExamHelper — Learning Console
 
 ![ExamHelper Screenshot](assets/screenshot.png)
 
-Aplicación de escritorio para Windows que te prepara para el **examen de naturalización colombiana** (categoría padre/madre de nacional). Construida en Rust con egui.
+Desktop learning console for Windows with cartridge-based study modules, multilingual TTS narration, and exam practice. Built in Rust with egui.
 
 ---
 
-## Características
+## Features
 
-### Modo Estudio
-- 15 temas organizados en 4 categorías: **Constitución**, **Historia**, **Geografía** y **Cultura**
-- Contenido renderizado en Markdown con navegación por panel lateral
-- Seguimiento de progreso — marca cada tema como leído
+### Cartridge System
+- Pluggable study modules — each cartridge ships its own content, questions, fonts, and language config
+- Bundled cartridges: **Colombian Nationality** (Spanish) and **Japanese 100** (Japanese/English)
+- Drop a new cartridge folder into `cartridges/` and restart — no recompile needed
 
-### Narración por Voz (TTS)
-- Narración integrada usando voces nativas de Windows (SAPI/WinRT)
-- Selector de voz en la barra de reproducción — elige entre todas las voces instaladas
-- Control de velocidad: 0.25× a 2.0× con slider visual
-- Modo **Auto**: narra automáticamente al seleccionar un nuevo tema
-- Hilo de fondo — nunca bloquea la interfaz
+### Study Mode
+- Markdown-rendered content with sidebar navigation
+- Multilingual language blocks with bespoke visual styling
+- Progress tracking — mark each section as read
 
-### Modo Examen
-- **117 preguntas fijas** + **11 plantillas dinámicas** con 122+ pares = **239+ preguntas únicas**
-- Las plantillas generan variantes diferentes cada vez (ej: capitales de los 32 departamentos)
-- Selección de categorías y cantidad de preguntas por categoría (5–30)
-- Navegador de preguntas, barra de progreso, revisión completa con correcciones
-- Calificación por categoría con indicador aprobado/reprobado (≥70%)
+### TTS Narration
+- Windows SAPI/WinRT voices with automatic language switching per content block
+- Playback modes (cycle with one button):
+  - **Manual** — narrate on click
+  - **Auto** — narrate on section select
+  - **Loop** — repeat current section
+  - **Next** — advance to next section automatically
+- Speed control: 0.25x to 2.0x
+- Per-cartridge voice mapping with fallback detection
 
-### Configuración
-- Gestión de voces TTS — ver voces instaladas, seleccionar activa
-- Instalación de paquetes de voz de Windows desde la app (elevación automática)
-- Modo claro/oscuro
-- Zoom global con presets (75%–200%) y slider arrastrable en la barra de estado
-- Persistencia de configuración y progreso en `%APPDATA%\ExamHelper\`
+### Exam Mode
+- Multiple-choice questions with fixed and dynamic (template) variants
+- Category selection and configurable question count
+- Score breakdown with pass/fail per category
 
-### Actualización de Contenido
-- Contenido almacenado en archivos Markdown y TOML — editable y versionable
-- Botón **"Actualizar Contenido"** ejecuta `git pull` para sincronizar con un repositorio remoto
-- Agrega temas o preguntas sin recompilar — la app los detecta al reiniciar
-
----
-
-## Contenido del Examen
-
-| Categoría | Temas | Preguntas |
-|-----------|-------|-----------|
-| **Constitución** | Estructura del Estado, Ramas del Poder, Derechos Fundamentales, Participación Democrática, Nacionalidad (Art. 96) | 34 fijas + 19 dinámicas |
-| **Historia** | Época Precolombina, Independencia, República, Personajes Importantes | 31 fijas + 20 dinámicas |
-| **Geografía** | Datos Generales, Regiones Naturales, 32 Departamentos y Capitales | 21 fijas + 64 dinámicas |
-| **Cultura** | Símbolos Nacionales, Himno Nacional, Fiestas y Patrimonio | 31 fijas + 19 dinámicas |
+### Self-Update
+- Checks GitHub releases on startup for newer MSI installers
+- Version label in status bar — click to manually check for updates
+- One-click download and install (elevated MSI via PowerShell)
 
 ---
 
-## Requisitos
+## Install
 
-- Windows 10/11
-- Voz en español instalada (la app puede instalarla desde **Config**)
+Download the latest `.msi` from [GitHub Releases](https://github.com/ophiocus/examhelper/releases) and run it. The installer places the app in Program Files with a desktop shortcut.
 
-## Compilar
+## Build from Source
 
 ```bash
 cargo build --release
 ```
 
-El binario queda en `target\release\examhelper.exe` (~8 MB).
+Binary: `target\release\examhelper.exe`
 
-## Ejecutar
+### Build MSI Installer
 
 ```bash
-# Desde el directorio del proyecto:
-cargo run
-
-# O directamente:
-target\release\examhelper.exe
+cargo install cargo-wix
+cargo wix
 ```
 
-## Estructura del Proyecto
+MSI: `target\wix\examhelper-*.msi`
+
+---
+
+## Project Structure
 
 ```
 examhelper/
 ├── src/
-│   └── main.rs              # Aplicación completa (~2800 líneas)
-├── content/                  # Material de estudio (Markdown)
-│   ├── 01-constitucion/      # 5 temas
-│   ├── 02-historia/          # 4 temas
-│   ├── 03-geografia/         # 3 temas
-│   └── 04-cultura/           # 3 temas
-├── questions/                # Bancos de preguntas (TOML)
-│   ├── constitucion.toml
-│   ├── historia.toml
-│   ├── geografia.toml
-│   └── cultura.toml
-├── assets/
-│   └── screenshot.png        # Screenshot de la app
-├── Cargo.toml
-├── build.rs
-└── README.md
+│   ├── main.rs
+│   ├── app.rs                 # Core app state and eframe impl
+│   ├── cartridge/             # Cartridge system (manifest, filesystem, registry)
+│   ├── tts/                   # TTS engine (worker thread, strip/parse, language ranges)
+│   ├── ui/                    # UI modules (study, exam, settings, top bar, git update)
+│   ├── config.rs              # User config persistence
+│   ├── progress.rs            # Study progress tracking
+│   └── theme.rs               # Dark/light theme
+├── cartridges/
+│   ├── colombian-nationality/ # Spanish nationality exam prep
+│   │   ├── manifest.toml
+│   │   ├── content/           # Markdown study material
+│   │   └── questions/         # TOML question banks
+│   └── japanese-100/          # Japanese language basics
+│       ├── manifest.toml
+│       ├── fonts/             # Bundled NotoSansJP font
+│       ├── content/           # Markdown with {{lang:ja}}...{{/lang}} blocks
+│       └── questions/         # TOML question banks
+├── wix/                       # WiX MSI installer config
+├── assets/                    # Icon, screenshot
+├── .github/workflows/         # CI/CD
+└── Cargo.toml
 ```
 
-## Agregar Contenido
+## Creating a Cartridge
 
-**Nuevo tema de estudio:** crea un archivo `.md` en la carpeta correspondiente dentro de `content/`.
+A cartridge is a folder in `cartridges/` with a `manifest.toml`:
 
-**Nuevas preguntas fijas:**
 ```toml
-[[questions]]
-text = "¿Pregunta aquí?"
-options = ["Opción A", "Opción B", "Opción C", "Opción D"]
-answer = 0  # índice base cero de la respuesta correcta
+id = "my-cartridge"
+name = "My Cartridge"
+description = "Description here"
+accent_color = [80, 200, 120]
+
+[[languages]]
+code = "en"
+tts_preference = ["en-US", "en-GB", "en"]
 ```
 
-**Nuevas preguntas dinámicas (plantillas):**
-```toml
-[[templates]]
-text = "¿Cuál es la capital de {key}?"
-variable = "key"
-answer_template = "{value}"
-distractors = ["Bogotá", "Medellín", "Cali", "Barranquilla"]
+Add content as Markdown files in `content/` subdirectories, and questions as TOML files in `questions/`.
 
-[[templates.pairs]]
-key = "Antioquia"
-value = "Medellín"
+For multilingual content, wrap non-default language text in range blocks:
 
-[[templates.pairs]]
-key = "Boyacá"
-value = "Tunja"
+```markdown
+This is English text (default language).
+
+{{lang:ja}}
+これは日本語です
+{{/lang}}
+
+Back to English.
 ```
 
 ---
 
-## Licencia
+## Release Process
+
+Releases are automated via GitHub Actions. To publish a new version:
+
+1. Bump the version in `Cargo.toml`
+2. Commit the change
+3. Tag and push:
+   ```bash
+   git tag v0.X.Y
+   git push && git push origin v0.X.Y
+   ```
+4. The [release workflow](.github/workflows/release.yml) automatically:
+   - Builds the release binary on `windows-latest`
+   - Installs WiX 3.11 and runs `cargo wix` to produce the MSI
+   - Creates a GitHub Release with the `.exe` and `.msi` attached
+   - Generates release notes from commit history
+5. Installed clients detect the new release on next startup and offer one-click update
+
+---
+
+## Requirements
+
+- Windows 10/11
+- TTS voice packs for your cartridge's languages (installable from Settings)
+
+## License
 
 MIT
 
-## Autor
+## Author
 
 ophiocus
