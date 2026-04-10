@@ -1,6 +1,6 @@
 mod strip;
 
-pub use strip::{flatten_ranges, split_into_ranges, strip_markdown, LangRange};
+pub use strip::{split_into_ranges, strip_markdown, LangRange};
 
 use std::collections::HashMap;
 use std::sync::{
@@ -131,7 +131,7 @@ impl TtsController {
 
         thread::Builder::new()
             .name("tts-worker".to_string())
-            .stack_size(4 * 1024 * 1024)
+            .stack_size(8 * 1024 * 1024)
             .spawn(move || {
                 Self::worker(rx, shared_clone);
             })
@@ -195,19 +195,20 @@ impl TtsController {
                 Ok(TtsCommand::Speak(initial_ranges)) => {
                     let mut ranges = initial_ranges;
                     'narrate: loop {
-                        // Count total chunks across all ranges
-                        let total: usize = ranges.iter().map(|r| r.chunks.len()).sum();
-                        shared.total_chunks.store(total, Ordering::Relaxed);
+                        // One speak() call per range — no intra-range snaps.
+                        // Progress tracks ranges, not chunks.
+                        shared.total_chunks.store(ranges.len(), Ordering::Relaxed);
                         shared.current_chunk.store(0, Ordering::Relaxed);
                         shared.set_state(NarrationState::Speaking);
                         if let Ok(mut nr) = shared.narration_ranges.lock() {
                             *nr = ranges.clone();
                         }
 
-                        let mut global_idx: usize = 0;
                         let mut restart_with: Option<Vec<LangRange>> = None;
 
-                        for range in &ranges {
+                        for (range_idx, range) in ranges.iter().enumerate() {
+                            shared.current_chunk.store(range_idx, Ordering::Relaxed);
+
                             // Switch voice once per range
                             switch_voice_for_lang(
                                 &range.lang,
@@ -216,9 +217,14 @@ impl TtsController {
                                 &voice_map,
                             );
 
-                            // Speak all chunks in this range
-                            for chunk in &range.chunks {
-                                // Check for commands between chunks
+                            // Join all chunks into a single utterance — one speak()
+                            // call means zero audio snaps within the range.
+                            let full_text = range.chunks.join("\n\n");
+                            let _ = tts.speak(&full_text, false);
+
+                            // Poll until this single utterance finishes
+                            while tts.is_speaking().unwrap_or(false) {
+                                thread::sleep(std::time::Duration::from_millis(50));
                                 if let Ok(cmd) = rx.try_recv() {
                                     match cmd {
                                         TtsCommand::Stop => {
@@ -250,58 +256,7 @@ impl TtsController {
                                             return;
                                         }
                                     }
-                                    if shared.get_state() == NarrationState::Stopped
-                                        || restart_with.is_some()
-                                    {
-                                        break;
-                                    }
                                 }
-
-                                shared.current_chunk.store(global_idx, Ordering::Relaxed);
-                                let _ = tts.speak(chunk, false);
-
-                                while tts.is_speaking().unwrap_or(false) {
-                                    thread::sleep(std::time::Duration::from_millis(50));
-                                    if let Ok(cmd) = rx.try_recv() {
-                                        match cmd {
-                                            TtsCommand::Stop => {
-                                                let _ = tts.stop();
-                                                shared.set_state(NarrationState::Stopped);
-                                                break;
-                                            }
-                                            TtsCommand::Speak(new) => {
-                                                let _ = tts.stop();
-                                                restart_with = Some(new);
-                                                break;
-                                            }
-                                            TtsCommand::SetRate(r) => {
-                                                let _ = tts.set_rate(slider_to_rate(r));
-                                            }
-                                            TtsCommand::SetVoice(name) => {
-                                                set_voice_by_name(
-                                                    &name,
-                                                    &mut tts,
-                                                    &all_voices,
-                                                    &shared,
-                                                );
-                                            }
-                                            TtsCommand::SetVoiceMap(map) => {
-                                                voice_map = map;
-                                            }
-                                            TtsCommand::Quit => {
-                                                let _ = tts.stop();
-                                                return;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                if shared.get_state() == NarrationState::Stopped
-                                    || restart_with.is_some()
-                                {
-                                    break;
-                                }
-                                global_idx += 1;
                             }
 
                             if shared.get_state() == NarrationState::Stopped
@@ -406,10 +361,13 @@ impl TtsController {
         self.shared.selected_voice.lock().unwrap().clone()
     }
 
-    /// Return ranges for karaoke display — flattened into (text, lang) pairs.
+    /// Return ranges for karaoke display — one entry per range (full text + lang).
     pub fn narration_chunks_flat(&self) -> Vec<(String, String)> {
         let ranges = self.shared.narration_ranges.lock().unwrap().clone();
-        flatten_ranges(&ranges)
+        ranges
+            .iter()
+            .map(|r| (r.chunks.join("\n\n"), r.lang.clone()))
+            .collect()
     }
 }
 
