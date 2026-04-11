@@ -139,7 +139,7 @@ impl ExamHelperApp {
             use crate::tts::PlaybackMode;
             match self.tts.playback_mode {
                 PlaybackMode::Loop => {
-                    self.tts.speak(&self.current_content);
+                    self.speak_current();
                 }
                 PlaybackMode::Continue => {
                     self.advance_to_next();
@@ -158,7 +158,33 @@ impl ExamHelperApp {
 
             let tts_state = self.tts.state();
 
-            if tts_state == NarrationState::Speaking {
+            let (bake_cur, bake_total, bake_skipped, bake_state) = self.tts.bake_progress();
+
+            if bake_state == 1 {
+                // Baking in progress
+                ui.label(
+                    RichText::new("Baking...")
+                        .size(13.0)
+                        .color(Color32::from_rgb(255, 180, 50)),
+                );
+                if bake_total > 0 {
+                    let pct = bake_cur as f32 / bake_total as f32;
+                    ui.add(
+                        egui::ProgressBar::new(pct)
+                            .desired_width(120.0)
+                            .text(format!("{}/{}", bake_cur, bake_total)),
+                    );
+                    if bake_skipped > 0 {
+                        let eff = (bake_skipped as f32 / bake_total as f32) * 100.0;
+                        ui.label(
+                            RichText::new(format!("{:.0}% cached", eff))
+                                .size(10.0)
+                                .color(Color32::from_rgb(80, 200, 120)),
+                        );
+                    }
+                }
+                ui.ctx().request_repaint();
+            } else if tts_state == NarrationState::Speaking {
                 if ui
                     .button(
                         RichText::new("Detener")
@@ -189,7 +215,18 @@ impl ExamHelperApp {
                     )
                     .clicked()
                 {
-                    self.tts.speak(&self.current_content);
+                    self.speak_current();
+                }
+
+                // Bake button
+                if self.selected_file.is_some() {
+                    if ui
+                        .button(RichText::new("Bake").size(11.0).color(Color32::from_rgb(255, 180, 50)))
+                        .on_hover_text("Pre-bake audio for this lesson")
+                        .clicked()
+                    {
+                        self.bake_current();
+                    }
                 }
             }
 

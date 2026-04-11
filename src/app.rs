@@ -227,10 +227,45 @@ impl ExamHelperApp {
                 self.md_cache = CommonMarkCache::default();
 
                 if self.tts.playback_mode.auto_narrate_on_select() {
-                    self.tts.speak(&content);
+                    self.speak_current();
                 }
             }
         }
+    }
+
+    /// Speak current content using cached audio if possible.
+    pub fn speak_current(&mut self) {
+        if self.current_content.is_empty() {
+            return;
+        }
+        let (cart_id, file_stem) = self.cache_key();
+        match (cart_id, file_stem) {
+            (Some(cid), Some(stem)) => {
+                self.tts.speak_cached(&self.current_content, &cid, &stem);
+            }
+            _ => {
+                self.tts.speak(&self.current_content);
+            }
+        }
+    }
+
+    /// Bake current content without playing.
+    pub fn bake_current(&mut self) {
+        if self.current_content.is_empty() {
+            return;
+        }
+        if let (Some(cid), Some(stem)) = self.cache_key() {
+            self.tts.bake(&self.current_content, &cid, &stem);
+        }
+    }
+
+    /// Extract cartridge_id and file stem for cache keys.
+    fn cache_key(&self) -> (Option<String>, Option<String>) {
+        let cart_id = self.registry.active().map(|c| c.manifest().id.clone());
+        let file_stem = self.selected_file.as_ref().and_then(|p| {
+            p.file_stem().map(|s| s.to_string_lossy().to_string())
+        });
+        (cart_id, file_stem)
     }
 
     /// Collect all file paths from the content tree in display order.
