@@ -1,0 +1,88 @@
+# =============================================================================
+# Introduction to Gnostic Texts — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "What does the Greek word *gnōsis* mean?"
+options = ["Faith", "Knowledge", "Ritual", "Silence"]
+answer = 1
+
+[[questions]]
+text = "In gnostic cosmology, what is the Pleroma?"
+options = [
+    "The material world created by the demiurge",
+    "The original divine fullness containing the aeons",
+    "The seven planetary heavens",
+    "The outer darkness where sinful souls are punished",
+]
+answer = 1
+
+[[questions]]
+text = "In most gnostic systems, who is responsible for the defective creation of the material world?"
+options = [
+    "Sophia directly",
+    "The Father of the Pleroma",
+    "An ignorant demiurge born of Sophia's error",
+    "The archon Authades",
+]
+answer = 2
+
+[[questions]]
+text = "What is *heimarmene*?"
+options = [
+    "The divine fullness",
+    "Astral fate or astrological determinism",
+    "A baptismal rite",
+    "The name of the highest aeon",
+]
+answer = 1
+
+[[questions]]
+text = "Which of the following is NOT a principal gnostic school?"
+options = ["Valentinians", "Sethians", "Basilideans", "Donatists"]
+answer = 3
+
+[[questions]]
+text = "Which church father wrote *Against Heresies* around 180 CE, providing the earliest systematic account of Valentinian teaching?"
+options = ["Tertullian", "Irenaeus of Lyon", "Epiphanius of Salamis", "Hippolytus of Rome"]
+answer = 1
+
+[[questions]]
+text = "Which of these codices was acquired in London in 1772 by Dr. Anthony Askew?"
+options = [
+    "The Bruce Codex",
+    "The Berlin Codex",
+    "The Askew Codex",
+    "Nag Hammadi Codex II",
+]
+answer = 2
+
+[[questions]]
+text = "Which codex, acquired in Cairo in 1896, contains the *Gospel of Mary*?"
+options = [
+    "The Askew Codex",
+    "The Bruce Codex",
+    "The Berlin Codex (BG 8502)",
+    "The Jung Codex",
+]
+answer = 2
+
+[[questions]]
+text = "Which Christian writer preserved authentic Valentinian fragments sympathetically in the *Excerpta ex Theodoto*?"
+options = ["Clement of Alexandria", "Origen", "Tertullian", "Eusebius"]
+answer = 0
+
+[[questions]]
+text = "Mandaeans, a surviving gnostic-adjacent tradition, center their veneration on which figure?"
+options = ["Seth", "John the Baptist", "Mary Magdalene", "Simon Magus"]
+answer = 1
+
+[[questions]]
+text = "The Manichaean religion was founded in the third century by whom?"
+options = ["Basilides", "Valentinus", "Mani", "Marcion"]
+answer = 2
+
+[[questions]]
+text = "In gnostic thought, the divine spark within the human being is called the:"
+options = ["Psyche", "Hyle", "Pneuma", "Sarx"]
+answer = 2

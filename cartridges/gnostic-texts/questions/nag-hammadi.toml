@@ -1,0 +1,113 @@
+# =============================================================================
+# Nag Hammadi Library — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "In what year was the Nag Hammadi library discovered?"
+options = ["1772", "1896", "1945", "1952"]
+answer = 2
+
+[[questions]]
+text = "Who discovered the Nag Hammadi codices?"
+options = [
+    "James Bruce",
+    "Anthony Askew",
+    "Muhammad Ali al-Samman",
+    "Carl Schmidt",
+]
+answer = 2
+
+[[questions]]
+text = "How many codices were found at Nag Hammadi?"
+options = ["Seven", "Ten", "Thirteen", "Fifty-two"]
+answer = 2
+
+[[questions]]
+text = "Approximately how many distinct tractates does the Nag Hammadi library preserve (excluding duplicates)?"
+options = ["Twelve", "Twenty-four", "Forty-six", "Eighty"]
+answer = 2
+
+[[questions]]
+text = "In what language are the Nag Hammadi manuscripts written?"
+options = ["Greek", "Aramaic", "Coptic", "Syriac"]
+answer = 2
+
+[[questions]]
+text = "To what century are the Nag Hammadi manuscripts paleographically dated?"
+options = ["2nd century CE", "Mid-4th century CE", "7th century CE", "9th century CE"]
+answer = 1
+
+[[questions]]
+text = "The *Gospel of Thomas* is a collection of how many sayings of Jesus?"
+options = ["77", "100", "114", "153"]
+answer = 2
+
+[[questions]]
+text = "Which of these tractates is NOT part of the Nag Hammadi library?"
+options = [
+    "Gospel of Philip",
+    "Apocryphon of John",
+    "Gospel of Mary",
+    "Tripartite Tractate",
+]
+answer = 2
+
+[[questions]]
+text = "Which Nag Hammadi tractate is most widely attributed to Valentinus himself?"
+options = [
+    "The Apocryphon of John",
+    "The Gospel of Truth",
+    "The Hypostasis of the Archons",
+    "Zostrianos",
+]
+answer = 1
+
+[[questions]]
+text = "Which Nag Hammadi codex uniquely contains an excerpt from Plato's *Republic* in Coptic?"
+options = ["Codex I", "Codex II", "Codex VI", "Codex XIII"]
+answer = 2
+
+[[questions]]
+text = "The *Apocryphon of John* survives in how many Nag Hammadi copies plus the Berlin Codex?"
+options = [
+    "Only the Berlin Codex",
+    "One Nag Hammadi copy plus the Berlin Codex",
+    "Three Nag Hammadi copies plus the Berlin Codex",
+    "Seven Nag Hammadi copies plus the Berlin Codex",
+]
+answer = 2
+
+[[questions]]
+text = "Porphyry's *Life of Plotinus* mentions that Plotinus's circle refuted gnostic writings named 'Zostrianos' and 'Allogenes.' Which library contains both of these tractates?"
+options = [
+    "The Askew Codex",
+    "The Bruce Codex",
+    "The Nag Hammadi library",
+    "The Berlin Codex",
+]
+answer = 2
+
+[[questions]]
+text = "The leading hypothesis connects the burial of the Nag Hammadi codices to which historical event?"
+options = [
+    "The Diocletianic persecution",
+    "Athanasius's 39th Festal Letter (367 CE) fixing the canon",
+    "The Arab conquest of Egypt",
+    "The Council of Nicaea",
+]
+answer = 1
+
+[[questions]]
+text = "Which Nag Hammadi codex (numbered I) was initially known as the 'Jung Codex' because it was presented to a Zurich institute?"
+options = ["Codex I", "Codex II", "Codex VII", "Codex XII"]
+answer = 0
+
+[[questions]]
+text = "*Thunder, Perfect Mind* (NHC VI,2) is a revelation poem spoken in the first person by:"
+options = [
+    "A male savior figure",
+    "A paradoxically self-describing female divine voice",
+    "The demiurge Yaldabaoth",
+    "The prophet Seth",
+]
+answer = 1

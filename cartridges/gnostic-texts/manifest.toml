@@ -1,0 +1,34 @@
+id = "gnostic-texts"
+name = "Gnostic Texts and Apocryphal Literature"
+description = "Study of the Nag Hammadi library, the Pistis Sophia, and other supplementary gnostic texts"
+version = "1.0.0"
+language = "en"
+tts_voice_preference = ["en-US", "en-GB", "en"]
+accent_color = [160, 80, 200]
+
+[[languages]]
+code = "en"
+tts_preference = ["en-US", "en-GB", "en"]
+
+[exam]
+default_questions_per_category = 10
+
+[[exam.categories]]
+name = "Introduction"
+pass_threshold = 60
+
+[[exam.categories]]
+name = "Nag Hammadi"
+pass_threshold = 60
+
+[[exam.categories]]
+name = "Pistis Sophia"
+pass_threshold = 55
+
+[[exam.categories]]
+name = "Other Texts"
+pass_threshold = 50
+
+[[exam.categories]]
+name = "Themes"
+pass_threshold = 55

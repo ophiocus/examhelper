@@ -356,6 +356,9 @@ impl TtsController {
                     cartridge_id,
                     file_stem,
                 }) => {
+                    // Reset state so stale Stopped/Finished doesn't block playback
+                    shared.set_state(NarrationState::Idle);
+
                     let cache = cache::TtsCache::new();
                     let vc_hash =
                         cache::hash_voice_config(&voice_map, slider_to_rate(current_rate));
@@ -367,6 +370,7 @@ impl TtsController {
 
                     // Bake any missing chunks
                     let check = cache.check(&cartridge_id, &file_stem, &ranges, &vc_hash);
+                    let mut aborted = false;
                     if !check.fully_cached() {
                         shared.bake_state.store(1, Ordering::Relaxed);
                         shared.bake_total.store(check.total, Ordering::Relaxed);
@@ -408,44 +412,50 @@ impl TtsController {
                             .ok();
 
                         // Poll bake progress, checking for stop commands
-                        loop {
+                        'bake_poll: loop {
                             match prx.recv_timeout(std::time::Duration::from_millis(100)) {
                                 Ok(p) => {
                                     shared.bake_current.store(p.current, Ordering::Relaxed);
                                     shared.bake_skipped.store(p.skipped, Ordering::Relaxed);
                                     if p.done {
-                                        break;
+                                        break 'bake_poll;
                                     }
                                 }
                                 Err(mpsc::RecvTimeoutError::Timeout) => {}
-                                Err(mpsc::RecvTimeoutError::Disconnected) => break,
+                                Err(mpsc::RecvTimeoutError::Disconnected) => break 'bake_poll,
                             }
                             // Allow stop during bake
                             if let Ok(cmd) = rx.try_recv() {
                                 match cmd {
                                     TtsCommand::Stop | TtsCommand::Quit => {
-                                        shared.bake_state.store(0, Ordering::Relaxed);
-                                        shared.set_state(NarrationState::Stopped);
-                                        continue; // back to main loop — bake thread finishes on its own
+                                        aborted = true;
+                                        break 'bake_poll;
                                     }
                                     _ => {}
                                 }
                             }
                         }
                         shared.bake_state.store(0, Ordering::Relaxed);
-
-                        if shared.get_state() == NarrationState::Stopped {
-                            continue;
-                        }
                     }
 
-                    // Now play from cache
+                    if aborted {
+                        shared.set_state(NarrationState::Stopped);
+                        continue;
+                    }
+
+                    // Play from cache — only include chunks that have WAV files
                     let check = cache.check(&cartridge_id, &file_stem, &ranges, &vc_hash);
                     let wav_paths: Vec<_> = check
                         .chunk_paths
                         .into_iter()
-                        .map(|p| p.unwrap_or_default())
+                        .filter_map(|p| p)
                         .collect();
+
+                    if wav_paths.is_empty() {
+                        // Cache empty — fall back to live TTS
+                        let _ = tx_clone.send(TtsCommand::Speak(ranges));
+                        continue;
+                    }
 
                     if let Some(new_ranges) =
                         playback::play_cached(&wav_paths, &shared, &rx)

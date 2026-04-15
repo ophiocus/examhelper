@@ -1,0 +1,113 @@
+# =============================================================================
+# Gnostic Themes — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "How many aeons make up the Valentinian Pleroma?"
+options = ["Twelve", "Twenty-four", "Thirty", "Seventy-two"]
+answer = 2
+
+[[questions]]
+text = "Which pair heads the Valentinian Ogdoad?"
+options = [
+    "Logos and Zoe",
+    "Anthropos and Ecclesia",
+    "Bythos and Sige",
+    "Nous and Aletheia",
+]
+answer = 2
+
+[[questions]]
+text = "The youngest and last aeon of the Valentinian Pleroma, whose fall drives the cosmogony, is:"
+options = ["Barbelo", "Achamoth", "Sophia", "Protennoia"]
+answer = 2
+
+[[questions]]
+text = "Sophia's characteristic error is described as acting:"
+options = [
+    "Without the Father's foreknowledge",
+    "Without her consort (syzygy)",
+    "Without the Holy Spirit",
+    "Without the archons' permission",
+]
+answer = 1
+
+[[questions]]
+text = "In Sethian cosmology, the First Thought and consort of the Invisible Spirit is:"
+options = ["Sophia", "Barbelo", "Norea", "Pronoia"]
+answer = 1
+
+[[questions]]
+text = "How many Sethian Luminaries preside over the heavenly realms?"
+options = ["Three", "Four", "Seven", "Twelve"]
+answer = 1
+
+[[questions]]
+text = "Which of these is NOT a name of the Demiurge in gnostic texts?"
+options = ["Yaldabaoth", "Saklas", "Samael", "Abraxas"]
+answer = 3
+
+[[questions]]
+text = "The Demiurge's boast 'I am God, and there is no other' is a gnostic rereading of which biblical source?"
+options = [
+    "Genesis 1",
+    "Isaiah 45:5 / 46:9",
+    "Exodus 3:14",
+    "Deuteronomy 6:4",
+]
+answer = 1
+
+[[questions]]
+text = "How many archons does Yaldabaoth generate in the classical Sethian account, corresponding to the seven planetary heavens?"
+options = ["Three", "Four", "Seven", "Twelve"]
+answer = 2
+
+[[questions]]
+text = "What is *heimarmene* in gnostic cosmology?"
+options = [
+    "The ineffable Father",
+    "Astral fate, the deterministic power of the stars",
+    "The spiritual seed",
+    "The Pleroma",
+]
+answer = 1
+
+[[questions]]
+text = "In the *Pistis Sophia*, what does the Savior bind to each soul at birth to act as its internal accuser?"
+options = [
+    "A demon",
+    "An archon",
+    "A counterfeit spirit (antimimon pneuma)",
+    "A golem",
+]
+answer = 2
+
+[[questions]]
+text = "In Valentinian vocabulary, the formless substance cast outside the Pleroma after Sophia's passion is called:"
+options = ["Hyle", "Achamoth / Lower Sophia", "Pneuma", "Horos"]
+answer = 1
+
+[[questions]]
+text = "The Greek term *Pleroma* is drawn into gnostic usage from which New Testament author?"
+options = ["John", "Paul", "Peter", "Matthew"]
+answer = 1
+
+[[questions]]
+text = "Gnostic texts distinguish emanation from creation. Creation, in their vocabulary, is:"
+options = [
+    "What the Father does within the Pleroma",
+    "What the aeons do in pairs",
+    "What the demiurge does below the Pleroma in ignorance",
+    "The work of the Holy Spirit",
+]
+answer = 2
+
+[[questions]]
+text = "In gnostic soteriology, salvation primarily takes the form of:"
+options = [
+    "Forgiveness of sins through sacrifice",
+    "Awakening of the divine spark through revealed knowledge",
+    "Keeping the commandments",
+    "Apocalyptic judgment of the unrighteous",
+]
+answer = 1

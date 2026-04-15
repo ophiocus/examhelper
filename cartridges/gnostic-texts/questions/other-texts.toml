@@ -1,0 +1,118 @@
+# =============================================================================
+# Other Gnostic Texts — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "The Bruce Codex was brought to Europe from Egypt in 1769 by:"
+options = [
+    "Anthony Askew",
+    "James Bruce",
+    "Carl Reinhardt",
+    "Napoleon's expedition",
+]
+answer = 1
+
+[[questions]]
+text = "The Bruce Codex contains which two ritual-oriented tractates?"
+options = [
+    "The Apocryphon of John and the Gospel of Mary",
+    "The First and Second Books of Jeu",
+    "The Books of Enoch",
+    "The Odes of Solomon",
+]
+answer = 1
+
+[[questions]]
+text = "In the Books of Jeu, 'Jeu' himself is described as:"
+options = [
+    "The fallen Sophia",
+    "The demiurge",
+    "The first man, overseer of the Treasury of Light",
+    "The archon of the thirteenth aeon",
+]
+answer = 2
+
+[[questions]]
+text = "The Berlin Codex (BG 8502) was purchased in Cairo in what year?"
+options = ["1769", "1772", "1896", "1945"]
+answer = 2
+
+[[questions]]
+text = "The publication of the editio princeps of the Berlin Codex was delayed until what year, due to water damage and two world wars?"
+options = ["1912", "1938", "1955", "1977"]
+answer = 2
+
+[[questions]]
+text = "How many tractates does the Berlin Codex contain?"
+options = ["Two", "Three", "Four", "Seven"]
+answer = 2
+
+[[questions]]
+text = "Which gospel, uniquely preserved in the Berlin Codex, is the only ancient gospel titled after a woman?"
+options = [
+    "The Gospel of Thomas",
+    "The Gospel of Mary",
+    "The Gospel of Philip",
+    "The Gospel of Truth",
+]
+answer = 1
+
+[[questions]]
+text = "In the *Gospel of Mary*, through which four powers does the soul pass on its ascent?"
+options = [
+    "Earth, Water, Fire, Air",
+    "Darkness, Desire, Ignorance, Wrath",
+    "Pride, Greed, Envy, Sloth",
+    "Seven powers are named, not four",
+]
+answer = 1
+
+[[questions]]
+text = "In the *Gospel of Mary*, which disciple defends Mary's authority against Peter's and Andrew's objections?"
+options = ["John", "Thomas", "Levi", "Philip"]
+answer = 2
+
+[[questions]]
+text = "The *Sophia of Jesus Christ* in the Berlin Codex is a Christianized rewrite of which non-Christian Nag Hammadi tractate?"
+options = [
+    "Eugnostos the Blessed",
+    "Allogenes",
+    "The Three Steles of Seth",
+    "Marsanes",
+]
+answer = 0
+
+[[questions]]
+text = "Which heresiologist's Book I, chapter 29, preserves a Barbelo-gnostic system extremely close to the *Apocryphon of John*?"
+options = [
+    "Tertullian",
+    "Hippolytus of Rome",
+    "Irenaeus of Lyon",
+    "Epiphanius of Salamis",
+]
+answer = 2
+
+[[questions]]
+text = "Hippolytus's *Refutation of All Heresies* (Philosophumena) was rediscovered in 1842 on:"
+options = ["Mount Sinai", "Mount Athos", "Patmos", "Jerusalem"]
+answer = 1
+
+[[questions]]
+text = "Whose lost Valentinian commentary on the Gospel of John is known today through Origen's quotations?"
+options = ["Ptolemy", "Heracleon", "Theodotus", "Marcus the Magician"]
+answer = 1
+
+[[questions]]
+text = "Epiphanius of Salamis's catalogue of heresies is titled:"
+options = [
+    "Philosophumena",
+    "Panarion",
+    "Against Heresies",
+    "Stromata",
+]
+answer = 1
+
+[[questions]]
+text = "Which Church Father preserved the Valentinian *Letter of Ptolemy to Flora*?"
+options = ["Irenaeus", "Epiphanius", "Clement of Alexandria", "Origen"]
+answer = 1

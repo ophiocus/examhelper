@@ -1,0 +1,138 @@
+# =============================================================================
+# Pistis Sophia — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "The *Pistis Sophia* is preserved in which manuscript?"
+options = [
+    "Nag Hammadi Codex II",
+    "The Askew Codex",
+    "The Bruce Codex",
+    "The Berlin Codex",
+]
+answer = 1
+
+[[questions]]
+text = "Into how many books is the *Pistis Sophia* divided?"
+options = ["Two", "Three", "Four", "Seven"]
+answer = 2
+
+[[questions]]
+text = "In the frame narrative of the *Pistis Sophia*, how many years after the resurrection does Jesus teach his disciples?"
+options = ["Three", "Seven", "Eleven", "Forty"]
+answer = 2
+
+[[questions]]
+text = "Which book of the *Pistis Sophia* is widely considered an older, independent composition bound into the codex?"
+options = ["Book I", "Book II", "Book III", "Book IV"]
+answer = 3
+
+[[questions]]
+text = "In the central myth, Pistis Sophia is deceived by which lion-faced archon?"
+options = ["Yaldabaoth", "Samael", "Authades", "Saklas"]
+answer = 2
+
+[[questions]]
+text = "How many repentances does Pistis Sophia utter from chaos?"
+options = ["Seven", "Ten", "Thirteen", "Forty"]
+answer = 2
+
+[[questions]]
+text = "In what aeon did Pistis Sophia originally dwell?"
+options = [
+    "The seventh aeon",
+    "The twelfth aeon",
+    "The thirteenth aeon",
+    "The hundredth aeon",
+]
+answer = 2
+
+[[questions]]
+text = "Which disciple speaks more often than any other in the *Pistis Sophia*?"
+options = ["Peter", "John", "Mary Magdalene", "Thomas"]
+answer = 2
+
+[[questions]]
+text = "In *Pistis Sophia* chapter 36, which disciple complains that Mary Magdalene 'takes the opportunity from us and does not let any of us speak'?"
+options = ["Andrew", "Peter", "Matthew", "Thomas"]
+answer = 1
+
+[[questions]]
+text = "In chapter 18, Mary Magdalene interprets Jesus's speech about diminishing the archons' power by citing a prophecy from which biblical book?"
+options = ["Genesis", "Psalms", "Isaiah", "Revelation"]
+answer = 2
+
+[[questions]]
+text = "In Mary's interpretation in chapter 18, what does 'Egypt' in the prophecy 'Egypt shall fight against Egypt' symbolize?"
+options = [
+    "The Roman Empire",
+    "The orthodox church",
+    "Matter and the archons of matter",
+    "The kingdom of light",
+]
+answer = 2
+
+[[questions]]
+text = "In chapter 19, Mary Magdalene connects the archons to a canonical saying of Jesus about power to tread on:"
+options = [
+    "Water",
+    "Clouds",
+    "Serpents and scorpions",
+    "The necks of kings",
+]
+answer = 2
+
+[[questions]]
+text = "What question does Mary Magdalene ask in chapter 20 of the *Pistis Sophia*?"
+options = [
+    "Who was the first aeon?",
+    "How will men on earth be delivered from the rulers of the spheres?",
+    "What is the name of the Father?",
+    "How many mysteries are there?",
+]
+answer = 1
+
+[[questions]]
+text = "According to Book I of the *Pistis Sophia*, what did Jesus do to the motion of the fate-spheres?"
+options = [
+    "He stopped them completely",
+    "He reversed them so they now turn alternately left and right",
+    "He sped them up",
+    "He replaced them with angels",
+]
+answer = 1
+
+[[questions]]
+text = "By what fraction did the Savior diminish the archons' power, according to the *Pistis Sophia*?"
+options = ["One-fifth", "One-quarter", "One-third", "One-half"]
+answer = 2
+
+[[questions]]
+text = "Which of these is the highest named region in the cosmology of the *Pistis Sophia*?"
+options = [
+    "The Treasury of Light",
+    "The Midst",
+    "The First Mystery",
+    "The Ineffable",
+]
+answer = 3
+
+[[questions]]
+text = "Which scholar produced the standard critical edition of the *Pistis Sophia* in 1905?"
+options = [
+    "G. R. S. Mead",
+    "Carl Schmidt",
+    "Violet MacDermot",
+    "James M. Robinson",
+]
+answer = 1
+
+[[questions]]
+text = "The *Pistis Sophia* at Book III ch. 99 cross-references which other work by name?"
+options = [
+    "The Gospel of Thomas",
+    "The Apocryphon of John",
+    "The two Books of Jeu",
+    "The Sophia of Jesus Christ",
+]
+answer = 2

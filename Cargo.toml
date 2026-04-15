@@ -1,6 +1,6 @@
 [package]
 name = "examhelper"
-version = "0.4.2"
+version = "0.4.3"
 edition = "2021"
 authors = ["ophiocus <csantanad@gmail.com>"]
 description = "Pluggable learning console with cartridge-based study modules, TTS narration, and exam practice"
