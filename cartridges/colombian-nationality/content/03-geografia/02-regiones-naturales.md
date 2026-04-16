@@ -6,20 +6,11 @@ Colombia se divide en **seis regiones naturales**, cada una con características
 
 ## 1. Región Andina
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Ubicación** | Centro y occidente del país |
-| **Característica principal** | Atravesada por las tres cordilleras de los Andes |
-| **Población** | **La región más poblada de Colombia** |
-| **Clima** | Variado según la altitud (todos los pisos térmicos) |
+La Región Andina se encuentra ubicada en el centro y el occidente del país. Su característica principal es que está atravesada por las tres cordilleras de los Andes. En cuanto a población, es **la región más poblada de Colombia**. Su clima es variado según la altitud, y presenta todos los pisos térmicos.
 
 ### Las tres cordilleras
 
-| Cordillera | Ubicación | Características |
-|------------|-----------|-----------------|
-| **Occidental** | Más cercana al Pacífico | La más baja de las tres |
-| **Central** | Entre los ríos Cauca y Magdalena | La más alta. Tiene volcanes y nevados |
-| **Oriental** | Más cercana a Venezuela | La más ancha. Incluye el altiplano cundiboyacense |
+La **cordillera Occidental** es la más cercana al océano Pacífico y es la más baja de las tres. La **cordillera Central** se encuentra entre los ríos Cauca y Magdalena, y es la más alta de las tres; en ella se encuentran volcanes y nevados. La **cordillera Oriental** es la más cercana a Venezuela y es la más ancha de las tres; incluye el altiplano cundiboyacense.
 
 ### Principales ciudades
 
@@ -40,12 +31,7 @@ Colombia se divide en **seis regiones naturales**, cada una con características
 
 ## 2. Región Caribe
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Ubicación** | Costa norte de Colombia |
-| **Característica principal** | Bañada por el mar Caribe |
-| **Clima** | Cálido y seco en general, húmedo en algunas zonas |
-| **Cultura** | Cuna de la cumbia, el vallenato y el carnaval de Barranquilla |
+La Región Caribe se encuentra ubicada en la costa norte de Colombia. Su característica principal es que está bañada por el mar Caribe. Su clima es cálido y seco en general, aunque húmedo en algunas zonas. Desde el punto de vista cultural, es la cuna de la cumbia, del vallenato y del carnaval de Barranquilla.
 
 ### Principales ciudades
 
@@ -66,12 +52,7 @@ Colombia se divide en **seis regiones naturales**, cada una con características
 
 ## 3. Región Pacífica
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Ubicación** | Costa occidental, bañada por el océano Pacífico |
-| **Característica principal** | Una de las regiones más lluviosas del mundo |
-| **Clima** | Cálido y muy húmedo (alta pluviosidad) |
-| **Población** | Predominantemente **comunidades afrocolombianas e indígenas** |
+La Región Pacífica se encuentra ubicada en la costa occidental del país, bañada por el océano Pacífico. Su característica principal es que es una de las regiones más lluviosas del mundo. Su clima es cálido y muy húmedo, con alta pluviosidad. Su población está compuesta predominantemente por **comunidades afrocolombianas e indígenas**.
 
 ### Elementos destacados
 
@@ -87,21 +68,11 @@ Colombia se divide en **seis regiones naturales**, cada una con características
 
 ## 4. Región Orinoquia (Llanos Orientales)
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Ubicación** | Este de Colombia, cuenca del río Orinoco |
-| **Característica principal** | Grandes llanuras y sabanas |
-| **Clima** | Cálido, con estación seca y estación de lluvias |
-| **Cultura** | Llanera: música llanera, joropo, coleo |
+La Región Orinoquia se encuentra ubicada en el este de Colombia, en la cuenca del río Orinoco. Su característica principal son las grandes llanuras y sabanas. Su clima es cálido, con una estación seca y una estación de lluvias. Su cultura es la llanera, con música llanera, joropo y coleo.
 
 ### Departamentos
 
-| Departamento | Capital |
-|-------------|---------|
-| Meta | Villavicencio |
-| Casanare | Yopal |
-| Arauca | Arauca |
-| Vichada | Puerto Carreño |
+La capital del departamento del **Meta** es **Villavicencio**. La capital del departamento del **Casanare** es **Yopal**. La capital del departamento de **Arauca** es **Arauca**. La capital del departamento del **Vichada** es **Puerto Carreño**.
 
 ### Economía
 
@@ -114,23 +85,11 @@ Colombia se divide en **seis regiones naturales**, cada una con características
 
 ## 5. Región Amazónica
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Ubicación** | Sur y sureste de Colombia |
-| **Característica principal** | Selva tropical amazónica |
-| **Población** | **La región menos poblada de Colombia** |
-| **Clima** | Cálido y muy húmedo |
+La Región Amazónica se encuentra ubicada en el sur y sureste de Colombia. Su característica principal es la selva tropical amazónica. Es **la región menos poblada de Colombia**. Su clima es cálido y muy húmedo.
 
 ### Departamentos
 
-| Departamento | Capital |
-|-------------|---------|
-| Amazonas | **Leticia** |
-| Caquetá | Florencia |
-| Guainía | Inírida |
-| Guaviare | San José del Guaviare |
-| Putumayo | Mocoa |
-| Vaupés | Mitú |
+La capital del departamento del **Amazonas** es **Leticia**. La capital del departamento del **Caquetá** es **Florencia**. La capital del departamento del **Guainía** es **Inírida**. La capital del departamento del **Guaviare** es **San José del Guaviare**. La capital del departamento del **Putumayo** es **Mocoa**. La capital del departamento del **Vaupés** es **Mitú**.
 
 ### Elementos destacados
 
@@ -146,33 +105,34 @@ Colombia se divide en **seis regiones naturales**, cada una con características
 
 ## 6. Región Insular
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Ubicación** | Islas en el mar Caribe y en el océano Pacífico |
-| **Característica principal** | Compuesta por islas y cayos |
-| **Cultura** | Comunidad **raizal** (afrodescendiente angloparlante en San Andrés y Providencia) |
+La Región Insular está compuesta por islas en el mar Caribe y en el océano Pacífico. Su característica principal es que está compuesta por islas y cayos. Su cultura es la de la comunidad **raizal**, afrodescendiente angloparlante, propia de San Andrés y Providencia.
 
 ### Islas principales
 
-| Islas | Océano | Características |
-|-------|--------|-----------------|
-| **San Andrés** | Caribe | Isla más grande. Centro turístico y comercial. Reserva de Biosfera Seaflower (UNESCO). |
-| **Providencia** | Caribe | Conocida por el "Mar de los Siete Colores". |
-| **Santa Catalina** | Caribe | Conectada a Providencia por un puente peatonal. |
-| **Isla Malpelo** | Pacífico | Patrimonio de la Humanidad (UNESCO). Santuario de fauna. |
-| **Isla Gorgona** | Pacífico | Parque Nacional Natural. Antigua prisión. |
+La isla de **San Andrés** se encuentra en el Caribe. Es la isla más grande y un centro turístico y comercial. Es Reserva de Biosfera Seaflower (UNESCO).
+
+La isla de **Providencia** se encuentra en el Caribe. Es conocida por el "Mar de los Siete Colores".
+
+La isla de **Santa Catalina** se encuentra en el Caribe. Está conectada a Providencia por un puente peatonal.
+
+La **Isla Malpelo** se encuentra en el Pacífico. Es Patrimonio de la Humanidad (UNESCO) y santuario de fauna.
+
+La **Isla Gorgona** se encuentra en el Pacífico. Es Parque Nacional Natural y antigua prisión.
 
 > **Para el examen:** San Andrés y Providencia están en el Caribe. Malpelo y Gorgona están en el Pacífico. La comunidad raizal es propia de San Andrés y Providencia.
 
 ---
 
-## Cuadro comparativo de las regiones
+## Resumen comparativo de las regiones
 
-| Región | Característica clave | Ciudad principal | Economía principal |
-|--------|---------------------|------------------|-------------------|
-| **Andina** | Tres cordilleras, la más poblada | Bogotá, Medellín, Cali | Café, flores, industria |
-| **Caribe** | Costa norte, cultura festiva | Barranquilla, Cartagena | Turismo, ganadería |
-| **Pacífica** | Muy lluviosa, gran biodiversidad | Buenaventura, Quibdó | Puerto comercial, pesca |
-| **Orinoquia** | Llanuras y sabanas | Villavicencio | Ganadería, petróleo |
-| **Amazónica** | Selva, menos poblada | Leticia | Recursos naturales |
-| **Insular** | Islas Caribe y Pacífico | San Andrés | Turismo, comercio |
+La **Región Andina** se caracteriza por sus tres cordilleras y por ser la más poblada; sus ciudades principales son Bogotá, Medellín y Cali; su economía se basa en el café, las flores y la industria.
+
+La **Región Caribe** se caracteriza por su costa norte y su cultura festiva; sus ciudades principales son Barranquilla y Cartagena; su economía se basa en el turismo y la ganadería.
+
+La **Región Pacífica** se caracteriza por ser muy lluviosa y de gran biodiversidad; sus ciudades principales son Buenaventura y Quibdó; su economía se basa en el puerto comercial y la pesca.
+
+La **Región Orinoquia** se caracteriza por sus llanuras y sabanas; su ciudad principal es Villavicencio; su economía se basa en la ganadería y el petróleo.
+
+La **Región Amazónica** se caracteriza por su selva y por ser la menos poblada; su ciudad principal es Leticia; su economía se basa en los recursos naturales.
+
+La **Región Insular** se caracteriza por sus islas en el Caribe y en el Pacífico; su ciudad principal es San Andrés; su economía se basa en el turismo y el comercio.

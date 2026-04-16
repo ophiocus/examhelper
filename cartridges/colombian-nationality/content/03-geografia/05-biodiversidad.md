@@ -4,15 +4,7 @@
 
 Colombia es reconocida como uno de los **17 países megadiversos** del mundo. A pesar de ocupar solo el 0,7% de la superficie terrestre, alberga aproximadamente el **10% de todas las especies del planeta**.
 
-| Dato | Valor |
-|------|-------|
-| Posición en biodiversidad global | **2do país más biodiverso** (después de Brasil) |
-| Especies de aves | **1er lugar mundial** (~1.950 especies) |
-| Especies de orquídeas | **1er lugar mundial** (~4.270 especies) |
-| Especies de mariposas | **2do lugar mundial** |
-| Especies de anfibios | **2do lugar mundial** |
-| Especies de plantas | **2do lugar mundial** |
-| Países megadiversos en el mundo | **17 países** |
+En biodiversidad global, Colombia ocupa el **segundo puesto**, después de Brasil. En especies de aves ocupa el **primer lugar mundial**, con aproximadamente 1.950 especies. En especies de orquídeas ocupa el **primer lugar mundial**, con aproximadamente 4.270 especies. En especies de mariposas ocupa el **segundo lugar mundial**. En especies de anfibios ocupa el **segundo lugar mundial**. En especies de plantas ocupa el **segundo lugar mundial**. En total, existen 17 países megadiversos en el mundo.
 
 > **Dato clave para el examen:** Colombia es el **segundo país más biodiverso del mundo** y el **primero en aves y orquídeas**. Alberga cerca del **10% de las especies del planeta**.
 
@@ -60,17 +52,23 @@ Colombia posee una gran variedad de ecosistemas gracias a su ubicación geográf
 
 Colombia cuenta con **59 Parques Nacionales Naturales** que protegen la riqueza natural del país. En conjunto cubren aproximadamente el **14%** del territorio nacional.
 
-| Parque | Ubicación | Destacado |
-|--------|-----------|-----------|
-| **Tayrona** | Magdalena (Caribe) | Playas, selva y sitios arqueológicos. Uno de los más visitados. |
-| **Sierra Nevada de Santa Marta** | Magdalena, Cesar, La Guajira | Protege la montaña costera más alta del mundo. Territorio de pueblos Kogui, Arhuaco, Wiwa y Kankuamo. |
-| **Los Nevados** | Caldas, Risaralda, Quindío, Tolima | Incluye los nevados del Ruiz, Santa Isabel y Tolima. Volcanes y páramos. |
-| **Serranía de Chiribiquete** | Caquetá, Guaviare | **Parque natural más grande de Colombia**. Patrimonio de la Humanidad (UNESCO). Arte rupestre milenario. |
-| **Isla Gorgona** | Cauca (Pacífico) | Antigua prisión. Avistamiento de ballenas jorobadas. Gran biodiversidad marina. |
-| **Los Katíos** | Chocó, Antioquia | Patrimonio de la Humanidad (UNESCO). Frontera con Panamá. Selva tropical húmeda. |
-| **Puracé** | Cauca, Huila | Volcán activo. Nacimiento del río Magdalena. Hábitat del cóndor de los Andes. |
-| **Corales del Rosario y San Bernardo** | Bolívar, Sucre | Arrecifes de coral en el Caribe. |
-| **Old Providence McBean Lagoon** | San Andrés y Providencia | Arrecifes de coral y manglares en la isla de Providencia. |
+El **Parque Tayrona** se encuentra ubicado en el Magdalena, en la región Caribe. Es conocido por sus playas, su selva y sus sitios arqueológicos, y es uno de los más visitados del país.
+
+El **Parque Sierra Nevada de Santa Marta** se encuentra ubicado en los departamentos de Magdalena, Cesar y La Guajira. Protege la montaña costera más alta del mundo y es territorio de los pueblos Kogui, Arhuaco, Wiwa y Kankuamo.
+
+El **Parque Los Nevados** se encuentra ubicado en los departamentos de Caldas, Risaralda, Quindío y Tolima. Incluye los nevados del Ruiz, Santa Isabel y Tolima, con sus volcanes y páramos.
+
+El **Parque Serranía de Chiribiquete** se encuentra ubicado en los departamentos del Caquetá y Guaviare. Es el **parque natural más grande de Colombia** y es Patrimonio de la Humanidad de la UNESCO. Contiene arte rupestre milenario.
+
+El **Parque Isla Gorgona** se encuentra ubicado en el departamento del Cauca, en el Pacífico. Era antigua prisión y es punto de avistamiento de ballenas jorobadas, con gran biodiversidad marina.
+
+El **Parque Los Katíos** se encuentra ubicado en los departamentos del Chocó y Antioquia. Es Patrimonio de la Humanidad de la UNESCO, hace frontera con Panamá y protege selva tropical húmeda.
+
+El **Parque Puracé** se encuentra ubicado en los departamentos del Cauca y Huila. Contiene un volcán activo, el nacimiento del río Magdalena, y es hábitat del cóndor de los Andes.
+
+El **Parque Corales del Rosario y San Bernardo** se encuentra ubicado en los departamentos de Bolívar y Sucre. Protege los arrecifes de coral del Caribe.
+
+El **Parque Old Providence McBean Lagoon** se encuentra ubicado en San Andrés y Providencia. Protege arrecifes de coral y manglares en la isla de Providencia.
 
 > **Tip para el examen:** El parque natural más grande de Colombia es **Chiribiquete**, declarado Patrimonio de la Humanidad por la UNESCO. Colombia tiene **59 Parques Nacionales Naturales**.
 
@@ -80,15 +78,19 @@ Colombia cuenta con **59 Parques Nacionales Naturales** que protegen la riqueza 
 
 Colombia alberga numerosas **especies endémicas** (que no se encuentran en ningún otro lugar del mundo).
 
-| Especie | Tipo | Dato importante |
-|---------|------|-----------------|
-| **Cóndor de los Andes** | Ave | Símbolo nacional en el escudo de Colombia. En peligro de extinción. |
-| **Delfín rosado** | Mamífero | Habita los ríos de la Amazonia y la Orinoquía. |
-| **Rana dorada (Phyllobates terribilis)** | Anfibio | Una de las más venenosas del mundo. Endémica del Chocó. |
-| **Orquídea Cattleya trianae** | Planta | **Flor nacional** de Colombia. |
-| **Palma de cera del Quindío** | Planta | **Árbol nacional**. La palma más alta del mundo (hasta 60 m). Crece en el Valle de Cocora. |
-| **Jaguar** | Mamífero | Felino más grande de América. Habita selvas y bosques. |
-| **Tití cabeciblanco** | Primate | Endémico del norte de Colombia. En peligro crítico de extinción. |
+El **cóndor de los Andes** es un ave. Es símbolo nacional y aparece en el escudo de Colombia. Está en peligro de extinción.
+
+El **delfín rosado** es un mamífero. Habita los ríos de la Amazonia y la Orinoquía.
+
+La **rana dorada** (*Phyllobates terribilis*) es un anfibio. Es una de las ranas más venenosas del mundo y es endémica del Chocó.
+
+La **orquídea Cattleya trianae** es una planta. Es la **flor nacional** de Colombia.
+
+La **palma de cera del Quindío** es una planta. Es el **árbol nacional** de Colombia. Es la palma más alta del mundo, con alturas de hasta 60 metros, y crece en el Valle de Cocora.
+
+El **jaguar** es un mamífero. Es el felino más grande de América y habita selvas y bosques.
+
+El **tití cabeciblanco** es un primate. Es endémico del norte de Colombia y se encuentra en peligro crítico de extinción.
 
 > **Dato clave para el examen:** La **flor nacional** es la orquídea *Cattleya trianae*. El **árbol nacional** es la **palma de cera del Quindío**. El **cóndor de los Andes** aparece en el escudo nacional.
 
@@ -108,31 +110,20 @@ La biodiversidad de Colombia enfrenta varias amenazas:
 
 ## Colombia y los acuerdos ambientales internacionales
 
-Colombia participa activamente en la protección del medio ambiente a nivel global:
+Colombia participa activamente en la protección del medio ambiente a nivel global.
 
-| Acuerdo | Descripción |
-|---------|-------------|
-| **Acuerdo de París** (2015) | Compromiso de reducir emisiones de gases de efecto invernadero para combatir el cambio climático. |
-| **Convenio sobre Diversidad Biológica** (CDB) | Protección de la biodiversidad y uso sostenible de los recursos naturales. |
-| **Convención CITES** | Regulación del comercio internacional de especies amenazadas de fauna y flora. |
-| **Convenio de Ramsar** | Protección de humedales de importancia internacional. |
-| **Declaración de Leticia** (2019) | Pacto amazónico para proteger la selva amazónica, firmado por Colombia y otros países de la región. |
+El **Acuerdo de París**, firmado en 2015, es un compromiso para reducir las emisiones de gases de efecto invernadero y combatir el cambio climático.
+
+El **Convenio sobre Diversidad Biológica**, conocido como CDB, busca la protección de la biodiversidad y el uso sostenible de los recursos naturales.
+
+La **Convención CITES** regula el comercio internacional de especies amenazadas de fauna y flora.
+
+El **Convenio de Ramsar** protege los humedales de importancia internacional.
+
+La **Declaración de Leticia**, firmada en 2019, es un pacto amazónico para proteger la selva amazónica, suscrito por Colombia y otros países de la región.
 
 ---
 
 ## Resumen para el examen
 
-| Pregunta frecuente | Respuesta |
-|--------------------|-----------|
-| ¿Qué posición ocupa Colombia en biodiversidad? | **2do país más biodiverso** del mundo |
-| ¿En qué es primero Colombia? | En **aves** (~1.950 especies) y en **orquídeas** |
-| ¿Qué porcentaje de especies del mundo tiene Colombia? | Aproximadamente el **10%** |
-| ¿Cuántos países megadiversos hay? | **17 países** en el mundo |
-| ¿Cuántos Parques Nacionales Naturales tiene Colombia? | **59** |
-| ¿Cuál es el parque natural más grande? | **Serranía de Chiribiquete** |
-| ¿Cuál es la flor nacional? | La orquídea **Cattleya trianae** |
-| ¿Cuál es el árbol nacional? | La **palma de cera del Quindío** |
-| ¿Qué ave aparece en el escudo? | El **cóndor de los Andes** |
-| ¿Qué porcentaje de páramos del mundo tiene Colombia? | Cerca del **50%** |
-| ¿Qué ecosistema está más amenazado? | El **bosque seco tropical** (queda menos del 8%) |
-| ¿Qué rana endémica vive en el Chocó? | La **rana dorada** (*Phyllobates terribilis*) |
+En biodiversidad, Colombia es el **segundo país más biodiverso del mundo**. Colombia es **primero** en aves, con aproximadamente 1.950 especies, y **primero** en orquídeas. Colombia tiene aproximadamente el **10%** de las especies del mundo. En el mundo hay **17 países megadiversos**. Colombia tiene **59 Parques Nacionales Naturales**. El parque natural más grande de Colombia es la **Serranía de Chiribiquete**. La flor nacional es la orquídea **Cattleya trianae**. El árbol nacional es la **palma de cera del Quindío**. El ave que aparece en el escudo es el **cóndor de los Andes**. Colombia tiene cerca del **50%** de los páramos del mundo. El ecosistema más amenazado es el **bosque seco tropical**, del que queda menos del 8%. La rana endémica del Chocó es la **rana dorada**, *Phyllobates terribilis*.

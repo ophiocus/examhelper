@@ -8,25 +8,13 @@ Colombia se encuentra ubicada en el **noroeste de América del Sur**. Es el úni
 
 ## Superficie y tamaño
 
-| Dato | Valor |
-|------|-------|
-| Área total | **1.141.748 km²** (aproximadamente) |
-| Posición en Sudamérica | **4to país más grande** |
-| Países más grandes | Brasil, Argentina, Perú |
+El área total de Colombia es de aproximadamente **1.141.748 km²**. Por su tamaño, Colombia ocupa el **cuarto puesto entre los países más grandes de Sudamérica**. Los países sudamericanos más grandes que Colombia son Brasil, Argentina y Perú.
 
 ---
 
 ## Fronteras terrestres
 
-Colombia comparte fronteras terrestres con **cinco países**:
-
-| País | Ubicación de la frontera |
-|------|--------------------------|
-| **Venezuela** | Este y noreste |
-| **Brasil** | Sureste |
-| **Perú** | Sur |
-| **Ecuador** | Suroeste |
-| **Panamá** | Noroeste |
+Colombia comparte fronteras terrestres con **cinco países**. La frontera con **Venezuela** se encuentra al este y al noreste del país. La frontera con **Brasil** se encuentra al sureste. La frontera con **Perú** se encuentra al sur. La frontera con **Ecuador** se encuentra al suroeste. La frontera con **Panamá** se encuentra al noroeste.
 
 > **Dato clave para el examen:** Son 5 fronteras terrestres. Recuerda: **Ve-Bra-Pe-Ec-Pa** (Venezuela, Brasil, Perú, Ecuador, Panamá).
 
@@ -34,16 +22,7 @@ Colombia comparte fronteras terrestres con **cinco países**:
 
 ## Fronteras marítimas
 
-Colombia tiene fronteras marítimas con **seis países** adicionales:
-
-| País | Mar |
-|------|-----|
-| Costa Rica | Caribe y Pacífico |
-| Nicaragua | Caribe |
-| Honduras | Caribe |
-| Jamaica | Caribe |
-| Haití | Caribe |
-| República Dominicana | Caribe |
+Colombia tiene fronteras marítimas con **seis países** adicionales. La frontera marítima con **Costa Rica** se da tanto en el Caribe como en el Pacífico. La frontera marítima con **Nicaragua** se da en el Caribe. La frontera marítima con **Honduras** se da en el Caribe. La frontera marítima con **Jamaica** se da en el Caribe. La frontera marítima con **Haití** se da en el Caribe. La frontera marítima con **República Dominicana** se da en el Caribe.
 
 ---
 
@@ -57,14 +36,7 @@ El punto más alto de Colombia es el **Pico Cristóbal Colón**, con una altitud
 
 ## Principales ríos
 
-| Río | Importancia |
-|-----|-------------|
-| **Magdalena** | Principal río de Colombia. Atraviesa el país de sur a norte. Fundamental para el transporte y la economía. |
-| **Cauca** | Segundo río más importante. Afluente del Magdalena. Recorre el occidente del país. |
-| **Amazonas** | El río más largo y caudaloso del mundo. Pasa por el sur de Colombia (Leticia). |
-| **Orinoco** | Frontera natural con Venezuela en el oriente. |
-| **Atrato** | Uno de los ríos más caudalosos del mundo. Desemboca en el golfo de Urabá (Caribe). |
-| **Caquetá** | Principal río de la región amazónica colombiana. |
+El **río Magdalena** es el principal río de Colombia; atraviesa el país de sur a norte y es fundamental para el transporte y la economía. El **río Cauca** es el segundo río más importante; es afluente del Magdalena y recorre el occidente del país. El **río Amazonas** es el río más largo y caudaloso del mundo, y pasa por el sur de Colombia, en Leticia. El **río Orinoco** constituye una frontera natural con Venezuela en el oriente. El **río Atrato** es uno de los ríos más caudalosos del mundo y desemboca en el golfo de Urabá, en el Caribe. El **río Caquetá** es el principal río de la región amazónica colombiana.
 
 ---
 
@@ -81,15 +53,17 @@ Colombia es un país **megadiverso**:
 
 ## Clima y pisos térmicos
 
-Colombia tiene un **clima tropical**, pero la temperatura varía según la **altitud**. Este sistema se conoce como **pisos térmicos**:
+Colombia tiene un **clima tropical**, pero la temperatura varía según la **altitud**. Este sistema se conoce como **pisos térmicos**.
 
-| Piso térmico | Altitud | Temperatura promedio | Productos típicos |
-|--------------|---------|----------------------|-------------------|
-| **Cálido** | 0 - 1.000 m | Mayor a 24°C | Caña de azúcar, arroz, algodón, plátano |
-| **Templado** | 1.000 - 2.000 m | 17°C - 24°C | Café, cacao, fríjol, maíz |
-| **Frío** | 2.000 - 3.000 m | 12°C - 17°C | Papa, trigo, cebada, flores |
-| **Páramo** | 3.000 - 4.500 m | Menor a 12°C | Frailejones, musgos (no apto para agricultura intensiva) |
-| **Glacial** | Mayor a 4.500 m | Menor a 0°C | Nieves perpetuas |
+El **piso cálido** se extiende entre los 0 y los 1.000 metros de altitud; su temperatura promedio es mayor a 24 °C, y en él se cultivan caña de azúcar, arroz, algodón y plátano.
+
+El **piso templado** se extiende entre los 1.000 y los 2.000 metros de altitud; su temperatura promedio está entre 17 °C y 24 °C, y en él se cultivan café, cacao, fríjol y maíz.
+
+El **piso frío** se extiende entre los 2.000 y los 3.000 metros de altitud; su temperatura promedio está entre 12 °C y 17 °C, y en él se cultivan papa, trigo, cebada y flores.
+
+El **piso de páramo** se extiende entre los 3.000 y los 4.500 metros de altitud; su temperatura promedio es menor a 12 °C, y en él crecen frailejones y musgos, pero no es apto para agricultura intensiva.
+
+El **piso glacial** se encuentra por encima de los 4.500 metros; su temperatura promedio es menor a 0 °C, y corresponde a las zonas de nieves perpetuas.
 
 > **Para el examen:** Colombia no tiene estaciones (primavera, verano, otoño, invierno). El clima depende de la altitud, no de la época del año. Tiene períodos de lluvia y períodos secos.
 
@@ -97,15 +71,4 @@ Colombia tiene un **clima tropical**, pero la temperatura varía según la **alt
 
 ## Resumen de datos clave
 
-| Pregunta frecuente | Respuesta |
-|--------------------|-----------|
-| Ubicación | Noroeste de América del Sur |
-| Costas | Atlántico (Caribe) y Pacífico |
-| Área | 1.141.748 km² |
-| Tamaño en Sudamérica | 4to más grande |
-| Fronteras terrestres | 5 países |
-| Fronteras marítimas | 6 países |
-| Punto más alto | Pico Cristóbal Colón (5.775 m) |
-| Río principal | Magdalena |
-| Biodiversidad | Megadiverso, 10% especies mundiales |
-| Clima | Tropical, varía por altitud |
+La ubicación de Colombia es en el noroeste de América del Sur. Colombia tiene costas en el océano Atlántico (Caribe) y en el océano Pacífico. El área de Colombia es de 1.141.748 km². Colombia es el cuarto país más grande de Sudamérica. Colombia tiene 5 fronteras terrestres y 6 fronteras marítimas. El punto más alto de Colombia es el Pico Cristóbal Colón, con 5.775 metros. El río principal de Colombia es el Magdalena. Colombia es un país megadiverso, con cerca del 10% de las especies del mundo. El clima de Colombia es tropical y varía según la altitud.
