@@ -22,12 +22,13 @@ pub enum UpdateState {
 // ── version comparison ───────────────────────────────────────────────────────
 
 fn is_newer(latest: &str, current: &str) -> bool {
-    let parse = |s: &str| -> (u32, u32, u32) {
-        let mut p = s.splitn(3, '.');
+    let parse = |s: &str| -> (u32, u32, u32, u32) {
+        let mut p = s.split('.');
         let a = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
         let b = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
         let c = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
-        (a, b, c)
+        let d = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
+        (a, b, c, d)
     };
     parse(latest) > parse(current)
 }
