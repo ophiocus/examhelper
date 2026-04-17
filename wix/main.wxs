@@ -30,6 +30,7 @@
 
         <MajorUpgrade
             Schedule='afterInstallInitialize'
+            AllowSameVersionUpgrades='yes'
             DowngradeErrorMessage='A newer version of [ProductName] is already installed. Setup will now exit.'/>
 
         <Media Id='1' Cabinet='media1.cab' EmbedCab='yes' DiskPrompt='CD-ROM #1'/>
@@ -144,6 +145,49 @@
                             </Directory>
                         </Directory>
 
+                        <!-- Gnostic Texts -->
+                        <Directory Id='CartGnostic' Name='gnostic-texts'>
+                            <Component Id='gn_manifest' Guid='*'>
+                                <File Id='gn_manifest_f' Source='cartridges\gnostic-texts\manifest.toml' KeyPath='yes'/>
+                            </Component>
+
+                            <Directory Id='GnContent' Name='content'>
+                                <Directory Id='GnIntro' Name='01-introduction'>
+                                    <Component Id='gi01' Guid='*'><File Id='fgi01' Source='cartridges\gnostic-texts\content\01-introduction\01-what-is-gnosticism.md' KeyPath='yes'/></Component>
+                                    <Component Id='gi02' Guid='*'><File Id='fgi02' Source='cartridges\gnostic-texts\content\01-introduction\02-primary-sources.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='GnNH' Name='02-nag-hammadi'>
+                                    <Component Id='gn01' Guid='*'><File Id='fgn01' Source='cartridges\gnostic-texts\content\02-nag-hammadi\01-the-discovery.md' KeyPath='yes'/></Component>
+                                    <Component Id='gn02' Guid='*'><File Id='fgn02' Source='cartridges\gnostic-texts\content\02-nag-hammadi\02-codices-and-tractates.md' KeyPath='yes'/></Component>
+                                    <Component Id='gn03' Guid='*'><File Id='fgn03' Source='cartridges\gnostic-texts\content\02-nag-hammadi\03-key-tractates.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='GnPS' Name='03-pistis-sophia'>
+                                    <Component Id='gp01' Guid='*'><File Id='fgp01' Source='cartridges\gnostic-texts\content\03-pistis-sophia\01-the-askew-codex.md' KeyPath='yes'/></Component>
+                                    <Component Id='gp02' Guid='*'><File Id='fgp02' Source='cartridges\gnostic-texts\content\03-pistis-sophia\02-structure-and-books.md' KeyPath='yes'/></Component>
+                                    <Component Id='gp03' Guid='*'><File Id='fgp03' Source='cartridges\gnostic-texts\content\03-pistis-sophia\03-mary-magdalene-interpreter.md' KeyPath='yes'/></Component>
+                                    <Component Id='gp04' Guid='*'><File Id='fgp04' Source='cartridges\gnostic-texts\content\03-pistis-sophia\04-cosmology-of-the-spheres.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='GnOther' Name='04-other-texts'>
+                                    <Component Id='go01' Guid='*'><File Id='fgo01' Source='cartridges\gnostic-texts\content\04-other-texts\01-books-of-jeu.md' KeyPath='yes'/></Component>
+                                    <Component Id='go02' Guid='*'><File Id='fgo02' Source='cartridges\gnostic-texts\content\04-other-texts\02-berlin-codex.md' KeyPath='yes'/></Component>
+                                    <Component Id='go03' Guid='*'><File Id='fgo03' Source='cartridges\gnostic-texts\content\04-other-texts\03-heresiologists.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='GnThemes' Name='05-themes'>
+                                    <Component Id='gt01' Guid='*'><File Id='fgt01' Source='cartridges\gnostic-texts\content\05-themes\01-pleroma-and-aeons.md' KeyPath='yes'/></Component>
+                                    <Component Id='gt02' Guid='*'><File Id='fgt02' Source='cartridges\gnostic-texts\content\05-themes\02-sophia-and-the-demiurge.md' KeyPath='yes'/></Component>
+                                    <Component Id='gt03' Guid='*'><File Id='fgt03' Source='cartridges\gnostic-texts\content\05-themes\03-archons-and-heimarmene.md' KeyPath='yes'/></Component>
+                                </Directory>
+                            </Directory>
+
+                            <Directory Id='GnQuestions' Name='questions'>
+                                <Component Id='gq01' Guid='*'><File Id='fgq01' Source='cartridges\gnostic-texts\questions\introduction.toml' KeyPath='yes'/></Component>
+                                <Component Id='gq02' Guid='*'><File Id='fgq02' Source='cartridges\gnostic-texts\questions\nag-hammadi.toml' KeyPath='yes'/></Component>
+                                <Component Id='gq03' Guid='*'><File Id='fgq03' Source='cartridges\gnostic-texts\questions\pistis-sophia.toml' KeyPath='yes'/></Component>
+                                <Component Id='gq04' Guid='*'><File Id='fgq04' Source='cartridges\gnostic-texts\questions\other-texts.toml' KeyPath='yes'/></Component>
+                                <Component Id='gq05' Guid='*'><File Id='fgq05' Source='cartridges\gnostic-texts\questions\themes.toml' KeyPath='yes'/></Component>
+                            </Directory>
+                        </Directory>
+
                     </Directory>
 
                     <Component Id='DesktopShortcut' Guid='C3D4E5F6-A7B8-9012-CDEF-345678901234'>
@@ -195,6 +239,17 @@
             <ComponentRef Id='ccu04'/><ComponentRef Id='ccu05'/><ComponentRef Id='ccu06'/>
             <ComponentRef Id='cq01'/><ComponentRef Id='cq02'/>
             <ComponentRef Id='cq03'/><ComponentRef Id='cq04'/>
+
+            <!-- Gnostic cartridge -->
+            <ComponentRef Id='gn_manifest'/>
+            <ComponentRef Id='gi01'/><ComponentRef Id='gi02'/>
+            <ComponentRef Id='gn01'/><ComponentRef Id='gn02'/><ComponentRef Id='gn03'/>
+            <ComponentRef Id='gp01'/><ComponentRef Id='gp02'/><ComponentRef Id='gp03'/>
+            <ComponentRef Id='gp04'/>
+            <ComponentRef Id='go01'/><ComponentRef Id='go02'/><ComponentRef Id='go03'/>
+            <ComponentRef Id='gt01'/><ComponentRef Id='gt02'/><ComponentRef Id='gt03'/>
+            <ComponentRef Id='gq01'/><ComponentRef Id='gq02'/><ComponentRef Id='gq03'/>
+            <ComponentRef Id='gq04'/><ComponentRef Id='gq05'/>
 
             <!-- Japanese cartridge -->
             <ComponentRef Id='jp_manifest'/>
