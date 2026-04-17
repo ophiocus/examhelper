@@ -34,8 +34,20 @@ jobs:
           Expand-Archive $zip -DestinationPath $dest
           echo "$dest" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
+      - name: Extract version from tag
+        id: version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}" -replace '^v',''
+          # Pad to 4 segments for MSI (major.minor.patch.sub)
+          $parts = $tag -split '\.'
+          while ($parts.Count -lt 4) { $parts += '0' }
+          $msi = ($parts[0..3]) -join '.'
+          echo "msi=$msi" >> $env:GITHUB_OUTPUT
+          echo "MSI version: $msi"
+
       - name: Build MSI installer
-        run: cargo wix --nocapture
+        run: cargo wix --nocapture -i "${{ steps.version.outputs.msi }}" -C "-dVersion=${{ steps.version.outputs.msi }}"
 
       - name: Upload MSI
         uses: actions/upload-artifact@v5
