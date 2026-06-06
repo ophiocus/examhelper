@@ -188,6 +188,50 @@
                             </Directory>
                         </Directory>
 
+                        <!-- Claude Architect Foundations -->
+                        <Directory Id='CartClaude' Name='claude-architect-foundations'>
+                            <Component Id='ca_manifest' Guid='*'>
+                                <File Id='ca_manifest_f' Source='cartridges\claude-architect-foundations\manifest.toml' KeyPath='yes'/>
+                            </Component>
+
+                            <Directory Id='CaContent' Name='content'>
+                                <Directory Id='CaIntro' Name='01-introduction'>
+                                    <Component Id='ci01' Guid='*'><File Id='fci01' Source='cartridges\claude-architect-foundations\content\01-introduction\01-what-is-claude.md' KeyPath='yes'/></Component>
+                                    <Component Id='ci02' Guid='*'><File Id='fci02' Source='cartridges\claude-architect-foundations\content\01-introduction\02-the-messages-api.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='CaPrompt' Name='02-prompting'>
+                                    <Component Id='cp01' Guid='*'><File Id='fcp01' Source='cartridges\claude-architect-foundations\content\02-prompting\01-system-and-messages.md' KeyPath='yes'/></Component>
+                                    <Component Id='cp02' Guid='*'><File Id='fcp02' Source='cartridges\claude-architect-foundations\content\02-prompting\02-prompt-engineering.md' KeyPath='yes'/></Component>
+                                    <Component Id='cp03' Guid='*'><File Id='fcp03' Source='cartridges\claude-architect-foundations\content\02-prompting\03-prompt-caching.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='CaTools' Name='03-tool-use'>
+                                    <Component Id='ct01' Guid='*'><File Id='fct01' Source='cartridges\claude-architect-foundations\content\03-tool-use\01-tool-use-basics.md' KeyPath='yes'/></Component>
+                                    <Component Id='ct02' Guid='*'><File Id='fct02' Source='cartridges\claude-architect-foundations\content\03-tool-use\02-structured-outputs.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='CaAgents' Name='04-agents'>
+                                    <Component Id='ca01' Guid='*'><File Id='fca01' Source='cartridges\claude-architect-foundations\content\04-agents\01-the-agent-loop.md' KeyPath='yes'/></Component>
+                                    <Component Id='ca02' Guid='*'><File Id='fca02' Source='cartridges\claude-architect-foundations\content\04-agents\02-the-agent-sdk.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='CaMcp' Name='05-mcp'>
+                                    <Component Id='cm01' Guid='*'><File Id='fcm01' Source='cartridges\claude-architect-foundations\content\05-mcp\01-what-is-mcp.md' KeyPath='yes'/></Component>
+                                    <Component Id='cm02' Guid='*'><File Id='fcm02' Source='cartridges\claude-architect-foundations\content\05-mcp\02-mcp-servers-in-practice.md' KeyPath='yes'/></Component>
+                                </Directory>
+                                <Directory Id='CaSafety' Name='06-safety-and-deployment'>
+                                    <Component Id='cs01' Guid='*'><File Id='fcs01' Source='cartridges\claude-architect-foundations\content\06-safety-and-deployment\01-constitutional-ai.md' KeyPath='yes'/></Component>
+                                    <Component Id='cs02' Guid='*'><File Id='fcs02' Source='cartridges\claude-architect-foundations\content\06-safety-and-deployment\02-deployment-architecture.md' KeyPath='yes'/></Component>
+                                </Directory>
+                            </Directory>
+
+                            <Directory Id='CaQuestions' Name='questions'>
+                                <Component Id='cqa01' Guid='*'><File Id='fcqa01' Source='cartridges\claude-architect-foundations\questions\introduction.toml' KeyPath='yes'/></Component>
+                                <Component Id='cqa02' Guid='*'><File Id='fcqa02' Source='cartridges\claude-architect-foundations\questions\prompting.toml' KeyPath='yes'/></Component>
+                                <Component Id='cqa03' Guid='*'><File Id='fcqa03' Source='cartridges\claude-architect-foundations\questions\tool-use.toml' KeyPath='yes'/></Component>
+                                <Component Id='cqa04' Guid='*'><File Id='fcqa04' Source='cartridges\claude-architect-foundations\questions\agents.toml' KeyPath='yes'/></Component>
+                                <Component Id='cqa05' Guid='*'><File Id='fcqa05' Source='cartridges\claude-architect-foundations\questions\mcp.toml' KeyPath='yes'/></Component>
+                                <Component Id='cqa06' Guid='*'><File Id='fcqa06' Source='cartridges\claude-architect-foundations\questions\safety-and-deployment.toml' KeyPath='yes'/></Component>
+                            </Directory>
+                        </Directory>
+
                     </Directory>
 
                     <Component Id='DesktopShortcut' Guid='C3D4E5F6-A7B8-9012-CDEF-345678901234'>
@@ -250,6 +294,17 @@
             <ComponentRef Id='gt01'/><ComponentRef Id='gt02'/><ComponentRef Id='gt03'/>
             <ComponentRef Id='gq01'/><ComponentRef Id='gq02'/><ComponentRef Id='gq03'/>
             <ComponentRef Id='gq04'/><ComponentRef Id='gq05'/>
+
+            <!-- Claude Architect Foundations cartridge -->
+            <ComponentRef Id='ca_manifest'/>
+            <ComponentRef Id='ci01'/><ComponentRef Id='ci02'/>
+            <ComponentRef Id='cp01'/><ComponentRef Id='cp02'/><ComponentRef Id='cp03'/>
+            <ComponentRef Id='ct01'/><ComponentRef Id='ct02'/>
+            <ComponentRef Id='ca01'/><ComponentRef Id='ca02'/>
+            <ComponentRef Id='cm01'/><ComponentRef Id='cm02'/>
+            <ComponentRef Id='cs01'/><ComponentRef Id='cs02'/>
+            <ComponentRef Id='cqa01'/><ComponentRef Id='cqa02'/><ComponentRef Id='cqa03'/>
+            <ComponentRef Id='cqa04'/><ComponentRef Id='cqa05'/><ComponentRef Id='cqa06'/>
 
             <!-- Japanese cartridge -->
             <ComponentRef Id='jp_manifest'/>

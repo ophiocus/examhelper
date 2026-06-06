@@ -1,0 +1,93 @@
+# =============================================================================
+# Prompting — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "In a Messages API request, where does the system prompt go?"
+options = [
+    "In the first message with role 'system'",
+    "In the `system` field, separate from the messages array",
+    "Prepended to the first user message",
+    "In the `tools` array",
+]
+answer = 1
+
+[[questions]]
+text = "Which roles are valid for entries in the `messages` array?"
+options = [
+    "system, user, assistant",
+    "user and assistant",
+    "user, assistant, tool",
+    "input and output",
+]
+answer = 1
+
+[[questions]]
+text = "What is 'few-shot prompting'?"
+options = [
+    "Calling the model only a few times",
+    "Including worked examples in the prompt before the actual task",
+    "Using a small model",
+    "Setting temperature to a low value",
+]
+answer = 1
+
+[[questions]]
+text = "What is the canonical way to force Claude to produce a JSON response that starts with `{`?"
+options = [
+    "Set temperature to 0",
+    "Prefill the assistant turn with `{`",
+    "Use the `format: 'json'` field",
+    "Set `stop_reason` to 'json'",
+]
+answer = 1
+
+[[questions]]
+text = "What is the standard cache_control type used to mark a prompt-cache breakpoint?"
+options = ["persistent", "ephemeral", "static", "cached"]
+answer = 1
+
+[[questions]]
+text = "Approximately how much does a prompt-cache READ cost relative to base input tokens?"
+options = ["About 0.1×", "About 0.5×", "About 1×", "About 2×"]
+answer = 0
+
+[[questions]]
+text = "Approximately how much does a prompt-cache WRITE cost relative to base input tokens?"
+options = ["About 0.1×", "About 0.5×", "About 1.25×", "About 10×"]
+answer = 2
+
+[[questions]]
+text = "What is the standard prompt-cache TTL?"
+options = ["1 minute", "5 minutes", "1 hour", "24 hours"]
+answer = 1
+
+[[questions]]
+text = "Extended prompt caching provides what TTL?"
+options = ["15 minutes", "30 minutes", "1 hour", "24 hours"]
+answer = 2
+
+[[questions]]
+text = "How many cache breakpoints can a single Messages request contain?"
+options = ["1", "2", "4", "10"]
+answer = 2
+
+[[questions]]
+text = "Which of the following changes will invalidate a prompt-cache hit?"
+options = [
+    "Adding new messages after the cached prefix",
+    "Changing tokens before or at the breakpoint",
+    "Increasing max_tokens",
+    "Changing the temperature value",
+]
+answer = 1
+
+[[questions]]
+text = "Which of these is NOT a recommended prompt-engineering technique for Claude?"
+options = [
+    "Wrapping prompt sections in XML tags",
+    "Putting the document before the question for long-context tasks",
+    "Adding a unique timestamp to every system prompt",
+    "Providing worked examples in <example> tags",
+]
+answer = 2

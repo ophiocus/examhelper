@@ -1,0 +1,88 @@
+# =============================================================================
+# MCP — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "What does MCP stand for?"
+options = [
+    "Model Context Protocol",
+    "Multi-Claude Pipeline",
+    "Modular Composition Plane",
+    "Machine Conversation Protocol",
+]
+answer = 0
+
+[[questions]]
+text = "Who introduced MCP, and roughly when?"
+options = [
+    "OpenAI in 2023",
+    "Anthropic in late 2024",
+    "Google in early 2025",
+    "The Linux Foundation in 2022",
+]
+answer = 1
+
+[[questions]]
+text = "The MCP architecture is most analogous to which earlier protocol?"
+options = [
+    "MQTT for IoT",
+    "LSP (Language Server Protocol) for editors and language tooling",
+    "OAuth for authentication",
+    "WebRTC for media streaming",
+]
+answer = 1
+
+[[questions]]
+text = "Which of these is NOT a kind of capability an MCP server can expose?"
+options = ["Tools", "Resources", "Prompts", "Models"]
+answer = 3
+
+[[questions]]
+text = "Which two transports are defined by MCP?"
+options = [
+    "stdio and HTTP+SSE",
+    "WebSocket and gRPC",
+    "TCP and UDP",
+    "AMQP and Kafka",
+]
+answer = 0
+
+[[questions]]
+text = "Which transport is canonical for an MCP server that runs locally and accesses the user's files?"
+options = ["HTTP+SSE", "stdio", "WebSocket", "gRPC"]
+answer = 1
+
+[[questions]]
+text = "Which authentication standard does MCP use for remote HTTP servers?"
+options = ["Basic Auth", "API keys only", "OAuth 2.0", "SAML"]
+answer = 2
+
+[[questions]]
+text = "In Claude Code, which configuration file holds user-level MCP server entries?"
+options = [
+    ".claude/config",
+    "~/.claude.json",
+    "/etc/claude/mcp.conf",
+    "claude.toml in the project root",
+]
+answer = 1
+
+[[questions]]
+text = "What is the principle of least privilege as applied to MCP server installation?"
+options = [
+    "Only install servers from Anthropic",
+    "Grant servers the narrowest auth scopes that let them do their job",
+    "Never run more than one MCP server at a time",
+    "Use Haiku for MCP calls",
+]
+answer = 1
+
+[[questions]]
+text = "Roughly how complex is writing a minimal stdio MCP server with the reference SDK?"
+options = [
+    "Several thousand lines of low-level networking code",
+    "A few hundred lines for the simplest case",
+    "On the order of twenty lines for a single-tool server",
+    "It cannot be written by hand; it must be generated",
+]
+answer = 2

@@ -1,0 +1,68 @@
+# =============================================================================
+# Introduction — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "Who develops Claude?"
+options = ["OpenAI", "Anthropic", "Google DeepMind", "Meta AI"]
+answer = 1
+
+[[questions]]
+text = "Which variant of a Claude generation is fastest and least expensive?"
+options = ["Opus", "Sonnet", "Haiku", "Pro"]
+answer = 2
+
+[[questions]]
+text = "Which variant of a Claude generation is the most capable, used for the hardest reasoning?"
+options = ["Haiku", "Sonnet", "Opus", "Turbo"]
+answer = 2
+
+[[questions]]
+text = "What is the primary endpoint of the Anthropic API?"
+options = ["/v1/completions", "/v1/chat", "/v1/messages", "/v1/generate"]
+answer = 2
+
+[[questions]]
+text = "What HTTP header carries the API key when calling the Anthropic API?"
+options = ["Authorization", "x-api-key", "x-anthropic-key", "API-Token"]
+answer = 1
+
+[[questions]]
+text = "Which header pins a Claude API request to a specific API version?"
+options = ["anthropic-version", "x-api-version", "Accept-Version", "x-claude-version"]
+answer = 0
+
+[[questions]]
+text = "What is the role of the `system` field in a Messages API request?"
+options = [
+    "It is a deprecated alias for `messages`",
+    "It carries standing instructions, persona, and rules outside the message array",
+    "It overrides the model selection",
+    "It sets the streaming mode",
+]
+answer = 1
+
+[[questions]]
+text = "Besides Anthropic's direct API, which two major cloud platforms host Claude models?"
+options = [
+    "Amazon Bedrock and Google Cloud Vertex AI",
+    "Microsoft Azure and Oracle Cloud",
+    "Cloudflare Workers and Fly.io",
+    "DigitalOcean and Linode",
+]
+answer = 0
+
+[[questions]]
+text = "What `stop_reason` value indicates the model wants to call a tool?"
+options = ["end_turn", "max_tokens", "tool_use", "refusal"]
+answer = 2
+
+[[questions]]
+text = "Which Claude-related product is Anthropic's official CLI for coding work?"
+options = ["Claude Studio", "Claude Code", "Claude Console", "Claude IDE"]
+answer = 1
+
+[[questions]]
+text = "Which SDK is the official Python client for the Anthropic API?"
+options = ["anthropic", "claude-python", "anthropic-sdk-python", "claudeai"]
+answer = 0

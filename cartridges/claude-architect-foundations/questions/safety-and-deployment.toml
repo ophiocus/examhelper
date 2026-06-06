@@ -1,0 +1,108 @@
+# =============================================================================
+# Safety and Deployment — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "What is the training method Anthropic uses for Claude that replaces a large portion of human preference labels with model-generated labels guided by a written set of principles?"
+options = [
+    "Constitutional AI",
+    "RLHF",
+    "Inverse reward design",
+    "Iterated distillation",
+]
+answer = 0
+
+[[questions]]
+text = "What does the HHH triad stand for?"
+options = [
+    "Hopeful, Heuristic, Helpful",
+    "Helpful, Honest, Harmless",
+    "Honest, Humane, Hierarchical",
+    "Healthy, Helpful, Heuristic",
+]
+answer = 1
+
+[[questions]]
+text = "Which of the following is the MOST appropriate description of how Claude decides to refuse a request?"
+options = [
+    "It matches against a static keyword blocklist",
+    "It evaluates the request against principles trained into it; refusals are intent-aware",
+    "It refuses any request containing names of weapons or drugs",
+    "It refuses any request longer than 2000 tokens",
+]
+answer = 1
+
+[[questions]]
+text = "Which deployment defense is the most reliable for high-stakes irreversible actions?"
+options = [
+    "Lowering the temperature to 0",
+    "Using Opus instead of Sonnet",
+    "Human-in-the-loop approval",
+    "Adding more tools",
+]
+answer = 2
+
+[[questions]]
+text = "What is the canonical largest cost optimization for Claude applications?"
+options = [
+    "Switching to Haiku for everything",
+    "Prompt caching",
+    "Setting max_tokens lower",
+    "Disabling streaming",
+]
+answer = 1
+
+[[questions]]
+text = "Which API provides asynchronous processing of large numbers of requests at approximately half the standard rates?"
+options = [
+    "The Streaming API",
+    "The Message Batches API",
+    "The Cached API",
+    "The Volume API",
+]
+answer = 1
+
+[[questions]]
+text = "What does streaming in the Messages API improve?"
+options = [
+    "Total request cost",
+    "Total wall-clock time",
+    "Perceived latency (time to first token)",
+    "Cache hit rate",
+]
+answer = 2
+
+[[questions]]
+text = "Which HTTP status code indicates the application is being rate-limited?"
+options = ["401", "403", "429", "503"]
+answer = 2
+
+[[questions]]
+text = "Which of these is NOT a typical metric in a production observability stack for a Claude application?"
+options = [
+    "Cost per request (tokens to dollars)",
+    "Time to first token",
+    "Tool-call frequency and error rate",
+    "Number of GitHub stars on the model repo",
+]
+answer = 3
+
+[[questions]]
+text = "A common production pattern that uses a cheap model as a classifier to decide whether to invoke a more capable model is called:"
+options = [
+    "Sub-agent dispatch",
+    "Model routing (or tier routing)",
+    "Cache warming",
+    "Constitutional escalation",
+]
+answer = 1
+
+[[questions]]
+text = "Why should architects pin the `anthropic-version` header in production?"
+options = [
+    "It is required for billing",
+    "It opts into a specific API version so model-behavior changes don't break the app silently",
+    "It enables prompt caching",
+    "It unlocks Opus access",
+]
+answer = 1
