@@ -1,0 +1,138 @@
+# =============================================================================
+# Tool Design and MCP — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "Which three fields are required when defining a tool for Claude?"
+options = [
+    "name, description, input_schema",
+    "name, version, body",
+    "id, function, args",
+    "tool_id, tool_name, tool_handler",
+]
+answer = 0
+
+[[questions]]
+text = "What schema format describes a tool's input arguments?"
+options = ["OpenAPI 3", "JSON Schema", "TypeSpec", "Protobuf"]
+answer = 1
+
+[[questions]]
+text = "After Claude returns a `tool_use` block, in what role must the application reply with the result?"
+options = ["assistant", "tool", "user", "system"]
+answer = 2
+
+[[questions]]
+text = "Which field in a `tool_result` block correlates it with the original tool call?"
+options = ["call_id", "tool_use_id", "id", "ref"]
+answer = 1
+
+[[questions]]
+text = "Setting `tool_choice` to `{ type: 'tool', name: 'X' }` causes Claude to:"
+options = [
+    "Refuse to use any tool",
+    "Decide whether to use tool X",
+    "Be required to call tool X next",
+    "Use X only if confidence is high",
+]
+answer = 2
+
+[[questions]]
+text = "What is the recommended technique for getting reliably-schemed JSON output from Claude?"
+options = [
+    "Ask politely in the system prompt",
+    "Define a tool whose input schema is the desired output and force tool_choice",
+    "Set temperature to 0 and hope for the best",
+    "Parse the response as YAML and convert",
+]
+answer = 1
+
+[[questions]]
+text = "Which JSON Schema feature most reliably constrains a model output to a fixed set of values?"
+options = ["maxLength", "pattern", "enum", "format"]
+answer = 2
+
+[[questions]]
+text = "Which `tool_choice` value prevents the model from calling any tool?"
+options = [
+    "{ type: 'auto' }",
+    "{ type: 'any' }",
+    "{ type: 'none' }",
+    "{ type: 'noop' }",
+]
+answer = 2
+
+[[questions]]
+text = "What does MCP stand for?"
+options = [
+    "Model Context Protocol",
+    "Multi-Claude Pipeline",
+    "Modular Composition Plane",
+    "Machine Conversation Protocol",
+]
+answer = 0
+
+[[questions]]
+text = "When did Anthropic introduce MCP?"
+options = [
+    "Mid-2023",
+    "Late 2024",
+    "Early 2025",
+    "Mid-2026",
+]
+answer = 1
+
+[[questions]]
+text = "MCP is architecturally analogous to which earlier protocol?"
+options = [
+    "MQTT for IoT",
+    "LSP (Language Server Protocol)",
+    "OAuth for authentication",
+    "WebRTC for media streaming",
+]
+answer = 1
+
+[[questions]]
+text = "Which of these is NOT a kind of capability an MCP server can expose?"
+options = ["Tools", "Resources", "Prompts", "Models"]
+answer = 3
+
+[[questions]]
+text = "Which two transports are defined by MCP?"
+options = [
+    "stdio and HTTP+SSE",
+    "WebSocket and gRPC",
+    "TCP and UDP",
+    "AMQP and Kafka",
+]
+answer = 0
+
+[[questions]]
+text = "Which transport is canonical for a local MCP server that accesses the user's files?"
+options = ["HTTP+SSE", "stdio", "WebSocket", "gRPC"]
+answer = 1
+
+[[questions]]
+text = "Which standard does MCP use for remote-server authentication?"
+options = ["Basic Auth", "API keys only", "OAuth 2.0", "SAML"]
+answer = 2
+
+[[questions]]
+text = "In Claude Code, where do USER-LEVEL MCP server entries live?"
+options = [
+    ".claude/config",
+    "~/.claude.json",
+    "/etc/claude/mcp.conf",
+    "claude.toml at the project root",
+]
+answer = 1
+
+[[questions]]
+text = "Roughly how complex is writing a minimal stdio MCP server with the reference SDK?"
+options = [
+    "Several thousand lines of low-level networking code",
+    "A few hundred lines for the simplest case",
+    "On the order of twenty lines for a single-tool server",
+    "It cannot be written by hand; it must be generated",
+]
+answer = 2

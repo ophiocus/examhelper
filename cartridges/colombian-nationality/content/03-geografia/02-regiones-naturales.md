@@ -72,7 +72,7 @@ La Región Orinoquia se encuentra ubicada en el este de Colombia, en la cuenca d
 
 ### Departamentos
 
-La capital del departamento del **Meta** es **Villavicencio**. La capital del departamento del **Casanare** es **Yopal**. La capital del departamento de **Arauca** es **Arauca**. La capital del departamento del **Vichada** es **Puerto Carreño**.
+La capital de **Meta** es **Villavicencio**. La capital de **Casanare** es **Yopal**. La capital de **Arauca** es **Arauca**. La capital de **Vichada** es **Puerto Carreño**.
 
 ### Economía
 
@@ -89,7 +89,7 @@ La Región Amazónica se encuentra ubicada en el sur y sureste de Colombia. Su c
 
 ### Departamentos
 
-La capital del departamento del **Amazonas** es **Leticia**. La capital del departamento del **Caquetá** es **Florencia**. La capital del departamento del **Guainía** es **Inírida**. La capital del departamento del **Guaviare** es **San José del Guaviare**. La capital del departamento del **Putumayo** es **Mocoa**. La capital del departamento del **Vaupés** es **Mitú**.
+La capital de **Amazonas** es **Leticia**. La capital de **Caquetá** es **Florencia**. La capital de **Guainía** es **Inírida**. La capital de **Guaviare** es **San José del Guaviare**. La capital de **Putumayo** es **Mocoa**. La capital de **Vaupés** es **Mitú**.
 
 ### Elementos destacados
 

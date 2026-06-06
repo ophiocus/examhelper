@@ -1,0 +1,128 @@
+# =============================================================================
+# Agentic Architecture — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "What is the primary endpoint of the Anthropic API?"
+options = ["/v1/completions", "/v1/chat", "/v1/messages", "/v1/generate"]
+answer = 2
+
+[[questions]]
+text = "Which `stop_reason` value indicates that the model wants to call a tool?"
+options = ["end_turn", "max_tokens", "tool_use", "refusal"]
+answer = 2
+
+[[questions]]
+text = "Which `stop_reason` terminates the canonical agent loop?"
+options = ["max_tokens", "end_turn", "refusal", "tool_use"]
+answer = 1
+
+[[questions]]
+text = "Where does conversation state live in a Claude application?"
+options = [
+    "On the API server, keyed by API key",
+    "In the application's messages array; the API is stateless",
+    "In the model's weights",
+    "In a redis instance maintained by Anthropic",
+]
+answer = 1
+
+[[questions]]
+text = "Which header pins a request to a specific API version, preventing silent behavior changes?"
+options = ["x-anthropic-revision", "anthropic-version", "Accept-Version", "x-claude-api-version"]
+answer = 1
+
+[[questions]]
+text = "What is a 'sub-agent' in Claude architecture?"
+options = [
+    "A throttled copy of the main model for cheaper inference",
+    "A child agent invoked by a parent, with its own context, tools, and system prompt",
+    "A small auxiliary model used only for classification",
+    "A read-only mirror of the main agent for observability",
+]
+answer = 1
+
+[[questions]]
+text = "Which sub-agent pattern is best suited for processing N independent items concurrently?"
+options = [
+    "Explore-then-act",
+    "Pipeline",
+    "Fan-out / map",
+    "Adversarial verification",
+]
+answer = 2
+
+[[questions]]
+text = "When sub-agents mutate the filesystem in parallel, what is the canonical isolation mechanism?"
+options = [
+    "Locking the main process",
+    "Per-sub-agent git worktrees",
+    "Serializing the work",
+    "Running only one sub-agent at a time",
+]
+answer = 1
+
+[[questions]]
+text = "Which of these is NOT a typical loop-control safeguard for production agent loops?"
+options = [
+    "Maximum turn count",
+    "Cumulative token budget",
+    "Wall-clock timeout",
+    "Lowering temperature with each iteration",
+]
+answer = 3
+
+[[questions]]
+text = "Which of the following is a Hooks-style architectural seam in an agent loop?"
+options = [
+    "Pre-call hook",
+    "Post-token hook (after every emitted token)",
+    "Pre-deploy hook",
+    "Pre-tokenize hook",
+]
+answer = 0
+
+[[questions]]
+text = "The Claude Agent SDK was previously known as:"
+options = [
+    "The Anthropic SDK",
+    "The Claude Code SDK",
+    "The MCP SDK",
+    "The HHH Framework",
+]
+answer = 1
+
+[[questions]]
+text = "What is the canonical reference implementation of the Claude Agent SDK?"
+options = ["Claude.ai", "Claude Code", "Bedrock Console", "Claude Studio"]
+answer = 1
+
+[[questions]]
+text = "Which language(s) are first-class for the Claude Agent SDK?"
+options = [
+    "Python and TypeScript",
+    "Java only",
+    "Rust only",
+    "Bash only",
+]
+answer = 0
+
+[[questions]]
+text = "If a single assistant turn contains multiple `tool_use` blocks, how should the application reply?"
+options = [
+    "One user message per `tool_result`, in separate API calls",
+    "A single user message containing one `tool_result` block per `tool_use`",
+    "Send only the first `tool_result`; Claude will ask again for the others",
+    "Multiple `tool_use` blocks per turn are not allowed",
+]
+answer = 1
+
+[[questions]]
+text = "What does 'compaction' mean for a long-running agent?"
+options = [
+    "gzip-compressing the response payload",
+    "Summarizing the earlier conversation history to reclaim context budget",
+    "Reducing the number of tools available to the model",
+    "Switching to a smaller model variant mid-conversation",
+]
+answer = 1

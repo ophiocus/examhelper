@@ -1,0 +1,163 @@
+# =============================================================================
+# Context Management and Reliability — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "What is the default context window of recent Claude models?"
+options = ["8K tokens", "32K tokens", "200K tokens", "10M tokens"]
+answer = 2
+
+[[questions]]
+text = "Which of these is a context-management strategy when an agent approaches the window limit?"
+options = [
+    "Compaction",
+    "Sub-agent delegation",
+    "Context pruning",
+    "All of the above",
+]
+answer = 3
+
+[[questions]]
+text = "What is the main trade-off of compacting earlier conversation history?"
+options = [
+    "It costs more tokens",
+    "It loses detail; specific tool results and intermediate work disappear into a summary",
+    "It breaks streaming",
+    "It invalidates the cache permanently",
+]
+answer = 1
+
+[[questions]]
+text = "Why does sub-agent delegation help with context management?"
+options = [
+    "The sub-agent's verbose intermediate work stays in its own context; only its final report enters the parent's",
+    "The sub-agent runs on a smaller model",
+    "The sub-agent uses a different API account",
+    "The sub-agent's tokens are not billed",
+]
+answer = 0
+
+[[questions]]
+text = "Which `usage` field reports tokens served from the prompt cache?"
+options = [
+    "cache_input_tokens",
+    "cached_tokens",
+    "cache_read_input_tokens",
+    "input_cache_tokens",
+]
+answer = 2
+
+[[questions]]
+text = "Which training method does Anthropic use to align Claude using a written set of principles and model-generated feedback?"
+options = [
+    "Constitutional AI",
+    "RLHF",
+    "Inverse reward design",
+    "Iterated distillation",
+]
+answer = 0
+
+[[questions]]
+text = "What does the HHH triad stand for?"
+options = [
+    "Hopeful, Heuristic, Helpful",
+    "Helpful, Honest, Harmless",
+    "Honest, Humane, Hierarchical",
+    "Healthy, Helpful, Heuristic",
+]
+answer = 1
+
+[[questions]]
+text = "Which deployment defense is most reliable for high-stakes irreversible actions?"
+options = [
+    "Lowering temperature",
+    "Using Opus instead of Sonnet",
+    "Human-in-the-loop approval",
+    "Adding more tools",
+]
+answer = 2
+
+[[questions]]
+text = "Which is typically the largest single cost optimization for a Claude application?"
+options = [
+    "Switching to Haiku for everything",
+    "Prompt caching",
+    "Setting max_tokens lower",
+    "Disabling streaming",
+]
+answer = 1
+
+[[questions]]
+text = "Which API processes large numbers of requests asynchronously at approximately half the standard rates?"
+options = [
+    "The Streaming API",
+    "The Message Batches API",
+    "The Cached API",
+    "The Volume API",
+]
+answer = 1
+
+[[questions]]
+text = "What does streaming in the Messages API primarily improve?"
+options = [
+    "Total request cost",
+    "Total wall-clock time",
+    "Perceived latency (time to first token)",
+    "Cache hit rate",
+]
+answer = 2
+
+[[questions]]
+text = "Which HTTP status code indicates the application is being rate-limited?"
+options = ["401", "403", "429", "503"]
+answer = 2
+
+[[questions]]
+text = "A common production pattern that uses a cheap model as a classifier to decide whether to invoke a more capable model is called:"
+options = [
+    "Sub-agent dispatch",
+    "Model routing (or tier routing)",
+    "Cache warming",
+    "Constitutional escalation",
+]
+answer = 1
+
+[[questions]]
+text = "Which of these is NOT a typical production observability metric for a Claude application?"
+options = [
+    "Cost per request (tokens to dollars)",
+    "Time to first token",
+    "Tool-call frequency and error rate",
+    "Number of GitHub stars on the model repo",
+]
+answer = 3
+
+[[questions]]
+text = "What does a circuit breaker do in an agent loop?"
+options = [
+    "Cuts power to the GPU when it overheats",
+    "Stops invoking a tool that has been failing repeatedly, until a cooldown elapses",
+    "Limits the number of tokens in the response",
+    "Ends the session when the user is idle",
+]
+answer = 1
+
+[[questions]]
+text = "Why pin `anthropic-version` in production?"
+options = [
+    "It is required for billing",
+    "It opts into a specific API version so model-behavior changes do not break the app silently",
+    "It enables prompt caching",
+    "It unlocks Opus access",
+]
+answer = 1
+
+[[questions]]
+text = "An 'eval set' in Claude application development is best described as:"
+options = [
+    "A list of approved API keys",
+    "A fixed set of test inputs with known good outputs, used to score prompt and model changes",
+    "A directory of MCP servers",
+    "A model evaluation benchmark like SWE-bench",
+]
+answer = 1

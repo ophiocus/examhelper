@@ -1,7 +1,7 @@
 id = "claude-architect-foundations"
 name = "Claude Certified Architect – Foundations"
-description = "Study material for the Anthropic Claude Certified Architect Foundations exam: API, prompting, tool use, agents, MCP, safety, and deployment"
-version = "1.0.0"
+description = "Study material for the Anthropic Claude Certified Architect Foundations (CCA-F) exam. Aligned to the official five-domain blueprint: Agentic Architecture (27%), Claude Code (20%), Prompt Engineering (20%), Tool Design and MCP (18%), Context Management and Reliability (15%)."
+version = "2.0.0"
 language = "en"
 tts_voice_preference = ["en-US", "en-GB", "en"]
 accent_color = [200, 130, 70]
@@ -14,25 +14,21 @@ tts_preference = ["en-US", "en-GB", "en"]
 default_questions_per_category = 10
 
 [[exam.categories]]
-name = "Introduction"
+name = "Agentic Architecture"
 pass_threshold = 60
 
 [[exam.categories]]
-name = "Prompting"
+name = "Claude Code"
 pass_threshold = 60
 
 [[exam.categories]]
-name = "Tool Use"
+name = "Prompt Engineering"
 pass_threshold = 60
 
 [[exam.categories]]
-name = "Agents"
+name = "Tool Design And Mcp"
 pass_threshold = 55
 
 [[exam.categories]]
-name = "Mcp"
-pass_threshold = 55
-
-[[exam.categories]]
-name = "Safety And Deployment"
+name = "Context Management And Reliability"
 pass_threshold = 55

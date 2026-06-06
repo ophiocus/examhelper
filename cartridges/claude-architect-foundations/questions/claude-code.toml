@@ -1,0 +1,128 @@
+# =============================================================================
+# Claude Code — Question Bank
+# =============================================================================
+
+[[questions]]
+text = "How is Claude Code installed?"
+options = [
+    "Via pip from PyPI",
+    "Via npm as @anthropic-ai/claude-code",
+    "Via a curl|bash script from claude.ai",
+    "Via the Windows Store only",
+]
+answer = 1
+
+[[questions]]
+text = "Which file at a project's root is automatically loaded into Claude Code's system prompt at session start?"
+options = ["README.md", "CLAUDE.md", "PROMPT.md", "PROJECT.md"]
+answer = 1
+
+[[questions]]
+text = "Where does USER-LEVEL Claude Code configuration live?"
+options = [
+    "~/.claude/settings.json",
+    "/etc/claude/config.toml",
+    ".claude/settings.json",
+    "~/.config/claude.yaml",
+]
+answer = 0
+
+[[questions]]
+text = "Where does PROJECT-LEVEL Claude Code configuration live (checked into the repo)?"
+options = [
+    ".claude/settings.json",
+    ".claude/settings.local.json",
+    "~/.claude/settings.json",
+    "claude.toml",
+]
+answer = 0
+
+[[questions]]
+text = "Which Claude Code configuration file is meant to be gitignored (local overrides)?"
+options = [
+    ".claude/settings.json",
+    ".claude/settings.local.json",
+    "~/.claude/settings.json",
+    ".clauderc",
+]
+answer = 1
+
+[[questions]]
+text = "What is a Claude Code 'Skill'?"
+options = [
+    "A trained adapter applied to the model weights",
+    "A reusable bundle of instructions and supporting files identified by SKILL.md",
+    "A premium tool only available to enterprise users",
+    "A measurement of the agent's tool-use accuracy",
+]
+answer = 1
+
+[[questions]]
+text = "Which file is the entry point for a Claude Code Skill?"
+options = ["index.md", "README.md", "SKILL.md", "main.md"]
+answer = 2
+
+[[questions]]
+text = "Which of these is NOT a typical Claude Code hook event?"
+options = [
+    "PreToolUse",
+    "PostToolUse",
+    "SessionStart",
+    "PostToken",
+]
+answer = 3
+
+[[questions]]
+text = "Which built-in Claude Code sub-agent is optimized for read-only code search?"
+options = ["Plan", "general-purpose", "Explore", "code-reviewer"]
+answer = 2
+
+[[questions]]
+text = "What is the purpose of a Claude Code 'plugin'?"
+options = [
+    "To replace the Claude model with a custom one",
+    "To package skills, MCP servers, hooks, and settings into a single installable artifact",
+    "To enable GPU acceleration",
+    "To translate Claude Code's UI into other languages",
+]
+answer = 1
+
+[[questions]]
+text = "How is Claude Code run NON-interactively (e.g. in a script or CI)?"
+options = [
+    "claude --headless",
+    "claude -p 'prompt text'",
+    "claude --auto",
+    "claude --json-rpc",
+]
+answer = 1
+
+[[questions]]
+text = "Which of these is a custom sub-agent declared in `.claude/agents/<name>.md`?"
+options = [
+    "A skill",
+    "A plugin",
+    "A sub-agent with its own system prompt, tools, and model",
+    "A workflow",
+]
+answer = 2
+
+[[questions]]
+text = "A 'workflow' in Claude Code is best described as:"
+options = [
+    "A YAML pipeline of shell commands",
+    "A deterministic JavaScript script orchestrating multiple sub-agents",
+    "A REST endpoint exposed by the SDK",
+    "A pre-recorded conversation replayed against the model",
+]
+answer = 1
+
+[[questions]]
+text = "Claude Cowork primarily extends Claude Code to support:"
+options = [
+    "Multi-tenant SaaS hosting",
+    "Working alongside the user on real files via task loops, plugins, and skills",
+    "GPU-accelerated inference",
+    "Mobile-app development",
+]
+answer = 1

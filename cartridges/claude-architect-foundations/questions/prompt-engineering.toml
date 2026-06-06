@@ -1,11 +1,11 @@
 # =============================================================================
-# Prompting — Question Bank
+# Prompt Engineering — Question Bank
 # =============================================================================
 
 [[questions]]
-text = "In a Messages API request, where does the system prompt go?"
+text = "Where does the system prompt go in a Messages API request?"
 options = [
-    "In the first message with role 'system'",
+    "In the first entry of the messages array with role 'system'",
     "In the `system` field, separate from the messages array",
     "Prepended to the first user message",
     "In the `tools` array",
@@ -13,10 +13,10 @@ options = [
 answer = 1
 
 [[questions]]
-text = "Which roles are valid for entries in the `messages` array?"
+text = "Which roles are valid in the `messages` array?"
 options = [
     "system, user, assistant",
-    "user and assistant",
+    "user and assistant only",
     "user, assistant, tool",
     "input and output",
 ]
@@ -25,25 +25,25 @@ answer = 1
 [[questions]]
 text = "What is 'few-shot prompting'?"
 options = [
-    "Calling the model only a few times",
+    "Calling the model fewer than five times",
     "Including worked examples in the prompt before the actual task",
-    "Using a small model",
-    "Setting temperature to a low value",
+    "Using temperature near zero",
+    "Using the smallest model variant available",
 ]
 answer = 1
 
 [[questions]]
-text = "What is the canonical way to force Claude to produce a JSON response that starts with `{`?"
+text = "What is the canonical way to force Claude's response to start with `{`?"
 options = [
     "Set temperature to 0",
     "Prefill the assistant turn with `{`",
-    "Use the `format: 'json'` field",
-    "Set `stop_reason` to 'json'",
+    "Use a `format: 'json'` field",
+    "Wrap the system prompt in <json> tags",
 ]
 answer = 1
 
 [[questions]]
-text = "What is the standard cache_control type used to mark a prompt-cache breakpoint?"
+text = "What `cache_control` type marks a prompt-cache breakpoint?"
 options = ["persistent", "ephemeral", "static", "cached"]
 answer = 1
 
@@ -63,7 +63,7 @@ options = ["1 minute", "5 minutes", "1 hour", "24 hours"]
 answer = 1
 
 [[questions]]
-text = "Extended prompt caching provides what TTL?"
+text = "Extended prompt caching offers what TTL?"
 options = ["15 minutes", "30 minutes", "1 hour", "24 hours"]
 answer = 2
 
@@ -73,21 +73,41 @@ options = ["1", "2", "4", "10"]
 answer = 2
 
 [[questions]]
-text = "Which of the following changes will invalidate a prompt-cache hit?"
+text = "Which of the following silently disables prompt caching?"
 options = [
-    "Adding new messages after the cached prefix",
-    "Changing tokens before or at the breakpoint",
+    "Appending new messages after the cached prefix",
+    "Adding a unique timestamp at the top of the system prompt",
     "Increasing max_tokens",
-    "Changing the temperature value",
+    "Switching the model variant within the same family",
 ]
 answer = 1
 
 [[questions]]
-text = "Which of these is NOT a recommended prompt-engineering technique for Claude?"
+text = "Which of these is NOT a recommended prompt-engineering technique?"
 options = [
     "Wrapping prompt sections in XML tags",
     "Putting the document before the question for long-context tasks",
-    "Adding a unique timestamp to every system prompt",
+    "Repeating the same instruction in different words three times",
     "Providing worked examples in <example> tags",
 ]
 answer = 2
+
+[[questions]]
+text = "Why prefer 'Be terse' over 'Don't be verbose' in a prompt?"
+options = [
+    "Token count savings",
+    "The model attends to what is described, even when negated; positive framing is more reliable",
+    "Negation is forbidden in the API",
+    "Negation triggers a refusal",
+]
+answer = 1
+
+[[questions]]
+text = "Extended thinking is most valuable for which kind of task?"
+options = [
+    "Simple classification",
+    "Hard multi-step reasoning, complex planning, math",
+    "High-throughput batch extraction",
+    "Image captioning",
+]
+answer = 1
