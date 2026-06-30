@@ -64,6 +64,7 @@ pub struct ExamHelperApp {
     // Core
     pub config: Config,
     pub progress: AppProgress,
+    #[allow(dead_code)]
     pub app_dir: PathBuf,
 
     // Cartridge system
@@ -98,7 +99,8 @@ pub struct ExamHelperApp {
     pub sidebar_width: f32,
     pub update_state: UpdateState,
     pub update_error: Option<String>,
-    pub update_rx: Option<std::sync::mpsc::Receiver<Option<crate::ui::git_update::UpdateAvailable>>>,
+    pub update_rx:
+        Option<std::sync::mpsc::Receiver<Option<crate::ui::git_update::UpdateAvailable>>>,
     pub theme_applied: bool,
 }
 
@@ -186,17 +188,17 @@ impl ExamHelperApp {
             // Try each preference prefix in order
             let best = lc.tts_preference.iter().find_map(|pref| {
                 let pref_lower = pref.to_lowercase();
-                voices.iter().find(|v| {
-                    v.language.to_lowercase().starts_with(&pref_lower)
-                })
+                voices
+                    .iter()
+                    .find(|v| v.language.to_lowercase().starts_with(&pref_lower))
             });
 
             // Fallback: try the bare language code
             let best = best.or_else(|| {
                 let code_lower = lc.code.to_lowercase();
-                voices.iter().find(|v| {
-                    v.language.to_lowercase().starts_with(&code_lower)
-                })
+                voices
+                    .iter()
+                    .find(|v| v.language.to_lowercase().starts_with(&code_lower))
             });
 
             if let Some(voice) = best {
@@ -262,9 +264,10 @@ impl ExamHelperApp {
     /// Extract cartridge_id and file stem for cache keys.
     fn cache_key(&self) -> (Option<String>, Option<String>) {
         let cart_id = self.registry.active().map(|c| c.manifest().id.clone());
-        let file_stem = self.selected_file.as_ref().and_then(|p| {
-            p.file_stem().map(|s| s.to_string_lossy().to_string())
-        });
+        let file_stem = self
+            .selected_file
+            .as_ref()
+            .and_then(|p| p.file_stem().map(|s| s.to_string_lossy().to_string()));
         (cart_id, file_stem)
     }
 
@@ -382,57 +385,45 @@ impl eframe::App for ExamHelperApp {
 
                 if let Some(ref p) = self.selected_file {
                     ui.label(
-                        RichText::new(
-                            p.file_name()
-                                .unwrap_or_default()
-                                .to_string_lossy()
-                                .as_ref(),
-                        )
-                        .weak()
-                        .size(11.0),
+                        RichText::new(p.file_name().unwrap_or_default().to_string_lossy().as_ref())
+                            .weak()
+                            .size(11.0),
                     );
                 }
 
-                ui.with_layout(
-                    egui::Layout::right_to_left(egui::Align::Center),
-                    |ui| {
-                        let display_zoom =
-                            self.drag_zoom.unwrap_or(self.config.zoom);
-                        let pct = (display_zoom * 100.0).round() as i32;
+                ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                    let display_zoom = self.drag_zoom.unwrap_or(self.config.zoom);
+                    let pct = (display_zoom * 100.0).round() as i32;
 
-                        let response = ui
-                            .add(
-                                egui::Label::new(
-                                    RichText::new(format!(" {pct}% "))
-                                        .monospace()
-                                        .size(11.0),
-                                )
-                                .sense(egui::Sense::drag()),
+                    let response = ui
+                        .add(
+                            egui::Label::new(
+                                RichText::new(format!(" {pct}% ")).monospace().size(11.0),
                             )
-                            .on_hover_text("Arrastra para zoom");
+                            .sense(egui::Sense::drag()),
+                        )
+                        .on_hover_text("Arrastra para zoom");
 
-                        if response.hovered() || response.dragged() {
-                            ctx.set_cursor_icon(egui::CursorIcon::ResizeHorizontal);
+                    if response.hovered() || response.dragged() {
+                        ctx.set_cursor_icon(egui::CursorIcon::ResizeHorizontal);
+                    }
+
+                    if response.dragged() {
+                        let z = self.drag_zoom.get_or_insert(self.config.zoom);
+                        *z = (*z + response.drag_delta().x * 0.003).clamp(0.25, 4.0);
+                    }
+
+                    if response.drag_stopped() {
+                        if let Some(z) = self.drag_zoom.take() {
+                            self.config.zoom = z;
+                            ctx.set_pixels_per_point(self.native_ppp * z);
+                            self.config.save();
                         }
+                    }
 
-                        if response.dragged() {
-                            let z = self.drag_zoom.get_or_insert(self.config.zoom);
-                            *z = (*z + response.drag_delta().x * 0.003)
-                                .clamp(0.25, 4.0);
-                        }
-
-                        if response.drag_stopped() {
-                            if let Some(z) = self.drag_zoom.take() {
-                                self.config.zoom = z;
-                                ctx.set_pixels_per_point(self.native_ppp * z);
-                                self.config.save();
-                            }
-                        }
-
-                        ui.separator();
-                        ui.label(RichText::new("zoom").weak().size(11.0));
-                    },
-                );
+                    ui.separator();
+                    ui.label(RichText::new("zoom").weak().size(11.0));
+                });
             });
         });
 

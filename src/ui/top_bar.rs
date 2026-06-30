@@ -18,12 +18,7 @@ impl ExamHelperApp {
                 ("ExamHelper".to_string(), Color32::from_rgb(255, 205, 0))
             };
 
-            ui.label(
-                RichText::new(&title.0)
-                    .size(18.0)
-                    .strong()
-                    .color(title.1),
-            );
+            ui.label(RichText::new(&title.0).size(18.0).strong().color(title.1));
 
             // Cartridge selector (only if multiple cartridges)
             if self.registry.count() > 1 {
@@ -54,10 +49,7 @@ impl ExamHelperApp {
                     .width(200.0)
                     .show_ui(ui, |ui| {
                         for (idx, id, name) in &cart_info {
-                            if ui
-                                .selectable_label(*id == current_id, name)
-                                .clicked()
-                            {
+                            if ui.selectable_label(*id == current_id, name).clicked() {
                                 switch_to = Some((*idx, id.clone()));
                             }
                         }
@@ -122,11 +114,7 @@ impl ExamHelperApp {
                 Color32::from_rgb(180, 180, 180)
             };
             if ui
-                .button(
-                    RichText::new("Progreso")
-                        .color(progress_color)
-                        .size(14.0),
-                )
+                .button(RichText::new("Progreso").color(progress_color).size(14.0))
                 .clicked()
             {
                 self.mode = AppMode::ProgressView;
@@ -138,11 +126,7 @@ impl ExamHelperApp {
                 Color32::from_rgb(180, 180, 180)
             };
             if ui
-                .button(
-                    RichText::new("Config")
-                        .color(settings_color)
-                        .size(14.0),
-                )
+                .button(RichText::new("Config").color(settings_color).size(14.0))
                 .clicked()
             {
                 self.tts.stop();

@@ -51,8 +51,7 @@ impl ExamState {
                     score += 1;
                 }
             }
-            self.results
-                .push((name.clone(), score, questions.len()));
+            self.results.push((name.clone(), score, questions.len()));
         }
         self.submitted = true;
     }

@@ -47,6 +47,7 @@ impl CartridgeRegistry {
         self.cartridges.get(self.active_index).map(|c| c.as_ref())
     }
 
+    #[allow(dead_code)]
     pub fn active_mut(&mut self) -> Option<&mut Box<dyn Cartridge>> {
         self.cartridges.get_mut(self.active_index)
     }
@@ -68,11 +69,7 @@ impl CartridgeRegistry {
     }
 
     pub fn set_active_by_id(&mut self, id: &str) {
-        if let Some(idx) = self
-            .cartridges
-            .iter()
-            .position(|c| c.manifest().id == id)
-        {
+        if let Some(idx) = self.cartridges.iter().position(|c| c.manifest().id == id) {
             self.active_index = idx;
         }
     }

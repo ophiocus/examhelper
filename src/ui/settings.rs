@@ -113,13 +113,11 @@ impl ExamHelperApp {
                                             .size(12.0)
                                             .color(Color32::from_rgb(80, 200, 120)),
                                     );
-                                } else {
-                                    if ui
-                                        .button(RichText::new("Seleccionar").size(11.0))
-                                        .clicked()
-                                    {
-                                        self.tts.set_voice(&voice.name);
-                                    }
+                                } else if ui
+                                    .button(RichText::new("Seleccionar").size(11.0))
+                                    .clicked()
+                                {
+                                    self.tts.set_voice(&voice.name);
                                 }
                                 ui.end_row();
                             }
@@ -285,17 +283,15 @@ impl ExamHelperApp {
                             .weak(),
                         );
                     }
-                } else {
-                    if ui
-                        .button(
-                            RichText::new("Escanear paquetes de voz disponibles")
-                                .size(13.0)
-                                .color(Color32::from_rgb(100, 149, 237)),
-                        )
-                        .clicked()
-                    {
-                        self.speech_caps_loading = true;
-                    }
+                } else if ui
+                    .button(
+                        RichText::new("Escanear paquetes de voz disponibles")
+                            .size(13.0)
+                            .color(Color32::from_rgb(100, 149, 237)),
+                    )
+                    .clicked()
+                {
+                    self.speech_caps_loading = true;
                 }
             });
     }

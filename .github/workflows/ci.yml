@@ -1,0 +1,67 @@
+# CI — gates only (no build, no MSI, no release artefacts).
+#
+# release.yml runs the same gates inline before the MSI build, but only on
+# tag-push. By that point a regression has cost a version number. This
+# workflow runs the gates on PR and push-to-master so drift surfaces at
+# edit time, not at ship time.
+#
+# KEEP IN SYNC WITH release.yml:
+#   1. Toolchain version. Both pin `dtolnay/rust-toolchain@<X.Y.Z>`.
+#   2. Components. Both declare `components: rustfmt, clippy`. Versioned
+#      tags ship only the bare compiler without these.
+#   3. Gate command list. The same fmt/clippy/test commands run in both.
+
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'assets/**'
+      - 'cartridges/**'
+      - '.gitignore'
+  push:
+    branches: [master]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'assets/**'
+      - 'cartridges/**'
+      - '.gitignore'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Cancel in-flight runs on the same ref when a newer commit arrives.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    # windows-latest matches release.yml. build.rs has cfg(target_os = "windows")
+    # branches, so gating on a different OS reintroduces the drift class CI exists
+    # to eliminate.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # KEEP IN SYNC WITH release.yml: toolchain pin + components.
+      - uses: dtolnay/rust-toolchain@1.95.0
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      # KEEP IN SYNC WITH release.yml: gate command list.
+      - name: cargo fmt --check
+        run: cargo fmt --check
+
+      - name: cargo clippy
+        run: cargo clippy --release --all-targets -- -D warnings
+
+      - name: cargo test
+        run: cargo test --release

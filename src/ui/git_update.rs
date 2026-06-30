@@ -22,13 +22,12 @@ pub enum UpdateState {
 // ── version comparison ───────────────────────────────────────────────────────
 
 fn is_newer(latest: &str, current: &str) -> bool {
-    let parse = |s: &str| -> (u32, u32, u32, u32) {
-        let mut p = s.split('.');
+    let parse = |s: &str| -> (u32, u32, u32) {
+        let mut p = s.splitn(3, '.');
         let a = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
         let b = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
         let c = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
-        let d = p.next().and_then(|n| n.parse().ok()).unwrap_or(0);
-        (a, b, c, d)
+        (a, b, c)
     };
     parse(latest) > parse(current)
 }
@@ -37,7 +36,7 @@ fn is_newer(latest: &str, current: &str) -> bool {
 
 pub fn check_latest_release() -> Option<UpdateAvailable> {
     let client = reqwest::blocking::Client::builder()
-        .user_agent(concat!("ExamHelper/", env!("APP_VERSION")))
+        .user_agent(concat!("ExamHelper/", env!("CARGO_PKG_VERSION")))
         .timeout(std::time::Duration::from_secs(10))
         .build()
         .ok()?;
@@ -51,18 +50,13 @@ pub fn check_latest_release() -> Option<UpdateAvailable> {
         .as_str()?
         .trim_start_matches('v')
         .to_string();
-    if !is_newer(&tag, env!("APP_VERSION")) {
+    if !is_newer(&tag, env!("CARGO_PKG_VERSION")) {
         return None;
     }
     let url = resp["assets"]
         .as_array()?
         .iter()
-        .find(|a| {
-            a["name"]
-                .as_str()
-                .unwrap_or("")
-                .ends_with(".msi")
-        })?["browser_download_url"]
+        .find(|a| a["name"].as_str().unwrap_or("").ends_with(".msi"))?["browser_download_url"]
         .as_str()?
         .to_string();
     Some(UpdateAvailable { version: tag, url })
@@ -72,7 +66,7 @@ pub fn check_latest_release() -> Option<UpdateAvailable> {
 
 fn download_and_install(url: &str, version: &str) -> Result<PathBuf, String> {
     let client = reqwest::blocking::Client::builder()
-        .user_agent(concat!("ExamHelper/", env!("APP_VERSION")))
+        .user_agent(concat!("ExamHelper/", env!("CARGO_PKG_VERSION")))
         .timeout(std::time::Duration::from_secs(120))
         .build()
         .map_err(|e| format!("HTTP client error: {e}"))?;
@@ -108,7 +102,7 @@ impl ExamHelperApp {
     /// Clickable version label in the bottom-left corner.
     /// Clicking triggers a manual update check.
     pub fn render_version_button(&mut self, ui: &mut egui::Ui) {
-        let version_text = format!("v{}", env!("APP_VERSION"));
+        let version_text = format!("v{}", env!("CARGO_PKG_VERSION"));
         let label = RichText::new(&version_text).weak().size(11.0);
         let response = ui.add(egui::Label::new(label).sense(egui::Sense::click()));
         if response.clicked() && matches!(self.update_state, UpdateState::Idle) {
@@ -130,12 +124,10 @@ impl ExamHelperApp {
                 ui.separator();
             }
             UpdateState::Available(avail) => {
-                let label = RichText::new(format!(
-                    "v{} available — click to install",
-                    avail.version
-                ))
-                .size(11.0)
-                .color(Color32::from_rgb(80, 210, 110));
+                let label =
+                    RichText::new(format!("v{} available — click to install", avail.version))
+                        .size(11.0)
+                        .color(Color32::from_rgb(80, 210, 110));
                 if ui
                     .add(egui::Label::new(label).sense(egui::Sense::click()))
                     .clicked()

@@ -1439,7 +1439,7 @@ dependencies = [
 
 [[package]]
 name = "examhelper"
-version = "0.4.3"
+version = "0.4.4"
 dependencies = [
  "dirs",
  "eframe",

@@ -94,18 +94,10 @@ impl FilesystemCartridge {
                 .to_string(),
             version: "1.0.0".to_string(),
             language: "es".to_string(),
-            tts_voice_preference: vec![
-                "es-CO".to_string(),
-                "es-MX".to_string(),
-                "es".to_string(),
-            ],
+            tts_voice_preference: vec!["es-CO".to_string(), "es-MX".to_string(), "es".to_string()],
             languages: vec![LanguageConfig {
                 code: "es".to_string(),
-                tts_preference: vec![
-                    "es-CO".to_string(),
-                    "es-MX".to_string(),
-                    "es".to_string(),
-                ],
+                tts_preference: vec!["es-CO".to_string(), "es-MX".to_string(), "es".to_string()],
             }],
             accent_color: [255, 205, 0],
             exam: ExamConfig {
@@ -140,12 +132,7 @@ impl FilesystemCartridge {
     }
 
     fn total_questions_for_bank(bank: &QuestionBank) -> usize {
-        bank.questions.len()
-            + bank
-                .templates
-                .iter()
-                .map(|t| t.pairs.len())
-                .sum::<usize>()
+        bank.questions.len() + bank.templates.iter().map(|t| t.pairs.len()).sum::<usize>()
     }
 }
 
@@ -290,11 +277,10 @@ fn content_node_from_path(path: &Path) -> Option<ContentNode> {
         })
     } else if name.to_lowercase().ends_with(".md") {
         let display_name = slug_to_title(
-            &path
-                .file_stem()
+            path.file_stem()
                 .unwrap_or_default()
                 .to_string_lossy()
-                .to_string(),
+                .as_ref(),
         );
         Some(ContentNode {
             name,

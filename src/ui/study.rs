@@ -26,12 +26,7 @@ impl ExamHelperApp {
             })
             .unwrap_or(Color32::from_rgb(255, 205, 0));
 
-        ui.label(
-            RichText::new(cart_name)
-                .size(15.0)
-                .strong()
-                .color(accent),
-        );
+        ui.label(RichText::new(cart_name).size(15.0).strong().color(accent));
         ui.separator();
 
         ScrollArea::vertical()
@@ -88,8 +83,7 @@ impl ExamHelperApp {
             }
             ContentKind::File => {
                 let is_selected = selected.as_ref() == Some(&node.path);
-                let is_read =
-                    progress.is_read(cartridge_id, &node.path.to_string_lossy());
+                let is_read = progress.is_read(cartridge_id, &node.path.to_string_lossy());
 
                 let prefix = if is_read { "[OK] " } else { "" };
                 let label_text = format!("{}{}", prefix, node.display_name);
@@ -149,7 +143,8 @@ impl ExamHelperApp {
         }
         // Keep repainting while speaking so we can detect finish
         if self.tts.state() == NarrationState::Speaking {
-            ui.ctx().request_repaint_after(std::time::Duration::from_millis(200));
+            ui.ctx()
+                .request_repaint_after(std::time::Duration::from_millis(200));
         }
 
         // ── Narration control bar ────────────────────────────────────────
@@ -219,14 +214,17 @@ impl ExamHelperApp {
                 }
 
                 // Bake button
-                if self.selected_file.is_some() {
-                    if ui
-                        .button(RichText::new("Bake").size(11.0).color(Color32::from_rgb(255, 180, 50)))
+                if self.selected_file.is_some()
+                    && ui
+                        .button(
+                            RichText::new("Bake")
+                                .size(11.0)
+                                .color(Color32::from_rgb(255, 180, 50)),
+                        )
                         .on_hover_text("Pre-bake audio for this lesson")
                         .clicked()
-                    {
-                        self.bake_current();
-                    }
+                {
+                    self.bake_current();
                 }
             }
 
@@ -235,9 +233,7 @@ impl ExamHelperApp {
             // Rate slider
             ui.label(RichText::new("Velocidad:").size(11.0).weak());
             let old_rate = self.narration_rate;
-            ui.add(
-                egui::Slider::new(&mut self.narration_rate, 0.0..=1.0).show_value(false),
-            );
+            ui.add(egui::Slider::new(&mut self.narration_rate, 0.0..=1.0).show_value(false));
             if (self.narration_rate - old_rate).abs() > 0.001 {
                 self.tts.set_rate(self.narration_rate);
             }
@@ -313,13 +309,7 @@ impl ExamHelperApp {
                 let display = voices
                     .iter()
                     .find(|v| v.name == current_voice)
-                    .map(|v| {
-                        format!(
-                            "{} ({})",
-                            v.name.replace("Microsoft ", ""),
-                            v.language
-                        )
-                    })
+                    .map(|v| format!("{} ({})", v.name.replace("Microsoft ", ""), v.language))
                     .unwrap_or_else(|| current_voice.clone());
 
                 egui::ComboBox::from_id_source("voice_selector")
@@ -375,10 +365,7 @@ impl ExamHelperApp {
                         if is_current {
                             let frame = egui::Frame::none()
                                 .fill(Color32::from_rgb(60, 50, 10))
-                                .stroke(egui::Stroke::new(
-                                    2.0,
-                                    Color32::from_rgb(255, 205, 0),
-                                ))
+                                .stroke(egui::Stroke::new(2.0, Color32::from_rgb(255, 205, 0)))
                                 .inner_margin(egui::Margin::same(10.0))
                                 .rounding(egui::Rounding::same(6.0));
                             let r = frame.show(ui, |ui| {

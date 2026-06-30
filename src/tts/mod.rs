@@ -3,8 +3,6 @@ pub mod cache;
 mod playback;
 mod strip;
 
-pub use bake::BakeProgress;
-pub use cache::TtsCache;
 pub use strip::{flatten_ranges, split_into_ranges, strip_markdown, LangRange};
 
 use std::collections::HashMap;
@@ -174,7 +172,11 @@ impl TtsController {
         }
     }
 
-    fn worker(rx: mpsc::Receiver<TtsCommand>, shared: Arc<TtsShared>, tx_clone: mpsc::Sender<TtsCommand>) {
+    fn worker(
+        rx: mpsc::Receiver<TtsCommand>,
+        shared: Arc<TtsShared>,
+        tx_clone: mpsc::Sender<TtsCommand>,
+    ) {
         let mut tts = match tts::Tts::default() {
             Ok(t) => t,
             Err(e) => {
@@ -239,12 +241,7 @@ impl TtsController {
 
                         for range in &ranges {
                             // Switch voice once per range
-                            switch_voice_for_lang(
-                                &range.lang,
-                                &mut tts,
-                                &all_voices,
-                                &voice_map,
-                            );
+                            switch_voice_for_lang(&range.lang, &mut tts, &all_voices, &voice_map);
 
                             for chunk in &range.chunks {
                                 // Check for commands before speaking
@@ -265,7 +262,10 @@ impl TtsController {
                                         }
                                         TtsCommand::SetVoice(name) => {
                                             set_voice_by_name(
-                                                &name, &mut tts, &all_voices, &shared,
+                                                &name,
+                                                &mut tts,
+                                                &all_voices,
+                                                &shared,
                                             );
                                         }
                                         TtsCommand::SetVoiceMap(map) => {
@@ -307,7 +307,10 @@ impl TtsController {
                                             }
                                             TtsCommand::SetVoice(name) => {
                                                 set_voice_by_name(
-                                                    &name, &mut tts, &all_voices, &shared,
+                                                    &name,
+                                                    &mut tts,
+                                                    &all_voices,
+                                                    &shared,
                                                 );
                                             }
                                             TtsCommand::SetVoiceMap(map) => {
@@ -425,14 +428,9 @@ impl TtsController {
                                 Err(mpsc::RecvTimeoutError::Disconnected) => break 'bake_poll,
                             }
                             // Allow stop during bake
-                            if let Ok(cmd) = rx.try_recv() {
-                                match cmd {
-                                    TtsCommand::Stop | TtsCommand::Quit => {
-                                        aborted = true;
-                                        break 'bake_poll;
-                                    }
-                                    _ => {}
-                                }
+                            if let Ok(TtsCommand::Stop | TtsCommand::Quit) = rx.try_recv() {
+                                aborted = true;
+                                break 'bake_poll;
                             }
                         }
                         shared.bake_state.store(0, Ordering::Relaxed);
@@ -445,11 +443,7 @@ impl TtsController {
 
                     // Play from cache — only include chunks that have WAV files
                     let check = cache.check(&cartridge_id, &file_stem, &ranges, &vc_hash);
-                    let wav_paths: Vec<_> = check
-                        .chunk_paths
-                        .into_iter()
-                        .filter_map(|p| p)
-                        .collect();
+                    let wav_paths: Vec<_> = check.chunk_paths.into_iter().flatten().collect();
 
                     if wav_paths.is_empty() {
                         // Cache empty — fall back to live TTS
@@ -457,9 +451,7 @@ impl TtsController {
                         continue;
                     }
 
-                    if let Some(new_ranges) =
-                        playback::play_cached(&wav_paths, &shared, &rx)
-                    {
+                    if let Some(new_ranges) = playback::play_cached(&wav_paths, &shared, &rx) {
                         // Restart requested — re-enqueue
                         let _ = tx_clone.send(TtsCommand::Speak(new_ranges));
                     }
@@ -595,6 +587,7 @@ impl TtsController {
         )
     }
 
+    #[allow(dead_code)]
     pub fn bake_error(&self) -> Option<String> {
         self.shared.bake_error.lock().unwrap().clone()
     }

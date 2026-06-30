@@ -146,6 +146,7 @@ pub trait Cartridge: Send + Sync {
     fn content_tree(&self) -> &[ContentNode];
 
     /// Load a content file by path, returning the markdown string.
+    #[allow(clippy::ptr_arg)]
     fn load_content_file(&self, path: &PathBuf) -> Option<String>;
 
     /// Return available exam category names with total question counts.
@@ -169,6 +170,7 @@ pub trait Cartridge: Send + Sync {
     }
 
     /// Reload content and questions from disk.
+    #[allow(dead_code)]
     fn reload(&mut self);
 }
 
@@ -183,7 +185,7 @@ pub fn slug_to_title(slug: &str) -> String {
         slug
     };
 
-    slug.split(|c: char| c == '-' || c == '_')
+    slug.split(['-', '_'])
         .filter(|s| !s.is_empty())
         .map(|word| {
             let mut chars = word.chars();

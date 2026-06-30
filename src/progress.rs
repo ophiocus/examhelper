@@ -76,9 +76,7 @@ impl AppProgress {
     }
 
     pub fn for_cartridge_mut(&mut self, id: &str) -> &mut CartridgeProgress {
-        self.cartridges
-            .entry(id.to_string())
-            .or_insert_with(CartridgeProgress::default)
+        self.cartridges.entry(id.to_string()).or_default()
     }
 
     pub fn mark_read(&mut self, cartridge_id: &str, file_path: &str) {

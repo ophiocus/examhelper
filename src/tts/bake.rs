@@ -13,19 +13,17 @@ use super::LangRange;
 #[derive(Debug, Clone)]
 pub struct BakeProgress {
     pub current: usize,
+    #[allow(dead_code)]
     pub total: usize,
     /// Number of chunks that were already cached (not rebaked).
     pub skipped: usize,
     pub done: bool,
+    #[allow(dead_code)]
     pub error: Option<String>,
 }
 
 /// Synthesize a single text chunk to a WAV file using WinRT directly.
-fn synthesize_to_wav(
-    synth: &SpeechSynthesizer,
-    text: &str,
-    output: &Path,
-) -> Result<(), String> {
+fn synthesize_to_wav(synth: &SpeechSynthesizer, text: &str, output: &Path) -> Result<(), String> {
     let hstring: windows::core::HSTRING = text.into();
     let stream = synth
         .SynthesizeTextToStreamAsync(&hstring)
@@ -67,14 +65,14 @@ fn find_voice_for_lang(
     lang: &str,
     voice_map: &HashMap<String, String>,
 ) -> Result<VoiceInformation, String> {
-    let all_voices = SpeechSynthesizer::AllVoices()
-        .map_err(|e| format!("AllVoices: {e}"))?;
+    let all_voices = SpeechSynthesizer::AllVoices().map_err(|e| format!("AllVoices: {e}"))?;
 
     // Check voice map first
     if let Some(voice_name) = voice_map.get(lang) {
         for i in 0..all_voices.Size().unwrap_or(0) {
             if let Ok(v) = all_voices.GetAt(i) {
                 if let Ok(name) = v.DisplayName() {
+                    #[allow(clippy::cmp_owned)]
                     if name.to_string() == *voice_name {
                         return Ok(v);
                     }

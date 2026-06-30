@@ -36,8 +36,7 @@ impl ExamHelperApp {
         for (idx, (name, total)) in categories.iter().enumerate() {
             ui.checkbox(
                 &mut self.exam_category_selection[idx],
-                RichText::new(format!("{} ({} preguntas disponibles)", name, total))
-                    .size(14.0),
+                RichText::new(format!("{} ({} preguntas disponibles)", name, total)).size(14.0),
             );
         }
 
@@ -256,13 +255,8 @@ impl ExamHelperApp {
                     let is_last =
                         section_idx == num_sections - 1 && question_idx == section_len - 1;
 
-                    if !is_last {
-                        if ui
-                            .button(RichText::new("Siguiente").size(14.0))
-                            .clicked()
-                        {
-                            action_next = true;
-                        }
+                    if !is_last && ui.button(RichText::new("Siguiente").size(14.0)).clicked() {
+                        action_next = true;
                     }
 
                     ui.add_space(20.0);
@@ -283,15 +277,10 @@ impl ExamHelperApp {
                 // Question navigator grid
                 ui.add_space(20.0);
                 ui.separator();
-                ui.label(
-                    RichText::new("Navegador de preguntas:")
-                        .size(13.0)
-                        .strong(),
-                );
+                ui.label(RichText::new("Navegador de preguntas:").size(13.0).strong());
                 ui.add_space(5.0);
 
-                for (s_idx, (s_name, _q_count, answered_flags)) in nav_data.iter().enumerate()
-                {
+                for (s_idx, (s_name, _q_count, answered_flags)) in nav_data.iter().enumerate() {
                     ui.label(
                         RichText::new(s_name)
                             .size(12.0)
@@ -299,8 +288,7 @@ impl ExamHelperApp {
                     );
                     ui.horizontal_wrapped(|ui| {
                         for (q_idx, is_answered) in answered_flags.iter().enumerate() {
-                            let is_current =
-                                s_idx == section_idx && q_idx == question_idx;
+                            let is_current = s_idx == section_idx && q_idx == question_idx;
                             let color = if is_current {
                                 Color32::from_rgb(255, 205, 0)
                             } else if *is_answered {
@@ -341,9 +329,7 @@ impl ExamHelperApp {
 
         if action_next {
             if let Some(ref mut exam) = self.exam_state {
-                if exam.current_question + 1
-                    < exam.sections[exam.current_section].1.len()
-                {
+                if exam.current_question + 1 < exam.sections[exam.current_section].1.len() {
                     exam.current_question += 1;
                 } else if exam.current_section + 1 < exam.sections.len() {
                     exam.current_section += 1;
@@ -364,8 +350,7 @@ impl ExamHelperApp {
                 exam.submit();
                 let cart_id = self.registry.active_id().to_string();
                 for (cat, score, total) in &exam.results {
-                    self.progress
-                        .add_exam_record(&cart_id, cat, *score, *total);
+                    self.progress.add_exam_record(&cart_id, cat, *score, *total);
                 }
             }
             self.mode = AppMode::ExamResults;
@@ -377,26 +362,30 @@ impl ExamHelperApp {
             Some(exam) => {
                 let (total_score, total_questions) = exam.overall_score();
                 let results = exam.results.clone();
-                let review: Vec<(String, Vec<(String, Vec<String>, usize, Option<usize>)>)> =
-                    exam.sections
-                        .iter()
-                        .enumerate()
-                        .map(|(s_idx, (s_name, questions))| {
-                            let qs: Vec<_> = questions
-                                .iter()
-                                .enumerate()
-                                .map(|(q_idx, q)| {
-                                    (
-                                        q.text.clone(),
-                                        q.options.clone(),
-                                        q.correct_index,
-                                        exam.answers[s_idx][q_idx],
-                                    )
-                                })
-                                .collect();
-                            (s_name.clone(), qs)
-                        })
-                        .collect();
+                #[allow(clippy::type_complexity)]
+                let review: Vec<(
+                    String,
+                    Vec<(String, Vec<String>, usize, Option<usize>)>,
+                )> = exam
+                    .sections
+                    .iter()
+                    .enumerate()
+                    .map(|(s_idx, (s_name, questions))| {
+                        let qs: Vec<_> = questions
+                            .iter()
+                            .enumerate()
+                            .map(|(q_idx, q)| {
+                                (
+                                    q.text.clone(),
+                                    q.options.clone(),
+                                    q.correct_index,
+                                    exam.answers[s_idx][q_idx],
+                                )
+                            })
+                            .collect();
+                        (s_name.clone(), qs)
+                    })
+                    .collect();
                 Some((total_score, total_questions, results, review))
             }
             None => {
@@ -497,9 +486,7 @@ impl ExamHelperApp {
 
             ui.horizontal(|ui| {
                 let status = if cat_passed { "✓" } else { "✗" };
-                ui.label(
-                    RichText::new(format!("{} {}: ", status, cat)).size(14.0),
-                );
+                ui.label(RichText::new(format!("{} {}: ", status, cat)).size(14.0));
                 ui.label(
                     RichText::new(format!(
                         "{}/{} ({}%) [min: {}%]",
@@ -515,11 +502,7 @@ impl ExamHelperApp {
         ui.separator();
         ui.add_space(10.0);
 
-        ui.label(
-            RichText::new("Revision de Respuestas:")
-                .size(16.0)
-                .strong(),
-        );
+        ui.label(RichText::new("Revision de Respuestas:").size(16.0).strong());
         ui.add_space(10.0);
 
         let mut action_new_exam = false;
@@ -551,14 +534,9 @@ impl ExamHelperApp {
 
                         ui.horizontal_wrapped(|ui| {
                             ui.label(
-                                RichText::new(format!(
-                                    "{} {}. {}",
-                                    marker,
-                                    q_idx + 1,
-                                    text
-                                ))
-                                .size(13.0)
-                                .color(marker_color),
+                                RichText::new(format!("{} {}. {}", marker, q_idx + 1, text))
+                                    .size(13.0)
+                                    .color(marker_color),
                             );
                         });
 

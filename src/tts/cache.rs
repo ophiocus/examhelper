@@ -38,6 +38,7 @@ impl CacheCheck {
     }
 
     /// Efficiency: percentage of chunks served from cache.
+    #[allow(dead_code)]
     pub fn efficiency_pct(&self) -> f32 {
         if self.total == 0 {
             100.0
@@ -89,12 +90,7 @@ impl TtsCache {
     }
 
     /// Save manifest.
-    pub fn save_manifest(
-        &self,
-        cartridge_id: &str,
-        file_stem: &str,
-        manifest: &BakeManifest,
-    ) {
+    pub fn save_manifest(&self, cartridge_id: &str, file_stem: &str, manifest: &BakeManifest) {
         let dir = self.content_dir(cartridge_id, file_stem);
         let _ = fs::create_dir_all(&dir);
         let path = self.manifest_path(cartridge_id, file_stem);
@@ -132,10 +128,7 @@ impl TtsCache {
                     let meta = &m.chunks[i];
                     let wav_path = dir.join(&meta.file_name);
 
-                    if meta.text_hash == expected_hash
-                        && meta.lang == *lang
-                        && wav_path.exists()
-                    {
+                    if meta.text_hash == expected_hash && meta.lang == *lang && wav_path.exists() {
                         chunk_paths.push(Some(wav_path));
                         cached += 1;
                     } else {
@@ -159,10 +152,7 @@ impl TtsCache {
     }
 
     /// Build a manifest from the current ranges (used after baking).
-    pub fn build_manifest(
-        ranges: &[LangRange],
-        voice_config_hash: &str,
-    ) -> BakeManifest {
+    pub fn build_manifest(ranges: &[LangRange], voice_config_hash: &str) -> BakeManifest {
         let mut chunks = Vec::new();
         let mut idx = 0usize;
         for range in ranges {
@@ -190,12 +180,14 @@ impl TtsCache {
     }
 
     /// Total cache size in bytes for a cartridge.
+    #[allow(dead_code)]
     pub fn cartridge_cache_size(&self, cartridge_id: &str) -> u64 {
         let dir = self.cache_root.join(cartridge_id);
         dir_size(&dir)
     }
 
     /// Clear all cache for a cartridge.
+    #[allow(dead_code)]
     pub fn clear_cartridge(&self, cartridge_id: &str) {
         let dir = self.cache_root.join(cartridge_id);
         let _ = fs::remove_dir_all(dir);
@@ -214,7 +206,7 @@ pub fn hash_text(text: &str) -> String {
 pub fn hash_voice_config(voice_map: &HashMap<String, String>, rate: f32) -> String {
     let mut hasher = Sha256::new();
     let mut entries: Vec<_> = voice_map.iter().collect();
-    entries.sort_by_key(|(k, _)| k.clone());
+    entries.sort_by_key(|(k, _)| (*k).clone());
     for (k, v) in entries {
         hasher.update(k.as_bytes());
         hasher.update(v.as_bytes());
@@ -224,6 +216,7 @@ pub fn hash_voice_config(voice_map: &HashMap<String, String>, rate: f32) -> Stri
     format!("{:x}", result)[..16].to_string()
 }
 
+#[allow(dead_code)]
 fn dir_size(path: &Path) -> u64 {
     let mut total = 0u64;
     if let Ok(entries) = fs::read_dir(path) {

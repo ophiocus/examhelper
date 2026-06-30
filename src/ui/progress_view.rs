@@ -29,10 +29,7 @@ impl ExamHelperApp {
             .unwrap_or(0);
         let read_count = self.progress.for_cartridge(&cart_id).read_files.len();
 
-        ui.label(
-            RichText::new(format!("Temas leidos: {}/{}", read_count, total_files))
-                .size(14.0),
-        );
+        ui.label(RichText::new(format!("Temas leidos: {}/{}", read_count, total_files)).size(14.0));
 
         if total_files > 0 {
             let progress = read_count as f32 / total_files as f32;
@@ -44,11 +41,7 @@ impl ExamHelperApp {
 
         // Exam history
         ui.add_space(10.0);
-        ui.label(
-            RichText::new("Historial de Examenes:")
-                .size(16.0)
-                .strong(),
-        );
+        ui.label(RichText::new("Historial de Examenes:").size(16.0).strong());
         ui.add_space(5.0);
 
         let cp = self.progress.for_cartridge(&cart_id);
@@ -127,10 +120,7 @@ impl ExamHelperApp {
                         )
                         .clicked()
                     {
-                        self.progress
-                            .for_cartridge_mut(&cart_id)
-                            .read_files
-                            .clear();
+                        self.progress.for_cartridge_mut(&cart_id).read_files.clear();
                         self.progress.save();
                     }
                 });
