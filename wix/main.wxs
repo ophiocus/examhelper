@@ -236,6 +236,29 @@
 
                     </Directory>
 
+                    <!--
+                      The Start menu shortcut is what puts the app into Start > All apps,
+                      where it can be pinned and where people look for installed software.
+                      A Desktop shortcut and a PATH entry place nothing there.
+                      (Retrofitted from rust-skeleton; identity values cloned from this
+                      file's own DesktopShortcut, GUID minted fresh for this app.)
+                    -->
+                    <Component Id='StartMenuShortcut' Guid='B10FA87D-3977-4997-AA49-CC5F82F7DBA9'>
+                        <Shortcut Id='StartMenuShortcut'
+                            Name='ExamHelper'
+                            Description='Learning console with TTS narration and exam practice'
+                            Directory='ProgramMenuFolder'
+                            Target='[Bin]examhelper.exe'
+                            WorkingDirectory='APPLICATIONFOLDER'
+                            Icon='ProductICO' />
+                        <!-- ICE43: a non-advertised shortcut needs an HKCU keypath. -->
+                        <RegistryValue Root='HKCU'
+                            Key='Software\ophiocus\ExamHelper'
+                            Name='StartMenuShortcut'
+                            Type='integer'
+                            Value='1'
+                            KeyPath='yes' />
+                    </Component>
                     <Component Id='DesktopShortcut' Guid='C3D4E5F6-A7B8-9012-CDEF-345678901234'>
                         <Shortcut Id='DesktopShortcut'
                             Name='ExamHelper'
@@ -254,6 +277,7 @@
 
                 </Directory>
             </Directory>
+            <Directory Id='ProgramMenuFolder' Name='Programs' />
             <Directory Id='DesktopFolder' Name='Desktop' />
         </Directory>
 
@@ -269,6 +293,7 @@
 
             <ComponentRef Id='License'/>
             <ComponentRef Id='binary0'/>
+            <ComponentRef Id='StartMenuShortcut'/>
             <ComponentRef Id='DesktopShortcut'/>
 
             <!-- Colombian cartridge -->
